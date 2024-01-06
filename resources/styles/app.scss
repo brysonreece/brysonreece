@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .prose a {
+        @apply font-medium text-blue-700 no-underline hover:underline
+    }
+}
+
+@layer components {
+    @import 'components/photos';
+    @import 'components/blobs';
+}
+
+@layer utilities {
+    [x-cloak] {
+        display: none;
+    }
+}

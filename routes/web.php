@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GuestController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,14 +16,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [GuestController::class, 'welcome'])->name('welcome');
+
+foreach (['about', 'career', 'projects', 'community', 'uses'] as $page) {
+    Route::get("/{$page}", [GuestController::class, $page])->name($page);
+}
 
 Route::middleware([
     'auth:sanctum',
