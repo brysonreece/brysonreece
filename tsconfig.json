@@ -4,13 +4,13 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "rootDir": "./resources/js",
+    "rootDir": "./",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/*": ["./resources/js/*"]
+      "@/*": ["./resources/*"]
     },
     "types": ["vite/client"]
   }

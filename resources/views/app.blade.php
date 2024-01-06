@@ -13,10 +13,11 @@
     <!-- Scripts -->
     @routes
     @viteReactRefresh
-    @vite('resources/js/app.tsx')
+    @vite('resources/app.tsx')
     @inertiaHead
   </head>
-  <body class="font-sans antialiased">
+  {{-- The custom style here prevents content shifting from a scrollbar being present in the viewport --}}
+  <body class="font-sans antialiased" style="padding-left: calc(100vw - 100%);">
     @inertia
   </body>
 </html>
