@@ -174,7 +174,7 @@ export function APITokenManager({
                         }
                       }}
                     />
-                    <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
+                    <span className="ml-2 text-sm text-stone-600 dark:text-stone-400">
                       {permission}
                     </span>
                   </label>
@@ -210,14 +210,14 @@ export function APITokenManager({
 
                     <div className="flex items-center">
                       {token.last_used_ago && (
-                        <div className="text-sm text-gray-400">
+                        <div className="text-sm text-stone-400">
                           Last used {token.last_used_ago}
                         </div>
                       )}
 
                       {availablePermissions.length > 0 ? (
                         <PrimaryButton
-                          className="cursor-pointer ml-6 text-sm text-gray-400 underline"
+                          className="cursor-pointer ml-6 text-sm text-stone-400 underline"
                           onClick={() => manageApiTokenPermissions(token)}
                         >
                           Permissions
@@ -250,7 +250,7 @@ export function APITokenManager({
             again.
           </div>
 
-          <div className="mt-4 bg-gray-100 dark:bg-gray-900 px-4 py-2 rounded font-mono text-sm text-gray-500">
+          <div className="mt-4 bg-stone-100 dark:bg-stone-900 px-4 py-2 rounded font-mono text-sm text-stone-500">
             {page.props?.jetstream?.flash?.token}
           </div>
         </DialogModal.Content>
@@ -296,7 +296,7 @@ export function APITokenManager({
                       }
                     }}
                   />
-                  <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
+                  <span className="ml-2 text-sm text-stone-600 dark:text-stone-400">
                     {permission}
                   </span>
                 </label>

@@ -94,3 +94,37 @@ export interface TeamInvitation {
   created_at: DateTime;
   updated_at: DateTime;
 }
+
+export enum EventType {
+  CareerEventType,
+  CommunityEventType,
+  ProjectEventType,
+}
+
+export interface Event {
+  type: EventType;
+  title: string;
+  dates: string[];
+  content: Nullable<string>;
+}
+
+export interface CareerEvent extends Event {
+  type: EventType.CareerEventType;
+  employer: string;
+  logoUrl: string;
+  location: string;
+}
+
+export interface CommunityEvent extends Event {
+  type: EventType.CommunityEventType;
+  host: string;
+  logoUrl: string;
+  location: string;
+}
+
+export interface ProjectEvent extends Event {
+  type: EventType.ProjectEventType;
+  description: string;
+  github: Nullable<string>;
+  resources: Record<string, string>;
+}

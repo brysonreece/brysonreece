@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -38,7 +39,31 @@ class GuestController extends Controller
      */
     public function career(): Response
     {
-        return Inertia::render('Guest/Career');
+        return Inertia::render('Guest/EventList', [
+            'title' => 'Career',
+            'heading' => 'My Career Journey',
+            'subtitle' => 'An epic tale filled with adventure, dragons, blood, sweat, and tears',
+            'events' => array_map(function ($event) {
+                $event['content'] = implode("\n", array_map((function ($line) {
+                    return Str::after($line, '    ');
+                }), explode("\n", $event['content'])));
+
+                $logoUrl = secure_asset(
+                    str_replace(public_path(), '', $event['logo_path']),
+                );
+
+                unset($event['logo_path']);
+
+                return [
+                    ...$event,
+                    ...[
+                        'type' => 'career',
+                        'logoUrl' => $logoUrl,
+                        'content' => Str::markdown($event['content']),
+                    ],
+                ];
+            }, array_reverse(config('guest.career'))),
+        ]);
     }
 
     /**
@@ -48,7 +73,24 @@ class GuestController extends Controller
      */
     public function projects(): Response
     {
-        return Inertia::render('Guest/Projects');
+        return Inertia::render('Guest/EventList', [
+            'title' => 'Projects',
+            'heading' => 'Projects & Prototypes',
+            'subtitle' => 'The "5 to 9s" after the "9 to 5"',
+            'events' => array_map(function ($event) {
+                $event['content'] = implode("\n", array_map((function ($line) {
+                    return Str::after($line, '    ');
+                }), explode("\n", $event['content'])));
+
+                return [
+                    ...$event,
+                    ...[
+                        'type' => 'project',
+                        'content' => Str::markdown($event['content']),
+                    ],
+                ];
+            }, array_reverse(config('guest.projects'))),
+        ]);
     }
 
     /**
@@ -58,7 +100,31 @@ class GuestController extends Controller
      */
     public function community(): Response
     {
-        return Inertia::render('Guest/Community');
+        return Inertia::render('Guest/EventList', [
+            'title' => 'Community',
+            'heading' => 'Talks & Workshops',
+            'subtitle' => 'Efforts to give back to the communities that shaped me',
+            'events' => array_map(function ($event) {
+                $event['content'] = implode("\n", array_map((function ($line) {
+                    return Str::after($line, '    ');
+                }), explode("\n", $event['content'])));
+
+                $logoUrl = secure_asset(
+                    str_replace(public_path(), '', $event['logo_path']),
+                );
+
+                unset($event['logo_path']);
+
+                return [
+                    ...$event,
+                    ...[
+                        'type' => 'community',
+                        'logoUrl' => $logoUrl,
+                        'content' => Str::markdown($event['content']),
+                    ],
+                ];
+            }, array_reverse(config('guest.community'))),
+        ]);
     }
 
     /**

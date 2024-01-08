@@ -1,65 +1,123 @@
 import React, { FormEvent, PropsWithChildren } from 'react';
 import { GuestLayout } from '@/layouts/GuestLayout';
 import { Container } from '@/components/Container';
-
-function Link({ href, children, onClick }: PropsWithChildren<{ href?: string; onClick?: (e: FormEvent) => void }>) {
-  return (
-      <a href={href} onClick={onClick} target="_blank" className="not-prose cursor-pointer">
-          {children}
-      </a>
-  );
-}
+import { Link } from '@inertiajs/react';
 
 export default function Uses() {
-    return (
-        <GuestLayout title="Uses">
-            <Container className="text-center mb-16">
-                <h1 className="mx-auto mt-12 max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-                    Uses
-                </h1>
+  return (
+    <GuestLayout title="Uses">
+      <Container maxWidth="3xl" className="mb-16">
+        <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
+          What I Use
+        </h1>
 
-                <div className="text-left prose prose-slate mx-auto mt-8 lg:prose-lg">
-                    <p className="lead text-center">A breakdown of the tools & products I enjoy most.</p>
-                    <br />
-                    <h2 className="mt-16">Daily Drivers</h2>
-                    <ul>
-                        <li><Link href="https://support.apple.com/kb/SP832">Apple iPhone 12 Pro Max</Link>: TODO.</li>
-                        <li><Link href="#">Apple Macbook Pro (M1, 2020)</Link>: TODO.</li>
-                        <li><Link href="#">Apple iPad Air (4th Gen)</Link>: TODO.</li>
-                        <li><Link href="#">Valve Steam Deck</Link>: TODO.</li>
-                    </ul>
-                    <h2>Home Office</h2>
-                    <ul>
-                        <li><Link href="#">Apple Mac Mini (M1, 2020)</Link>: A compact desktop solution delivering reliable performance for all my development needs.</li>
-                        <li><Link href="#">31.5" Dell 4K Monitor (U3223QE)</Link>: One of Dell's premier workstation monitors, with a built in Thunderbolt hub and a whopping six USB ports.</li>
-                        <li><Link href="#">Herman-Miller Aeron</Link>: This thing has been a life changer, completely ridding my lower back of the chronic pain I had for years while sitting in low-quality desk chairs.</li>
-                        <li><Link href="#">Apple Magic Keyboard</Link>: A perfectly fine keyboard for daily use from the crack-team at Apple. Mainly chosen for it's visual aesthetic while sitting on my desk.</li>
-                        <li><Link href="#">Logitech MX Master</Link>: A beast, this mouse has held up for 6+ years without missing a beat. My only complaint is the battery life slowly degrading over time.</li>
-                        <li><Link href="#">Elgato Stream Deck</Link>: One of the coolest timesavers I've come to love; VSCode automations, control of my Hue lights, video call controls - this thing does a ton. Sadly, no API or SDK is available at the time of writing.</li>
-                    </ul>
-                    <h2>Development</h2>
-                    <ul>
-                        <li><Link href="#">~/.dotfiles</Link>: TODO.</li>
-                        <li><Link href="#">VSCode</Link>: TODO.</li>
-                        <li><Link href="#">Fig.io</Link>: TODO.</li>
-                        <li><Link href="#">Hyper.js</Link>: TODO.</li>
-                        <li><Link href="#">ZSH</Link>: TODO.</li>
-                        <li><Link href="#">Powerline10k</Link>: TODO.</li>
-                    </ul>
-                    <h2>DIY</h2>
-                    <ul>
-                        <li><Link href="#">Omtech AF-2435-80</Link>: The crown jewel of my workshop, "Big Blue". This 80-watt CO2 laser cutter was the culimation of months of planning and consideration. With this machine I can craft all sorts of things using materials ranging from wood, metal, stone, acrylic, to even leather!</li>
-                        <li><Link href="#">Prusa i3 MK3</Link>: The 3D printer that arguably helped put the industry on the map more than any other consumer product. I can fire this thing up after months of sitting and immediately jump into a high quality 12+ hour print with no recalibration.</li>
-                    </ul>
-                    <h2>Augmented & Virtual Reality</h2>
-                    <ul>
-                        <li><Link href="#">Magic Leap ML1</Link>: TODO.</li>
-                        <li><Link href="#">Microsoft Hololens</Link>: TODO.</li>
-                        <li><Link href="#">Google Glass (Explorer Edition)</Link>: TODO.</li>
-                        <li><Link href="#">Oculus Quest 2</Link>: TODO.</li>
-                    </ul>
-                </div>
-            </Container>
-        </GuestLayout>
-    );
+        <p className="mx-auto mt-8 mb-24 text-center max-w-sm sm:max-w-lg lg:max-w-2xl font-display tracking-tight text-stone-600 dark:text-stone-300 text-2xl">
+          A breakdown of the tools & products I enjoy most
+        </p>
+
+        <div className="prose prose-stone dark:prose-invert sm:prose-base lg:prose-lg mx-auto">
+          <h2>Daily Drivers</h2>
+          <ul>
+            <li>
+              <a href="https://support.apple.com/kb/SP832" target="_blank" rel="noopener noreferrer">
+                Apple iPhone 12 Pro Max
+              </a>
+            </li>
+            <li>
+              <a href="https://support.apple.com/kb/SP824" target="_blank" rel="noopener noreferrer">
+                Apple Macbook Pro (M1, 2020)
+              </a>
+            </li>
+            <li>
+              <a href="https://support.apple.com/kb/SP828" target="_blank" rel="noopener noreferrer">
+                Apple iPad Air (4th Gen)
+              </a>
+            </li>
+            <li>
+              <a href="https://store.steampowered.com/steamdeck" target="_blank" rel="noopener noreferrer">
+                Valve Steam Deck
+              </a>
+            </li>
+          </ul>
+          <h2>Home Office</h2>
+          <ul>
+            <li>
+              <a href="https://support.apple.com/kb/SP823" target="_blank" rel="noopener noreferrer">Apple Mac Mini (M1, 2020)</a>
+              <span>: A compact desktop solution delivering reliable performance for all my development needs.</span>
+            </li>
+            <li>
+              <a href="https://www.dell.com/en-us/shop/dell-ultrasharp-32-4k-usb-c-hub-monitor-u3223qe/apd/210-bdph/monitors-monitor-accessories" target="_blank" rel="noopener noreferrer">31.5" Dell 4K Monitor (U3223QE)</a>
+              <span>: One of Dell's premier workstation monitors, with a built in Thunderbolt hub and a whopping six USB ports.</span>
+            </li>
+            <li>
+              <a href="https://store.hermanmiller.com/office-chairs-aeron/aeron-chair/2195348.html" target="_blank" rel="noopener noreferrer">Herman-Miller Aeron</a>
+              <span>: This thing has been a life changer, completely ridding my lower back of the chronic pain I had sitting in low-quality desk chairs.</span>
+            </li>
+            <li>
+              <a href="https://www.apple.com/shop/product/MK2A3LL/A/magic-keyboard-us-english" target="_blank" rel="noopener noreferrer">Apple Magic Keyboard</a>
+              <span>: A perfectly fine keyboard for daily use from the crack-team at Apple. Mainly chosen for it's visual aesthetic while sitting on my desk.</span>
+            </li>
+            <li>
+              <a href="https://www.logitech.com/en-us/products/mice/mx-master-3s.910-006557.html" target="_blank" rel="noopener noreferrer">Logitech MX Master</a>
+              <span>: A beast, this mouse has held up for 6+ years without missing a beat. My only complaint is the battery life slowly degrading over time.</span>
+            </li>
+            <li>
+              <a href="https://elgato.com/us/en/p/stream-deck-mk2-black" target="_blank" rel="noopener noreferrer">Elgato Stream Deck</a>
+              <span>: A great tool for streamers, but also fantastic for productivity. I use this thing daily for my development work.</span>
+            </li>
+          </ul>
+          <h2>Development</h2>
+          <ul>
+            <li className="hidden">
+              <a href="https://github.com/brysonreece/dotfiles" target="_blank" rel="noopener noreferrer">~/.dotfiles</a>: A collection of my personal dotfiles for macOS.
+            </li>
+            <li>
+              <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">VSCode</a>
+            </li>
+            <li>
+              <a href="https://fig.io/" target="_blank" rel="noopener noreferrer">Fig.io</a>
+            </li>
+            <li>
+              <a href="https://hyper.is/" target="_blank" rel="noopener noreferrer">Hyper.js</a>
+            </li>
+            <li>
+              <a href="https://www.zsh.org/" target="_blank" rel="noopener noreferrer">ZSH</a>
+              <p>Config: <a href="https://ohmyz.sh/" target="_blank" rel="noopener noreferrer">Oh My ZSH</a></p>
+              <p>Theme: <a href="https://github.com/romkatv/powerlevel10k" target="_blank" rel="noopener noreferrer">Powerline10k</a></p>
+            </li>
+          </ul>
+          <h2>DIY</h2>
+          <ul>
+            <li>
+              <a href="https://omtechlaser.com/products/80w-co2-laser-engraver-cutter-usb-8b69-u2" target="_blank" rel="noopener noreferrer">Omtech AF-2435-80</a>
+              <span>
+                : The crown jewel of my workshop, "Big Blue". This 80-watt CO2 laser cutter was the culimation of months of planning and consideration. With this machine I can craft all sorts of things using materials ranging from wood, metal, stone, acrylic, to even leather!
+              </span>
+            </li>
+            <li>
+              <a href="https://www.prusa3d.com/category/original-prusa-i3-mk3s/" target="_blank" rel="noopener noreferrer">Prusa i3 MK3</a>
+              <span>: The 3D printer that arguably helped put the industry on the map more than any other consumer product. I can fire this thing up after months of sitting and immediately jump into a high quality 12+ hour print with no recalibration.</span>
+            </li>
+          </ul>
+          <h2>Augmented & Virtual Reality</h2>
+          <p>I'm an avid collector of memorable augmented reality hardware. Based on a personal, storied history with the technology, I truly believe it to be the next major computing platform.</p>
+          <p>VR is kind-of alright.</p>
+          <ul>
+            <li>
+              <a href="https://ml1-developer.magicleap.com/en-us/learn/guides/magic-leap-one-overview" target="_blank" rel="noopener noreferrer">Magic Leap ML1</a>
+            </li>
+            <li>
+              <a href="https://www.microsoft.com/en-us/hololens" target="_blank" rel="noopener noreferrer">Microsoft Hololens</a>
+            </li>
+            <li>
+              <a href="https://developers.google.com/glass" target="_blank" rel="noopener noreferrer">Google Glass (Explorer Edition)</a>
+            </li>
+            <li>
+              <a href="https://www.meta.com/quest/products/quest-2/" target="_blank" rel="noopener noreferrer">Meta Quest 2</a>
+            </li>
+          </ul>
+        </div>
+      </Container>
+    </GuestLayout>
+  );
 }

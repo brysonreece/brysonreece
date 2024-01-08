@@ -1,15 +1,16 @@
 import React, { PropsWithChildren } from 'react';
-import { Disclosure } from '@headlessui/react'
+import { Disclosure, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import route from 'ziggy-js';
+import { Link } from '@inertiajs/react';
 
 const navigation = [
-    { name: 'About', href: route('about'), current: route().current('about') },
-    { name: 'Career', href: route('career'), current: route().current('career') },
-    { name: 'Projects', href: route('projects'), current: route().current('projects') },
-    { name: 'Community', href: route('community'), current: route().current('community') },
-    { name: 'Uses', href: route('uses'), current: route().current('uses') },
+    { name: 'About', route: 'about' },
+    { name: 'Career', route: 'career' },
+    { name: 'Projects', route: 'projects' },
+    { name: 'Community', route: 'community' },
+    { name: 'Uses', route: 'uses' },
 ]
 
 interface Props {
@@ -22,35 +23,35 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
             {({ open }) => (
                 <div className="flex items-center sm:justify-between">
                     {showLogo && (
-                        <a href={route('welcome')} className="hidden sm:flex items-center m-2 rounded-full">
+                        <Link href={route('welcome')} className="hidden sm:flex items-center m-2 rounded-full">
                             <img
                                 className="h-10 w-10 rounded-full"
                                 src="https://avatars.githubusercontent.com/u/4043157?v=4"
                                 alt="Bryson Reece"
                             />
-                        </a>
+                        </Link>
                     )}
 
                     <div className={clsx(
                         'w-full sm:w-auto',
                         'rounded-lg sm:rounded-xl',
-                        'bg-white border border-gray-200',
-                        'shadow-md sm:hover:shadow-xl shadow-gray-300',
-                        'transition-shadow ease-in-out duration-500',
+                        'bg-stone-100 dark:bg-stone-900 sm:border dark:border-0 dark:sm:border border-stone-200 dark:border-stone-800',
+                        'sm:shadow-md sm:hover:shadow-xl shadow-stone-300 dark:shadow-stone-900',
+                        'transition-shadow ease-in-out duration-0 sm:duration-500',
                         { 'sm:mx-auto': (!showLogo) },
                     )}>
                         <div className="flex items-center justify-between sm:justify-auto">
                             {showLogo && (
-                                <a href={route('welcome')} className="flex sm:hidden items-center my-2 mx-2.5 rounded-full">
+                                <Link href={route('welcome')} className="flex sm:hidden items-center my-2 mx-4 rounded-full">
                                     <img
-                                        className="h-10 w-10 rounded-full"
+                                        className="h-8 w-8 rounded-full"
                                         src="https://avatars.githubusercontent.com/u/4043157?v=4"
                                         alt="Bryson Reece"
                                     />
-                                </a>
+                                </Link>
                             )}
 
-                            <Disclosure.Button className="ml-auto relative sm:hidden inline-flex items-center justify-center p-4 rounded-md text-gray-400 hover:text-gray-500 -outline-offset-4">
+                            <Disclosure.Button className="ml-auto relative sm:hidden inline-flex items-center justify-center p-4 rounded-md text-stone-400 hover:text-stone-500 -outline-offset-4">
                                 <span className="sr-only">Open main menu</span>
                                 {open ? (
                                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -63,12 +64,12 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
                                 {navigation.map((item) => (
                                     <a
                                         key={item.name}
-                                        href={item.href}
+                                        href={route(item.route)}
                                         className={clsx(
-                                            item.current ? 'bg-gray-100 text-gray-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-600',
-                                            'active:bg-gray-200 rounded-lg px-3 py-2 text-sm font-medium inline-block'
+                                            route().current(item.route) ? 'bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-200' : 'text-stone-500 hover:bg-stone-200 dark:hover:bg-stone-800 hover:text-stone-600 dark:hover:text-stone-300',
+                                            'active:text-stone-900 dark:active:text-stone-400 active:bg-stone-300 dark:active:bg-stone-700 rounded-lg px-3 py-2 text-sm font-medium inline-block'
                                         )}
-                                        aria-current={item.current ? 'page' : undefined}
+                                        aria-current={route().current(item.route) ? 'page' : undefined}
                                     >
                                         {item.name}
                                     </a>
@@ -77,22 +78,42 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
                         </div>
 
                         <Disclosure.Panel className="block sm:hidden p-2">
-                            <div className="flex flex-col space-y-2">
-                                {navigation.map((item) => (
-                                    <Disclosure.Button
-                                        key={item.name}
-                                        as="a"
-                                        href={item.href}
-                                        className={clsx(
-                                            item.current ? 'bg-gray-100 text-gray-700' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-700',
-                                            'active:bg-gray-200 active:text-gray-900 block rounded-md px-3 py-2 transition-colors duration-200 text-base font-medium'
-                                        )}
-                                        aria-current={item.current ? 'page' : undefined}
-                                    >
-                                        {item.name}
-                                    </Disclosure.Button>
-                                ))}
-                            </div>
+                          <div className="flex flex-col space-y-2 text-right">
+                              {navigation.map((item) => (
+                                <Disclosure.Button
+                                    key={item.name}
+                                    as="a"
+                                    href={route(item.route)}
+                                    className={clsx(
+                                        // light - plain, hover, active
+                                          // text: 500, 700, 900
+                                          // decoration: n/a, 400, 500
+                                        // dark - plain, hover, active
+                                          // text: 500, 400, 300
+                                          // decoration: n/a, 700, 500
+                                        route().current(item.route) ? [
+                                          'text-stone-900 decoration-stone-500',
+                                          'dark:text-stone-300 dark:decoration-stone-500',
+                                          'underline underline-offset-8 decoration-2',
+                                        ] : [
+                                          'text-stone-500',
+                                          'hover:text-stone-700 hover:decoration-stone-400',
+                                          'dark:hover:text-stone-400 dark:hover:decoration-stone-700',
+                                          'hover:underline hover:underline-offset-8 hover:decoration-2',
+                                        ],
+                                        [
+                                          'active:text-stone-900 active:decoration-stone-500',
+                                          'dark:active:text-stone-300 dark:active:decoration-stone-500',
+                                          'dark:active:underline dark:active:underline-offset-8 dark:active:decoration-2',
+                                          'rounded-lg px-3 py-2 text-sm font-medium block',
+                                        ],
+                                    )}
+                                    aria-current={route().current(item.route) ? 'page' : undefined}
+                                >
+                                    {item.name}
+                                </Disclosure.Button>
+                              ))}
+                          </div>
                         </Disclosure.Panel>
                     </div>
                 </div>

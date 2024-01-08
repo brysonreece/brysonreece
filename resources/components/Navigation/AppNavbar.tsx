@@ -43,7 +43,7 @@ function TeamsDropdown() {
                 <span className="inline-flex rounded-md">
                     <button
                         type="button"
-                        className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition"
+                        className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-stone-500 bg-white hover:bg-stone-50 hover:text-stone-700 focus:outline-none focus:bg-stone-50 active:bg-stone-50 transition"
                     >
                         {page.props.auth.user!.current_team?.name}
 
@@ -54,7 +54,7 @@ function TeamsDropdown() {
         >
             <div className="w-60">
                 {/* <!-- Team Management --> */}
-                <div className="block px-4 py-2 text-xs text-gray-400">Manage Team</div>
+                <div className="block px-4 py-2 text-xs text-stone-400">Manage Team</div>
 
                 {/* <!-- Team Settings --> */}
                 {user.current_team && (
@@ -65,10 +65,10 @@ function TeamsDropdown() {
 
                 <DropdownLink href={route('teams.create')}>Create New Team</DropdownLink>
 
-                <div className="border-t border-gray-100"></div>
+                <div className="border-t border-stone-100"></div>
 
                 {/* <!-- Team Switcher --> */}
-                <div className="block px-4 py-2 text-xs text-gray-400">Switch Teams</div>
+                <div className="block px-4 py-2 text-xs text-stone-400">Switch Teams</div>
 
                 {user.all_teams?.map((team) => (
                     <form onSubmit={(event: FormEvent) => switchToTeam(event, team)} key={team.id}>
@@ -96,7 +96,7 @@ function SettingsDropdown() {
             align="right"
             width="48"
             renderTrigger={() => (
-                <button className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                <button className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-stone-300 transition">
                     <img
                         className="h-8 w-8 rounded-full object-cover"
                         src={user.profile_photo_url}
@@ -106,13 +106,13 @@ function SettingsDropdown() {
             )}
         >
             {/* <!-- Account Management --> */}
-            <div className="block px-4 py-2 text-xs text-gray-400">Manage Account</div>
+            <div className="block px-4 py-2 text-xs text-stone-400">Manage Account</div>
 
             <DropdownLink href={route('profile.show')}>Profile</DropdownLink>
 
             <DropdownLink href={route('api-tokens.index')}>API Tokens</DropdownLink>
 
-            <div className="border-t border-gray-100"></div>
+            <div className="border-t border-stone-100"></div>
 
             {/* <!-- Authentication --> */}
             <form onSubmit={(event: FormEvent) => logout(event)}>
@@ -128,7 +128,7 @@ export function AppNavbar() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <nav className="bg-white border-b border-gray-200">
+        <nav className="bg-white border-b border-stone-200">
             <Container>
                 <div className="flex justify-between h-16">
                     <div className="flex">
@@ -136,7 +136,7 @@ export function AppNavbar() {
                         <div className="flex-shrink-0 flex items-center">
                             <Link
                                 href={route('dashboard')}
-                                className="transition duration-150 ease-in-out text-gray-500 hover:text-gray-700 focus:text-gray-700"
+                                className="transition duration-150 ease-in-out text-stone-500 hover:text-stone-700 focus:text-stone-700"
                             >
                                 <ApplicationLogo className="block h-9 w-auto" />
                             </Link>
@@ -164,7 +164,7 @@ export function AppNavbar() {
                     <div className="-mr-2 flex items-center sm:hidden">
                         <button
                             onClick={() => setShowingNavigationDropdown(!showingNavigationDropdown)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition"
+                            className="inline-flex items-center justify-center p-2 rounded-md text-stone-400 hover:text-stone-500 hover:bg-stone-100 focus:outline-none focus:bg-stone-100 focus:text-stone-500 transition"
                         >
                             <Bars3Icon
                                 className={clsx('h-6 w-6', {
@@ -198,7 +198,7 @@ export function AppNavbar() {
                 </div>
 
                 {/* <!-- Responsive Settings Options --> */}
-                <div className="pt-4 pb-1 border-t border-gray-200">
+                <div className="pt-4 pb-1 border-t border-stone-200">
                     <div className="flex items-center px-4">
                         <div className="flex-shrink-0 mr-3">
                             <img
@@ -209,8 +209,8 @@ export function AppNavbar() {
                         </div>
 
                         <div>
-                            <div className="font-medium text-base text-gray-800">{user.name}</div>
-                            <div className="font-medium text-sm text-gray-500">{user.email}</div>
+                            <div className="font-medium text-base text-stone-800">{user.name}</div>
+                            <div className="font-medium text-sm text-stone-500">{user.email}</div>
                         </div>
                     </div>
 
@@ -232,9 +232,9 @@ export function AppNavbar() {
                         </form>
 
                         {/* <!-- Team Management --> */}
-                        <div className="border-t border-gray-200"></div>
+                        <div className="border-t border-stone-200"></div>
 
-                        <div className="block px-4 py-2 text-xs text-gray-400">Manage Team</div>
+                        <div className="block px-4 py-2 text-xs text-stone-400">Manage Team</div>
 
                         {/* <!-- Team Settings --> */}
                         {user.current_team_id && (
@@ -250,10 +250,10 @@ export function AppNavbar() {
                             Create New Team
                         </ResponsiveNavLink>
 
-                        <div className="border-t border-gray-200"></div>
+                        <div className="border-t border-stone-200"></div>
 
                         {/* <!-- Team Switcher --> */}
-                        <div className="block px-4 py-2 text-xs text-gray-400">Switch Teams</div>
+                        <div className="block px-4 py-2 text-xs text-stone-400">Switch Teams</div>
 
                         {user.all_teams?.map((team: Team) => (
                             <form onSubmit={(e) => switchToTeam(e, team)} key={team.id}>
