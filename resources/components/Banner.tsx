@@ -13,7 +13,7 @@ export function Banner() {
       {show && message ? (
         <div
           className={clsx({
-            'bg-indigo-500': style == 'success',
+            'bg-blue-500': style == 'success',
             'bg-red-700': style == 'danger',
           })}
         >
@@ -22,7 +22,7 @@ export function Banner() {
               <div className="w-0 flex-1 flex items-center min-w-0">
                 <span
                   className={clsx('flex p-2 rounded-lg', {
-                    'bg-indigo-600': style == 'success',
+                    'bg-blue-600': style == 'success',
                     'bg-red-600': style == 'danger',
                   })}
                 >
@@ -79,7 +79,7 @@ export function Banner() {
                   className={clsx(
                     '-mr-1 flex p-2 rounded-md focus:outline-none sm:-mr-2 transition',
                     {
-                      'hover:bg-indigo-600 focus:bg-indigo-600':
+                      'hover:bg-blue-600 focus:bg-blue-600':
                         style == 'success',
                       'hover:bg-red-600 focus:bg-red-600': style == 'danger',
                     },

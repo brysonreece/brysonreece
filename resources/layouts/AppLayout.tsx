@@ -49,8 +49,8 @@ export function AppLayout({
 
       <Banner />
 
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-        <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+      <div className="min-h-screen bg-stone-100 dark:bg-stone-900">
+        <nav className="bg-white dark:bg-stone-800 border-b border-stone-100 dark:border-stone-700">
           {/* <!-- Primary Navigation Menu --> */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
@@ -84,7 +84,7 @@ export function AppLayout({
                         <span className="inline-flex rounded-md">
                           <button
                             type="button"
-                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150"
+                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-stone-500 dark:text-stone-400 bg-white dark:bg-stone-800 hover:text-stone-700 dark:hover:text-stone-300 focus:outline-none focus:bg-stone-50 dark:focus:bg-stone-700 active:bg-stone-50 dark:active:bg-stone-700 transition ease-in-out duration-150"
                           >
                             {page.props.auth.user?.current_team?.name}
 
@@ -108,7 +108,7 @@ export function AppLayout({
                         {/* <!-- Team Management --> */}
                         {page.props.jetstream.hasTeamFeatures ? (
                           <>
-                            <div className="block px-4 py-2 text-xs text-gray-400">
+                            <div className="block px-4 py-2 text-xs text-stone-400">
                               Manage Team
                             </div>
 
@@ -127,10 +127,10 @@ export function AppLayout({
                               </DropdownLink>
                             ) : null}
 
-                            <div className="border-t border-gray-200 dark:border-gray-600" />
+                            <div className="border-t border-stone-200 dark:border-stone-600" />
 
                             {/* <!-- Team Switcher --> */}
-                            <div className="block px-4 py-2 text-xs text-gray-400">
+                            <div className="block px-4 py-2 text-xs text-stone-400">
                               Switch Teams
                             </div>
 
@@ -174,7 +174,7 @@ export function AppLayout({
                     width="48"
                     renderTrigger={() =>
                       page.props.jetstream.managesProfilePhotos ? (
-                        <button className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                        <button className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-stone-300 transition">
                           <img
                             className="h-8 w-8 rounded-full object-cover"
                             src={page.props.auth.user?.profile_photo_url}
@@ -185,7 +185,7 @@ export function AppLayout({
                         <span className="inline-flex rounded-md">
                           <button
                             type="button"
-                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150"
+                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-stone-500 dark:text-stone-400 bg-white dark:bg-stone-800 hover:text-stone-700 dark:hover:text-stone-300 focus:outline-none focus:bg-stone-50 dark:focus:bg-stone-700 active:bg-stone-50 dark:active:bg-stone-700 transition ease-in-out duration-150"
                           >
                             {page.props.auth.user?.name}
 
@@ -207,7 +207,7 @@ export function AppLayout({
                     }
                   >
                     {/* <!-- Account Management --> */}
-                    <div className="block px-4 py-2 text-xs text-gray-400">
+                    <div className="block px-4 py-2 text-xs text-stone-400">
                       Manage Account
                     </div>
 
@@ -221,7 +221,7 @@ export function AppLayout({
                       </DropdownLink>
                     ) : null}
 
-                    <div className="border-t border-gray-200 dark:border-gray-600"></div>
+                    <div className="border-t border-stone-200 dark:border-stone-600"></div>
 
                     {/* <!-- Authentication --> */}
                     <form onSubmit={logout}>
@@ -237,7 +237,7 @@ export function AppLayout({
                   onClick={() =>
                     setShowingNavigationDropdown(!showingNavigationDropdown)
                   }
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out"
+                  className="inline-flex items-center justify-center p-2 rounded-md text-stone-400 dark:text-stone-500 hover:text-stone-500 dark:hover:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 focus:outline-none focus:bg-stone-100 dark:focus:bg-stone-900 focus:text-stone-500 dark:focus:text-stone-400 transition duration-150 ease-in-out"
                 >
                   <svg
                     className="h-6 w-6"
@@ -288,7 +288,7 @@ export function AppLayout({
             </div>
 
             {/* <!-- Responsive Settings Options --> */}
-            <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+            <div className="pt-4 pb-1 border-t border-stone-200 dark:border-stone-600">
               <div className="flex items-center px-4">
                 {page.props.jetstream.managesProfilePhotos ? (
                   <div className="flex-shrink-0 mr-3">
@@ -301,10 +301,10 @@ export function AppLayout({
                 ) : null}
 
                 <div>
-                  <div className="font-medium text-base text-gray-800 dark:text-gray-200">
+                  <div className="font-medium text-base text-stone-800 dark:text-stone-200">
                     {page.props.auth.user?.name}
                   </div>
-                  <div className="font-medium text-sm text-gray-500">
+                  <div className="font-medium text-sm text-stone-500">
                     {page.props.auth.user?.email}
                   </div>
                 </div>
@@ -335,9 +335,9 @@ export function AppLayout({
                 {/* <!-- Team Management --> */}
                 {page.props.jetstream.hasTeamFeatures ? (
                   <>
-                    <div className="border-t border-gray-200 dark:border-gray-600"></div>
+                    <div className="border-t border-stone-200 dark:border-stone-600"></div>
 
-                    <div className="block px-4 py-2 text-xs text-gray-400">
+                    <div className="block px-4 py-2 text-xs text-stone-400">
                       Manage Team
                     </div>
 
@@ -360,10 +360,10 @@ export function AppLayout({
                       </ResponsiveNavLink>
                     ) : null}
 
-                    <div className="border-t border-gray-200 dark:border-gray-600"></div>
+                    <div className="border-t border-stone-200 dark:border-stone-600"></div>
 
                     {/* <!-- Team Switcher --> */}
-                    <div className="block px-4 py-2 text-xs text-gray-400">
+                    <div className="block px-4 py-2 text-xs text-stone-400">
                       Switch Teams
                     </div>
                     {page.props.auth.user?.all_teams?.map(team => (
@@ -398,7 +398,7 @@ export function AppLayout({
 
         {/* <!-- Page Heading --> */}
         {renderHeader ? (
-          <header className="bg-white dark:bg-gray-800 shadow">
+          <header className="bg-white dark:bg-stone-800 shadow">
             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
               {renderHeader()}
             </div>

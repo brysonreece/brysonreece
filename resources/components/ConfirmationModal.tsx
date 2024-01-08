@@ -6,7 +6,7 @@ ConfirmationModal.Content = function ConfirmationModalContent({
   children,
 }: PropsWithChildren<{ title: string }>) {
   return (
-    <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+    <div className="bg-white dark:bg-stone-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
       <div className="sm:flex sm:items-start">
         <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
           <svg
@@ -25,11 +25,11 @@ ConfirmationModal.Content = function ConfirmationModalContent({
         </div>
 
         <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+          <h3 className="text-lg font-medium text-stone-900 dark:text-stone-100">
             {title}
           </h3>
 
-          <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-4 text-sm text-stone-600 dark:text-stone-400">
             {children}
           </div>
         </div>
@@ -42,7 +42,7 @@ ConfirmationModal.Footer = function ConfirmationModalFooter({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
   return (
-    <div className="px-6 py-4 bg-gray-100 dark:bg-gray-800 text-right">
+    <div className="px-6 py-4 bg-stone-100 dark:bg-stone-800 text-right">
       {children}
     </div>
   );

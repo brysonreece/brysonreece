@@ -17,7 +17,7 @@
     @inertiaHead
   </head>
   {{-- The custom style here prevents content shifting from a scrollbar being present in the viewport --}}
-  <body class="font-sans antialiased" style="padding-left: calc(100vw - 100%);">
+  <body class="font-sans antialiased">
     @inertia
   </body>
 </html>

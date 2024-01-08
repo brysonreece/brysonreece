@@ -1,9 +1,10 @@
 import { Link } from '@inertiajs/react';
 import React from 'react';
+import route from 'ziggy-js';
 
 export function AuthenticationCardLogo() {
   return (
-    <Link href="/">
+    <Link href={route('welcome')}>
       <svg
         className="w-16 h-16"
         viewBox="0 0 48 48"

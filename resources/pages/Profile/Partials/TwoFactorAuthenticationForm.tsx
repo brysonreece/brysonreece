@@ -115,26 +115,26 @@ export function TwoFactorAuthenticationForm({
       {(() => {
         if (twoFactorEnabled && !confirming) {
           return (
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h3 className="text-lg font-medium text-stone-900 dark:text-stone-100">
               You have enabled two factor authentication.
             </h3>
           );
         }
         if (confirming) {
           return (
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h3 className="text-lg font-medium text-stone-900 dark:text-stone-100">
               Finish enabling two factor authentication.
             </h3>
           );
         }
         return (
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+          <h3 className="text-lg font-medium text-stone-900 dark:text-stone-100">
             You have not enabled two factor authentication.
           </h3>
         );
       })()}
 
-      <div className="mt-3 max-w-xl text-sm text-gray-600 dark:text-gray-400">
+      <div className="mt-3 max-w-xl text-sm text-stone-600 dark:text-stone-400">
         <p>
           When two factor authentication is enabled, you will be prompted for a
           secure, random token during authentication. You may retrieve this
@@ -146,7 +146,7 @@ export function TwoFactorAuthenticationForm({
         <div>
           {qrCode ? (
             <div>
-              <div className="mt-4 max-w-xl text-sm text-gray-600 dark:text-gray-400">
+              <div className="mt-4 max-w-xl text-sm text-stone-600 dark:text-stone-400">
                 {confirming ? (
                   <p className="font-semibold">
                     To finish enabling two factor authentication, scan the
@@ -169,7 +169,7 @@ export function TwoFactorAuthenticationForm({
               />
 
               {setupKey && (
-                <div className="mt-4 max-w-xl text-sm text-gray-600 dark:text-gray-400">
+                <div className="mt-4 max-w-xl text-sm text-stone-600 dark:text-stone-400">
                   <p className="font-semibold">
                     Setup Key:{' '}
                     <span
@@ -208,7 +208,7 @@ export function TwoFactorAuthenticationForm({
 
           {recoveryCodes.length > 0 && !confirming ? (
             <div>
-              <div className="mt-4 max-w-xl text-sm text-gray-600 dark:text-gray-400">
+              <div className="mt-4 max-w-xl text-sm text-stone-600 dark:text-stone-400">
                 <p className="font-semibold">
                   Store these recovery codes in a secure password manager. They
                   can be used to recover access to your account if your two
@@ -216,7 +216,7 @@ export function TwoFactorAuthenticationForm({
                 </p>
               </div>
 
-              <div className="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 dark:bg-gray-900 rounded-lg">
+              <div className="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-stone-100 dark:bg-stone-900 rounded-lg">
                 {recoveryCodes.map(code => (
                   <div key={code}>{code}</div>
                 ))}

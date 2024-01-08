@@ -11,12 +11,13 @@
     background-color: darken(white, 2%);
     border-radius: 2px;
     box-shadow: 2px 2px 5px rgba(#111, .35);
+    text-align: center;
     transition: transform .25s ease-out;
-    transform: translate(var(--x), var(--y)) scale(.35) rotate(var(--angle));
+    transform: translate(var(--x-from, var(--x)), var(--y-from, var(--y))) scale(var(--scale-from)) rotate(var(--angle));
     will-change: transform;
 
     &:hover {
-        transform: scale(1) rotate(0deg);
+        transform: translate(var(--x-to, 0), var(--y-to, 0)) scale(var(--scale-to)) rotate(0deg);
         z-index: 1;
 
         &:before {
@@ -37,6 +38,6 @@
     border-radius: 2px;
     filter: sepia(.2) brightness(.9) contrast(1.2);
     transition: opacity .25s ease-out;
-    opacity: .75;
+    opacity: .80;
     will-change: opacity;
 }
