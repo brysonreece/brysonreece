@@ -51,7 +51,7 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
                                 </Link>
                             )}
 
-                            <Disclosure.Button className="ml-auto relative sm:hidden inline-flex items-center justify-center p-4 rounded-md text-stone-400 hover:text-stone-500 -outline-offset-4">
+                            <Disclosure.Button className="ml-auto relative sm:hidden inline-flex items-center justify-center p-4 rounded-md text-stone-400 hover:text-stone-500 dark:text-stone-500 dark:hover:text-stone-400 -outline-offset-4">
                                 <span className="sr-only">Open main menu</span>
                                 {open ? (
                                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
