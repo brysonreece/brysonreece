@@ -78,7 +78,7 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
                         </div>
 
                         <Disclosure.Panel className="block sm:hidden p-2">
-                          <div className="flex flex-col space-y-2 text-right">
+                          <div className="flex flex-col items-end space-y-2 text-right">
                               {navigation.map((item) => (
                                 <Disclosure.Button
                                     key={item.name}
@@ -105,7 +105,7 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
                                           'active:text-stone-900 active:decoration-stone-500',
                                           'dark:active:text-stone-300 dark:active:decoration-stone-500',
                                           'dark:active:underline dark:active:underline-offset-8 dark:active:decoration-2',
-                                          'rounded-lg px-3 py-2 text-sm font-medium block',
+                                          'rounded-lg px-3 py-2 text-sm font-medium block w-1/3',
                                         ],
                                     )}
                                     aria-current={route().current(item.route) ? 'page' : undefined}
