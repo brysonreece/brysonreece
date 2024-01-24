@@ -71,7 +71,7 @@ export default function About() {
               } as ImageProps
             }
           >
-            <p className='lg:pt-3 text-3xl sm:text-4xl truncate'>Definition of cool.</p>
+            <p className='lg:pt-3 text-3xl sm:text-4xl truncate'>Definition of cool</p>
           </div>
 
           <div
