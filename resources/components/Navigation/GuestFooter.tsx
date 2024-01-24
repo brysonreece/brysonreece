@@ -1,16 +1,21 @@
 import React, { PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { Container } from '@/components/Container';
+import useRoute from '@/hooks/useRoute';
 
 interface Props {
   className?: string;
 }
 
 export function GuestFooter({ className }: PropsWithChildren<Props>) {
+    const route = useRoute();
+
     return (
         <footer className={clsx('w-full', className)}>
             <Container>
-                <div className="flex flex-col items-center py-10 sm:flex-row-reverse sm:justify-between">
+                <div className={clsx("flex flex-col items-center py-10 sm:flex-row-reverse justify-center", {
+                  'sm:justify-between': ! route().current('welcome'),
+                })}>
                     <div className="flex space-x-6">
                         <a href="https://twitter.com/brysonio" target="_blank" rel="noopener noreferrer" className="group">
                             <span className="sr-only">Twitter</span>
@@ -25,9 +30,11 @@ export function GuestFooter({ className }: PropsWithChildren<Props>) {
                             </svg>
                         </a>
                     </div>
-                    <p className="mt-6 text-sm text-stone-500 sm:mt-0">
-                        Bryson Reece &copy; 2015 - {new Date().getFullYear()}
-                    </p>
+                    {(! route().current('welcome')) && (
+                      <p className="mt-6 text-sm text-stone-500 sm:mt-0">
+                          Bryson Reece &copy; 2015 - {new Date().getFullYear()}
+                      </p>
+                    )}
                 </div>
             </Container>
         </footer>
