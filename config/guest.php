@@ -60,7 +60,7 @@ return [
         [
             'employer' => 'WellCaddie',
             'logo_path' => public_path('storage/logos/wellcaddie.png'),
-            'title' => 'Lead Software Engineer',
+            'title' => 'Head of Software Engineering',
             'dates' => ['Jun 2018', 'Jun 2021'],
             'location' => 'Norman, OK',
             'content' => <<<MD
