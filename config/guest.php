@@ -16,7 +16,7 @@ return [
             'dates' => ['May 2016', 'Aug 2017'],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Helped establish the first makerspace at the university while developing workflows and custom tooling for managing 3D printing services. Also helped develop O.V.A.L., a VR pedagogy tool currently used by universities nationwide. O.V.A.L. went on to host the world’s first remote pedagogy session in virtual reality.
+                Helped establish the first makerspace at the university while developing workflows and custom tooling for managing 3D printing services. Also helped develop O.V.A.L., a VR pedagogy tool currently used by universities nationwide. O.V.A.L. went on to host the world's first remote pedagogy session in virtual reality
             MD,
         ],
         [
@@ -26,7 +26,7 @@ return [
             'dates' => ['Aug 2016', 'Nov 2016'],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Developed web-based tooling to streamline oil and gas worker operations. Features developed included mapping applications used for route optimization, forecast indicators for field workers, as well as mobile alerts and monitoring for damaged oil production equipment.
+                Developed web-based tooling to streamline oil and gas worker operations. Features developed included mapping applications used for route optimization, forecast indicators for field workers, as well as mobile alerts and monitoring for damaged oil production equipment
             MD,
         ],
         [
@@ -44,7 +44,7 @@ return [
             'dates' => ['May 2017', 'Jun 2018'],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Implemented and facilitated a complete overhaul and refactor of all frontend and backend services of the WellCaddie platform. Directly resulted in a company valuation increase of several million dollars.
+                Implemented and facilitated a complete overhaul and refactor of all frontend and backend services of the WellCaddie platform. Directly resulted in a company valuation increase of several million dollars
             MD,
         ],
         [
@@ -54,7 +54,7 @@ return [
             'dates' => ['Aug 2017', 'May 2018'],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Assisted in developing a number of patented transliteration devices to enable Chinese speakers to gain a better grasp of the English language through newly researched translation techniques.
+                Assisted in developing a number of patented transliteration devices to enable Chinese speakers to gain a better grasp of the English language through newly researched translation techniques
             MD,
         ],
         [
@@ -64,7 +64,7 @@ return [
             'dates' => ['Jun 2018', 'Jun 2021'],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Oversaw and managed a team of engineers in the development of the WellCaddie software line. Responsibilities included coordinating both the software and hardware development divisions of the company to produce a unified product package to sell to remote oil operators.
+                Oversaw software development initiatives for the entire company, including embedded hardware applications for IoT data collection
             MD,
         ],
         [
@@ -74,17 +74,17 @@ return [
             'dates' => ['Jun 2021', 'Feb 2022'],
             'location' => 'Boston, MA',
             'content' => <<<MD
-                Assisted in large-scale refactoring of a legacy codebase into a more modern, performant architecture while making use of technologies like Laravel, Vue 3, and TypeScript.
+                Large-scale refactoring of a legacy codebase into a modern, performant architecture using Laravel, Vue.js, and TypeScript
             MD,
         ],
         [
-            'employer' => 'WhyteSpyder',
-            'logo_path' => public_path('storage/logos/whytespyder.png'),
-            'title' => 'Senior Software Engineer',
+            'employer' => 'Flywheel Digital',
+            'logo_path' => public_path('storage/logos/flywheel.png'),
+            'title' => 'Head of Walmart Retail',
             'dates' => ['Feb 2022', 'Present'],
             'location' => 'Rogers, AR',
             'content' => <<<MD
-                Building out a number of internal tooling solutions and refining existing infrastructure during my day-to-day.
+            Leading the engineering initatives for the Walmart Retail column at one of the world's largest B2B eCommerce management services
             MD,
         ],
     ],
@@ -98,7 +98,7 @@ return [
     'projects' => [
         [
             'title' => 'Stream',
-            'description' => 'A video torrent streaming platform developed for XBMC / Kodi.',
+            'description' => 'A video torrent streaming platform developed for XBMC / Kodi',
             'dates' => ['Jun 2014', 'May 2016'],
             'content' => null,
             'resources' => [
@@ -134,10 +134,10 @@ return [
         ],
         [
             'title' => 'O.V.A.L.',
-            'description' => 'A VR pedagogy tool currently used by universities nationwide.',
+            'description' => 'A VR pedagogy tool currently used by universities nationwide',
             'dates' => ['May 2016', 'Aug 2017'],
             'content' => <<<MD
-                O.V.A.L. went on to host the world's first remote pedagogy session in virtual reality.
+                O.V.A.L. went on to host the world's first remote pedagogy session in virtual reality
             MD,
             'resources' => [
                 'GitHub (Alpha)' => 'https://github.com/MorganWalkup/OVAL-Application',
@@ -148,7 +148,7 @@ return [
         ],
         [
             'title' => 'OctoFii',
-            'description' => 'Receive OctoPrint notifications across a variety of platforms.',
+            'description' => 'Receive OctoPrint notifications across a variety of platforms',
             'dates' => ['May 2016', null],
             'content' => null,
             'resources' => [
@@ -157,7 +157,7 @@ return [
         ],
         [
             'title' => 'EmPy',
-            'description' => 'Determine sentiment of Instagram posts using ML and Microsoft Cloud APIs.',
+            'description' => 'Determine sentiment of Instagram posts using ML and Microsoft Cloud APIs',
             'dates' => ['Apr 2017', 'Mar 2018'],
             'content' => null,
             'resources' => [
@@ -166,21 +166,21 @@ return [
         ],
         [
             'title' => 'Athena',
-            'description' => 'A mobile LMS platform targeting low-cost VR hardware.',
+            'description' => 'A mobile LMS platform targeting low-cost VR hardware',
             'dates' => ['Apr 2017', 'Mar 2018'],
             'content' => null,
             'resources' => [],
         ],
         [
             'title' => 'Seedling',
-            'description' => 'A children\'s toy teaching PinYin to English transliteration.',
+            'description' => 'A children\'s toy teaching PinYin to English transliteration',
             'dates' => ['Aug 2017', 'Oct 2017'],
             'content' => null,
             'resources' => [],
         ],
         [
             'title' => 'Let\'s Code',
-            'description' => 'An elegant Express.js application to showcase your programming livestreams.',
+            'description' => 'An elegant Express.js application to showcase your programming livestreams',
             'dates' => ['Jan 2019', null],
             'content' => null,
             'resources' => [
@@ -213,7 +213,7 @@ return [
             'location' => 'Norman, OK',
             'content' => <<<MD
                 #### A DIY Approach to Your Smart Home (2 sessions)
-                Hosted a workshop that taught individuals how to combine off-the-shelf components, open source platforms, and a little hardware hackery to furnish a secure home automation platform on the cheap.
+                Hosted a workshop that taught individuals how to combine off-the-shelf components, open source platforms, and a little hardware hackery to furnish a secure home automation platform on the cheap
             MD,
         ],
         [
@@ -224,7 +224,7 @@ return [
             'location' => 'Norman, OK',
             'content' => <<<MD
                 #### 3D printing for the masses (36 sessions)
-                Hosted a weekly workshop on developing 3D models and turning those creations into reality using next-generation 3D printers available to the facility.
+                Hosted a weekly workshop on developing 3D models and turning those creations into reality using next-generation 3D printers available to the facility
             MD,
         ],
         [
@@ -235,7 +235,7 @@ return [
             'location' => 'Norman, OK',
             'content' => <<<MD
                 #### Virtual reality for the masses (8 sessions)
-                Every week I introduced inexperienced community members to virtual reality; its applications, games, uses, and development workflows.
+                Every week I introduced inexperienced community members to virtual reality; its applications, games, uses, and development workflows
             MD,
         ],
         [
@@ -245,7 +245,7 @@ return [
             'dates' => ['Jul 2017', null],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Showcased the ease of development when creating applications or games using the Unity game engine. The audience determined a topic, baseball, and followed along as we developed a complimentary VR game in under an hour.
+                Showcased the ease of development when creating applications or games using the Unity game engine. The audience determined a topic, baseball, and followed along as we developed a complimentary VR game in under an hour
             MD,
         ],
         [
@@ -255,7 +255,7 @@ return [
             'dates' => ['Aug 2017', null],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Piggybacked off of a previous talk, continued to crowd-develop a rudimentary VR baseball game while showcasing patterns used when developing for augmented and virtual reality.
+                Piggybacked off of a previous talk, continued to crowd-develop a rudimentary VR baseball game while showcasing patterns used when developing for augmented and virtual reality
             MD,
         ],
         [
@@ -265,7 +265,7 @@ return [
             'dates' => ['Oct 2018', null],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Demonstrated how to get started using the Laravel framework to flexibly develop web applications from scratch.
+                Demonstrated how to get started using the Laravel framework to flexibly develop web applications from scratch
             MD,
         ],
         [
@@ -275,7 +275,7 @@ return [
             'dates' => ['Sep 2018', null],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                Showcased the technologies used within the Microsoft HoloLens and how to get started creating applications for the platform.
+                Showcased the technologies used within the Microsoft HoloLens and how to get started creating applications for the platform
             MD,
         ],
         [
@@ -285,7 +285,7 @@ return [
             'dates' => ['Nov 2020', null],
             'location' => 'Norman, OK',
             'content' => <<<MD
-                An interactive live-stream where individuals were able to ask questions and follow along as I introduced learners to the PHP language.
+                An interactive live-stream where individuals were able to ask questions and follow along as I introduced learners to the PHP language
             MD,
         ],
     ],
