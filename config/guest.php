@@ -98,7 +98,7 @@ return [
     'projects' => [
         [
             'title' => 'Stream',
-            'description' => 'A video torrent streaming platform developed for XBMC / Kodi',
+            'description' => 'A video torrent streaming platform developed for XBMC / Kodi, ~105k unique users',
             'dates' => ['Jun 2014', 'May 2016'],
             'content' => null,
             'resources' => [
@@ -134,7 +134,7 @@ return [
         ],
         [
             'title' => 'O.V.A.L.',
-            'description' => 'A VR pedagogy tool currently used by universities nationwide',
+            'description' => 'A VR pedagogy toolset designed for academic environments and collegiate campus settings, used by universities nationwide',
             'dates' => ['May 2016', 'Aug 2017'],
             'content' => <<<MD
                 O.V.A.L. went on to host the world's first remote pedagogy session in virtual reality
@@ -157,7 +157,7 @@ return [
         ],
         [
             'title' => 'EmPy',
-            'description' => 'Determine sentiment of Instagram posts using ML and Microsoft Cloud APIs',
+            'description' => 'Determines sentiment of Instagram posts using ML and Microsoft Cloud APIs',
             'dates' => ['Apr 2017', 'Mar 2018'],
             'content' => null,
             'resources' => [
@@ -166,14 +166,14 @@ return [
         ],
         [
             'title' => 'Athena',
-            'description' => 'A mobile LMS platform targeting low-cost VR hardware',
+            'description' => 'An award-winning pedagogy application that seamlessly augments traditional learning material with 3D objects and an explorative toolset',
             'dates' => ['Apr 2017', 'Mar 2018'],
             'content' => null,
             'resources' => [],
         ],
         [
             'title' => 'Seedling',
-            'description' => 'A children\'s toy teaching PinYin to English transliteration',
+            'description' => 'A proof-of-concept interactive childrens\' toy that teaches PinYin speakers English pronunciation using novel learning techniques',
             'dates' => ['Aug 2017', 'Oct 2017'],
             'content' => null,
             'resources' => [],
