@@ -84,7 +84,7 @@ return [
             'dates' => ['Feb 2022', 'Present'],
             'location' => 'Rogers, AR',
             'content' => <<<MD
-            Leading the engineering initatives for the Walmart Retail column at one of the world's largest B2B eCommerce management services
+                Leading the engineering initatives for the Walmart Retail column at one of the world's largest B2B eCommerce management services
             MD,
         ],
     ],
