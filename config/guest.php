@@ -175,7 +175,9 @@ return [
             'title' => 'Seedling',
             'description' => 'A proof-of-concept interactive childrens\' toy that teaches PinYin speakers English pronunciation using novel learning techniques',
             'dates' => ['Aug 2017', 'Oct 2017'],
-            'content' => null,
+            'content' => <<<MD
+                On permanent display at the University of Beijing
+            MD,
             'resources' => [],
         ],
         [
