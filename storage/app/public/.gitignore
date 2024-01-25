@@ -1,4 +1,4 @@
 *
 !.gitignore
-!logos/*
+!logos/*.png
 !*.pdf
