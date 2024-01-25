@@ -35,9 +35,7 @@ return [
             'title' => 'Software Engineer',
             'dates' => ['Nov 2016', 'May 2017'],
             'location' => 'Norman, OK',
-            'content' => <<<MD
-                //
-            MD,
+            'content' => '',
         ],
         [
             'employer' => 'WellCaddie',
