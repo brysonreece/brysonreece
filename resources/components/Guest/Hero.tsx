@@ -33,7 +33,7 @@ export function Hero() {
                 a passionate maker with a specialty in developing enterprise platforms that scale
             </p>
 
-            <a href="/storage/bryson-reece-resume.pdf" className="mt-12 inline-flex items-center rounded-md border border-stone-700 dark:border-stone-500 hover:bg-blue-500 dark:hover:bg-transparent hover:border-blue-500 px-2 py-1 text-sm font-medium text-stone-700 dark:text-stone-400 hover:text-white dark:hover:text-blue-500">
+            <a href="/storage/bryson-reece-resume.pdf" target="_blank" rel="noopener noreferrer" className="mt-12 inline-flex items-center rounded-md border border-stone-700 dark:border-stone-500 hover:bg-blue-500 dark:hover:bg-transparent hover:border-blue-500 px-2 py-1 text-sm font-medium text-stone-700 dark:text-stone-400 hover:text-white dark:hover:text-blue-500">
               <CloudArrowDownIcon className="w-4 h-4 mr-1" />
               <span>Resume</span>
             </a>
