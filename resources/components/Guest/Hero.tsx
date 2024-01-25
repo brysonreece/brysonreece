@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from '@/components/Container';
-import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import { ArrowDownIcon, CloudArrowDownIcon } from '@heroicons/react/24/outline';
+import { Link } from '@inertiajs/react';
 
 export function Hero() {
     return (
@@ -11,7 +12,7 @@ export function Hero() {
                 alt="Bryson Reece"
             />
 
-            <h1 className="mx-auto mt-12 max-w-4xl font-display text-5xl font-bold tracking-tight text-stone-900 dark:text-stone-300 sm:text-7xl">
+            <h1 className="mx-auto mt-12 max-w-4xl font-display text-5xl font-bold tracking-tight text-stone-900 dark:text-stone-400 sm:text-7xl">
                 Hey there, <br />
                 I'm{' '}
                 <span className="relative whitespace-nowrap text-blue-600">
@@ -28,9 +29,14 @@ export function Hero() {
                 </span>
             </h1>
 
-            <p className="mx-auto mt-12 max-w-md text-lg tracking-tight font-semibold text-stone-700 dark:text-stone-500">
+            <p className="mx-auto mt-12 max-w-md text-lg tracking-tight font-semibold text-stone-700 dark:text-stone-400">
                 a passionate maker with a specialty in developing enterprise platforms that scale
             </p>
+
+            <a href="/storage/bryson-reece-resume.pdf" className="mt-12 inline-flex items-center rounded-md border border-stone-700 dark:border-stone-500 hover:bg-blue-500 dark:hover:bg-transparent hover:border-blue-500 px-2 py-1 text-sm font-medium text-stone-700 dark:text-stone-400 hover:text-white dark:hover:text-blue-500">
+              <CloudArrowDownIcon className="w-4 h-4 mr-1" />
+              <span>Resume</span>
+            </a>
 
             {/*
               <ArrowDownIcon className="w-5 h-5 mt-24 mx-auto animate-bounce stroke-2 text-stone-900 dark:text-stone-500" style={{
