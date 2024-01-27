@@ -19,6 +19,8 @@ export interface User {
   profile_photo_url: string;
   two_factor_enabled: boolean;
   email_verified_at: Nullable<DateTime>;
+  last_login_at: Nullable<DateTime>;
+  last_login_ip: Nullable<string>;
   created_at: DateTime;
   updated_at: DateTime;
 }
