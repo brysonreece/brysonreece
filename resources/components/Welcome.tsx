@@ -1,14 +1,18 @@
 import React from 'react';
 import { ApplicationLogo }  from '@/components/Branding';
+import useTypedPage from '@/hooks/useTypedPage';
 
 export function Welcome() {
+  const user = useTypedPage().props.auth.user!;
+  const userName = user.name.split(' ')[0];
+
   return (
     <div>
       <div className="p-6 lg:p-8 bg-white dark:bg-stone-800 dark:bg-gradient-to-bl dark:from-stone-700/50 dark:via-transparent border-b border-stone-200 dark:border-stone-700">
         <ApplicationLogo className="block h-12 w-auto" />
 
         <h1 className="mt-8 text-2xl font-medium text-stone-900 dark:text-white">
-          Welcome to your Jetstream application!
+          Welcome back, {userName}!
         </h1>
 
         <p className="mt-6 text-stone-500 dark:text-stone-400 leading-relaxed">
