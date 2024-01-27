@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\GuestController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,10 +15,15 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [GuestController::class, 'welcome'])->name('welcome');
+if (app()->environment('local')) {
+    Route::redirect('/', '/login')->name('welcome');
+}
+else {
+    Route::get('/', [GuestController::class, 'welcome'])->name('welcome');
 
-foreach (['about', 'career', 'projects', 'community', 'uses'] as $page) {
-    Route::get("/{$page}", [GuestController::class, $page])->name($page);
+    foreach (['about', 'career', 'projects', 'community', 'uses'] as $page) {
+        Route::get("/{$page}", [GuestController::class, $page])->name($page);
+    }
 }
 
 Route::middleware([
