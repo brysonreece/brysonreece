@@ -398,7 +398,7 @@ export function AppLayout({
 
         {/* <!-- Page Heading --> */}
         {renderHeader ? (
-          <header className="bg-white dark:bg-stone-800 shadow">
+          <header className="bg-white dark:bg-stone-800 border-b border-stone-100 dark:border-stone-700 sm:shadow">
             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
               {renderHeader()}
             </div>
