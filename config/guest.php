@@ -80,7 +80,7 @@ return [
         [
             'employer' => 'Flywheel Digital',
             'logo_path' => public_path('storage/logos/flywheel.png'),
-            'title' => 'Head of Walmart Retail',
+            'title' => 'Senior Software Engineer',
             'dates' => ['Feb 2022', 'Present'],
             'location' => 'Rogers, AR',
             'content' => <<<MD
