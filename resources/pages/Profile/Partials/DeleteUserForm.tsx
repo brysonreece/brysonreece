@@ -1,7 +1,6 @@
 import { useForm } from '@inertiajs/react';
 import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
-import useRoute from '@/hooks/useRoute';
 import { ActionSection } from '@/components/ActionSection';
 import { DangerButton } from '@/components/DangerButton';
 import { DialogModal } from '@/components/DialogModal';
@@ -10,7 +9,6 @@ import { InputError } from '@/components/InputError';
 import { SecondaryButton } from '@/components/SecondaryButton';
 
 export function DeleteUserForm() {
-  const route = useRoute();
   const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
   const form = useForm({
     password: '',

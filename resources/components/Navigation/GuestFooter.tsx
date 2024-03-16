@@ -1,15 +1,12 @@
 import React, { PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { Container } from '@/components/Container';
-import useRoute from '@/hooks/useRoute';
 
 interface Props {
   className?: string;
 }
 
 export function GuestFooter({ className }: PropsWithChildren<Props>) {
-    const route = useRoute();
-
     return (
         <footer className={clsx('w-full', className)}>
             <Container>

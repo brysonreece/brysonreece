@@ -1,7 +1,6 @@
 import axios from 'axios';
 import clsx from 'clsx';
 import React, { PropsWithChildren, useRef, useState } from 'react';
-import useRoute from '@/hooks/useRoute';
 import { DialogModal } from '@/components/DialogModal';
 import { InputError } from '@/components/InputError';
 import { PrimaryButton } from '@/components/PrimaryButton';
@@ -22,7 +21,6 @@ export function ConfirmsPassword({
   onConfirm,
   children,
 }: PropsWithChildren<Props>) {
-  const route = useRoute();
   const [confirmingPassword, setConfirmingPassword] = useState(false);
   const [form, setForm] = useState({
     password: '',

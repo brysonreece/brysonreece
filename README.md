@@ -10,7 +10,7 @@
   <br>
 
   # Hey! 👋 I'm Bryson Reece
-  ### Head of Walmart Retail @ Flywheel Digital
+  ### Senior Software Engineer @ Flywheel Digital
   #### Maker && DIY Enthusiast
 
   <br>

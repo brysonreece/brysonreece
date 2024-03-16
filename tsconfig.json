@@ -1,17 +1,18 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "rootDir": "./",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@/*": ["./resources/*"]
+    "compilerOptions": {
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "paths": {
+            "@/*": ["resources/*"],
+            "ziggy-js": ["./vendor/tightenco/ziggy"]
+        },
+        "strict": true,
+        "target": "esnext",
+        "types": ["vite/client"]
     },
-    "types": ["vite/client"]
-  }
+    "exclude": ["node_modules", "public"]
 }

@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from 'react';
 import { Head } from '@inertiajs/react';
 import { Banner } from '@/components/Banner';
 import { GuestNavbar, GuestFooter } from '@/components/Navigation';
-import route from 'ziggy-js';
 
 interface Props {
   title: string;

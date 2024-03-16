@@ -1,7 +1,6 @@
 import { useForm, Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import React from 'react';
-import useRoute from '@/hooks/useRoute';
 import { AuthenticationCard } from '@/components/AuthenticationCard';
 import { InputLabel } from '@/components/InputLabel';
 import { PrimaryButton } from '@/components/PrimaryButton';
@@ -13,7 +12,6 @@ interface Props {
 }
 
 export default function ForgotPassword({ status }: Props) {
-  const route = useRoute();
   const form = useForm({
     email: '',
   });

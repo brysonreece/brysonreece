@@ -1,7 +1,6 @@
 import { Link, useForm, Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import React from 'react';
-import useRoute from '@/hooks/useRoute';
 import { AuthenticationCard } from '@/components/AuthenticationCard';
 import { Checkbox } from '@/components/Checkbox';
 import { InputLabel } from '@/components/InputLabel';
@@ -16,7 +15,6 @@ interface Props {
 }
 
 export default function Login({ canRegister, canResetPassword, status }: Props) {
-  const route = useRoute();
   const form = useForm({
     email: '',
     password: '',

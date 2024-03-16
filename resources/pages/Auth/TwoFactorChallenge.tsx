@@ -1,7 +1,6 @@
 import { useForm, Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
-import useRoute from '@/hooks/useRoute';
 import { AuthenticationCard } from '@/components/AuthenticationCard';
 import { InputLabel } from '@/components/InputLabel';
 import { PrimaryButton } from '@/components/PrimaryButton';
@@ -9,7 +8,6 @@ import { TextInput } from '@/components/TextInput';
 import { InputError } from '@/components/InputError';
 
 export default function TwoFactorChallenge() {
-  const route = useRoute();
   const [recovery, setRecovery] = useState(false);
   const form = useForm({
     code: '',

@@ -2,7 +2,6 @@ import { router } from '@inertiajs/core';
 import { Link, Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import React, { PropsWithChildren, useState } from 'react';
-import useRoute from '@/hooks/useRoute';
 import useTypedPage from '@/hooks/useTypedPage';
 import { ApplicationMark } from '@/components/Branding';
 import { Banner } from '@/components/Banner';
@@ -21,7 +20,6 @@ export function AppLayout({
   children,
 }: PropsWithChildren<Props>) {
   const page = useTypedPage();
-  const route = useRoute();
   const [showingNavigationDropdown, setShowingNavigationDropdown] =
     useState(false);
 

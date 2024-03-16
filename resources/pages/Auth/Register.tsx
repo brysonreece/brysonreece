@@ -1,7 +1,6 @@
 import { Link, useForm, Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import React from 'react';
-import useRoute from '@/hooks/useRoute';
 import useTypedPage from '@/hooks/useTypedPage';
 import { AuthenticationCard } from '@/components/AuthenticationCard';
 import { Checkbox } from '@/components/Checkbox';
@@ -12,7 +11,6 @@ import { InputError } from '@/components/InputError';
 
 export default function Register() {
   const page = useTypedPage();
-  const route = useRoute();
   const form = useForm({
     name: '',
     email: '',
