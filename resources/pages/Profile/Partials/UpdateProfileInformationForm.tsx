@@ -2,7 +2,6 @@ import { router } from '@inertiajs/core';
 import { Link, useForm } from '@inertiajs/react';
 import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
-import useRoute from '@/hooks/useRoute';
 import { ActionMessage } from '@/components/ActionMessage';
 import { FormSection } from '@/components/FormSection';
 import { InputError } from '@/components/InputError';
@@ -24,7 +23,6 @@ export function UpdateProfileInformationForm({ user }: Props) {
     email: user.email,
     photo: null as File | null,
   });
-  const route = useRoute();
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const photoRef = useRef<HTMLInputElement>(null);
   const page = useTypedPage();

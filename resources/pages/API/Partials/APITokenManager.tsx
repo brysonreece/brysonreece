@@ -1,7 +1,6 @@
 import { useForm } from '@inertiajs/react';
 import clsx from 'clsx';
 import React, { useState } from 'react';
-import useRoute from '@/hooks/useRoute';
 import useTypedPage from '@/hooks/useTypedPage';
 import { ActionMessage } from '@/components/ActionMessage';
 import { ActionSection } from '@/components/ActionSection';
@@ -29,7 +28,6 @@ export function APITokenManager({
   availablePermissions,
   defaultPermissions,
 }: Props) {
-  const route = useRoute();
   const createApiTokenForm = useForm({
     name: '',
     permissions: defaultPermissions,

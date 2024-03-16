@@ -1,6 +1,6 @@
 import React from 'react';
 import { Welcome } from '@/components/Welcome';
-import { AppLayout } from '../layouts/AppLayout';
+import { AppLayout } from '@/layouts/AppLayout';
 import useTypedPage from '@/hooks/useTypedPage';
 
 export default function Dashboard() {

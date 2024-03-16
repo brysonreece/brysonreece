@@ -1,6 +1,5 @@
 <?php
 
-use App\Providers\RouteServiceProvider;
 use Laravel\Fortify\Features;
 
 return [
@@ -74,7 +73,7 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    'home' => '/dashboard',
 
     /*
     |--------------------------------------------------------------------------
@@ -102,7 +101,7 @@ return [
     |
     */
 
-    'middleware' => ['web', 'local'],
+    'middleware' => ['web'],
 
     /*
     |--------------------------------------------------------------------------
@@ -145,8 +144,8 @@ return [
     */
 
     'features' => [
-        // Features::registration(),
-        // Features::resetPasswords(),
+        Features::registration(),
+        Features::resetPasswords(),
         Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),

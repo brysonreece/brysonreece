@@ -1,7 +1,6 @@
 import { useForm } from '@inertiajs/react';
 import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
-import useRoute from '@/hooks/useRoute';
 import { ActionMessage } from '@/components/ActionMessage';
 import { ActionSection } from '@/components/ActionSection';
 import { DialogModal } from '@/components/DialogModal';
@@ -17,7 +16,6 @@ interface Props {
 
 export function LogoutOtherBrowserSessions({ sessions }: Props) {
   const [confirmingLogout, setConfirmingLogout] = useState(false);
-  const route = useRoute();
   const passwordRef = useRef<HTMLInputElement>(null);
   const form = useForm({
     password: '',

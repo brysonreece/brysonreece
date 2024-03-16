@@ -1,7 +1,6 @@
 import { useForm } from '@inertiajs/react';
 import clsx from 'clsx';
 import React, { useRef } from 'react';
-import useRoute from '@/hooks/useRoute';
 import { ActionMessage } from '@/components/ActionMessage';
 import { FormSection } from '@/components/FormSection';
 import { InputError } from '@/components/InputError';
@@ -10,7 +9,6 @@ import { PrimaryButton } from '@/components/PrimaryButton';
 import { TextInput } from '@/components/TextInput';
 
 export function UpdatePasswordForm() {
-  const route = useRoute();
   const form = useForm({
     current_password: '',
     password: '',

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+    display: none;
+}
+
 @layer base {
     .prose a {
         @apply underline underline-offset-4;
@@ -10,10 +14,4 @@
 
 @layer components {
     @import 'components/photos';
-}
-
-@layer utilities {
-    [x-cloak] {
-        display: none;
-    }
 }

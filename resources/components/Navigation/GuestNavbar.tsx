@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from 'react';
 import { Disclosure, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
-import route from 'ziggy-js';
 import { Link } from '@inertiajs/react';
 
 const navigation = [

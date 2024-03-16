@@ -1,7 +1,6 @@
 import { useForm, Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import React from 'react';
-import useRoute from '@/hooks/useRoute';
 import { AuthenticationCard } from '@/components/AuthenticationCard';
 import { InputError } from '@/components/InputError';
 import { InputLabel } from '@/components/InputLabel';
@@ -9,7 +8,6 @@ import { PrimaryButton } from '@/components/PrimaryButton';
 import { TextInput } from '@/components/TextInput';
 
 export default function ConfirmPassword() {
-  const route = useRoute();
   const form = useForm({
     password: '',
   });

@@ -8,7 +8,6 @@ import { ApplicationLogo } from '@/components/Branding/ApplicationLogo';
 import { Container } from '@/components/Container';
 import { Dropdown, DropdownLink } from '@/components/Input';
 import { NavLink, ResponsiveNavLink } from '@/components/Navigation';
-import route from 'ziggy-js';
 import { Team } from '@/types';
 import useTypedPage from '@/hooks/useTypedPage';
 

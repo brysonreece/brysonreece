@@ -1,7 +1,6 @@
 import { Link, useForm, Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import React from 'react';
-import useRoute from '@/hooks/useRoute';
 import { AuthenticationCard } from '@/components/AuthenticationCard';
 import { PrimaryButton } from '@/components/PrimaryButton';
 
@@ -10,7 +9,6 @@ interface Props {
 }
 
 export default function VerifyEmail({ status }: Props) {
-  const route = useRoute();
   const form = useForm({});
   const verificationLinkSent = status === 'verification-link-sent';
 

@@ -1,38 +1,22 @@
 <?php
 
 use App\Http\Controllers\GuestController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+app()->environment('local')
+    ? Route::redirect('/', '/login')->name('welcome')
+    : Route::get('/', [GuestController::class, 'welcome'])->name('welcome');
 
-if (app()->environment('local')) {
-    Route::redirect('/', '/login')->name('welcome');
-}
-else {
-    Route::get('/', [GuestController::class, 'welcome'])->name('welcome');
-
-    foreach (['about', 'career', 'projects', 'community', 'uses'] as $page) {
-        Route::get("/{$page}", [GuestController::class, $page])->name($page);
-    }
+foreach (['about', 'career', 'projects', 'community', 'uses'] as $page) {
+    Route::get("/{$page}", [GuestController::class, $page])->name($page);
 }
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'local',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
 });
