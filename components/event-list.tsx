@@ -162,13 +162,6 @@ function ProjectRecord({ event }: { event: ProjectEvent }) {
                         )}
                     </div>
                 </div>
-
-                {event.description && (
-                    <div
-                        className="mt-4 text-sm leading-6 prose prose-stone sm:prose-base dark:prose-invert max-w-md"
-                        dangerouslySetInnerHTML={{ __html: event.description }}
-                    />
-                )}
             </div>
         </>
     );
