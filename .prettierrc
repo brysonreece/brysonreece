@@ -1,0 +1,8 @@
+{
+    "singleQuote": true,
+    "plugins": [
+        "@shufo/prettier-plugin-blade",
+        "prettier-plugin-organize-imports",
+        "prettier-plugin-tailwindcss"
+    ]
+}
