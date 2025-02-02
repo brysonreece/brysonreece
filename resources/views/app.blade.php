@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,11 +14,12 @@
     <!-- Scripts -->
     @routes
     @viteReactRefresh
-    @vite('resources/app.tsx')
+    @vite(['resources/app.tsx', "resources/pages/{$page['component']}.tsx"])
     @inertiaHead
   </head>
   {{-- The custom style here prevents content shifting from a scrollbar being present in the viewport --}}
   <body class="font-sans antialiased">
     @inertia
-  </body>
+</body>
+
 </html>
