@@ -16,9 +16,9 @@
     @viteReactRefresh
     @vite(['resources/app.tsx', "resources/pages/{$page['component']}.tsx"])
     @inertiaHead
-  </head>
-  {{-- The custom style here prevents content shifting from a scrollbar being present in the viewport --}}
-  <body class="font-sans antialiased">
+</head>
+
+<body class="bg-background text-primary font-sans antialiased">
     @inertia
 </body>
 
