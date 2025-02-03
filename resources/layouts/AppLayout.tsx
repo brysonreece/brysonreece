@@ -69,106 +69,12 @@ export function AppLayout({
               </div>
 
               <div className="hidden sm:flex sm:items-center sm:ml-6">
-                <div className="ml-3 relative">
-                  {/* <!-- Teams Dropdown --> */}
-                  {page.props.jetstream.hasTeamFeatures ? (
-                    <Dropdown
-                      align="right"
-                      width="60"
-                      renderTrigger={() => (
-                        <span className="inline-flex rounded-md">
-                          <button
-                            type="button"
-                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-stone-500 dark:text-stone-400 bg-white dark:bg-stone-800 hover:text-stone-700 dark:hover:text-stone-300 focus:outline-none focus:bg-stone-50 dark:focus:bg-stone-700 active:bg-stone-50 dark:active:bg-stone-700 transition ease-in-out duration-150"
-                          >
-                            {page.props.auth.user?.current_team?.name}
-
-                            <svg
-                              className="ml-2 -mr-0.5 h-4 w-4"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </button>
-                        </span>
-                      )}
-                    >
-                      <div className="w-60">
-                        {/* <!-- Team Management --> */}
-                        {page.props.jetstream.hasTeamFeatures ? (
-                          <>
-                            <div className="block px-4 py-2 text-xs text-stone-400">
-                              Manage Team
-                            </div>
-
-                            {/* <!-- Team Settings --> */}
-                            <DropdownLink
-                              href={route('teams.show', [
-                                page.props.auth.user?.current_team!,
-                              ])}
-                            >
-                              Team Settings
-                            </DropdownLink>
-
-                            {page.props.jetstream.canCreateTeams ? (
-                              <DropdownLink href={route('teams.create')}>
-                                Create New Team
-                              </DropdownLink>
-                            ) : null}
-
-                            <div className="border-t border-stone-200 dark:border-stone-600" />
-
-                            {/* <!-- Team Switcher --> */}
-                            <div className="block px-4 py-2 text-xs text-stone-400">
-                              Switch Teams
-                            </div>
-
-                            {page.props.auth.user?.all_teams?.map(team => (
-                              <form
-                                onSubmit={e => switchToTeam(e, team)}
-                                key={team.id}
-                              >
-                                <DropdownLink as="button">
-                                  <div className="flex items-center">
-                                    {team.id ==
-                                      page.props.auth.user?.current_team_id && (
-                                      <svg
-                                        className="mr-2 h-5 w-5 text-green-400"
-                                        fill="none"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                      </svg>
-                                    )}
-                                    <div>{team.name}</div>
-                                  </div>
-                                </DropdownLink>
-                              </form>
-                            ))}
-                          </>
-                        ) : null}
-                      </div>
-                    </Dropdown>
-                  ) : null}
-                </div>
-
                 {/* <!-- Settings Dropdown --> */}
                 <div className="ml-3 relative">
                   <Dropdown
                     align="right"
                     width="48"
-                    renderTrigger={() =>
-                      page.props.jetstream.managesProfilePhotos ? (
+                    renderTrigger={() => (
                         <button className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-stone-300 transition">
                           <img
                             className="h-8 w-8 rounded-full object-cover"
@@ -176,28 +82,6 @@ export function AppLayout({
                             alt={page.props.auth.user?.name}
                           />
                         </button>
-                      ) : (
-                        <span className="inline-flex rounded-md">
-                          <button
-                            type="button"
-                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-stone-500 dark:text-stone-400 bg-white dark:bg-stone-800 hover:text-stone-700 dark:hover:text-stone-300 focus:outline-none focus:bg-stone-50 dark:focus:bg-stone-700 active:bg-stone-50 dark:active:bg-stone-700 transition ease-in-out duration-150"
-                          >
-                            {page.props.auth.user?.name}
-
-                            <svg
-                              className="ml-2 -mr-0.5 h-4 w-4"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                              />
-                            </svg>
-                          </button>
-                        </span>
                       )
                     }
                   >
@@ -209,12 +93,6 @@ export function AppLayout({
                     <DropdownLink href={route('profile.show')}>
                       Profile
                     </DropdownLink>
-
-                    {page.props.jetstream.hasApiFeatures ? (
-                      <DropdownLink href={route('api-tokens.index')}>
-                        API Tokens
-                      </DropdownLink>
-                    ) : null}
 
                     <div className="border-t border-stone-200 dark:border-stone-600"></div>
 
@@ -285,15 +163,13 @@ export function AppLayout({
             {/* <!-- Responsive Settings Options --> */}
             <div className="pt-4 pb-1 border-t border-stone-200 dark:border-stone-600">
               <div className="flex items-center px-4">
-                {page.props.jetstream.managesProfilePhotos ? (
-                  <div className="flex-shrink-0 mr-3">
-                    <img
-                      className="h-10 w-10 rounded-full object-cover"
-                      src={page.props.auth.user?.profile_photo_url}
-                      alt={page.props.auth.user?.name}
-                    />
-                  </div>
-                ) : null}
+                <div className="flex-shrink-0 mr-3">
+                  <img
+                    className="h-10 w-10 rounded-full object-cover"
+                    src={page.props.auth.user?.profile_photo_url}
+                    alt={page.props.auth.user?.name}
+                  />
+                </div>
 
                 <div>
                   <div className="font-medium text-base text-stone-800 dark:text-stone-200">
@@ -313,79 +189,10 @@ export function AppLayout({
                   Profile
                 </ResponsiveNavLink>
 
-                {page.props.jetstream.hasApiFeatures ? (
-                  <ResponsiveNavLink
-                    href={route('api-tokens.index')}
-                    active={route().current('api-tokens.index')}
-                  >
-                    API Tokens
-                  </ResponsiveNavLink>
-                ) : null}
-
                 {/* <!-- Authentication --> */}
                 <form method="POST" onSubmit={logout}>
                   <ResponsiveNavLink as="button">Log Out</ResponsiveNavLink>
                 </form>
-
-                {/* <!-- Team Management --> */}
-                {page.props.jetstream.hasTeamFeatures ? (
-                  <>
-                    <div className="border-t border-stone-200 dark:border-stone-600"></div>
-
-                    <div className="block px-4 py-2 text-xs text-stone-400">
-                      Manage Team
-                    </div>
-
-                    {/* <!-- Team Settings --> */}
-                    <ResponsiveNavLink
-                      href={route('teams.show', [
-                        page.props.auth.user?.current_team!,
-                      ])}
-                      active={route().current('teams.show')}
-                    >
-                      Team Settings
-                    </ResponsiveNavLink>
-
-                    {page.props.jetstream.canCreateTeams ? (
-                      <ResponsiveNavLink
-                        href={route('teams.create')}
-                        active={route().current('teams.create')}
-                      >
-                        Create New Team
-                      </ResponsiveNavLink>
-                    ) : null}
-
-                    <div className="border-t border-stone-200 dark:border-stone-600"></div>
-
-                    {/* <!-- Team Switcher --> */}
-                    <div className="block px-4 py-2 text-xs text-stone-400">
-                      Switch Teams
-                    </div>
-                    {page.props.auth.user?.all_teams?.map(team => (
-                      <form onSubmit={e => switchToTeam(e, team)} key={team.id}>
-                        <ResponsiveNavLink as="button">
-                          <div className="flex items-center">
-                            {team.id ==
-                              page.props.auth.user?.current_team_id && (
-                              <svg
-                                className="mr-2 h-5 w-5 text-green-400"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                              </svg>
-                            )}
-                            <div>{team.name}</div>
-                          </div>
-                        </ResponsiveNavLink>
-                      </form>
-                    ))}
-                  </>
-                ) : null}
               </div>
             </div>
           </div>
