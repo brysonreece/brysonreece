@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import React, { PropsWithChildren, useState } from 'react';
 import useTypedPage from '@/hooks/useTypedPage';
 import { ApplicationMark } from '@/components/Branding';
-import { Banner } from '@/components/Banner';
 import { Dropdown, DropdownLink } from '@/components/Input';
 import { NavLink, ResponsiveNavLink } from '@/components/Navigation';
 import { Team } from '@/types';
@@ -44,8 +43,6 @@ export function AppLayout({
   return (
     <div>
       <Head title={title} />
-
-      <Banner />
 
       <div className="min-h-screen bg-stone-100 dark:bg-stone-900">
         <nav className="bg-white dark:bg-stone-800 border-b border-stone-100 dark:border-stone-700">
