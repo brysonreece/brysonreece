@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Head } from '@inertiajs/react';
-import { GuestNavbar, GuestFooter } from '@/components/Navigation';
+import { GuestNavbar } from '@/components/GuestNavbar';
+import { GuestFooter } from '@/components/GuestFooter';
 
 interface Props {
   title: string;

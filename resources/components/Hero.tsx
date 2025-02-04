@@ -1,7 +1,5 @@
-import React from 'react';
 import { Container } from '@/components/Container';
-import { ArrowDownIcon, CloudArrowDownIcon } from '@heroicons/react/24/outline';
-import { Link } from '@inertiajs/react';
+import { CloudArrowDownIcon } from '@heroicons/react/24/outline';
 
 export function Hero() {
     return (

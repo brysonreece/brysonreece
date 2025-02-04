@@ -1,7 +1,5 @@
-import React, { FormEvent, PropsWithChildren } from 'react';
 import { GuestLayout } from '@/layouts/GuestLayout';
 import { Container } from '@/components/Container';
-import { Link } from '@inertiajs/react';
 
 export default function Uses() {
   return (

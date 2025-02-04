@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import { Disclosure, Transition } from '@headlessui/react'
+import { PropsWithChildren } from 'react';
+import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import { Link } from '@inertiajs/react';

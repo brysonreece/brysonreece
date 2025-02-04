@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { Container } from '@/components/Container';
 
