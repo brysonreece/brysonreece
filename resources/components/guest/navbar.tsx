@@ -16,7 +16,7 @@ interface Props {
   showLogo?: boolean;
 }
 
-export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
+export function Navbar({ showLogo = true }: PropsWithChildren<Props>) {
     return (
         <Disclosure as="nav" className="w-full max-w-5xl mx-auto p-2 sm:p-6 lg:p-8">
             {({ open }) => (
