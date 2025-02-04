@@ -1,10 +1,13 @@
-import { GuestLayout } from '@/layouts/GuestLayout';
+import { Head } from '@inertiajs/react';
+
 import { Hero } from '@/components/Hero';
 
 export default function Welcome() {
   return (
-    <Hero />
+    <>
+      <Head title="Welcome" />
+
+      <Hero />
+    </>
   );
 }
-
-Welcome.title = 'Welcome';
