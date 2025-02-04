@@ -1,7 +1,7 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { Head } from '@inertiajs/react';
 import { GuestNavbar } from '@/components/GuestNavbar';
-import { GuestFooter } from '@/components/GuestFooter';
+import { Footer } from '@/components/guest/footer';
 
 interface Props {
   title?: string;
@@ -17,7 +17,7 @@ export function GuestLayout({ title, children }: PropsWithChildren<Props>) {
 
                 <main className="grow">{children}</main>
 
-                <GuestFooter />
+                <Footer />
             </div>
         </>
     );

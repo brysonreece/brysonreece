@@ -7,7 +7,7 @@ interface Props {
   className?: string;
 }
 
-export function GuestFooter({ className }: PropsWithChildren<Props>) {
+export function Footer({ className }: PropsWithChildren<Props>) {
     return (
         <footer className={clsx('w-full', className)}>
             <Container>
