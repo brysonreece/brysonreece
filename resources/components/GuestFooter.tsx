@@ -1,6 +1,7 @@
-import { PropsWithChildren } from 'react';
 import clsx from 'clsx';
-import { Container } from '@/components/Container';
+import { PropsWithChildren } from 'react';
+
+import { Container } from '@/components/ui/container';
 
 interface Props {
   className?: string;

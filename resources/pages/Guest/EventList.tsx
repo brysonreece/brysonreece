@@ -2,7 +2,7 @@ import { Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import { Fragment, useEffect, useState } from 'react';
 
-import { Container } from '@/components/Container';
+import { Container } from '@/components/ui/container';
 
 import { CareerEvent, CommunityEvent, ProjectEvent } from '@/types';
 
@@ -135,7 +135,7 @@ export default function EventList({ title, heading, subtitle, events }: EventLis
     <>
       <Head title={title} />
 
-      <Container maxWidth="2xl" className="mb-16">
+      <Container className="mb-16 max-w-2xl">
         <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
           {heading}
         </h1>

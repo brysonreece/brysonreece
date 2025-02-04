@@ -1,7 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { CSSProperties, FormEvent } from 'react';
 
-import { Container } from '@/components/Container';
+import { Container } from '@/components/ui/container';
 
 import whitehouseImg from '@/images/about-me/whitehouse.jpg';
 import musclemanImg from '@/images/about-me/muscleman.jpg';
@@ -26,7 +26,7 @@ export default function About() {
     <>
       <Head title="About Me" />
 
-      <Container maxWidth="3xl" className="mb-16">
+      <Container className="mb-16 max-w-3xl">
         <div className="photo-container font-handwriting text-3xl md:text-4xl mx-auto w-[85vmin] h-[100vmin] sm:w-[55vmin] sm:h-[70vmin] lg:w-[35vmin] lg:h-[50vmin]">
           <div
             className="photo truncate"

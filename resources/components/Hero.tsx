@@ -1,4 +1,4 @@
-import { Container } from '@/components/Container';
+import { Container } from '@/components/ui/container';
 import { CloudArrowDownIcon } from '@heroicons/react/24/outline';
 
 export function Hero() {
