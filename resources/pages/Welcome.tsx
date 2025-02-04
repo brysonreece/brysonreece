@@ -3,8 +3,8 @@ import { Hero } from '@/components/Hero';
 
 export default function Welcome() {
   return (
-    <GuestLayout title="Welcome">
-        <Hero />
-    </GuestLayout>
+    <Hero />
   );
 }
+
+Welcome.title = 'Welcome';

@@ -130,48 +130,46 @@ function ProjectRecord({ event }: { event: ProjectEvent }) {
 
 export default function EventList({ title, heading, subtitle, events }: EventListProps) {
   return (
-    <GuestLayout title={title}>
-      <Container maxWidth="2xl" className="mb-16">
-        <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
-          {heading}
-        </h1>
-        <p className="mx-auto mt-8 mb-24 text-center max-w-sm sm:max-w-lg lg:max-w-2xl font-display tracking-tight text-stone-600 dark:text-stone-300 text-2xl">
-          {subtitle}
-        </p>
+    <Container maxWidth="2xl" className="mb-16">
+      <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
+        {heading}
+      </h1>
+      <p className="mx-auto mt-8 mb-24 text-center max-w-sm sm:max-w-lg lg:max-w-2xl font-display tracking-tight text-stone-600 dark:text-stone-300 text-2xl">
+        {subtitle}
+      </p>
 
-        <ul role="list" className="space-y-12 px-0">
-          {events.map(function (event: any, idx: number) {
-            let recordComponent = (<Fragment key={idx} />);
+      <ul role="list" className="space-y-12 px-0">
+        {events.map(function (event: any, idx: number) {
+          let recordComponent = (<Fragment key={idx} />);
 
-            switch (event.type as string) {
-              case 'career':
-                recordComponent = (<CareerRecord key={idx} event={event as CareerEvent} />);
-                break;
-              case 'community':
-                recordComponent = (<CommunityRecord key={idx} event={event as CommunityEvent} />);
-                break;
-              case 'project':
-                recordComponent = (<ProjectRecord key={idx} event={event as ProjectEvent} />);
-                break;
-            }
+          switch (event.type as string) {
+            case 'career':
+              recordComponent = (<CareerRecord key={idx} event={event as CareerEvent} />);
+              break;
+            case 'community':
+              recordComponent = (<CommunityRecord key={idx} event={event as CommunityEvent} />);
+              break;
+            case 'project':
+              recordComponent = (<ProjectRecord key={idx} event={event as ProjectEvent} />);
+              break;
+          }
 
-            return (
-              <li key={idx} className="relative flex gap-x-4 pl-4">
-                <div
-                  className={clsx(
-                    idx === events.length - 1 ? 'display-none' : '-bottom-8',
-                    'absolute top-20 flex w-16 justify-center'
-                  )}
-                >
-                  <div className="w-px bg-stone-300 dark:bg-stone-700" />
-                </div>
+          return (
+            <li key={idx} className="relative flex gap-x-4 pl-4">
+              <div
+                className={clsx(
+                  idx === events.length - 1 ? 'display-none' : '-bottom-8',
+                  'absolute top-20 flex w-16 justify-center'
+                )}
+              >
+                <div className="w-px bg-stone-300 dark:bg-stone-700" />
+              </div>
 
-                {recordComponent}
-              </li>
-            );
-          })}
-        </ul>
-      </Container>
-    </GuestLayout>
+              {recordComponent}
+            </li>
+          );
+        })}
+      </ul>
+    </Container>
   );
 }
