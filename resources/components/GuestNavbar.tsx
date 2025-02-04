@@ -61,7 +61,7 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
 
                             <div className="hidden sm:flex sm:space-x-4 sm:p-2">
                                 {navigation.map((item) => (
-                                    <a
+                                    <Link
                                         key={item.name}
                                         href={route(item.route)}
                                         className={clsx(
@@ -71,7 +71,7 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
                                         aria-current={route().current(item.route) ? 'page' : undefined}
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -81,7 +81,7 @@ export function GuestNavbar({ showLogo = true }: PropsWithChildren<Props>) {
                               {navigation.map((item) => (
                                 <Disclosure.Button
                                     key={item.name}
-                                    as="a"
+                                    as={Link}
                                     href={route(item.route)}
                                     className={clsx(
                                         // light - plain, hover, active
