@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 
-import { Hero } from '@/components/Hero';
+import { Hero } from '@/components/guest/hero';
 
 export default function Welcome() {
   return (
