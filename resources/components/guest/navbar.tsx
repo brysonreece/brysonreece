@@ -1,8 +1,8 @@
 import { PropsWithChildren } from 'react';
 import { Disclosure } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import { Link } from '@inertiajs/react';
+import { MenuIcon, XIcon } from 'lucide-react';
 
 const navigation = [
     { name: 'About', route: 'about' },
@@ -53,9 +53,9 @@ export function Navbar({ showLogo = true }: PropsWithChildren<Props>) {
                             <Disclosure.Button className="ml-auto relative sm:hidden inline-flex items-center justify-center p-4 rounded-md text-stone-400 hover:text-stone-500 dark:text-stone-500 dark:hover:text-stone-400 -outline-offset-4">
                                 <span className="sr-only">Open main menu</span>
                                 {open ? (
-                                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                                    <XIcon className="block h-6 w-6" aria-hidden="true" />
                                 ) : (
-                                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
                                 )}
                             </Disclosure.Button>
 

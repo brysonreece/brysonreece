@@ -1,5 +1,5 @@
 import './bootstrap';
-import './styles/app.scss';
+import './styles/app.css';
 
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -7,7 +7,7 @@ import { createRoot } from 'react-dom/client';
 
 import { TooltipProvider } from './components/ui/tooltip';
 import { ReactElement } from 'react';
-import { GuestLayout } from './layouts/GuestLayout';
+import { GuestLayout } from '@/layouts/guest-layout';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -19,7 +19,9 @@ createInertiaApp({
             import.meta.glob('./pages/**/*.tsx'),
         );
 
-        page.default.layout = page.default.layout || ((page: ReactElement) => <GuestLayout children={page} />);
+        page.default.layout = page.default.layout || (
+            (name === 'welcome' || name.startsWith('guest/')) && ((page: ReactElement) => <GuestLayout children={page} />)
+        );
 
         return page;
     },

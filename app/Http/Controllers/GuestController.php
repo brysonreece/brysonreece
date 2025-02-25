@@ -16,7 +16,7 @@ class GuestController extends Controller
      */
     public function welcome(): Response
     {
-        return Inertia::render('Welcome', [
+        return Inertia::render('welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
         ]);
@@ -29,7 +29,7 @@ class GuestController extends Controller
      */
     public function about(): Response
     {
-        return Inertia::render('Guest/About');
+        return Inertia::render('guest/about');
     }
 
     /**
@@ -39,7 +39,7 @@ class GuestController extends Controller
      */
     public function career(): Response
     {
-        return Inertia::render('Guest/EventList', [
+        return Inertia::render('guest/event-list', [
             'title' => 'Career',
             'heading' => 'My Career Journey',
             'subtitle' => 'An epic tale filled with adventure, dragons, blood, sweat, and tears',
@@ -73,7 +73,7 @@ class GuestController extends Controller
      */
     public function projects(): Response
     {
-        return Inertia::render('Guest/EventList', [
+        return Inertia::render('guest/event-list', [
             'title' => 'Projects',
             'heading' => 'Projects & Prototypes',
             'subtitle' => 'The "5 to 9s" after the "9 to 5"',
@@ -100,7 +100,7 @@ class GuestController extends Controller
      */
     public function community(): Response
     {
-        return Inertia::render('Guest/EventList', [
+        return Inertia::render('guest/event-list', [
             'title' => 'Community',
             'heading' => 'Talks & Workshops',
             'subtitle' => 'Efforts to give back to the communities that shaped me',
@@ -134,6 +134,6 @@ class GuestController extends Controller
      */
     public function uses(): Response
     {
-        return Inertia::render('Guest/Uses');
+        return Inertia::render('guest/uses');
     }
 }

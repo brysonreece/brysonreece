@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/container';
-import { CloudArrowDownIcon } from '@heroicons/react/24/outline';
+import { CloudDownloadIcon } from 'lucide-react';
 
 export function Hero() {
     return (
@@ -32,7 +32,7 @@ export function Hero() {
             </p>
 
             <a href="/storage/bryson-reece-resume.pdf" target="_blank" rel="noopener noreferrer" className="mt-12 inline-flex items-center rounded-md border border-stone-700 dark:border-stone-500 hover:bg-blue-500 dark:hover:bg-transparent hover:border-blue-500 px-2 py-1 text-sm font-medium text-stone-700 dark:text-stone-400 hover:text-white dark:hover:text-blue-500">
-              <CloudArrowDownIcon className="w-4 h-4 mr-1" />
+              <CloudDownloadIcon className="w-4 h-4 mr-1" />
               <span>Resume</span>
             </a>
 
