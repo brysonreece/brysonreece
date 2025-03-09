@@ -1,13 +1,12 @@
 import { Head } from '@inertiajs/react';
 
 import { Hero } from '@/components/guest/hero';
+import { GuestLayout } from '@/layouts/guest-layout';
 
 export default function Welcome() {
   return (
-    <>
-      <Head title="Welcome" />
-
+    <GuestLayout title="Welcome">
       <Hero />
-    </>
+    </GuestLayout>
   );
 }

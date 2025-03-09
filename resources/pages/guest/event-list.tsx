@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { Container } from '@/components/ui/container';
 
 import { CareerEvent, CommunityEvent, ProjectEvent } from '@/types';
+import { GuestLayout } from '@/layouts/guest-layout';
 
 interface EventListProps {
   title: string;
@@ -132,9 +133,7 @@ function ProjectRecord({ event }: { event: ProjectEvent }) {
 
 export default function EventList({ title, heading, subtitle, events }: EventListProps) {
   return (
-    <>
-      <Head title={title} />
-
+    <GuestLayout title={title}>
       <Container className="mb-16 max-w-2xl">
         <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
           {heading}
@@ -176,6 +175,6 @@ export default function EventList({ title, heading, subtitle, events }: EventLis
           })}
         </ul>
       </Container>
-    </>
+    </GuestLayout>
   );
 }

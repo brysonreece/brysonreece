@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import { CSSProperties, FormEvent } from 'react';
+import { CSSProperties, FormEvent, ReactNode } from 'react';
 
 import { Container } from '@/components/ui/container';
 
@@ -7,6 +7,7 @@ import whitehouseImg from '@/images/about-me/whitehouse.jpg';
 import musclemanImg from '@/images/about-me/muscleman.jpg';
 import lunaImg from '@/images/about-me/luna.jpg';
 import fieldImg from '@/images/about-me/field.jpg';
+import { GuestLayout } from '@/layouts/guest-layout';
 
 interface ImageProps extends CSSProperties {
   '--image': string;
@@ -23,9 +24,7 @@ export default function About() {
   }
 
   return (
-    <>
-      <Head title="About Me" />
-
+    <GuestLayout title="About Me">
       <Container className="mb-16 max-w-3xl">
         <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
           About Me
@@ -154,6 +153,6 @@ export default function About() {
           </p>
         </div>
       </Container>
-    </>
+    </GuestLayout>
   );
 }

@@ -8,10 +8,10 @@ interface Props {
   title?: string;
 }
 
-export function GuestLayout({ title, children }: PropsWithChildren<Props>) {
+export function GuestLayout({ children, title }: { children: React.ReactNode; title: string }) {
     return (
         <>
-            { title && <Head title={title} /> }
+            <Head title={title} />
 
             <div className="h-full min-h-screen min-w-sm flex flex-col bg-stone-100 dark:bg-stone-900">
                 <Navbar showLogo={!route().current('welcome')} />
