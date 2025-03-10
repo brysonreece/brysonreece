@@ -4,10 +4,6 @@ import { Head } from '@inertiajs/react';
 import { Footer } from '@/components/guest/footer';
 import { Navbar } from '@/components/guest/navbar';
 
-interface Props {
-  title?: string;
-}
-
 export function GuestLayout({ children, title }: { children: React.ReactNode; title: string }) {
     return (
         <>
