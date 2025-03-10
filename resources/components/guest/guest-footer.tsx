@@ -1,15 +1,10 @@
 import clsx from 'clsx';
-import { PropsWithChildren } from 'react';
 
 import { Container } from '@/components/ui/container';
 
-interface Props {
-  className?: string;
-}
-
-export function Footer({ className }: PropsWithChildren<Props>) {
+export function GuestFooter() {
     return (
-        <footer className={clsx('w-full', className)}>
+        <footer className="w-full">
             <Container>
                 <div className={clsx("flex flex-col items-center py-10 sm:flex-row-reverse justify-center", {
                   'sm:justify-between': ! route().current('welcome'),

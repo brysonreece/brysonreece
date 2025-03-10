@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 
-import { Footer } from '@/components/guest/footer';
+import { GuestFooter } from '@/components/guest/guest-footer';
 import { GuestNavbar } from '@/components/guest/guest-navbar';
 
 export function GuestLayout({ children, title }: { children: React.ReactNode; title: string }) {
@@ -13,7 +13,7 @@ export function GuestLayout({ children, title }: { children: React.ReactNode; ti
 
                 <main className="grow">{children}</main>
 
-                <Footer />
+                <GuestFooter />
             </div>
         </>
     );
