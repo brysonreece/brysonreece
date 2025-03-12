@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Head } from '@inertiajs/react';
 import clsx from 'clsx';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, ReactNode, useEffect, useState } from 'react';
+
+import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
 
 import { CareerEvent, CommunityEvent, ProjectEvent } from '@/types';
-import { GuestLayout } from '@/layouts/guest-layout';
 
 interface EventListProps {
   title: string;
@@ -133,7 +136,9 @@ function ProjectRecord({ event }: { event: ProjectEvent }) {
 
 export default function EventList({ title, heading, subtitle, events }: EventListProps) {
   return (
-    <GuestLayout title={title}>
+    <>
+      <Head title={title} />
+
       <Container className="mb-16 max-w-2xl">
         <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
           {heading}
@@ -175,6 +180,8 @@ export default function EventList({ title, heading, subtitle, events }: EventLis
           })}
         </ul>
       </Container>
-    </GuestLayout>
+    </>
   );
 }
+
+EventList.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;

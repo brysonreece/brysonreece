@@ -1,11 +1,15 @@
 import { Head } from '@inertiajs/react';
+import { ReactNode } from 'react';
+
+import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
-import { GuestLayout } from '@/layouts/guest-layout';
 
 export default function Uses() {
   return (
-    <GuestLayout title="Uses">
+    <>
+      <Head title="What I Use" />
+
       <Container className="mb-16 max-w-3xl">
         <h1 className="mx-auto mt-12 mb-0 text-center max-w-4xl font-display text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 sm:text-6xl">
           What I Use
@@ -118,6 +122,8 @@ export default function Uses() {
           </ul>
         </div>
       </Container>
-    </GuestLayout>
+    </>
   );
 }
+
+Uses.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
