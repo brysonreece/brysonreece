@@ -4,10 +4,10 @@ use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', [GuestController::class, 'welcome'])->name('welcome');
+Route::get('/', [GuestController::class, 'welcome'])->name('guest.welcome');
 
 foreach (['about', 'career', 'projects', 'community', 'uses'] as $page) {
-    Route::get("/{$page}", [GuestController::class, $page])->name($page);
+    Route::get("/{$page}", [GuestController::class, $page])->name("guest.{$page}");
 }
 
 Route::middleware(['local', 'auth', 'verified'])->group(function () {

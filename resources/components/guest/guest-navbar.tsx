@@ -4,11 +4,11 @@ import { MenuIcon, XIcon } from 'lucide-react';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 
 const navigation = [
-    { name: 'About', route: 'about' },
-    { name: 'Career', route: 'career' },
-    { name: 'Projects', route: 'projects' },
-    { name: 'Community', route: 'community' },
-    { name: 'Uses', route: 'uses' },
+    { name: 'About', route: 'guest.about' },
+    { name: 'Career', route: 'guest.career' },
+    { name: 'Projects', route: 'guest.projects' },
+    { name: 'Community', route: 'guest.community' },
+    { name: 'Uses', route: 'guest.uses' },
 ]
 
 interface GuestNavbarProps {
@@ -21,7 +21,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
             {({ open }) => (
                 <div className="flex items-center sm:justify-between">
                     {showLogo && (
-                        <Link href={route('welcome')} className="hidden sm:flex items-center m-2 rounded-full">
+                        <Link href={route('guest.welcome')} className="hidden sm:flex items-center m-2 rounded-full">
                             <img
                                 className="h-10 w-10 rounded-full"
                                 src="https://avatars.githubusercontent.com/u/4043157?v=4"
@@ -40,7 +40,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                     )}>
                         <div className="flex items-center justify-between sm:justify-auto">
                             {showLogo && (
-                                <Link href={route('welcome')} className="flex sm:hidden items-center my-2 mx-4 rounded-full">
+                                <Link href={route('guest.welcome')} className="flex sm:hidden items-center my-2 mx-4 rounded-full">
                                     <img
                                         className="h-8 w-8 rounded-full"
                                         src="https://avatars.githubusercontent.com/u/4043157?v=4"

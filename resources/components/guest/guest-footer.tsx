@@ -7,7 +7,7 @@ export function GuestFooter() {
         <footer className="w-full">
             <Container>
                 <div className={clsx("flex flex-col items-center py-10 sm:flex-row-reverse justify-center", {
-                  'sm:justify-between': ! route().current('welcome'),
+                  'sm:justify-between': ! route().current('guest.welcome'),
                 })}>
                     <div className="flex space-x-6">
                         <a href="https://twitter.com/brysonio" target="_blank" rel="noopener noreferrer" className="group">
@@ -23,7 +23,7 @@ export function GuestFooter() {
                             </svg>
                         </a>
                     </div>
-                    {(! route().current('welcome')) && (
+                    {(! route().current('guest.welcome')) && (
                       <p className="mt-6 text-sm text-stone-500 sm:mt-0">
                           Bryson Reece &copy; 2015 - {new Date().getFullYear()}
                       </p>
