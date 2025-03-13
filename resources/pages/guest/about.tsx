@@ -22,7 +22,8 @@ export default function About() {
                 </h1>
 
                 <p className="font-display mx-auto mt-8 mb-24 max-w-sm text-center text-2xl tracking-tight text-stone-600 sm:max-w-lg lg:max-w-2xl dark:text-stone-300">
-                    Maker, full-stack engineer, and avid learner
+                    A dad, full-stack engineer, and avid learner
+                    <br />
                     <br />
                     🤖 Actual cyborg 🤖
                 </p>
@@ -143,7 +144,7 @@ export default function About() {
                         </li>
                     </ul>
                     <p>
-                        When I'm not working, I'm usually spending time with my wife and dog, playing video games, or trying to learn something new.
+                        When I'm not working, I'm usually spending time with my wife, daughter, and two dogs ⸺ or learning something new!
                     </p>
                     <p>
                         Want to get in touch?{' '}
@@ -152,7 +153,7 @@ export default function About() {
                         </a>{' '}
                         or{' '}
                         <a href="https://twitter.com/brysonio" target="_blank" rel="noopener noreferrer">
-                            send me a tweet
+                            tweet at me
                         </a>
                         !
                     </p>
