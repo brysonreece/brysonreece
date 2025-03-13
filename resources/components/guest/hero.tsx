@@ -6,7 +6,7 @@ export function Hero() {
         <Container className="pt-12 pb-16 text-center sm:pt-24 xl:pt-48">
             <img className="mx-auto h-72 rounded-full shadow-md shadow-stone-300 dark:shadow-stone-950" src="https://avatars.githubusercontent.com/u/4043157?v=4" alt="Bryson Reece" />
 
-            <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-bold tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
+            <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-semibold tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
                 Hey there, <br />
                 I'm{' '}
                 <span className="relative whitespace-nowrap text-blue-600">
@@ -23,7 +23,7 @@ export function Hero() {
                 </span>
             </h1>
 
-            <p className="mx-auto mt-12 max-w-md text-lg font-semibold tracking-tight text-stone-700 dark:text-stone-400">
+            <p className="mx-auto mt-12 max-w-md text-lg font-medium tracking-tight text-stone-700 dark:text-stone-400">
                 a passionate maker with a specialty in developing enterprise platforms that scale
             </p>
 
@@ -31,7 +31,7 @@ export function Hero() {
                 href="/storage/bryson-reece-resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-12 inline-flex items-center rounded-md border border-stone-700 px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:bg-transparent dark:hover:text-blue-500"
+                className="mt-12 inline-flex items-center rounded-md border border-stone-700 px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:bg-transparent dark:hover:text-blue-500 dark:hover:border-blue-500"
             >
                 <CloudDownloadIcon className="mr-1 h-4 w-4" />
                 <span>Resume</span>
