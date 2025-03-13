@@ -4,11 +4,7 @@
     "singleAttributePerLine": false,
     "htmlWhitespaceSensitivity": "css",
     "printWidth": 150,
-    "plugins": [
-        "@shufo/prettier-plugin-blade",
-        "prettier-plugin-organize-imports",
-        "prettier-plugin-tailwindcss"
-    ],
+    "plugins": ["@shufo/prettier-plugin-blade", "prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
     "tailwindFunctions": ["clsx", "cn"],
     "tabWidth": 4,
     "overrides": [

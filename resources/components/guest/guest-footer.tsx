@@ -6,9 +6,11 @@ export function GuestFooter() {
     return (
         <footer className="w-full">
             <Container>
-                <div className={clsx("flex flex-col items-center py-10 sm:flex-row-reverse justify-center", {
-                  'sm:justify-between': ! route().current('guest.welcome'),
-                })}>
+                <div
+                    className={clsx('flex flex-col items-center justify-center py-10 sm:flex-row-reverse', {
+                        'sm:justify-between': !route().current('guest.welcome'),
+                    })}
+                >
                     <div className="flex space-x-6">
                         <a href="https://twitter.com/brysonio" target="_blank" rel="noopener noreferrer" className="group">
                             <span className="sr-only">Twitter</span>
@@ -23,10 +25,8 @@ export function GuestFooter() {
                             </svg>
                         </a>
                     </div>
-                    {(! route().current('guest.welcome')) && (
-                      <p className="mt-6 text-sm text-stone-500 sm:mt-0">
-                          Bryson Reece &copy; 2015 - {new Date().getFullYear()}
-                      </p>
+                    {!route().current('guest.welcome') && (
+                        <p className="mt-6 text-sm text-stone-500 sm:mt-0">Bryson Reece &copy; 2015 - {new Date().getFullYear()}</p>
                     )}
                 </div>
             </Container>

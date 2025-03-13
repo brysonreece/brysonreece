@@ -1,9 +1,7 @@
 import { LucideIcon } from 'lucide-react';
 import type { Config } from 'ziggy-js';
 
-export type PageProps<
-    T extends Record<string, unknown> = Record<string, unknown>,
-> = T & {
+export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: User | null;
     };
@@ -45,43 +43,43 @@ export interface Session {
     ip_address: string;
     is_current_device: boolean;
     agent: {
-      is_desktop: boolean;
-      platform: string;
-      browser: string;
+        is_desktop: boolean;
+        platform: string;
+        browser: string;
     };
     last_active: DateTime;
-  }
+}
 
-  export enum EventType {
+export enum EventType {
     CareerEventType,
     CommunityEventType,
     ProjectEventType,
-  }
+}
 
-  export interface Event {
+export interface Event {
     type: EventType;
     title: string;
     dates: string[];
     content: Nullable<string>;
-  }
+}
 
-  export interface CareerEvent extends Event {
+export interface CareerEvent extends Event {
     type: EventType.CareerEventType;
     employer: string;
     logoUrl: string;
     location: string;
-  }
+}
 
-  export interface CommunityEvent extends Event {
+export interface CommunityEvent extends Event {
     type: EventType.CommunityEventType;
     host: string;
     logoUrl: string;
     location: string;
-  }
+}
 
-  export interface ProjectEvent extends Event {
+export interface ProjectEvent extends Event {
     type: EventType.ProjectEventType;
     description: string;
     github: Nullable<string>;
     resources: Record<string, string>;
-  }
+}
