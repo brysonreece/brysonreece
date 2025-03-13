@@ -4,7 +4,7 @@ import { CloudDownloadIcon } from 'lucide-react';
 export function Hero() {
     return (
         <Container className="pt-12 pb-16 text-center sm:pt-24 xl:pt-48">
-            <img className="mx-auto h-72 rounded-full shadow-md" src="https://avatars.githubusercontent.com/u/4043157?v=4" alt="Bryson Reece" />
+            <img className="mx-auto h-72 rounded-full shadow-md shadow-stone-300 dark:shadow-stone-950" src="https://avatars.githubusercontent.com/u/4043157?v=4" alt="Bryson Reece" />
 
             <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-bold tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
                 Hey there, <br />
