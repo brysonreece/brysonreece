@@ -31,7 +31,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                             'w-full sm:w-auto',
                             'rounded-lg sm:rounded-xl',
                             'border-stone-200 bg-stone-100 sm:border dark:border-0 dark:border-stone-800 dark:bg-stone-900 dark:sm:border',
-                            'shadow-stone-300 sm:shadow-md sm:hover:shadow-xl dark:shadow-stone-900',
+                            'shadow-stone-300 sm:shadow-md sm:hover:shadow-xl dark:shadow-stone-950',
                             'transition-shadow duration-0 ease-in-out sm:duration-500',
                             { 'sm:mx-auto': !showLogo },
                         )}
