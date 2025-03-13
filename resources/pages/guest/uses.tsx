@@ -23,8 +23,8 @@ export default function Uses() {
                     <h2>Daily Drivers</h2>
                     <ul>
                         <li>
-                            <a href="https://support.apple.com/kb/SP832" target="_blank" rel="noopener noreferrer">
-                                Apple iPhone 12 Pro Max
+                            <a href="https://support.apple.com/en-us/111828" target="_blank" rel="noopener noreferrer">
+                                Apple iPhone 15 Pro Max
                             </a>
                         </li>
                         <li>
@@ -111,20 +111,9 @@ export default function Uses() {
                     </ul>
                     <h2>Development</h2>
                     <ul>
-                        <li className="hidden">
-                            <a href="https://github.com/brysonreece/dotfiles" target="_blank" rel="noopener noreferrer">
-                                ~/.dotfiles
-                            </a>
-                            : A collection of my personal dotfiles for macOS.
-                        </li>
                         <li>
                             <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
                                 VSCode
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://fig.io/" target="_blank" rel="noopener noreferrer">
-                                Fig.io
                             </a>
                         </li>
                         <li>
@@ -178,10 +167,9 @@ export default function Uses() {
                     </ul>
                     <h2>Augmented & Virtual Reality</h2>
                     <p>
-                        I'm an avid collector of memorable augmented reality hardware. Based on a personal, storied history with the technology, I
+                        I'm an avid collector of memorable augmented reality hardware. As the result of a personal, storied history with the technology, I
                         truly believe it to be the next major computing platform.
                     </p>
-                    <p>VR is kind-of alright.</p>
                     <ul>
                         <li>
                             <a
