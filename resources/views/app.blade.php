@@ -20,7 +20,7 @@
         })();
     </script>
 
-    <title inertia>... // {{ config('app.name', 'Laravel') }}</title>
+    <title inertia>// {{ config('app.name', 'Laravel') }}</title>
     <meta name="description" content="Hey there! I'm Bryson Reece ⸺ a dad, software engineer, and avid DIYer that's constantly learning new things." />
     <meta name="author" content="Bryson Reece" />
 
