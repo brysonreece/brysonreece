@@ -17,5 +17,5 @@ Route::middleware(['local', 'auth', 'verified'])->group(function () {
     Route::get('dashboard', fn () => Inertia::render('dashboard'))->name('dashboard');
 });
 
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+require __DIR__.'/web/settings.php';
+require __DIR__.'/web/auth.php';
