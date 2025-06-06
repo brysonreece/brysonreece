@@ -30,9 +30,10 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                         className={clsx(
                             'w-full sm:w-auto',
                             'rounded-lg sm:rounded-xl',
-                            'border-stone-200 bg-stone-100 sm:border dark:border-0 dark:border-stone-800 dark:bg-stone-900 dark:sm:border',
-                            'shadow-stone-300 sm:shadow-md sm:hover:shadow-xl dark:shadow-stone-950',
-                            'transition-shadow duration-0 ease-in-out sm:duration-500',
+                            'bg-stone-100 hover:bg-stone-200/25 dark:bg-stone-900 dark:hover:bg-stone-950/10',
+                            'sm:hover:shadow-lg shadow-stone-300 dark:shadow-stone-950',
+                            'sm:hover:ring sm:hover:ring-stone-300 dark:sm:hover:ring-stone-950/10',
+                            'group transition-[box-shadow,background-color] duration-0 ease-in-out sm:duration-500',
                             { 'sm:mx-auto': !showLogo },
                         )}
                     >
@@ -63,9 +64,10 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                                         href={route(item.route)}
                                         className={clsx(
                                             route().current(item.route)
-                                                ? 'bg-stone-200 text-stone-700 dark:bg-stone-800 dark:text-stone-200'
-                                                : 'text-stone-500 hover:bg-stone-200 hover:text-stone-600 dark:hover:bg-stone-800 dark:hover:text-stone-300',
-                                            'inline-block rounded-lg px-3 py-2 text-sm font-medium active:bg-stone-300 active:text-stone-900 dark:active:bg-stone-700 dark:active:text-stone-400',
+                                                ? 'text-stone-700 dark:text-stone-200'
+                                                : 'text-stone-400 hover:text-stone-600 dark:text-stone-600 dark:hover:text-stone-300',
+                                            'transition-colors duration-0 ease-in-out sm:duration-500',
+                                            'inline-block rounded-lg px-3 py-2 text-sm font-medium active:text-stone-900 dark:active:text-stone-400',
                                         )}
                                         aria-current={route().current(item.route) ? 'page' : undefined}
                                     >
