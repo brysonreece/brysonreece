@@ -1,12 +1,22 @@
 import { Container } from '@/components/ui/container';
 import { CloudDownloadIcon } from 'lucide-react';
+import { Avatar, AvatarImage } from '../ui/avatar';
 
 export function Hero() {
     return (
         <Container className="pt-12 pb-16 text-center sm:pt-24 xl:pt-48">
-            <img className="mx-auto h-72 rounded-full shadow-md shadow-stone-300 dark:shadow-stone-950" src="https://avatars.githubusercontent.com/u/4043157?v=4" alt="Bryson Reece" />
 
-            <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-semibold tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
+            <Avatar
+                className="mx-auto size-72 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800"
+            >
+                <AvatarImage
+                    className="h-full w-full rounded-full"
+                    src="https://avatars.githubusercontent.com/u/4043157?v=4"
+                    alt="Bryson Reece"
+                />
+            </Avatar>
+
+            <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-medium tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
                 Hey there, <br />
                 I'm{' '}
                 <span className="relative whitespace-nowrap text-blue-600">
