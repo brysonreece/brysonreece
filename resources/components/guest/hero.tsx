@@ -37,15 +37,23 @@ export function Hero() {
                 a passionate maker with a specialty in developing enterprise platforms that scale
             </p>
 
-            <a
-                href="/storage/bryson-reece-resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-12 inline-flex items-center rounded-md border border-stone-700 px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:bg-transparent dark:hover:text-blue-500 dark:hover:border-blue-500"
-            >
-                <CloudDownloadIcon className="mr-1 h-4 w-4" />
-                <span>Resume</span>
-            </a>
+            <div className="flex items-center justify-center gap-x-6 mt-12">
+                <a
+                    href="/storage/bryson-reece-resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-md border border-stone-700 px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:bg-transparent dark:hover:text-blue-500 dark:hover:border-blue-500"
+                >
+                    <CloudDownloadIcon className="mr-1 h-4 w-4" />
+                    <span>Resume</span>
+                </a>
+                <a
+                    href={ route('guest.about') }
+                    className="inline-flex items-center rounded-md px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:bg-transparent dark:hover:text-blue-500 dark:hover:border-blue-500"
+                >
+                    <span>Learn more &rarr;</span>
+                </a>
+            </div>
 
             {/*
               <ArrowDownIcon className="w-5 h-5 mt-24 mx-auto animate-bounce stroke-2 text-stone-900 dark:text-stone-500" style={{
