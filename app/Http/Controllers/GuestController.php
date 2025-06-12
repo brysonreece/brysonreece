@@ -73,14 +73,14 @@ class GuestController extends Controller
      */
     public function projects(): Response
     {
-        return Inertia::render('guest/event-list', [
+        return Inertia::render('guest/projects', [
             'title' => 'Projects',
             'heading' => 'Projects & Prototypes',
             'subtitle' => 'The "5 to 9s" after the "9 to 5"',
             'events' => array_map(function ($event) {
-                $event['content'] = implode("\n", array_map((function ($line) {
-                    return Str::after($line, '    ');
-                }), explode("\n", $event['content'])));
+                $event['content'] = str($event['content'])
+                    ->replaceFirst('    ', '')
+                    ->value();
 
                 return [
                     ...$event,
