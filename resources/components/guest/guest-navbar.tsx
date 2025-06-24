@@ -30,7 +30,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                         className={clsx(
                             'w-full sm:w-auto',
                             'rounded-lg sm:rounded-xl',
-                            'bg-stone-100 hover:bg-stone-200/25 dark:bg-stone-900 dark:hover:bg-stone-950/10',
+                            'bg-stone-100 sm:hover:bg-stone-200/25 dark:bg-stone-900 sm:dark:hover:bg-stone-950/10',
                             'sm:hover:shadow-lg shadow-stone-300 dark:shadow-stone-950',
                             'sm:hover:ring sm:hover:ring-stone-300 dark:sm:hover:ring-stone-950/10',
                             'group transition-[box-shadow,background-color] duration-0 ease-in-out sm:duration-500',
