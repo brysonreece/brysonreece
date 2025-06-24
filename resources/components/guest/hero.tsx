@@ -1,13 +1,11 @@
-import { Container } from '@/components/ui/container';
 import { CloudDownloadIcon } from 'lucide-react';
 import { Avatar, AvatarImage } from '../ui/avatar';
 
 export function Hero() {
     return (
-        <Container className="pt-12 pb-16 text-center sm:pt-24 xl:pt-48">
-
+        <div className="text-center">
             <Avatar
-                className="mx-auto size-72 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800"
+                className="mx-auto size-64 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800"
             >
                 <AvatarImage
                     className="h-full w-full rounded-full"
@@ -17,7 +15,7 @@ export function Hero() {
             </Avatar>
 
             <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-medium tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
-                Hey there, <br />
+                Hey there, <br className="max-sm:hidden" />
                 I'm{' '}
                 <span className="relative whitespace-nowrap text-blue-600">
                     <svg
@@ -54,13 +52,6 @@ export function Hero() {
                     <span>Learn more &rarr;</span>
                 </a>
             </div>
-
-            {/*
-              <ArrowDownIcon className="w-5 h-5 mt-24 mx-auto animate-bounce stroke-2 text-stone-900 dark:text-stone-500" style={{
-                  animation: "bounce 4s infinite",
-                  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 0.6)",
-              }} />
-            */}
-        </Container>
+        </div>
     );
 }
