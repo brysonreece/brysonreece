@@ -34,7 +34,7 @@ function CommunityRecord({ event }: { event: CommunityEvent }) {
                 {event.content && (
                     <div
                         className="prose prose-stone sm:prose-base dark:prose-invert mt-4 max-w-md text-sm leading-6"
-                        dangerouslySetInnerHTML={{ __html: event.content }}
+                        dangerouslySetInnerHTML={{ __html: event.content.replace("\n", "<br />") }}
                     />
                 )}
             </div>
