@@ -64,17 +64,22 @@ export interface Event {
 }
 
 export interface CareerEvent extends Event {
-    type: EventType.CareerEventType;
     employer: string;
-    logoUrl: string;
+    iconImage: string;
+    title: string;
+    dates: string[];
     location: string;
+    content: string;
 }
 
 export interface CommunityEvent extends Event {
     type: EventType.CommunityEventType;
     host: string;
-    logoUrl: string;
+    iconImage: string;
+    title: string;
+    dates: string[];
     location: string;
+    content: string;
 }
 
 export interface ProjectEvent extends Event {

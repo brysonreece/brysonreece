@@ -1,0 +1,66 @@
+[
+    {
+        "employer": "The University of Oklahoma",
+        "iconImage": "/storage/logos/ou.png",
+        "title": "Software Engineer / Makerspace Support",
+        "dates": ["May 2016", "Aug 2017"],
+        "location": "Norman, OK",
+        "content": "Helped establish the first makerspace at the university while developing workflows and custom tooling for managing 3D printing services. Also helped develop O.V.A.L., a VR pedagogy tool currently used by universities nationwide. O.V.A.L. went on to host the world's first remote pedagogy session in virtual reality"
+    },
+    {
+        "employer": "TankVault",
+        "iconImage": "/storage/logos/tankvault.png",
+        "title": "Software Engineering Intern",
+        "dates": ["Aug 2016", "Nov 2016"],
+        "location": "Norman, OK",
+        "content": "Developed web-based tooling to streamline oil and gas worker operations. Features developed included mapping applications used for route optimization, forecast indicators for field workers, as well as mobile alerts and monitoring for damaged oil production equipment"
+    },
+    {
+        "employer": "WellCaddie",
+        "iconImage": "/storage/logos/wellcaddie.png",
+        "title": "Software Engineer",
+        "dates": ["Nov 2016", "May 2017"],
+        "location": "Norman, OK",
+        "content": ""
+    },
+    {
+        "employer": "WellCaddie",
+        "iconImage": "/storage/logos/wellcaddie.png",
+        "title": "Senior Software Engineer",
+        "dates": ["May 2017", "Jun 2018"],
+        "location": "Norman, OK",
+        "content": "Implemented and facilitated a complete overhaul and refactor of all frontend and backend services of the WellCaddie platform. Directly resulted in a company valuation increase of several million dollars"
+    },
+    {
+        "employer": "The University of Oklahoma",
+        "iconImage": "/storage/logos/ou.png",
+        "title": "Pinyin Technology Consultant",
+        "dates": ["Aug 2017", "May 2018"],
+        "location": "Norman, OK",
+        "content": "Assisted in developing a number of patented transliteration devices to enable Chinese speakers to gain a better grasp of the English language through newly researched translation techniques"
+    },
+    {
+        "employer": "WellCaddie",
+        "iconImage": "/storage/logos/wellcaddie.png",
+        "title": "Head of Software Engineering",
+        "dates": ["Jun 2018", "Jun 2021"],
+        "location": "Norman, OK",
+        "content": "Oversaw software development initiatives for the entire company, including embedded hardware applications for IoT data collection"
+    },
+    {
+        "employer": "Wunderite",
+        "iconImage": "/storage/logos/wunderite.png",
+        "title": "Senior Software Engineer",
+        "dates": ["Jun 2021", "Feb 2022"],
+        "location": "Boston, MA",
+        "content": "Large-scale refactoring of a legacy codebase into a modern, performant architecture using Laravel, Vue.js, and TypeScript"
+    },
+    {
+        "employer": "Flywheel Digital",
+        "iconImage": "/storage/logos/flywheel.png",
+        "title": "Senior Software Engineer",
+        "dates": ["Feb 2022", "Present"],
+        "location": "Rogers, AR",
+        "content": "Leading the engineering initatives for the Walmart Retail column at one of the world's largest B2B eCommerce management services"
+    }
+]

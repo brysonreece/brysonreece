@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { Head } from '@inertiajs/react';
 import clsx from 'clsx';
 import { ReactNode, useEffect, useState } from 'react';
@@ -10,12 +8,7 @@ import { Container } from '@/components/ui/container';
 
 import { ProjectEvent } from '@/types';
 
-interface EventListProps {
-    title: string;
-    heading: string;
-    subtitle: string;
-    events: ProjectEvent[];
-}
+import projects from '@/json/projects.json';
 
 function ProjectRecord({ event }: { event: ProjectEvent }) {
     const [resourceLinks, setResourceLinks] = useState<[string, string][]>([]);
@@ -72,21 +65,21 @@ function ProjectRecord({ event }: { event: ProjectEvent }) {
     );
 }
 
-export default function EventList({ title, heading, subtitle, events }: EventListProps) {
+export default function Projects() {
     return (
         <>
-            <Head title={title} />
+            <Head title="Projects" />
 
             <Container className="mb-16 max-w-6xl">
                 <h1 className="font-display mx-auto mt-12 mb-0 max-w-4xl text-center text-5xl font-medium tracking-tight text-stone-900 sm:text-6xl dark:text-stone-100">
-                    {heading}
+                    Projects & Prototypes
                 </h1>
                 <p className="font-display mx-auto mt-8 mb-24 max-w-sm text-center text-2xl tracking-tight text-stone-600 sm:max-w-lg lg:max-w-2xl dark:text-stone-300">
-                    {subtitle}
+                    The "5 to 9s" after the "9 to 5"
                 </p>
 
                 <ul role="list" className="columns-1 md:columns-2 lg:columns-3 space-y-6 gap-6">
-                    {events.map((event: any, idx: number) => (
+                    {(projects as ProjectEvent[]).map((event, idx) => (
                         <li key={idx} className="break-inside-avoid-column">
                             <ProjectRecord key={idx} event={event} />
                         </li>
@@ -97,4 +90,4 @@ export default function EventList({ title, heading, subtitle, events }: EventLis
     );
 }
 
-EventList.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
+Projects.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;

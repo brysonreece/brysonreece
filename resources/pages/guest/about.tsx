@@ -11,7 +11,7 @@ const linkStyles = "underline underline-offset-2 decoration-muted-foreground \
     hover:decoration-current hover:text-accent-foreground \
     transition-colors";
 
-const projectCards: Project[] = [
+const projects: Project[] = [
     {
         year: '2016',
         title: 'O.V.A.L.',
@@ -230,7 +230,7 @@ export default function About() {
             </Container>
             <Container className="max-w-3xl lg:max-w-4xl">
                 <ul className="not-prose list-none gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                    {projectCards.map((project, idx) => (
+                    {projects.map((project, idx) => (
                         <ProjectCard key={idx} project={project} />
                     ))}
                 </ul>

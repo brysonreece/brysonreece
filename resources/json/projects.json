@@ -1,0 +1,100 @@
+[
+    {
+        "title": "Stream",
+        "description": "A video torrent streaming platform developed for XBMC / Kodi, ~105k unique users",
+        "dates": ["Jun 2014", "May 2016"],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/stream"
+        }
+    },
+    {
+        "title": "Kore",
+        "description": "3D-printable assistive devices for those physically impaired",
+        "dates": ["Nov 2015", null],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/kore"
+        }
+    },
+    {
+        "title": "File.io",
+        "description": "Decentralized file storage from a keychain computer",
+        "dates": ["Feb 2016", null],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/file.io"
+        }
+    },
+    {
+        "title": "stl-viewer",
+        "description": "An online stereolithography file viewer using Three.js",
+        "dates": ["Feb 2016", null],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/stl-viewer"
+        }
+    },
+    {
+        "title": "O.V.A.L.",
+        "description": "A VR pedagogy toolset designed for academic environments and collegiate campus settings, used by universities nationwide",
+        "dates": ["May 2016", "Aug 2017"],
+        "content": "O.V.A.L. went on to host the world's first remote pedagogy session in virtual reality",
+        "resources": {
+            "GitHub (Alpha)": "https://github.com/MorganWalkup/OVAL-Application",
+            "GitHub (v1)": "https://github.com/OVAL-VR",
+            "GitHub (v2)": "https://github.com/OULibraries/OVAL2.0",
+            "Article": "https://campustechnology.com/articles/2017/10/09/multi-campus-vr-session-tours-remote-cave-art.aspx"
+        }
+    },
+    {
+        "title": "OctoFii",
+        "description": "Receive OctoPrint notifications across a variety of platforms",
+        "dates": ["May 2016", null],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/octofii"
+        }
+    },
+    {
+        "title": "EmPy",
+        "description": "Determines sentiment of Instagram posts using ML and Microsoft Cloud APIs",
+        "dates": ["Apr 2017", "Mar 2018"],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/empy"
+        }
+    },
+    {
+        "title": "Athena",
+        "description": "An award-winning pedagogy application that seamlessly augments traditional learning material with 3D objects and an explorative toolset",
+        "dates": ["Apr 2017", "Mar 2018"],
+        "content": null,
+        "resources": {}
+    },
+    {
+        "title": "Seedling",
+        "description": "A proof-of-concept interactive childrens' toy that teaches PinYin speakers English pronunciation using novel learning techniques",
+        "dates": ["Aug 2017", "Oct 2017"],
+        "content": "On permanent display at the University of Beijing",
+        "resources": {}
+    },
+    {
+        "title": "Let's Code",
+        "description": "An elegant Express.js application to showcase your programming livestreams",
+        "dates": ["Jan 2019", null],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/lets-code"
+        }
+    },
+    {
+        "title": "tailwind-colors",
+        "description": "A collection of Tailwind CSS color palettes 🎨 🖌",
+        "dates": ["Feb 2020", null],
+        "content": null,
+        "resources": {
+            "GitHub": "https://github.com/brysonreece/tailwind-colors"
+        }
+    }
+]
