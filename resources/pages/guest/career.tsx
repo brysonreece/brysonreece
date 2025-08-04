@@ -56,7 +56,7 @@ export default function Career() {
                 </p>
 
                 <ul role="list" className="space-y-12 px-0">
-                    {(career as unknown as CareerEvent[]).reverse().map(function (event, idx) {
+                    {(career as unknown as CareerEvent[]).toReversed().map(function (event, idx) {
                         return (
                             <li key={idx} className="relative flex gap-x-4 pl-4">
                                 <div className={clsx(

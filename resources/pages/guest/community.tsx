@@ -56,7 +56,7 @@ export default function Community() {
                 </p>
 
                 <ul role="list" className="space-y-12 px-0">
-                    {(events as unknown as CommunityEvent[]).reverse().map(function (event, idx) {
+                    {(events as unknown as CommunityEvent[]).toReversed().map(function (event, idx) {
                         return (
                             <li key={idx} className="relative flex gap-x-4 pl-4">
                                 <div
