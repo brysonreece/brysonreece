@@ -10,9 +10,9 @@
 
 # Hey! 👋 I'm Bryson Reece
 
-### Senior Software Engineer @ Flywheel Digital
+### Staff Software Engineer, Manager @ Flywheel Digital
 
-#### Maker && DIY Enthusiast
+#### a passionate maker with a specialty in developing enterprise platforms that scale
 
   <br>
 
