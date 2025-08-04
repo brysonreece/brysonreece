@@ -47,7 +47,7 @@ export default function Career() {
         <>
             <Head title="Career" />
 
-            <Container className="mb-16 max-w-2xl">
+            <Container className="mb-16 max-w-3xl">
                 <h1 className="font-display mx-auto mt-12 mb-0 max-w-4xl text-center text-5xl font-medium tracking-tight text-stone-900 sm:text-6xl dark:text-stone-100">
                     My Career Journey
                 </h1>

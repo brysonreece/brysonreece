@@ -2,10 +2,10 @@
     {
         "employer": "The University of Oklahoma",
         "iconImage": "/storage/logos/ou.png",
-        "title": "Software Engineer / Makerspace Support",
+        "title": "VR Software Engineer",
         "dates": ["May 2016", "Aug 2017"],
         "location": "Norman, OK",
-        "content": "Helped establish the first makerspace at the university while developing workflows and custom tooling for managing 3D printing services. Also helped develop O.V.A.L., a VR pedagogy tool currently used by universities nationwide. O.V.A.L. went on to host the world's first remote pedagogy session in virtual reality"
+        "content": "Helped establish the first makerspace at the university while developing workflows and custom tooling for managing 3D print farms. Also one of three core maintainers of O.V.A.L., a world record holding VR pedagogy toolset used by universities nationwide (including Harvard, Columbia, Dartmouth, and Stanford) for groundbreaking anthropological, architectural, and medical research."
     },
     {
         "employer": "TankVault",
@@ -13,15 +13,7 @@
         "title": "Software Engineering Intern",
         "dates": ["Aug 2016", "Nov 2016"],
         "location": "Norman, OK",
-        "content": "Developed web-based tooling to streamline oil and gas worker operations. Features developed included mapping applications used for route optimization, forecast indicators for field workers, as well as mobile alerts and monitoring for damaged oil production equipment"
-    },
-    {
-        "employer": "WellCaddie",
-        "iconImage": "/storage/logos/wellcaddie.png",
-        "title": "Software Engineer",
-        "dates": ["Nov 2016", "May 2017"],
-        "location": "Norman, OK",
-        "content": ""
+        "content": "Developed online tooling for service route planning and maintenance forecasting in order to streamline oil and gas operations & monitoring."
     },
     {
         "employer": "WellCaddie",
@@ -29,7 +21,7 @@
         "title": "Senior Software Engineer",
         "dates": ["May 2017", "Jun 2018"],
         "location": "Norman, OK",
-        "content": "Implemented and facilitated a complete overhaul and refactor of all frontend and backend services of the WellCaddie platform. Directly resulted in a company valuation increase of several million dollars"
+        "content": null
     },
     {
         "employer": "The University of Oklahoma",
@@ -37,15 +29,23 @@
         "title": "Pinyin Technology Consultant",
         "dates": ["Aug 2017", "May 2018"],
         "location": "Norman, OK",
-        "content": "Assisted in developing a number of patented transliteration devices to enable Chinese speakers to gain a better grasp of the English language through newly researched translation techniques"
+        "content": "Working with renowned researcher Jonathan Stalling, designed and developed a patented transliteration device in order to enable Chinese speakers to learn the English language through newly researched translation techniques.Working with renowned researcher Jonathan Stalling, designed and developed a patented transliteration device in order to enable Chinese speakers to learn the English language through newly researched translation techniques."
+    },
+    {
+        "employer": "WellCaddie",
+        "iconImage": "/storage/logos/wellcaddie.png",
+        "title": "Lead Software Engineer",
+        "dates": ["Jun 2018", "Sep 2020"],
+        "location": "Norman, OK",
+        "content": null
     },
     {
         "employer": "WellCaddie",
         "iconImage": "/storage/logos/wellcaddie.png",
         "title": "Head of Software Engineering",
-        "dates": ["Jun 2018", "Jun 2021"],
-        "location": "Norman, OK",
-        "content": "Oversaw software development initiatives for the entire company, including embedded hardware applications for IoT data collection"
+        "dates": ["Sep 2020", "Jul 2021"],
+        "location": "Edmond, OK",
+        "content": "Oversaw software development initiatives for the entire company, including embedded hardware applications for IoT data collection.\n\nFirst engineer hired, helped grow the company and service to a national platform with a valuation of $15M+"
     },
     {
         "employer": "Wunderite",
@@ -53,14 +53,30 @@
         "title": "Senior Software Engineer",
         "dates": ["Jun 2021", "Feb 2022"],
         "location": "Boston, MA",
-        "content": "Large-scale refactoring of a legacy codebase into a modern, performant architecture using Laravel, Vue.js, and TypeScript"
+        "content": "Contributed to a major technical overhaul and re-architecture of a YCombinator backed contender to the industry-standard electronic signature solution, Docusign.\n\nInvolved a migration to Laravel, Vue.js, and TypeScript, as well as the development of a completely in-house digital document signature, certification, and auditing system."
     },
     {
         "employer": "Flywheel Digital",
         "iconImage": "/storage/logos/flywheel.png",
         "title": "Senior Software Engineer",
-        "dates": ["Feb 2022", "Present"],
-        "location": "Rogers, AR",
-        "content": "Leading the engineering initatives for the Walmart Retail column at one of the world's largest B2B eCommerce management services"
+        "dates": ["Feb 2022", "Jan 2023"],
+        "location": "Baltimore, MD",
+        "content": "Led migration of the popular SKUNinja retailer management platform from CakePHP to Laravel, an undertaking that supported MM ARR and an eventual acquisition of our company, WhyteSpyder, by Ascential, PLC."
+    },
+    {
+        "employer": "Flywheel Digital",
+        "iconImage": "/storage/logos/flywheel.png",
+        "title": "Senior Software Engineer, Manager",
+        "dates": ["Jan 2023", "Aug 2024"],
+        "location": "Baltimore, MD",
+        "content": "Led our retailer partnerships and technical integrations for Walmart and Target, providing industry-first functionality for their sellers and suppliers. During this time, I also oversaw the re-architecture of retailer & product data pipelines regularly processing upwards of 1-1.5 PB/day."
+    },
+    {
+        "employer": "Flywheel Digital",
+        "iconImage": "/storage/logos/flywheel.png",
+        "title": "Staff Software Engineer, Manager",
+        "dates": ["Aug 2024", "Present"],
+        "location": "Baltimore, MD",
+        "content": "My role involves guiding the technical direction of multiple teams while also handling day to day management responsibilities. My primary focuses are user-facing tools for large-scale product data management, as well as content syndication to major retailers like Amazon, Walmart, and Target."
     }
 ]
