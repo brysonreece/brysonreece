@@ -48,7 +48,7 @@ class GuestController extends Controller
                     return Str::after($line, '    ');
                 }), explode("\n", $event['content'])));
 
-                $logoUrl = secure_asset(
+                $logoUrl = asset(
                     str_replace(public_path(), '', $event['logo_path']),
                 );
 
@@ -109,7 +109,7 @@ class GuestController extends Controller
                     return Str::after($line, '    ');
                 }), explode("\n", $event['content'])));
 
-                $logoUrl = secure_asset(
+                $logoUrl = asset(
                     str_replace(public_path(), '', $event['logo_path']),
                 );
 
