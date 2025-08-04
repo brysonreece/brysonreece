@@ -4,6 +4,183 @@ import { FormEvent, ReactNode } from 'react';
 import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
+import { ExternalLink } from '@/components/ui/external-link';
+import { type Project, ProjectCard } from '@/components/ui/project-card';
+
+const linkStyles = "underline underline-offset-2 decoration-muted-foreground \
+    hover:decoration-current hover:text-accent-foreground \
+    transition-colors";
+
+const projectCards: Project[] = [
+    {
+        year: '2016',
+        title: 'O.V.A.L.',
+        coverImage: "url('/storage/about-me/oval.jpg')",
+        description: (
+            <span>
+                Helped create{' '}
+                <ExternalLink
+                    className={linkStyles}
+                    href="https://www.normantranscript.com/news/university_of_oklahoma/oval-brings-virtual-world-to-ou-students/article_2ecd4742-a3ef-5a28-9159-7e9f1ae84b86.html"
+                >
+                    O.V.A.L.
+                </ExternalLink>
+                , a VR learning environment which went on to host the world's first multi-state, multi-campus virtual reality pedagogy session.
+            </span>
+        ),
+    },
+    {
+        year: '2017',
+        title: 'Seedling',
+        coverImage: "url('/storage/about-me/seedling.jpg')",
+        description: (
+            <span>
+                Worked with{' '}
+                <ExternalLink className={linkStyles} href="https://en.wikipedia.org/wiki/Jonathan_Stalling">
+                    Jonathan Stalling
+                </ExternalLink>{' '}
+                on a patented, interactive children's toy that taught English pronunciation using NFC-enabled building blocks. On permanent display at the University of Beijing.
+            </span>
+        ),
+    },
+    {
+        year: '2017',
+        title: 'OUVR',
+        coverImage: "url('/storage/about-me/ouvr.jpg')",
+        description: (
+            <span>
+                Along with{' '}
+                <ExternalLink className={linkStyles} href="https://github.com/ryandobby">
+                    Ryan Dobyns
+                </ExternalLink>,
+                founded a collegiate organization that connected aspiring artists & programmers with media/dev studios (like{' '}
+                <ExternalLink className={linkStyles} href="https://tech.facebook.com/reality-labs/">
+                    Meta Reality Labs
+                </ExternalLink>
+                ).
+            </span>
+        ),
+    },
+    {
+        year: '2018',
+        title: 'Athena',
+        coverImage: "url('/storage/about-me/athena.png')",
+        description: (
+            <span>
+                Created{' '}
+                <ExternalLink className={linkStyles} href="https://github.com/athena-app">
+                    Athena
+                </ExternalLink>{' '}
+                with{' '}
+                <ExternalLink className={linkStyles} href="https://github.com/ryandobby">
+                    Ryan Dobyns
+                </ExternalLink>
+                , an alternative VR learning management system built for distributed education using low-cost hardware.
+            </span>
+        ),
+    },
+    {
+        year: '2019',
+        title: 'WellCaddie',
+        coverImage: "url('/storage/about-me/wellcaddie.png')",
+        description: (
+            <span>
+                Joined{' '}
+                <ExternalLink className={linkStyles} href="https://wellcaddie.com">
+                    WellCaddie
+                </ExternalLink>{' '}
+                as the third employee and engineering lead.
+                <br />
+                <br />
+                WellCaddie is now worth over $15M.
+            </span>
+        ),
+    },
+    {
+        year: '2021',
+        title: 'Wunderite',
+        coverImage: "url('/storage/about-me/wunderite.jpg')",
+        description: (
+            <span>
+                Helped{' '}
+                <ExternalLink className={linkStyles} href="https://wunderite.com">
+                    Wunderite
+                </ExternalLink>{' '}
+                develop cutting-edge underwriting software and a contender to the industry-standard electronic signature solution,
+                Docusign.
+            </span>
+        ),
+    },
+    {
+        year: '2022',
+        title: 'WhyteSpyder',
+        coverImage: "url('/storage/about-me/whytespyder.jpg')",
+        description: (
+            <span>
+                Led{' '}
+                <ExternalLink className={linkStyles} href="https://whytespyder.com">
+                    WhyteSpyder
+                </ExternalLink>{' '}
+                and team to new highs with an overhaul of the popular online-retail management platform,{' '}
+                <ExternalLink className={linkStyles} href="https://sku.ninja">
+                    SKUNinja
+                </ExternalLink>
+                .
+            </span>
+        ),
+    },
+    {
+        year: '2023',
+        title: 'Flywheel Digital',
+        coverImage: "url('/storage/about-me/flywheel.png')",
+        description: (
+            <span>
+                After{' '}
+                <ExternalLink
+                    className={linkStyles}
+                    href="https://talkbusiness.net/2021/11/sku-ninja-whytespyder-acquired-by-london-based-ascential/"
+                >
+                    an aquihire
+                </ExternalLink>{' '}
+                by{' '}
+                <ExternalLink
+                    className={linkStyles}
+                    href="https://ascential.com"
+                >
+                    Ascential
+                </ExternalLink>
+                , helped lead the development of{' '}
+                <ExternalLink
+                    className={linkStyles}
+                    href="https://www.flywheeldigital.com/retail-media"
+                >
+                    Commerce Cloud
+                </ExternalLink>{' '}
+                - a e-commerce management platform grown out of{' '}
+                <ExternalLink
+                    className={linkStyles}
+                    href="https://www.flywheeldigital.com/"
+                >
+                    Flywheel Digital
+                </ExternalLink>{' '}
+                (
+                <ExternalLink
+                    className={linkStyles}
+                    href="https://www.wsj.com/articles/omnicom-buys-e-commerce-shop-flywheel-digital-for-835-million-a40212d4"
+                >
+                    recently aquired by
+                </ExternalLink>{' '}
+                <ExternalLink
+                    className={linkStyles}
+                    href="https://omnicomgroup.com"
+                >
+                    Omnicom
+                </ExternalLink>{' '}
+                for $835M).
+            </span>
+        ),
+    },
+];
 
 export default function About() {
     function handleEmailContact(e: FormEvent) {
@@ -30,132 +207,46 @@ export default function About() {
 
                 <div className="prose prose-stone dark:prose-invert sm:prose-base lg:prose-lg mx-auto">
                     <p>
-                        Hey there! I'm{' '}
-                        <a href="https://github.com/brysonreece" target="_blank" rel="noopener noreferrer">
+                        Hey there! 👋 I'm{' '}
+                        <ExternalLink className={linkStyles} href="https://github.com/brysonreece">
                             @brysonreece
-                        </a>
-                        . I spend most of my days creating new combinations of hardware and software, often trying to share what I've learned through
-                        various talks, workshops, and tweets along the way!
+                        </ExternalLink>{' '}
+                        ⸺ I spend most of my days creating new combinations of hardware and software, often trying to share what I've learned through
+                        various talks, workshops, and tweets along the way.
                     </p>
                     <p>
-                        It's safe to say that hardware is my hobby, but software is my passion. It's obvious I'm a technologist though and through; I
-                        even have{' '}
-                        <a href="https://dangerousthings.com/product/flexnt/" target="_blank" rel="noopener noreferrer">
-                            wireless RFID implants
-                        </a>{' '}
-                        in each hand!
-                    </p>
-                    <p>I'm also extremely proud of the following projects that I've had the honor to work with some very talented people on:</p>
-                    <ul>
-                        <li>
-                            <span className="font-bold">2016</span>: Helped create{' '}
-                            <a
-                                href="https://www.normantranscript.com/news/university_of_oklahoma/oval-brings-virtual-world-to-ou-students/article_2ecd4742-a3ef-5a28-9159-7e9f1ae84b86.html"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                O.V.A.L.
-                            </a>
-                            , a VR learning tool which went on to host the world's first multi-state, multi-campus virtual reality pedagogy session.
-                        </li>
-                        <li>
-                            <span className="font-bold">2017</span>: Worked with{' '}
-                            <a href="https://en.wikipedia.org/wiki/Jonathan_Stalling">Jonathan Stalling</a> on a patented new form of Chinese
-                            pronunciation techniques. During this time I also co-founded{' '}
-                            <a
-                                href="https://www.oudaily.com/a_and_e/ou-virtual-reality-association-allows-students-to-develop-technological-skills-prepare-for-future-job-opportunities/article_9b6f0702-27b7-11e8-8230-c37b71f3ea1e.html"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                OUVR
-                            </a>
-                            , a collegiate organization that connected aspiring artists and developers with media development studios.
-                        </li>
-                        <li>
-                            <span className="font-bold">2018</span>: Created{' '}
-                            <a href="https://github.com/athena-app" target="_blank" rel="noopener noreferrer">
-                                Athena
-                            </a>{' '}
-                            with{' '}
-                            <a href="https://ryandobyns.com" target="_blank" rel="noopener noreferrer">
-                                Ryan Dobyns
-                            </a>
-                            , an alternative VR learning management system built for distributed education using low-cost hardware.
-                        </li>
-                        <li>
-                            <span className="font-bold">2019</span>: Joined{' '}
-                            <a href="https://wellcaddie.com" target="_blank" rel="noopener noreferrer">
-                                WellCaddie
-                            </a>{' '}
-                            as the third employee and engineering lead, going on to help raise our startup valuation to over $15M.
-                        </li>
-                        <li>
-                            <span className="font-bold">2021</span>: Helped{' '}
-                            <a href="https://wunderite.com" target="_blank" rel="noopener noreferrer">
-                                Wunderite
-                            </a>{' '}
-                            develop cutting-edge underwriting software and a contender to the industry-standard electronic signature solution,
-                            Docusign.
-                        </li>
-                        <li>
-                            <span className="font-bold">2022</span>: Led{' '}
-                            <a href="https://whytespyder.com" target="_blank" rel="noopener noreferrer">
-                                WhyteSpyder
-                            </a>{' '}
-                            and team to new highs with an overhaul of the popular online-retail management platform,{' '}
-                            <a href="https://sku.ninja" target="_blank" rel="noopener noreferrer">
-                                SKUNinja
-                            </a>
-                            .
-                        </li>
-                        <li>
-                            <span className="font-bold">2023</span>: After{' '}
-                            <a
-                                href="https://talkbusiness.net/2021/11/sku-ninja-whytespyder-acquired-by-london-based-ascential/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                an aquihire
-                            </a>{' '}
-                            by{' '}
-                            <a href="https://ascential.com" target="_blank" rel="noopener noreferrer">
-                                Ascential
-                            </a>
-                            , helped lead the development of{' '}
-                            <a href="https://www.flywheeldigital.com/retail-media" target="_blank" rel="noopener noreferrer">
-                                Commerce Cloud
-                            </a>{' '}
-                            - a e-commerce management platform grown out of{' '}
-                            <a href="https://www.flywheeldigital.com/" target="_blank" rel="noopener noreferrer" className="whitespace-no-wrap">
-                                Flywheel Digital
-                            </a>{' '}
-                            (
-                            <a
-                                href="https://www.wsj.com/articles/omnicom-buys-e-commerce-shop-flywheel-digital-for-835-million-a40212d4"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                recently aquired by
-                            </a>{' '}
-                            <a href="https://omnicomgroup.com" target="_blank" rel="noopener noreferrer">
-                                Omnicom
-                            </a>{' '}
-                            for $835M).
-                        </li>
-                    </ul>
-                    <p>
-                        When I'm not working, I'm usually spending time with my wife, daughter, and two dogs ⸺ or learning something new!
+                        I have a <span className="font-bold">deep</span> passion for software engineering, the act of invention, and the way those things can transform the world around us.
+                        Unsure about just how much I'm committed to the lifestyle? I implanted{' '}
+                        <ExternalLink className={linkStyles} href="https://dangerousthings.com/product/flexnt/">
+                            wireless RFID tags
+                        </ExternalLink>{' '}
+                        into each of my hands!
                     </p>
                     <p>
-                        Want to get in touch?{' '}
-                        <a href="#" onClick={handleEmailContact}>
-                            Send me an email
-                        </a>{' '}
-                        or{' '}
-                        <a href="https://twitter.com/brysonio" target="_blank" rel="noopener noreferrer">
-                            tweet at me
-                        </a>
-                        !
+                        When I'm not working, I'm usually picking up a new technology or skill, listening to Laravel-related podcasts, or spending time with my family; a wife, daughter, and two dogs who have more energy than I ever thought was possible.
+                    </p>
+                    <p>I'm also extremely proud of the following projects I've had the honor to work on, all with people much smarter than me. I encourage you to check each of them out! ⸺</p>
+                </div>
+            </Container>
+            <Container className="max-w-3xl lg:max-w-4xl">
+                <ul className="not-prose list-none gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    {projectCards.map((project, idx) => (
+                        <ProjectCard key={idx} project={project} />
+                    ))}
+                </ul>
+            </Container>
+            <Container className="mt-16 max-w-3xl">
+                <div className="prose prose-stone dark:prose-invert sm:prose-base lg:prose-lg text-center mx-auto">
+                    <p>
+                        Want to get in touch? Feel free to{' '}
+                        <ExternalLink
+                            className={linkStyles}
+                            onClick={handleEmailContact}
+                        >
+                            email me
+                        </ExternalLink>{' '}
+                        or reach out via <ExternalLink className={linkStyles} href="https://twitter.com/brysonio">X</ExternalLink> or{' '}
+                        <ExternalLink className={linkStyles} href="https://github.com/brysonreece">GitHub</ExternalLink>.
                     </p>
                 </div>
             </Container>
