@@ -20,13 +20,13 @@ function ProjectRecord({ event }: { event: ProjectEvent }) {
     return (
         <>
             <div className={clsx(
-                'p-4 rounded-lg sm:rounded-xl',
+                'h-full p-4 rounded-lg sm:rounded-xl',
                 'bg-stone-100 hover:bg-stone-200/25 dark:bg-stone-900 dark:hover:bg-stone-950/10',
                 'hover:shadow-lg shadow-stone-300 dark:shadow-stone-950',
                 'ring ring-stone-200 hover:ring-stone-300 dark:ring-stone-800',
                 'group transition-[box-shadow,background-color] duration-500 ease-in-out',
             )}>
-                <div className="flex flex-col gap-y-8 sm:min-h-16 text-sm font-medium text-stone-500">
+                <div className="h-full flex flex-col gap-y-8 justify-between sm:min-h-16 text-sm font-medium text-stone-500">
                     <div className="w-full space-y-1.5 sm:space-y-2.5">
                         <p className="truncate text-lg leading-5 text-stone-900 dark:text-stone-100">{event.title}</p>
 
@@ -66,6 +66,8 @@ function ProjectRecord({ event }: { event: ProjectEvent }) {
 }
 
 export default function Projects() {
+    const { featured, completed, limbo } = projects as unknown as Record<'featured' | 'completed' | 'limbo', ProjectEvent[]>;
+
     return (
         <>
             <Head title="Projects" />
@@ -78,9 +80,34 @@ export default function Projects() {
                     The "5 to 9s" after the "9 to 5"
                 </p>
 
-                <ul role="list" className="columns-1 md:columns-2 lg:columns-3 space-y-6 gap-6">
-                    {(projects as ProjectEvent[]).map((event, idx) => (
-                        <li key={idx} className="break-inside-avoid-column">
+                <label className="block mb-4 text-sm font-medium text-stone-700 dark:text-stone-300">
+                    Featured
+                </label>
+                <ul role="list" className="mb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {featured.map((event, idx) => (
+                        <li key={idx} className="h-full break-inside-avoid-column">
+                            <ProjectRecord key={idx} event={event} />
+                        </li>
+                    ))}
+                </ul>
+
+                <label className="block mb-4 text-sm font-medium text-stone-700 dark:text-stone-300">
+                    Archive
+                </label>
+                <ul role="list" className="mb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {completed.map((event, idx) => (
+                        <li key={idx} className="h-full break-inside-avoid-column">
+                            <ProjectRecord key={idx} event={event} />
+                        </li>
+                    ))}
+                </ul>
+
+                <label className="block mb-4 text-sm font-medium text-stone-700 dark:text-stone-300">
+                    Incomplete
+                </label>
+                <ul role="list" className="mb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {limbo.map((event, idx) => (
+                        <li key={idx} className="h-full break-inside-avoid-column">
                             <ProjectRecord key={idx} event={event} />
                         </li>
                     ))}
