@@ -23,13 +23,13 @@ export default function Uses() {
                     <h2>Daily Drivers</h2>
                     <ul>
                         <li>
-                            <a href="https://support.apple.com/en-us/111828" target="_blank" rel="noopener noreferrer">
-                                Apple iPhone 15 Pro Max
+                            <a href="https://support.apple.com/en-us/121554" target="_blank" rel="noopener noreferrer">
+                                Apple Macbook Pro (16-inch, M4 Max, 2024)
                             </a>
                         </li>
                         <li>
-                            <a href="https://support.apple.com/kb/SP824" target="_blank" rel="noopener noreferrer">
-                                Apple Macbook Pro (M1, 2020)
+                            <a href="https://support.apple.com/en-us/111828" target="_blank" rel="noopener noreferrer">
+                                Apple iPhone 15 Pro Max
                             </a>
                         </li>
                         <li>
@@ -165,12 +165,16 @@ export default function Uses() {
                             </span>
                         </li>
                     </ul>
-                    <h2>Augmented & Virtual Reality</h2>
+                    <h2>Neat Collectibles</h2>
                     <p>
-                        I'm an avid collector of memorable augmented reality hardware. As the result of a personal, storied history with the technology, I
-                        truly believe it to be the next major computing platform.
+                        I'm an avid collector of memorable pieces of technology that have shaped their own corners of the industry. Here are some of my favorites:
                     </p>
                     <ul>
+                        <li>
+                            <a href="https://en.wikipedia.org/wiki/Google_Search_Appliance" target="_blank" rel="noopener noreferrer">
+                                Google T4 G100 Search Appliance
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href="https://ml1-developer.magicleap.com/en-us/learn/guides/magic-leap-one-overview"
@@ -188,11 +192,6 @@ export default function Uses() {
                         <li>
                             <a href="https://developers.google.com/glass" target="_blank" rel="noopener noreferrer">
                                 Google Glass (Explorer Edition)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.meta.com/quest/products/quest-2/" target="_blank" rel="noopener noreferrer">
-                                Meta Quest 2
                             </a>
                         </li>
                     </ul>
