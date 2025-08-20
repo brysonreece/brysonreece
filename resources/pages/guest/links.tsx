@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { BlueskyIcon, CreativeCommonsIcon, FacebookIcon, GitHubIcon, HackadayIcon, MeetupIcon, PaperAirplaneIcon, PrintablesIcon, SpotifyIcon, XIcon } from '@/components/icons';
-import { MailIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const links = [
@@ -39,7 +38,7 @@ const links = [
     },
     {
         label: 'Spotify',
-        href: 'https://spotify.com/user/brysonreece',
+        href: 'https://open.spotify.com/user/brysonreece',
         icon: SpotifyIcon,
     },
     {
