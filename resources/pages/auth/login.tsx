@@ -25,7 +25,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
     const { data, setData, post, processing, errors, reset } = useForm<Required<LoginForm>>({
         email: '',
         password: '',
-        remember: false,
+        remember: true,
     });
 
     const submit: FormEventHandler = (e) => {
@@ -79,7 +79,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                         <InputError message={errors.password} />
                     </div>
 
-                    <div className="flex items-center space-x-3">
+                    <div className="mx-auto flex items-center space-x-3">
                         <Checkbox
                             id="remember"
                             name="remember"
