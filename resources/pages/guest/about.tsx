@@ -245,7 +245,7 @@ export default function About() {
                         >
                             email me
                         </ExternalLink>{' '}
-                        or reach out via <ExternalLink className={linkStyles} href="https://twitter.com/brysonio">X</ExternalLink> or{' '}
+                        or reach out via <ExternalLink className={linkStyles} href="https://x.com/brysonio">X</ExternalLink> or{' '}
                         <ExternalLink className={linkStyles} href="https://github.com/brysonreece">GitHub</ExternalLink>.
                     </p>
                 </div>
