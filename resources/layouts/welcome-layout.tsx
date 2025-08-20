@@ -27,7 +27,7 @@ export function WelcomeLayout({ children, title }: { children: React.ReactNode; 
             <div className="flex h-full min-h-screen min-w-sm flex-col">
                 <GuestNavbar showLogo={!route().current('guest.welcome')} />
 
-                <main className={cn('grow flex items-center justify-center', transitionClasses)}>{children}</main>
+                <main className={cn('grow flex sm:items-center justify-center', transitionClasses)}>{children}</main>
 
                 <GuestFooter />
             </div>
