@@ -24,7 +24,7 @@ export function GuestLayout({ children, title }: { children: React.ReactNode; ti
         <>
             {title && <Head title={title} />}
 
-            <div className="flex h-full min-h-screen min-w-sm flex-col bg-stone-100 dark:bg-stone-900">
+            <div className="flex h-full min-h-screen min-w-sm flex-col">
                 <GuestNavbar showLogo={!route().current('guest.welcome')} />
 
                 <main className={cn('grow', transitionClasses)}>{children}</main>

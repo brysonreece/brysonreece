@@ -63,7 +63,7 @@ export default function Links() {
         <>
             <Head title="Links" />
 
-            <div className="flex h-full min-h-screen min-w-sm flex-col bg-stone-100 dark:bg-stone-900">
+            <div className="flex h-full min-h-screen min-w-sm flex-col">
                 <div className="mx-auto my-8 sm:my-16 w-full max-w-xs px-4">
                     <Avatar
                         className="mx-auto size-36 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800"
