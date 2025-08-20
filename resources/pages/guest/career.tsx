@@ -52,7 +52,7 @@ export default function Career() {
                     My Career Journey
                 </h1>
                 <p className="font-display mx-auto mt-8 mb-24 max-w-sm text-center text-2xl tracking-tight text-stone-600 sm:max-w-lg lg:max-w-2xl dark:text-stone-300">
-                    An epic tale filled with adventure, dragons, blood, sweat, and tears
+                    An epic filled with adventure, dragons, blood, sweat, and tears
                 </p>
 
                 <ul role="list" className="space-y-12 px-0">
