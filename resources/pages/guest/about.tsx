@@ -238,15 +238,15 @@ export default function About() {
             <Container className="mt-16 max-w-3xl">
                 <div className="prose prose-stone dark:prose-invert sm:prose-base lg:prose-lg text-center mx-auto">
                     <p>
-                        Want to get in touch? Feel free to{' '}
+                        Feel free to{' '}
                         <ExternalLink
                             className={linkStyles}
                             onClick={handleEmailContact}
                         >
                             email me
-                        </ExternalLink>{' '}
-                        or reach out via <ExternalLink className={linkStyles} href="https://x.com/brysonio">X</ExternalLink> or{' '}
-                        <ExternalLink className={linkStyles} href="https://github.com/brysonreece">GitHub</ExternalLink>.
+                        </ExternalLink>,{' '}
+                        reach out via <ExternalLink className={linkStyles} href="https://x.com/brysonio">X</ExternalLink>,{' '}
+                        or follow me on <ExternalLink className={linkStyles} href="https://github.com/brysonreece">GitHub</ExternalLink>!
                     </p>
                 </div>
             </Container>
