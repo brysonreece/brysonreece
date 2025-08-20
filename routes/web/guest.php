@@ -20,3 +20,6 @@ Route::get('community',  fn () => inertia('guest/community'))
 
 Route::get('uses',  fn () => inertia('guest/uses'))
     ->name('guest.uses');
+
+Route::get('links',  fn () => inertia('guest/links'))
+    ->name('guest.links');
