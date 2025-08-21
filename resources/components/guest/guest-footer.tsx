@@ -1,7 +1,8 @@
 import clsx from 'clsx';
+import { LinkIcon } from 'lucide-react';
 
+import { GitHubIcon, XIcon } from '@/components/icons';
 import { Container } from '@/components/ui/container';
-import { GitHubIcon, XIcon } from '../icons';
 
 export function GuestFooter() {
     return (
@@ -20,6 +21,10 @@ export function GuestFooter() {
                         <a href="https://github.com/brysonreece" target="_blank" rel="noopener noreferrer" className="group">
                             <span className="sr-only">GitHub</span>
                             <GitHubIcon className="h-6 w-6 fill-stone-500 group-hover:fill-stone-700" />
+                        </a>
+                        <a href="https://links.bryson.cc" target="_blank" rel="noopener noreferrer" className="group">
+                            <span className="sr-only">Other Links</span>
+                            <LinkIcon className="h-6 w-6 text-stone-500 group-hover:text-stone-700" />
                         </a>
                     </div>
                     {!route().current('guest.welcome') && (
