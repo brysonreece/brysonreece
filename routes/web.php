@@ -11,3 +11,7 @@ Route::domain($host)
     ->group(__DIR__.'/web/auth.php')
     ->group(__DIR__.'/web/app.php')
     ->group(__DIR__.'/web/settings.php');
+
+Route::domain("links.{$host}")
+    ->get('/', fn () => inertia('subdomains/links'))
+    ->name('subdomains.links');

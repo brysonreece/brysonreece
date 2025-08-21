@@ -1,6 +1,8 @@
 import { Head } from '@inertiajs/react';
 import { ReactNode } from 'react';
 
+import { cn } from '@/lib/utils';
+
 import {
     BlueskyIcon,
     CreativeCommonsIcon,
@@ -14,7 +16,6 @@ import {
     XIcon,
 } from '@/components/icons';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
-import { cn } from '@/lib/utils';
 
 const links = [
     {

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => inertia('welcome'))
@@ -21,5 +20,5 @@ Route::get('community',  fn () => inertia('guest/community'))
 Route::get('uses',  fn () => inertia('guest/uses'))
     ->name('guest.uses');
 
-Route::get('links',  fn () => inertia('guest/links'))
+Route::get('links',  fn () => to_route('subdomains.links'))
     ->name('guest.links');
