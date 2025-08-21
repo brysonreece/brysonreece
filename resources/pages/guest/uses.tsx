@@ -167,7 +167,8 @@ export default function Uses() {
                     </ul>
                     <h2>Neat Collectibles</h2>
                     <p>
-                        I'm an avid collector of memorable pieces of technology that have shaped their own corners of the industry. Here are some of my favorites:
+                        I'm an avid collector of memorable pieces of technology that have shaped their own corners of the industry. Here are some of
+                        my favorites:
                     </p>
                     <ul>
                         <li>

@@ -8,17 +8,14 @@ import { GuestFooter } from '@/components/guest/guest-footer';
 import { GuestNavbar } from '@/components/guest/guest-navbar';
 
 export function GuestLayout({ children, title }: { children: React.ReactNode; title?: string }) {
-    const [transitioning, setTransitioning] = useState(false)
+    const [transitioning, setTransitioning] = useState(false);
 
     useEffect(() => {
-      router.on('start', () => setTransitioning(true))
-      router.on('finish', () => setTransitioning(false))
-    }, [])
+        router.on('start', () => setTransitioning(true));
+        router.on('finish', () => setTransitioning(false));
+    }, []);
 
-    const transitionClasses = useMemo(
-      () => `transition ${transitioning ? 'duration-0 opacity-0' : 'duration-300 opacity-100'}`,
-      [transitioning],
-    )
+    const transitionClasses = useMemo(() => `transition ${transitioning ? 'duration-0 opacity-0' : 'duration-300 opacity-100'}`, [transitioning]);
 
     return (
         <>

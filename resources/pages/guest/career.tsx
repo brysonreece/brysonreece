@@ -59,10 +59,12 @@ export default function Career() {
                     {(career as unknown as CareerEvent[]).toReversed().map(function (event, idx) {
                         return (
                             <li key={idx} className="relative flex gap-x-4 pl-4">
-                                <div className={clsx(
-                                    idx === (career as unknown as CareerEvent[]).length - 1 ? 'display-none' : '-bottom-8',
-                                    'absolute top-20 flex w-16 justify-center',
-                                )}>
+                                <div
+                                    className={clsx(
+                                        idx === (career as unknown as CareerEvent[]).length - 1 ? 'display-none' : '-bottom-8',
+                                        'absolute top-20 flex w-16 justify-center',
+                                    )}
+                                >
                                     <div className="w-px bg-stone-300 dark:bg-stone-700" />
                                 </div>
 

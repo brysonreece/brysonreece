@@ -7,9 +7,10 @@ import { Container } from '@/components/ui/container';
 import { ExternalLink } from '@/components/ui/external-link';
 import { type Project, ProjectCard } from '@/components/ui/project-card';
 
-const linkStyles = "underline underline-offset-2 decoration-muted-foreground \
+const linkStyles =
+    'underline underline-offset-2 decoration-muted-foreground \
     hover:decoration-current hover:text-accent-foreground \
-    transition-colors";
+    transition-colors';
 
 const projects: Project[] = [
     {
@@ -39,7 +40,8 @@ const projects: Project[] = [
                 <ExternalLink className={linkStyles} href="https://en.wikipedia.org/wiki/Jonathan_Stalling">
                     Jonathan Stalling
                 </ExternalLink>{' '}
-                on a patented, interactive children's toy that taught English pronunciation using NFC-enabled building blocks. On permanent display at the University of Beijing.
+                on a patented, interactive children's toy that taught English pronunciation using NFC-enabled building blocks. On permanent display at
+                the University of Beijing.
             </span>
         ),
     },
@@ -52,8 +54,8 @@ const projects: Project[] = [
                 Along with{' '}
                 <ExternalLink className={linkStyles} href="https://github.com/ryandobby">
                     Ryan Dobyns
-                </ExternalLink>,
-                founded a collegiate organization that connected aspiring artists & programmers with media/dev studios (like{' '}
+                </ExternalLink>
+                , founded a collegiate organization that connected aspiring artists & programmers with media/dev studios (like{' '}
                 <ExternalLink className={linkStyles} href="https://tech.facebook.com/reality-labs/">
                     Meta Reality Labs
                 </ExternalLink>
@@ -106,8 +108,7 @@ const projects: Project[] = [
                 <ExternalLink className={linkStyles} href="https://wunderite.com">
                     Wunderite
                 </ExternalLink>{' '}
-                develop cutting-edge underwriting software and a contender to the industry-standard electronic signature solution,
-                Docusign.
+                develop cutting-edge underwriting software and a contender to the industry-standard electronic signature solution, Docusign.
             </span>
         ),
     },
@@ -143,24 +144,15 @@ const projects: Project[] = [
                     an aquihire
                 </ExternalLink>{' '}
                 by{' '}
-                <ExternalLink
-                    className={linkStyles}
-                    href="https://ascential.com"
-                >
+                <ExternalLink className={linkStyles} href="https://ascential.com">
                     Ascential
                 </ExternalLink>
                 , helped lead the development of{' '}
-                <ExternalLink
-                    className={linkStyles}
-                    href="https://www.flywheeldigital.com/retail-media"
-                >
+                <ExternalLink className={linkStyles} href="https://www.flywheeldigital.com/retail-media">
                     Commerce Cloud
                 </ExternalLink>{' '}
                 - a e-commerce management platform grown out of{' '}
-                <ExternalLink
-                    className={linkStyles}
-                    href="https://www.flywheeldigital.com/"
-                >
+                <ExternalLink className={linkStyles} href="https://www.flywheeldigital.com/">
                     Flywheel Digital
                 </ExternalLink>{' '}
                 (
@@ -170,10 +162,7 @@ const projects: Project[] = [
                 >
                     recently aquired by
                 </ExternalLink>{' '}
-                <ExternalLink
-                    className={linkStyles}
-                    href="https://omnicomgroup.com"
-                >
+                <ExternalLink className={linkStyles} href="https://omnicomgroup.com">
                     Omnicom
                 </ExternalLink>{' '}
                 for $835M).
@@ -215,38 +204,46 @@ export default function About() {
                         various talks, workshops, and tweets along the way.
                     </p>
                     <p>
-                        I have a <span className="font-bold">deep</span> passion for software engineering, the act of invention, and the way those things can transform the world around us.
-                        Unsure about just how much I'm committed to the lifestyle? I implanted{' '}
+                        I have a <span className="font-bold">deep</span> passion for software engineering, the act of invention, and the way those
+                        things can transform the world around us. Unsure about just how much I'm committed to the lifestyle? I implanted{' '}
                         <ExternalLink className={linkStyles} href="https://dangerousthings.com/product/flexnt/">
                             wireless RFID tags
                         </ExternalLink>{' '}
                         into each of my hands!
                     </p>
                     <p>
-                        When I'm not working, I'm usually picking up a new technology or skill, listening to Laravel-related podcasts, or spending time with my family; a wife, daughter, and two dogs who have more energy than I ever thought was possible.
+                        When I'm not working, I'm usually picking up a new technology or skill, listening to Laravel-related podcasts, or spending
+                        time with my family; a wife, daughter, and two dogs who have more energy than I ever thought was possible.
                     </p>
-                    <p>I'm also extremely proud of the following projects I've had the honor to work on, all with people much smarter than me. I encourage you to check each of them out! ⸺</p>
+                    <p>
+                        I'm also extremely proud of the following projects I've had the honor to work on, all with people much smarter than me. I
+                        encourage you to check each of them out! ⸺
+                    </p>
                 </div>
             </Container>
             <Container className="max-w-3xl lg:max-w-4xl">
-                <ul className="not-prose list-none gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="not-prose grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {projects.map((project, idx) => (
                         <ProjectCard key={idx} project={project} />
                     ))}
                 </ul>
             </Container>
             <Container className="mt-16 max-w-3xl">
-                <div className="prose prose-stone dark:prose-invert sm:prose-base lg:prose-lg text-center mx-auto">
+                <div className="prose prose-stone dark:prose-invert sm:prose-base lg:prose-lg mx-auto text-center">
                     <p>
                         Feel free to{' '}
-                        <ExternalLink
-                            className={linkStyles}
-                            onClick={handleEmailContact}
-                        >
+                        <ExternalLink className={linkStyles} onClick={handleEmailContact}>
                             email me
-                        </ExternalLink>,{' '}
-                        reach out via <ExternalLink className={linkStyles} href="https://x.com/brysonio">X</ExternalLink>,{' '}
-                        or follow me on <ExternalLink className={linkStyles} href="https://github.com/brysonreece">GitHub</ExternalLink>!
+                        </ExternalLink>
+                        , reach out via{' '}
+                        <ExternalLink className={linkStyles} href="https://x.com/brysonio">
+                            X
+                        </ExternalLink>
+                        , or follow me on{' '}
+                        <ExternalLink className={linkStyles} href="https://github.com/brysonreece">
+                            GitHub
+                        </ExternalLink>
+                        !
                     </p>
                 </div>
             </Container>

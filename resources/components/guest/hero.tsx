@@ -4,14 +4,8 @@ import { Avatar, AvatarImage } from '../ui/avatar';
 export function Hero() {
     return (
         <div className="text-center">
-            <Avatar
-                className="mx-auto size-64 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800"
-            >
-                <AvatarImage
-                    className="h-full w-full rounded-full"
-                    src="https://avatars.githubusercontent.com/u/4043157?v=4"
-                    alt="Bryson Reece"
-                />
+            <Avatar className="mx-auto size-64 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
+                <AvatarImage className="h-full w-full rounded-full" src="https://avatars.githubusercontent.com/u/4043157?v=4" alt="Bryson Reece" />
             </Avatar>
 
             <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-medium tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
@@ -35,19 +29,19 @@ export function Hero() {
                 a passionate maker with a specialty in developing enterprise platforms that scale
             </p>
 
-            <div className="flex items-center justify-center gap-x-6 mt-12">
+            <div className="mt-12 flex items-center justify-center gap-x-6">
                 <a
                     href="/storage/bryson-reece-resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center rounded-md border border-stone-700 px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:bg-transparent dark:hover:text-blue-500 dark:hover:border-blue-500"
+                    className="inline-flex items-center rounded-md border border-stone-700 px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:border-blue-500 dark:hover:bg-transparent dark:hover:text-blue-500"
                 >
                     <CloudDownloadIcon className="mr-1 h-4 w-4" />
                     <span>Resume</span>
                 </a>
                 <a
-                    href={ route('guest.about') }
-                    className="inline-flex items-center rounded-md px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:bg-transparent dark:hover:text-blue-500 dark:hover:border-blue-500"
+                    href={route('guest.about')}
+                    className="inline-flex items-center rounded-md px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:border-blue-500 dark:hover:bg-transparent dark:hover:text-blue-500"
                 >
                     <span>Learn more &rarr;</span>
                 </a>

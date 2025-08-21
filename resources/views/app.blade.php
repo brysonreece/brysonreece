@@ -24,7 +24,8 @@
     <meta name="description" content="Hey there! I'm Bryson Reece ⸺ a dad, software engineer, and avid DIYer that's constantly learning new things." />
     <meta name="author" content="Bryson Reece" />
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👋</text></svg>" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👋</text></svg>" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
