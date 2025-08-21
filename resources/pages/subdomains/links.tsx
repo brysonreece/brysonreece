@@ -80,7 +80,7 @@ export default function Links() {
                     <Avatar className="mx-auto size-36 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
                         <AvatarImage
                             className="h-full w-full rounded-full"
-                            src="https://avatars.githubusercontent.com/u/4043157?v=4"
+                            src="/storage/me.png"
                             alt="Bryson Reece"
                         />
                     </Avatar>
