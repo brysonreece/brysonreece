@@ -23,7 +23,6 @@
 
 [![GitHub](https://img.shields.io/badge/-GitHub-inactive)](https://github.com/brysonreece)
 [![Twitter](https://img.shields.io/badge/-Twitter-inactive)](https://twitter.com/brysonio)
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-inactive)](https://www.linkedin.com/in/brysonreece/)
-[![Email](https://img.shields.io/badge/-Email-inactive)](mailto:hey@bryson.cc)
+[![Other Links](https://img.shields.io/badge/-Other%20Links-inactive)](https://links.bryson.cc)
 
 </span>
