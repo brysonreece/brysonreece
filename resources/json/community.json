@@ -1,7 +1,7 @@
 [
     {
         "host": "The University of Oklahoma, Edge Makerspace",
-        "iconImage": "/storage/img/ou.png",
+        "iconImage": "/storage/img/logos/ou.png",
         "title": "Hacking Home Automation",
         "dates": ["Feb 2016", null],
         "location": "Norman, OK",
@@ -9,7 +9,7 @@
     },
     {
         "host": "The University of Oklahoma, Edge Makerspace",
-        "iconImage": "/storage/img/ou.png",
+        "iconImage": "/storage/img/logos/ou.png",
         "title": "Introduction to 3D Printing",
         "dates": ["Apr 2016", "Dec 2016"],
         "location": "Norman, OK",
@@ -17,7 +17,7 @@
     },
     {
         "host": "The University of Oklahoma, Edge Makerspace",
-        "iconImage": "/storage/img/ou.png",
+        "iconImage": "/storage/img/logos/ou.png",
         "title": "VR @ OU",
         "dates": ["Apr 2016", "Dec 2016"],
         "location": "Norman, OK",
@@ -25,7 +25,7 @@
     },
     {
         "host": "Techlahoma, OKC VR",
-        "iconImage": "/storage/img/meetup.png",
+        "iconImage": "/storage/img/logos/meetup.png",
         "title": "Introduction to Unity",
         "dates": ["Jul 2017", null],
         "location": "Norman, OK",
@@ -33,7 +33,7 @@
     },
     {
         "host": "Techlahoma, OKC VR",
-        "iconImage": "/storage/img/meetup.png",
+        "iconImage": "/storage/img/logos/meetup.png",
         "title": "Introduction to Unity (Advanced)",
         "dates": ["Aug 2017", null],
         "location": "Norman, OK",
@@ -41,7 +41,7 @@
     },
     {
         "host": "The University of Oklahoma, Homebrew Website Club",
-        "iconImage": "/storage/img/ou.png",
+        "iconImage": "/storage/img/logos/ou.png",
         "title": "Introduction to Laravel",
         "dates": ["Oct 2018", null],
         "location": "Norman, OK",
@@ -49,7 +49,7 @@
     },
     {
         "host": "Norman AR/VR",
-        "iconImage": "/storage/img/meetup.png",
+        "iconImage": "/storage/img/logos/meetup.png",
         "title": "Developing for the Microsoft HoloLens",
         "dates": ["Sep 2018", null],
         "location": "Norman, OK",
@@ -57,7 +57,7 @@
     },
     {
         "host": "Techlahoma, FreeCodeCamp OKC",
-        "iconImage": "/storage/img/meetup.png",
+        "iconImage": "/storage/img/logos/meetup.png",
         "title": "Introduction to PHP",
         "dates": ["Nov 2020", null],
         "location": "Norman, OK",
