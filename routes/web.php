@@ -1,6 +1,13 @@
 <?php
 
-require __DIR__.'/web/guest.php';
-require __DIR__.'/web/app.php';
-require __DIR__.'/web/settings.php';
-require __DIR__.'/web/auth.php';
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Uri;
+
+// Extract the host from the application URL
+$host = Uri::of(config('app.url'))->host();
+
+Route::domain($host)
+    ->group(__DIR__.'/web/guest.php')
+    ->group(__DIR__.'/web/auth.php')
+    ->group(__DIR__.'/web/app.php')
+    ->group(__DIR__.'/web/settings.php');
