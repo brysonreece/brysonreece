@@ -1,6 +1,6 @@
 import { CloudDownloadIcon } from 'lucide-react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 
 export function Hero() {
     return (
@@ -12,9 +12,6 @@ export function Hero() {
                     alt="Bryson Reece"
                     fetchPriority="high"
                 />
-                <AvatarFallback className="rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                    BR
-                </AvatarFallback>
             </Avatar>
 
             <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-medium tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">

@@ -15,7 +15,7 @@ import {
     SpotifyIcon,
     XIcon,
 } from '@/components/icons';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 
 const links = [
     {
@@ -84,9 +84,6 @@ export default function Links() {
                             alt="Bryson Reece"
                             fetchPriority="high"
                         />
-                        <AvatarFallback className="rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                            BR
-                        </AvatarFallback>
                     </Avatar>
                     <div className="my-8">
                         <h1 className="mx-auto mb-4 w-fit font-mono text-2xl">Bryson Reece</h1>
