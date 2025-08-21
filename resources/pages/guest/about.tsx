@@ -204,7 +204,7 @@ export default function About() {
                         various talks, workshops, and tweets along the way.
                     </p>
                     <p>
-                        I have a <span className="font-bold">deep</span> passion for software engineering, the act of invention, and the way those
+                        I have a <span className="font-semibold">deep</span> passion for software engineering, the act of invention, and the way those
                         things can transform the world around us. Unsure about just how much I'm committed to the lifestyle? I implanted{' '}
                         <ExternalLink className={linkStyles} href="https://dangerousthings.com/product/flexnt/">
                             wireless RFID tags

@@ -40,10 +40,10 @@ export function ProjectCard({ project }: { project: Project }) {
                         {/* Overlay for the cover image */}
                         <div className="absolute inset-0 rounded-lg bg-black/75" />
                         <div className="absolute top-4 left-4 max-w-3/4">
-                            <p className="text-primary truncate text-xl font-bold">{year}</p>
+                            <p className="text-primary truncate text-xl font-semibold">{year}</p>
                         </div>
                         <div className="absolute right-4 bottom-4 max-w-3/4 text-right">
-                            <dt className="text-primary text-2xl font-bold">{title}</dt>
+                            <dt className="text-primary text-2xl font-semibold">{title}</dt>
                         </div>
                     </CardContent>
                 </Card>
