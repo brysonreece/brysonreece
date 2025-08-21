@@ -22,7 +22,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                 <div className="flex items-center sm:justify-between">
                     {showLogo && (
                         <Link href={route('guest.welcome')} className="m-2 hidden items-center rounded-full sm:flex">
-                            <img className="h-10 w-10 rounded-full" src="/storage/me.png" alt="Bryson Reece" />
+                            <img className="h-10 w-10 rounded-full" src="/storage/img/me.png" alt="Bryson Reece" />
                         </Link>
                     )}
 

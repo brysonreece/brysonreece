@@ -1,7 +1,7 @@
 [
     {
         "employer": "The University of Oklahoma",
-        "iconImage": "/storage/logos/ou.png",
+        "iconImage": "/storage/img/ou.png",
         "title": "VR Software Engineer",
         "dates": ["May 2016", "Aug 2017"],
         "location": "Norman, OK",
@@ -9,7 +9,7 @@
     },
     {
         "employer": "TankVault",
-        "iconImage": "/storage/logos/tankvault.png",
+        "iconImage": "/storage/img/tankvault.png",
         "title": "Software Engineering Intern",
         "dates": ["Aug 2016", "Nov 2016"],
         "location": "Norman, OK",
@@ -17,7 +17,7 @@
     },
     {
         "employer": "WellCaddie",
-        "iconImage": "/storage/logos/wellcaddie.png",
+        "iconImage": "/storage/img/wellcaddie.png",
         "title": "Senior Software Engineer",
         "dates": ["May 2017", "Jun 2018"],
         "location": "Norman, OK",
@@ -25,7 +25,7 @@
     },
     {
         "employer": "The University of Oklahoma",
-        "iconImage": "/storage/logos/ou.png",
+        "iconImage": "/storage/img/ou.png",
         "title": "Pinyin Technology Consultant",
         "dates": ["Aug 2017", "May 2018"],
         "location": "Norman, OK",
@@ -33,7 +33,7 @@
     },
     {
         "employer": "WellCaddie",
-        "iconImage": "/storage/logos/wellcaddie.png",
+        "iconImage": "/storage/img/wellcaddie.png",
         "title": "Lead Software Engineer",
         "dates": ["Jun 2018", "Sep 2020"],
         "location": "Norman, OK",
@@ -41,7 +41,7 @@
     },
     {
         "employer": "WellCaddie",
-        "iconImage": "/storage/logos/wellcaddie.png",
+        "iconImage": "/storage/img/wellcaddie.png",
         "title": "Head of Software Engineering",
         "dates": ["Sep 2020", "Jul 2021"],
         "location": "Edmond, OK",
@@ -49,7 +49,7 @@
     },
     {
         "employer": "Wunderite",
-        "iconImage": "/storage/logos/wunderite.png",
+        "iconImage": "/storage/img/wunderite.png",
         "title": "Senior Software Engineer",
         "dates": ["Jun 2021", "Feb 2022"],
         "location": "Boston, MA",
@@ -57,7 +57,7 @@
     },
     {
         "employer": "Flywheel Digital",
-        "iconImage": "/storage/logos/flywheel.png",
+        "iconImage": "/storage/img/flywheel.png",
         "title": "Senior Software Engineer",
         "dates": ["Feb 2022", "Jan 2023"],
         "location": "Baltimore, MD",
@@ -65,7 +65,7 @@
     },
     {
         "employer": "Flywheel Digital",
-        "iconImage": "/storage/logos/flywheel.png",
+        "iconImage": "/storage/img/flywheel.png",
         "title": "Senior Software Engineer, Manager",
         "dates": ["Jan 2023", "Aug 2024"],
         "location": "Baltimore, MD",
@@ -73,7 +73,7 @@
     },
     {
         "employer": "Flywheel Digital",
-        "iconImage": "/storage/logos/flywheel.png",
+        "iconImage": "/storage/img/flywheel.png",
         "title": "Staff Software Engineer, Manager",
         "dates": ["Aug 2024", "Present"],
         "location": "Baltimore, MD",

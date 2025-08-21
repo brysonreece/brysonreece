@@ -1,7 +1,7 @@
 *
 !.gitignore
 !bryson-reece-resume.pdf
-!keyboard-layout.json
-!me.png
-!logos/
-!about-me/
+!docs/
+!docs/**
+!img/
+!img/**

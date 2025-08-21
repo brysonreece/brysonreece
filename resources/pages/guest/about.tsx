@@ -16,7 +16,7 @@ const projects: Project[] = [
     {
         year: '2016',
         title: 'O.V.A.L.',
-        coverImage: "url('/storage/about-me/oval.jpg')",
+        coverImage: "url('/storage/img/oval.jpg')",
         description: (
             <span>
                 Helped create{' '}
@@ -33,7 +33,7 @@ const projects: Project[] = [
     {
         year: '2017',
         title: 'Seedling',
-        coverImage: "url('/storage/about-me/seedling.jpg')",
+        coverImage: "url('/storage/img/seedling.jpg')",
         description: (
             <span>
                 Worked with{' '}
@@ -48,7 +48,7 @@ const projects: Project[] = [
     {
         year: '2017',
         title: 'OUVR',
-        coverImage: "url('/storage/about-me/ouvr.jpg')",
+        coverImage: "url('/storage/img/ouvr.jpg')",
         description: (
             <span>
                 Along with{' '}
@@ -66,7 +66,7 @@ const projects: Project[] = [
     {
         year: '2018',
         title: 'Athena',
-        coverImage: "url('/storage/about-me/athena.png')",
+        coverImage: "url('/storage/img/athena.png')",
         description: (
             <span>
                 Created{' '}
@@ -84,7 +84,7 @@ const projects: Project[] = [
     {
         year: '2019',
         title: 'WellCaddie',
-        coverImage: "url('/storage/about-me/wellcaddie.png')",
+        coverImage: "url('/storage/img/wellcaddie.png')",
         description: (
             <span>
                 Joined{' '}
@@ -101,7 +101,7 @@ const projects: Project[] = [
     {
         year: '2021',
         title: 'Wunderite',
-        coverImage: "url('/storage/about-me/wunderite.jpg')",
+        coverImage: "url('/storage/img/wunderite.jpg')",
         description: (
             <span>
                 Helped{' '}
@@ -115,7 +115,7 @@ const projects: Project[] = [
     {
         year: '2022',
         title: 'WhyteSpyder',
-        coverImage: "url('/storage/about-me/whytespyder.jpg')",
+        coverImage: "url('/storage/img/whytespyder.jpg')",
         description: (
             <span>
                 Led{' '}
@@ -133,7 +133,7 @@ const projects: Project[] = [
     {
         year: '2023',
         title: 'Flywheel Digital',
-        coverImage: "url('/storage/about-me/flywheel.png')",
+        coverImage: "url('/storage/img/flywheel.png')",
         description: (
             <span>
                 After{' '}
