@@ -8,7 +8,7 @@ export function Hero() {
             <Avatar className="mx-auto size-64 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
                 <AvatarImage
                     className="h-full w-full rounded-full"
-                    src="/storage/img/me.png"
+                    src="/storage/img/me.webp"
                     alt="Bryson Reece"
                     fetchPriority="high"
                 />

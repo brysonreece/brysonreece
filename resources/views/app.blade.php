@@ -32,7 +32,7 @@
     <link href="https://fonts.bunny.net/css?family=Rubik:400,500,600" rel="stylesheet" />
 
     <!-- Preloads -->
-    <link rel="preload" href="/storage/img/me.png" as="image" />
+    <link rel="preload" href="/storage/img/me.webp" as="image" />
 
     <!-- Scripts -->
     @routes
