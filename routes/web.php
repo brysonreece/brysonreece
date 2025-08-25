@@ -14,15 +14,15 @@ Route::domain($host)
     ->group(__DIR__.'/web/app.php')
     ->group(__DIR__.'/web/settings.php');
 
-Route::domain("emojicon.dev")->group(function () {
+Route::domain("emojicons.dev")->group(function () {
     Route::get('/', fn () => inertia('subdomains/emojicons'))
-        ->name('emojicon.welcome');
+        ->name('emojicons.dev');
 
     Route::get('/{emoji}', fn (Request $request, string $emoji) => Response::make(
         view('emojicons.svg', ['emoji' => $emoji]),
         200,
         ['Content-Type' => 'image/svg+xml']
-    ))->name('emojicon.svg');
+    ))->name('emojicons.svg');
 });
 
 Route::domain("emojicon.dev")
