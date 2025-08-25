@@ -75,9 +75,9 @@ export default function Emojicon() {
                             <span className="font-bold text-orange-600">emojicons</span>
                         </h1>
                         <Button asChild>
-                            <button type="button" className={buttonStyles}>
+                            <a href="https://css-tricks.com/emoji-as-a-favicon/" target="_blank" rel="noopener" className={buttonStyles}>
                                 Learn More 🔎
-                            </button>
+                            </a>
                         </Button>
                     </div>
                 </div>
