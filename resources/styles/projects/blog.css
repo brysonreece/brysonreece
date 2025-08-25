@@ -1,10 +1,12 @@
 @import '../base.css';
-@import '../fonts/rubik.css';
+@import '../fonts/instrument-sans.css';
+@import '../fonts/instrument-serif.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --font-sans: 'Rubik', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Instrument Serif', ui-serif, Georgia, 'Cambria', 'Times New Roman', Times, serif;
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
