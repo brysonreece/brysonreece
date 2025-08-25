@@ -1,11 +1,13 @@
+import { APP_NAME, APP_PROJECT } from './constants';
+
 import './bootstrap';
-import './styles/app.css';
+
+import(`./styles/projects/${APP_PROJECT}.css`);
 
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import { initializeTheme } from './hooks/use-appearance';
-import { APP_NAME } from './constants';
 
 createInertiaApp({
     title: (title) => (title ? `${title} // ${APP_NAME}` : `// ${APP_NAME}`),
