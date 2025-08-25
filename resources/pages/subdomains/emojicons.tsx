@@ -187,10 +187,12 @@ export default function Emojicon() {
                     ))}
                 </div>
                 <div className="sticky bottom-0 max-sm:hidden flex-none py-2 px-2.5 bg-stone-100 border-t border-stone-300 text-stone-500">
-                    <a href="https://bryson.cc" target="_blank" className="flex items-center justify-between text-sm leading-4 font-display">
+                    <div className="flex items-center justify-between text-sm leading-4 font-display">
                         <p>Crafted with care.</p>
-                        <p>Bryson Reece © {currentYear}</p>
-                    </a>
+                        <a href="https://bryson.cc" target="_blank" rel="noopener">
+                            <p>Bryson Reece © {currentYear}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </>
