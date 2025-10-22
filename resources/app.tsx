@@ -1,8 +1,8 @@
-import { APP_NAME, APP_PROJECT } from './constants';
+import { APP_NAME } from './constants';
 
 import './bootstrap';
 
-import(`./styles/projects/${APP_PROJECT}.css`);
+import(`./styles/blog.css`);
 
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';

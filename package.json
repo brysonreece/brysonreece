@@ -59,9 +59,7 @@
         "tailwind-merge": "^3.0.1",
         "tailwindcss": "^4.0.0",
         "tailwindcss-animate": "^1.0.7",
-        "title-case": "^4.3.2",
         "typescript": "^5.7.2",
-        "unicode-emoji-json": "^0.8.0",
         "vaul": "^1.1.2",
         "vite": "^7.0.4",
         "ziggy-js": "^2.5.2"

@@ -1,12 +1,12 @@
-@import '../base.css';
-@import '../fonts/instrument-sans.css';
-@import '../fonts/instrument-serif.css';
+@import './base.css';
+@import './fonts/instrument-sans.css';
+@import './fonts/instrument-serif.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --font-display: 'Instrument Serif', ui-serif, system-ui, serif;
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Instrument Serif', ui-serif, Georgia, 'Cambria', 'Times New Roman', Times, serif;
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -130,5 +130,23 @@
 @layer base {
     * {
         @apply border-border;
+    }
+}
+
+@layer utilities {
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+
+    .transform-style-preserve-3d {
+        transform-style: preserve-3d;
+    }
+
+    .backface-hidden {
+        backface-visibility: hidden;
+    }
+
+    .rotate-y-180 {
+        transform: rotateY(180deg);
     }
 }
