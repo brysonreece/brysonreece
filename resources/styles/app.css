@@ -1,6 +1,13 @@
-@import './base.css';
+@import 'tailwindcss';
 @import './fonts/instrument-sans.css';
 @import './fonts/instrument-serif.css';
+
+@plugin 'tailwindcss-animate';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@source "../views";
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -128,7 +135,11 @@
 }
 
 @layer base {
-    * {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
         @apply border-border;
     }
 }
