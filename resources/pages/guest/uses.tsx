@@ -175,6 +175,8 @@ export default function Uses() {
                             <a href="https://en.wikipedia.org/wiki/Google_Search_Appliance" target="_blank" rel="noopener noreferrer">
                                 Google T4 G100 Search Appliance
                             </a>
+                            {' '}
+                            (I own three!)
                         </li>
                         <li>
                             <a
@@ -194,6 +196,17 @@ export default function Uses() {
                             <a href="https://developers.google.com/glass" target="_blank" rel="noopener noreferrer">
                                 Google Glass (Explorer Edition)
                             </a>
+                        </li>
+                        <li>
+                            <a href="https://friend.com" target="_blank" rel="noopener noreferrer">
+                                Friend
+                            </a>
+                            {' / '}
+                            <a href="https://omi.me" target="_blank" rel="noopener noreferrer">
+                                Omi.me
+                            </a>
+                            {' '}
+                            Wearables
                         </li>
                     </ul>
                 </div>
