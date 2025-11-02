@@ -164,6 +164,16 @@ export default function Uses() {
                                 this thing up after months of sitting and immediately jump into a high quality 12+ hour print with no recalibration.
                             </span>
                         </li>
+                        <li>
+                            <a href="https://lulzbot.com/legacy-printers/taz-6" target="_blank" rel="noopener noreferrer">
+                                Lulzbot Taz 6
+                            </a>
+                            <span>
+                                : The LulzBot TAZ 6 was the most reliable, easiest to use desktop 3D printer of its day, featuring innovative
+                                self-leveling and self-cleaning, and a modular tool head design for flexible and multi-material prints. With
+                                one of the largest print volumes in its class, the LulzBot TAZ 6 is an absolute workhorse for FDM manufacturing.
+                            </span>
+                        </li>
                     </ul>
                     <h2>Neat Collectibles</h2>
                     <p>
