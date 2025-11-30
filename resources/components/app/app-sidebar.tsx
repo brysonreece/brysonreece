@@ -33,7 +33,7 @@ export function AppSidebar() {
                 <NavUser />
             </SidebarHeader>
 
-            <SidebarContent>
+            <SidebarContent className="my-2">
                 <NavMain items={mainNavItems} />
             </SidebarContent>
 
