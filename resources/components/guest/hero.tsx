@@ -131,13 +131,13 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
     useEffect(() => {
         if (!isTyping) return;
 
-        // Wait 250ms (full fade-out duration) before changing the text
+        // Wait 300ms (full fade-out duration) before changing the text
         const timeout = setTimeout(() => {
             const targetSubtitle = isCosmoMode
                 ? "the goodest boy with a nose for opportunity and a habit of herding better team outcomes"
                 : "a passionate maker with a specialty in developing enterprise platforms that scale";
             setDisplayedSubtitle(targetSubtitle);
-        }, 250);
+        }, 300);
 
         return () => clearTimeout(timeout);
     }, [isTyping, isCosmoMode]);
