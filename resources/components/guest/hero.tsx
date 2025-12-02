@@ -188,7 +188,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                 <span className="relative whitespace-nowrap text-blue-600">
                     <svg
                         viewBox="0 0 418 42"
-                        className={`absolute top-2/3 left-0 mt-1 h-[0.58em] w-full fill-stone-300/70 dark:fill-stone-700/70 transition-opacity duration-300 ${
+                        className={`absolute top-2/3 left-0 sm:mt-1 h-[0.58em] w-full fill-stone-300/70 dark:fill-stone-700/70 transition-opacity duration-300 ${
                             isTyping ? 'opacity-0' : 'opacity-100'
                         }`}
                         preserveAspectRatio="none"
