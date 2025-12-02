@@ -1,11 +1,12 @@
 import { Head } from '@inertiajs/react';
-import { FormEvent, ReactNode } from 'react';
+import { FormEvent, ReactNode, useRef } from 'react';
 
 import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
 import { ExternalLink } from '@/components/ui/external-link';
 import { type Project, ProjectCard } from '@/components/ui/project-card';
+import { GazeTracker } from '@/components/gaze-tracker';
 
 const linkStyles =
     'underline underline-offset-2 decoration-muted-foreground \
@@ -172,6 +173,8 @@ const projects: Project[] = [
 ];
 
 export default function About() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
     function handleEmailContact(e: FormEvent) {
         e.preventDefault();
         // hopefully this is obfuscated enough to prevent spam
@@ -182,7 +185,17 @@ export default function About() {
         <>
             <Head title="About Me" />
 
-            <Container className="mb-16 max-w-3xl">
+            <Container ref={containerRef} className="mb-16 max-w-3xl">
+                <GazeTracker
+                    containerRef={containerRef}
+                    className="mx-auto size-64"
+                    basePath="/storage/img/gaze/cosmo"
+                    pMin={-10}
+                    pMax={10}
+                    stepSize={5}
+                    imgSize={256}
+                />
+
                 <h1 className="font-display mx-auto mt-12 mb-0 max-w-4xl text-center text-5xl font-medium tracking-tight text-stone-900 sm:text-6xl dark:text-stone-100">
                     About Me
                 </h1>
