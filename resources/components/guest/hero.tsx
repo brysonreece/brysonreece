@@ -1,11 +1,51 @@
 import { CloudDownloadIcon } from 'lucide-react';
 
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { useEffect } from 'react';
 
 export function Hero() {
+    function transformElement(element: HTMLElement, mouseX: number, mouseY: number) {
+        const box = element.getBoundingClientRect();
+
+        const calc = (val: number) => Math.max(-5, Math.min(5, val));
+
+        const relativeMouseX = mouseX - (box.x + box.width / 2);
+        const relativeMouseY = mouseY - (box.y + box.height / 2);
+
+        element.style.transform = `
+            translate(${calc(relativeMouseX)}px, ${calc(relativeMouseY)}px)
+            rotateX(${calc(-relativeMouseY)}deg) rotateY(${calc(relativeMouseX)}deg)
+        `;
+    }
+
+    useEffect(() => {
+        const app = document.getElementById('app')!;
+        const element = document.getElementById('avatar')!;
+
+        const transform = (e: MouseEvent) => {
+            window.requestAnimationFrame(function () {
+                transformElement(element, e.clientX, e.clientY);
+            });
+        };
+
+        const reset = () => {
+            window.requestAnimationFrame(function () {
+                element.style.transform = "translate(0, 0) rotateX(0) rotateY(0)";
+            });
+        };
+
+        app.addEventListener("mousemove", transform);
+        app.addEventListener("mouseleave", reset);
+
+        return () => {
+            app.removeEventListener("mousemove", transform);
+            app.removeEventListener("mouseleave", reset);
+        };
+    }, []);
+
     return (
         <div className="text-center">
-            <Avatar className="mx-auto size-64 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
+            <Avatar id="avatar" className="mx-auto size-64 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-80 transform-3d duration-300">
                 <AvatarImage
                     className="h-full w-full rounded-full"
                     src="/storage/img/me.webp"
