@@ -194,7 +194,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
 
             <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-medium tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
                 Hey there, <br className="max-sm:hidden" />
-                I'm{' '}
+                I'm <br className="sm:hidden" />
                 <span className="relative whitespace-nowrap text-blue-600">
                     <svg
                         viewBox="0 0 418 42"
