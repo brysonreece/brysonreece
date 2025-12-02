@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 type HeroProps = {
     enableMouseAnimation?: boolean;
-    containerRef?: React.RefObject<HTMLDivElement>;
+    containerRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 export function Hero({ enableMouseAnimation = false, containerRef: externalContainerRef }: HeroProps) {
