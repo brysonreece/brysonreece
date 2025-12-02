@@ -3,7 +3,11 @@ import { CloudDownloadIcon } from 'lucide-react';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { useEffect } from 'react';
 
-export function Hero() {
+type HeroProps = {
+    enableMouseAnimation?: boolean;
+};
+
+export function Hero({ enableMouseAnimation = false }: HeroProps) {
     function transformElement(element: HTMLElement, mouseX: number, mouseY: number) {
         const box = element.getBoundingClientRect();
 
@@ -19,6 +23,8 @@ export function Hero() {
     }
 
     useEffect(() => {
+        if (!enableMouseAnimation) return;
+
         const app = document.getElementById('app')!;
         const element = document.getElementById('avatar')!;
 
@@ -41,7 +47,7 @@ export function Hero() {
             app.removeEventListener("mousemove", transform);
             app.removeEventListener("mouseleave", reset);
         };
-    }, []);
+    }, [enableMouseAnimation]);
 
     return (
         <div className="text-center">
