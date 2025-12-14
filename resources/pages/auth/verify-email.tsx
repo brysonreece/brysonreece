@@ -3,17 +3,19 @@ import { Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler } from 'react';
 
+import { store } from '@/actions/App/Http/Controllers/Auth/EmailVerificationNotificationController';
+import { destroy } from '@/actions/App/Http/Controllers/Auth/AuthenticatedSessionController';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import AuthLayout from '@/layouts/auth-layout';
 
 export default function VerifyEmail({ status }: { status?: string }) {
-    const { post, processing } = useForm({});
+    const { submit, processing } = useForm({});
 
-    const submit: FormEventHandler = (e) => {
+    const handleSubmit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route('verification.send'));
+        submit(store());
     };
 
     return (
@@ -26,13 +28,13 @@ export default function VerifyEmail({ status }: { status?: string }) {
                 </div>
             )}
 
-            <form onSubmit={submit} className="space-y-6 text-center">
+            <form onSubmit={handleSubmit} className="space-y-6 text-center">
                 <Button disabled={processing} variant="secondary">
                     {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                     Resend verification email
                 </Button>
 
-                <TextLink href={route('logout')} method="post" className="mx-auto block text-sm">
+                <TextLink href={destroy()} className="mx-auto block text-sm">
                     Log out
                 </TextLink>
             </form>

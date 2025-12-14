@@ -2,6 +2,8 @@ import { Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler } from 'react';
 
+import { store } from '@/actions/App/Http/Controllers/Auth/AuthenticatedSessionController';
+import { create as passwordRequestCreate } from '@/actions/App/Http/Controllers/Auth/PasswordResetLinkController';
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
@@ -24,15 +26,15 @@ interface LoginProps {
 }
 
 export default function Login({ email, password, canResetPassword, status }: LoginProps) {
-    const { data, setData, post, processing, errors, reset } = useForm<Required<LoginForm>>({
+    const { data, setData, submit, processing, errors, reset } = useForm<Required<LoginForm>>({
         email: email || '',
         password: password || '',
         remember: true,
     });
 
-    const submit: FormEventHandler = (e) => {
+    const handleSubmit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route('login'), {
+        submit(store(), {
             onFinish: () => reset('password'),
         });
     };
@@ -41,7 +43,7 @@ export default function Login({ email, password, canResetPassword, status }: Log
         <AuthLayout title="Log in to your account" description="Enter your email and password below to log in">
             <Head title="Log in" />
 
-            <form className="flex flex-col gap-6" onSubmit={submit}>
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                 <div className="grid gap-6">
                     <div className="grid gap-2">
                         <Label htmlFor="email">Email address</Label>
@@ -63,7 +65,7 @@ export default function Login({ email, password, canResetPassword, status }: Log
                         <div className="flex items-center">
                             <Label htmlFor="password">Password</Label>
                             {canResetPassword && (
-                                <TextLink href={route('password.request')} className="ml-auto text-sm" tabIndex={5}>
+                                <TextLink href={passwordRequestCreate()} className="ml-auto text-sm" tabIndex={5}>
                                     Forgot password?
                                 </TextLink>
                             )}
@@ -98,14 +100,7 @@ export default function Login({ email, password, canResetPassword, status }: Log
                     </Button>
                 </div>
 
-                {route().has('register') && (
-                    <div className="text-muted-foreground text-center text-sm">
-                        Don't have an account?{' '}
-                        <TextLink href={route('register')} tabIndex={5}>
-                            Sign up
-                        </TextLink>
-                    </div>
-                )}
+                {/* Registration is currently disabled */}
             </form>
 
             {status && <div className="mb-4 text-center text-sm font-medium text-green-600">{status}</div>}
