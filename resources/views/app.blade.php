@@ -30,7 +30,6 @@
     <link rel="preload" href="/storage/img/me.webp" as="image" />
 
     <!-- Scripts -->
-    @routes
     @viteReactRefresh
     @vite(['resources/app.tsx', "resources/pages/{$page['component']}.tsx"])
     @inertiaHead

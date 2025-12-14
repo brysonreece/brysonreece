@@ -16,8 +16,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.12",
-        "resend/resend-php": "^0.15.1",
-        "tightenco/ziggy": "^2.4"
+        "resend/resend-php": "^0.15.1"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^2.0",

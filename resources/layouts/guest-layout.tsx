@@ -1,4 +1,4 @@
-import { Head, router } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 
 import { useEffect, useMemo, useState } from 'react';
 
@@ -8,6 +8,7 @@ import { GuestFooter } from '@/components/guest/guest-footer';
 import { GuestNavbar } from '@/components/guest/guest-navbar';
 
 export function GuestLayout({ children, title }: { children: React.ReactNode; title?: string }) {
+    const { component } = usePage();
     const [transitioning, setTransitioning] = useState(false);
 
     useEffect(() => {
@@ -22,7 +23,7 @@ export function GuestLayout({ children, title }: { children: React.ReactNode; ti
             {title && <Head title={title} />}
 
             <div className="flex h-full min-h-screen min-w-sm flex-col">
-                <GuestNavbar showLogo={!route().current('guest.welcome')} />
+                <GuestNavbar showLogo={component !== 'guest/welcome'} />
 
                 <main className={cn('grow', transitionClasses)}>{children}</main>
 

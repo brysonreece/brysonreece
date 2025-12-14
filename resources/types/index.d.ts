@@ -1,11 +1,9 @@
 import { LucideIcon } from 'lucide-react';
-import type { Config } from 'ziggy-js';
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: User | null;
     };
-    ziggy: Config & { location: string };
 };
 
 export interface BreadcrumbItem {

@@ -1,23 +1,25 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import clsx from 'clsx';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { about, career, projects, community, uses, welcome } from '@/routes/guest';
 import type { RouteDefinition } from '@/wayfinder';
 
 const navigation = [
-    { name: 'About', route: 'guest.about', action: about },
-    { name: 'Career', route: 'guest.career', action: career },
-    { name: 'Projects', route: 'guest.projects', action: projects },
-    { name: 'Community', route: 'guest.community', action: community },
-    { name: 'Uses', route: 'guest.uses', action: uses },
-] satisfies Array<{ name: string; route: string; action: () => RouteDefinition<'get'> }>;
+    { name: 'About', component: 'guest/about', action: about },
+    { name: 'Career', component: 'guest/career', action: career },
+    { name: 'Projects', component: 'guest/projects', action: projects },
+    { name: 'Community', component: 'guest/community', action: community },
+    { name: 'Uses', component: 'guest/uses', action: uses },
+] satisfies Array<{ name: string; component: string; action: () => RouteDefinition<'get'> }>;
 
 interface GuestNavbarProps {
     showLogo?: boolean;
 }
 
 export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
+    const { component: currentComponent } = usePage();
+
     return (
         <Disclosure as="nav" className="mx-auto w-full max-w-5xl p-2 sm:p-6 lg:p-8">
             {({ open }) => (
@@ -65,13 +67,13 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                                         key={item.name}
                                         href={item.action()}
                                         className={clsx(
-                                            route().current(item.route)
+                                            currentComponent === item.component
                                                 ? 'text-stone-700 dark:text-stone-200'
                                                 : 'text-stone-400 hover:text-stone-600 dark:text-stone-600 dark:hover:text-stone-300',
                                             'transition-colors duration-0 ease-in-out sm:duration-500',
                                             'inline-block rounded-lg px-3 py-2 text-sm font-medium active:text-stone-900 dark:active:text-stone-400',
                                         )}
-                                        aria-current={route().current(item.route) ? 'page' : undefined}
+                                        aria-current={currentComponent === item.component ? 'page' : undefined}
                                     >
                                         {item.name}
                                     </Link>
@@ -93,7 +95,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                                             // dark - plain, hover, active
                                             // text: 500, 400, 300
                                             // decoration: n/a, 700, 500
-                                            route().current(item.route)
+                                            currentComponent === item.component
                                                 ? [
                                                       'text-stone-900 decoration-stone-500',
                                                       'dark:text-stone-300 dark:decoration-stone-500',
@@ -112,7 +114,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                                                 'block w-1/3 rounded-lg px-3 py-2 text-sm font-medium',
                                             ],
                                         )}
-                                        aria-current={route().current(item.route) ? 'page' : undefined}
+                                        aria-current={currentComponent === item.component ? 'page' : undefined}
                                     >
                                         {item.name}
                                     </DisclosureButton>
