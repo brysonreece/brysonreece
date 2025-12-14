@@ -8,6 +8,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.19.0",
+        "@laravel/vite-plugin-wayfinder": "^0.1.7",
         "@mdxeditor/editor": "^3.42.0",
         "@shufo/prettier-plugin-blade": "^1.15.3",
         "@types/node": "^22.13.5",
