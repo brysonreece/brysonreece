@@ -327,10 +327,14 @@ php artisan test         # Run PHPUnit tests
 ### Git Commit Messages
 
 1. **Style**: Short, concise, single-line descriptions in imperative mood
-2. **Format**: Present tense verb + brief description (e.g., "Add feature", "Fix bug", "Update component")
+2. **Format**: Present tense verb + brief description (e.g., "Add feature", "Fix bug", "Update component"). Caveats:
+    - If the current changes solely encompass the installation & setup or removal of a dependency, use "Install"/"Remove" as the verb followed by the package name. (e.g., "Install Vitest" or "Remove Vitest")
+    - If the current changes solely encompass updating Composer dependencies, use "Update Composer dependencies" as the commit message.
+    - If the current changes solely encompass updating NPM dependencies, use "Update NPM dependencies" as the commit message.
+    - If the current changes solely encompass applying recommended fixes from an automated tool or process (e.g., ESLint, Prettier, Rector), use "Apply fixes from [Tool Name]" as the commit message.
 3. **Length**: Keep under 60 characters when possible
 4. **Examples**:
-   - "Apply fixes from Tailwind"
+   - "Apply fixes from ESLint"
    - "Update prybar helper to avoid deprecated Reflection method call"
    - "Remove Ziggy dependencies"
    - "Migrate navigation components to Wayfinder"
