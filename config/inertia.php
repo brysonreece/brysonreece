@@ -38,10 +38,6 @@ return [
 
     'ensure_pages_exist' => false,
 
-    'page_paths' => [
-        resource_path('pages'),
-    ],
-
     'page_extensions' => [
         'js',
         'jsx',

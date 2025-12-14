@@ -14,13 +14,13 @@ class LoginTest extends TestCase
     {
         $response = $this->get(route('login'));
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertInertia(fn ($page) => $page->component('auth/login'));
     }
 
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
             'last_login_at' => null,
@@ -38,7 +38,7 @@ class LoginTest extends TestCase
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
     {
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
@@ -98,7 +98,7 @@ class LoginTest extends TestCase
             'last_login_ip' => null,
         ]);
 
-        $response = $this->post(route('login'), [
+        $this->post(route('login'), [
             'email' => 'test@example.com',
             'password' => 'password',
         ]);

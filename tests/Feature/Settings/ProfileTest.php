@@ -17,7 +17,7 @@ class ProfileTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('profile.edit'));
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertInertia(fn ($page) => $page->component('settings/profile'));
     }
 

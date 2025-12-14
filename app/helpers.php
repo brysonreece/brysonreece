@@ -4,23 +4,18 @@ function prybar($object): mixed
 {
     return new class($object)
     {
-        public $object;
-
         public $reflected;
 
-        public function __construct($object)
+        public function __construct(public $object)
         {
-            $this->object = $object;
-            $this->reflected = new ReflectionClass($object);
+            $this->reflected = new ReflectionClass($this->object);
         }
 
         public function &__get($name)
         {
-            $getProperty = function &() use ($name) {
-                return $this->{$name};
-            };
+            $getProperty = (fn&() => $this->{$name});
 
-            $getProperty = $getProperty->bindTo($this->object, get_class($this->object));
+            $getProperty = $getProperty->bindTo($this->object, $this->object::class);
 
             return $getProperty();
         }
@@ -31,7 +26,7 @@ function prybar($object): mixed
                 $this->{$name} = $value;
             };
 
-            $setProperty = $setProperty->bindTo($this->object, get_class($this->object));
+            $setProperty = $setProperty->bindTo($this->object, $this->object::class);
 
             $setProperty();
         }

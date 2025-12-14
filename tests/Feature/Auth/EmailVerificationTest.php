@@ -19,7 +19,7 @@ class EmailVerificationTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('verification.notice'));
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     public function test_email_can_be_verified(): void
@@ -31,7 +31,7 @@ class EmailVerificationTest extends TestCase
         $verificationUrl = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(60),
-            ['id' => $user->id, 'hash' => sha1($user->email)]
+            ['id' => $user->id, 'hash' => sha1((string) $user->email)]
         );
 
         $response = $this->actingAs($user)->get($verificationUrl);

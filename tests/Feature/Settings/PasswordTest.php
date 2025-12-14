@@ -17,7 +17,7 @@ class PasswordTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('password.edit'));
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertInertia(fn ($page) => $page->component('settings/password'));
     }
 

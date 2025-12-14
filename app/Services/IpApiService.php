@@ -58,7 +58,7 @@ class IpApiService
         ])->throw();
 
         // Throw an exception if the request succeeded but the API response status is 'fail'
-        throw_if($response->json('status') === 'fail', new RequestException($response));
+        throw_if($response->json('status') === 'fail', RequestException::class, $response);
 
         return $response->json();
     }

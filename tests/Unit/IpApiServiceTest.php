@@ -23,10 +23,8 @@ class IpApiServiceTest extends TestCase
         $service = new IpApiService;
         $result = $service->geolocate('8.8.8.8');
 
-        Http::assertSent(function ($request) {
-            return str_contains($request->url(), 'ip-api.com/json/8.8.8.8')
-                && str_contains($request->url(), 'fields=');
-        });
+        Http::assertSent(fn($request) => str_contains((string) $request->url(), 'ip-api.com/json/8.8.8.8')
+            && str_contains((string) $request->url(), 'fields='));
 
         $this->assertEquals('success', $result['status']);
         $this->assertEquals('United States', $result['country']);
@@ -45,10 +43,8 @@ class IpApiServiceTest extends TestCase
         $service = new IpApiService;
         $service->geolocate('8.8.8.8');
 
-        Http::assertSent(function ($request) {
-            return str_contains($request->url(), 'status')
-                && str_contains($request->url(), 'message');
-        });
+        Http::assertSent(fn($request) => str_contains((string) $request->url(), 'status')
+            && str_contains((string) $request->url(), 'message'));
     }
 
     public function test_geolocate_accepts_custom_fields(): void
@@ -64,9 +60,7 @@ class IpApiServiceTest extends TestCase
         $service = new IpApiService;
         $service->geolocate('8.8.8.8', ['customField']);
 
-        Http::assertSent(function ($request) {
-            return str_contains($request->url(), 'customField');
-        });
+        Http::assertSent(fn($request) => str_contains((string) $request->url(), 'customField'));
     }
 
     public function test_geolocate_throws_exception_on_failed_status(): void
@@ -121,7 +115,7 @@ class IpApiServiceTest extends TestCase
         $service = new IpApiService;
         $result = $service->geolocate('8.8.8.8');
 
-        foreach ($expectedFields as $key => $value) {
+        foreach (array_keys($expectedFields) as $key) {
             $this->assertArrayHasKey($key, $result);
         }
     }

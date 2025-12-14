@@ -13,14 +13,14 @@ class StoreLoginRecords
     /**
      * Handle the event.
      */
-    public function handle(Login $event): void
+    public function handle(Login $event, \Illuminate\Http\Request $request): void
     {
         if (! $event->user instanceof User) {
             return;
         }
 
         $previousLoginIp = $event->user->last_login_ip;
-        $currentLoginIp = request()->getClientIp();
+        $currentLoginIp = $request->getClientIp();
 
         $event->user->forceFill([
             'last_login_at' => now(),

@@ -88,16 +88,14 @@ class LoginTrackingTest extends TestCase
 
         // The email is sent via defer(), so we need to trigger deferred callbacks
         // In testing, deferred callbacks execute immediately
-        Mail::assertSent(NewLoginDevice::class, function ($mail) use ($user) {
-            return $mail->hasTo($user->email);
-        });
+        Mail::assertSent(NewLoginDevice::class, fn($mail) => $mail->hasTo($user->email));
     }
 
     public function test_login_from_same_ip_does_not_send_notification(): void
     {
         Mail::fake();
 
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
             'last_login_ip' => '127.0.0.1',
@@ -116,7 +114,7 @@ class LoginTrackingTest extends TestCase
     {
         Mail::fake();
 
-        $user = User::factory()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
             'last_login_ip' => null,
@@ -158,7 +156,7 @@ class LoginTrackingTest extends TestCase
         $listener = new StoreLoginRecords;
 
         // Create a mock authenticatable that isn't a User
-        $guard = Mockery::mock('Illuminate\Contracts\Auth\Authenticatable');
+        $guard = Mockery::mock(\Illuminate\Contracts\Auth\Authenticatable::class);
 
         $event = new Login('web', $guard, false);
 
