@@ -234,7 +234,13 @@ php artisan test         # Run PHPUnit tests
 - **Backend**: PHPUnit 11.x in `tests/` directory
   - Feature tests for HTTP/Inertia responses
   - Unit tests for services and models
-- **Frontend**: (Configure if needed - not currently set up)
+  - Run with: `php artisan test`
+- **Frontend**: Vitest 4.x with React Testing Library in `resources/tests/` directory
+  - Component tests for UI components
+  - Hook tests for custom React hooks
+  - Run with: `npm test`
+  - Run with UI: `npm run test:ui`
+  - Run with coverage: `npm run test:coverage`
 
 ## Performance Considerations
 
