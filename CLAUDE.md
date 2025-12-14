@@ -317,3 +317,15 @@ php artisan test         # Run PHPUnit tests
 2. **Exports**: Use named exports for components; default exports only for pages
 3. **Imports**: Let Prettier organize imports automatically
 4. **Barrel Exports**: Avoid index.ts barrel exports (can impact tree-shaking)
+
+### Git Commit Messages
+
+1. **Style**: Short, concise, single-line descriptions in imperative mood
+2. **Format**: Present tense verb + brief description (e.g., "Add feature", "Fix bug", "Update component")
+3. **Length**: Keep under 60 characters when possible
+4. **Examples**:
+   - "Apply fixes from Tailwind"
+   - "Update prybar helper to avoid deprecated Reflection method call"
+   - "Remove Ziggy dependencies"
+   - "Migrate navigation components to Wayfinder"
+5. **Avoid**: Long multi-paragraph descriptions, excessive detail, bullet points in commit message body

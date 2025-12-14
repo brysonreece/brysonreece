@@ -15,7 +15,7 @@ class LocalEnvironmentOnly
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (app()->isLocal()) {
+        if (! app()->isProduction()) {
             return $next($request);
         }
 
