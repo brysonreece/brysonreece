@@ -2,14 +2,16 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { Link } from '@inertiajs/react';
 import clsx from 'clsx';
 import { MenuIcon, XIcon } from 'lucide-react';
+import { about, career, projects, community, uses, welcome } from '@/routes/guest';
+import type { RouteDefinition } from '@/wayfinder';
 
 const navigation = [
-    { name: 'About', route: 'guest.about' },
-    { name: 'Career', route: 'guest.career' },
-    { name: 'Projects', route: 'guest.projects' },
-    { name: 'Community', route: 'guest.community' },
-    { name: 'Uses', route: 'guest.uses' },
-];
+    { name: 'About', route: 'guest.about', action: about },
+    { name: 'Career', route: 'guest.career', action: career },
+    { name: 'Projects', route: 'guest.projects', action: projects },
+    { name: 'Community', route: 'guest.community', action: community },
+    { name: 'Uses', route: 'guest.uses', action: uses },
+] satisfies Array<{ name: string; route: string; action: () => RouteDefinition<'get'> }>;
 
 interface GuestNavbarProps {
     showLogo?: boolean;
@@ -21,7 +23,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
             {({ open }) => (
                 <div className="flex items-center sm:justify-between">
                     {showLogo && (
-                        <Link href={route('guest.welcome')} className="m-2 hidden items-center rounded-full sm:flex">
+                        <Link href={welcome()} className="m-2 hidden items-center rounded-full sm:flex">
                             <img className="h-10 w-10 rounded-full" src="/storage/img/me.webp" alt="Bryson Reece" />
                         </Link>
                     )}
@@ -39,7 +41,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                     >
                         <div className="sm:justify-auto flex items-center justify-between">
                             {showLogo && (
-                                <Link href={route('guest.welcome')} className="mx-4 my-2 flex items-center rounded-full sm:hidden">
+                                <Link href={welcome()} className="mx-4 my-2 flex items-center rounded-full sm:hidden">
                                     <img
                                         className="h-8 w-8 rounded-full"
                                         src="https://avatars.githubusercontent.com/u/4043157?v=4"
@@ -61,7 +63,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                                 {navigation.map((item) => (
                                     <Link
                                         key={item.name}
-                                        href={route(item.route)}
+                                        href={item.action()}
                                         className={clsx(
                                             route().current(item.route)
                                                 ? 'text-stone-700 dark:text-stone-200'
@@ -83,7 +85,7 @@ export function GuestNavbar({ showLogo = true }: GuestNavbarProps) {
                                     <DisclosureButton
                                         key={item.name}
                                         as={Link}
-                                        href={route(item.route)}
+                                        href={item.action()}
                                         className={clsx(
                                             // light - plain, hover, active
                                             // text: 500, 700, 900

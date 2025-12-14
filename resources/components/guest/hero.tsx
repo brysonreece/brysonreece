@@ -3,6 +3,7 @@ import { CloudDownloadIcon } from 'lucide-react';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { GazeTracker } from '@/components/gaze-tracker';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { about } from '@/routes/guest';
 
 type HeroProps = {
     enableMouseAnimation?: boolean;
@@ -224,7 +225,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                     <span>Resume</span>
                 </a>
                 <a
-                    href={route('guest.about')}
+                    href={about().url}
                     className="inline-flex items-center rounded-md px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:border-blue-500 dark:hover:bg-transparent dark:hover:text-blue-500"
                 >
                     <span>Learn more &rarr;</span>
