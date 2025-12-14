@@ -7,20 +7,21 @@ use App\Models\User;
 use App\Services\IpApiService;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 
 class StoreLoginRecords
 {
     /**
      * Handle the event.
      */
-    public function handle(Login $event, \Illuminate\Http\Request $request): void
+    public function handle(Login $event): void
     {
         if (! $event->user instanceof User) {
             return;
         }
 
         $previousLoginIp = $event->user->last_login_ip;
-        $currentLoginIp = $request->getClientIp();
+        $currentLoginIp = Request::getClientIp();
 
         $event->user->forceFill([
             'last_login_at' => now(),
