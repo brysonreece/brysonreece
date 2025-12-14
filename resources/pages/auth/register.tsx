@@ -18,6 +18,7 @@ type RegisterForm = {
 };
 
 export default function Register() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { data, setData, post, processing, errors, reset } = useForm<Required<RegisterForm>>({
         name: '',
         email: '',
