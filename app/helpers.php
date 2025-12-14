@@ -13,7 +13,7 @@ function prybar($object): mixed
 
         public function &__get($name)
         {
-            $getProperty = (fn&() => $this->{$name});
+            $getProperty = (fn &() => $this->{$name});
 
             $getProperty = $getProperty->bindTo($this->object, $this->object::class);
 
