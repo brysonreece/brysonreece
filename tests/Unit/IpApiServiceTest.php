@@ -20,7 +20,7 @@ class IpApiServiceTest extends TestCase
             ], 200),
         ]);
 
-        $service = new IpApiService();
+        $service = new IpApiService;
         $result = $service->geolocate('8.8.8.8');
 
         Http::assertSent(function ($request) {
@@ -42,7 +42,7 @@ class IpApiServiceTest extends TestCase
             ], 200),
         ]);
 
-        $service = new IpApiService();
+        $service = new IpApiService;
         $service->geolocate('8.8.8.8');
 
         Http::assertSent(function ($request) {
@@ -61,7 +61,7 @@ class IpApiServiceTest extends TestCase
             ], 200),
         ]);
 
-        $service = new IpApiService();
+        $service = new IpApiService;
         $service->geolocate('8.8.8.8', ['customField']);
 
         Http::assertSent(function ($request) {
@@ -80,7 +80,7 @@ class IpApiServiceTest extends TestCase
 
         $this->expectException(RequestException::class);
 
-        $service = new IpApiService();
+        $service = new IpApiService;
         $service->geolocate('invalid-ip');
     }
 
@@ -92,7 +92,7 @@ class IpApiServiceTest extends TestCase
 
         $this->expectException(RequestException::class);
 
-        $service = new IpApiService();
+        $service = new IpApiService;
         $service->geolocate('8.8.8.8');
     }
 
@@ -118,7 +118,7 @@ class IpApiServiceTest extends TestCase
             'ip-api.com/*' => Http::response($expectedFields, 200),
         ]);
 
-        $service = new IpApiService();
+        $service = new IpApiService;
         $result = $service->geolocate('8.8.8.8');
 
         foreach ($expectedFields as $key => $value) {

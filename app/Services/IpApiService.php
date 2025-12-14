@@ -30,7 +30,7 @@ class IpApiService
      *
      * @param  string  $ip  The IP address to geolocate.
      * @param  array<string, int>  $fields  The fields to include in the response.
-     * @return array<string, mixed>  The geolocation details of the IP address.
+     * @return array<string, mixed> The geolocation details of the IP address.
      *
      * @throws \Illuminate\Http\Client\RequestException
      */
@@ -49,8 +49,7 @@ class IpApiService
             'timezone',
             'zip',
         ],
-    ): array
-    {
+    ): array {
         $response = Http::get("{$this->baseUrl}/{$ip}", [
             'fields' => implode(',', [
                 ...$this->requiredQueryFields,

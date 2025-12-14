@@ -140,7 +140,7 @@ class LoginTrackingTest extends TestCase
             'last_login_ip' => null,
         ]);
 
-        $listener = new StoreLoginRecords();
+        $listener = new StoreLoginRecords;
         $event = new Login('web', $user, false);
 
         $listener->handle($event);
@@ -155,7 +155,7 @@ class LoginTrackingTest extends TestCase
     {
         Event::fake([Login::class]);
 
-        $listener = new StoreLoginRecords();
+        $listener = new StoreLoginRecords;
 
         // Create a mock authenticatable that isn't a User
         $guard = Mockery::mock('Illuminate\Contracts\Auth\Authenticatable');

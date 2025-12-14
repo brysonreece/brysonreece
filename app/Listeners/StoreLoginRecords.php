@@ -12,9 +12,6 @@ class StoreLoginRecords
 {
     /**
      * Handle the event.
-     *
-     * @param  \Illuminate\Auth\Events\Login  $event
-     * @return void
      */
     public function handle(Login $event): void
     {
@@ -41,7 +38,6 @@ class StoreLoginRecords
      *
      * @param  User  $user  The authenticated user.
      * @param  string  $currentLoginIp  The IP address of the current login.
-     * @return void
      */
     protected function sendNewLoginDeviceNotification(User $user, string $currentLoginIp): void
     {

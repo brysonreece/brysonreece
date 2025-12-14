@@ -5,15 +5,12 @@ namespace App\Inertia\Ssr;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Inertia\Ssr\HttpGateway;
-use \Inertia\Ssr\Response;
+use Inertia\Ssr\Response;
 
 class GuestHttpGateway extends HttpGateway
 {
     /**
      * Dispatch the Inertia page to the Server Side Rendering engine.
-     *
-     * @param array $page
-     * @return Response|null
      */
     public function dispatch(array $page): ?Response
     {

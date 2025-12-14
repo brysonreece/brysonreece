@@ -47,7 +47,7 @@ class NewLoginDeviceMailTest extends TestCase
 
     public function test_new_login_device_email_can_be_constructed_with_empty_details(): void
     {
-        $mailable = new NewLoginDevice();
+        $mailable = new NewLoginDevice;
 
         $this->assertInstanceOf(NewLoginDevice::class, $mailable);
     }
@@ -57,7 +57,7 @@ class NewLoginDeviceMailTest extends TestCase
         config(['mail.from.address' => 'hello@example.com']);
         config(['mail.from.name' => 'Test App']);
 
-        $mailable = new NewLoginDevice();
+        $mailable = new NewLoginDevice;
         $envelope = $mailable->envelope();
 
         $this->assertCount(1, $envelope->replyTo);
@@ -67,7 +67,7 @@ class NewLoginDeviceMailTest extends TestCase
 
     public function test_new_login_device_email_has_no_attachments(): void
     {
-        $mailable = new NewLoginDevice();
+        $mailable = new NewLoginDevice;
 
         $this->assertEmpty($mailable->attachments());
     }

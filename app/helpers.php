@@ -2,8 +2,10 @@
 
 function prybar($object): mixed
 {
-    return new class($object) {
+    return new class($object)
+    {
         public $object;
+
         public $reflected;
 
         public function __construct($object)

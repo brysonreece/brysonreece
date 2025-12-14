@@ -21,15 +21,14 @@ class NewLoginDevice extends Mailable
      */
     public function __construct(
         protected array $ipDetails = [],
-    ) {
-    }
+    ) {}
 
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
-        $replyTo = 'noreply@' . Str::after(config('mail.from.address'), '@');
+        $replyTo = 'noreply@'.Str::after(config('mail.from.address'), '@');
 
         return new Envelope(
             replyTo: [new Address($replyTo, config('mail.from.name'))],
