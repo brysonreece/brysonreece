@@ -38,8 +38,6 @@ function prybar($object): mixed
         {
             $method = $this->reflected->getMethod($name);
 
-            $method->setAccessible(true);
-
             return $method->invoke($this->object, ...$params);
         }
     };
