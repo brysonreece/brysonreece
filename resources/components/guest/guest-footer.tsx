@@ -13,7 +13,7 @@ export function GuestFooter() {
             <Container>
                 <div
                     className={clsx('flex flex-col items-center justify-center py-10 sm:flex-row-reverse', {
-                        'sm:justify-between': component !== 'guest/welcome',
+                        'sm:justify-between': component !== 'welcome',
                     })}
                 >
                     <div className="flex space-x-6">
@@ -30,7 +30,7 @@ export function GuestFooter() {
                             <LinkIcon className="h-6 w-6 text-stone-500 group-hover:text-stone-700" />
                         </a>
                     </div>
-                    {component !== 'guest/welcome' && (
+                    {component !== 'welcome' && (
                         <p className="mt-6 text-sm text-stone-500 sm:mt-0">Bryson Reece &copy; 2015 - {new Date().getFullYear()}</p>
                     )}
                 </div>
