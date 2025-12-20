@@ -3,13 +3,18 @@ import { NavMain } from '@/components/nav/nav-main';
 import { NavUser } from '@/components/nav/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
-import { FolderIcon, GlobeIcon, LayoutGrid } from 'lucide-react';
+import { BookOpen, FolderIcon, GlobeIcon, LayoutGrid } from 'lucide-react';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         url: '/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'Blog',
+        url: '/blog',
+        icon: BookOpen,
     },
 ];
 

@@ -86,3 +86,4 @@ export interface ProjectEvent extends Event {
     github: Nullable<string>;
     resources: Record<string, string>;
 }
+

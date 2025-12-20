@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "title": "Getting Started with Laravel 12",
+        "excerpt": "Explore the new features and improvements in Laravel 12, including enhanced performance and developer experience.",
+        "author": "Bryson Reece",
+        "date": "2024-03-15",
+        "category": "Laravel",
+        "content": "Laravel 12 brings exciting new features and improvements that make development even more enjoyable. In this post, we'll explore the key updates including enhanced routing capabilities, improved testing features, and performance optimizations.\n\nThe new version introduces several breaking changes that you should be aware of when upgrading your applications. Let's dive into each of these updates and see how they can benefit your projects.\n\n## Enhanced Routing\n\nThe routing system has been completely overhauled to provide better performance and more intuitive syntax. You can now define routes with less boilerplate while maintaining full type safety.\n\n## Improved Testing\n\nTesting has always been a first-class citizen in Laravel, and version 12 takes it to the next level with new assertion methods and better integration with modern testing tools.\n\n## Performance Optimizations\n\nUnder the hood, Laravel 12 includes numerous performance improvements that make your applications faster without requiring any code changes.",
+        "tags": ["Laravel", "PHP", "Web Development"],
+        "created_at": "2024-03-10T08:30:00Z",
+        "updated_at": "2024-03-14T16:20:00Z",
+        "published_at": "2024-03-15T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "title": "Building Modern UIs with React 19",
+        "excerpt": "Learn about the latest React features including Server Components, improved hooks, and the new compiler.",
+        "author": "Bryson Reece",
+        "date": "2024-03-12",
+        "category": "React",
+        "content": "React 19 represents a significant leap forward in building modern web applications. The introduction of Server Components fundamentally changes how we think about rendering and data fetching.\n\n## Server Components\n\nServer Components allow you to render components on the server, reducing the amount of JavaScript sent to the client and improving initial page load times. This is particularly useful for data-heavy applications.\n\n## The New Compiler\n\nReact's new compiler automatically optimizes your components, reducing the need for manual memoization with useMemo and useCallback. This makes your code cleaner and easier to maintain.\n\n## Enhanced Hooks\n\nNew hooks like useFormStatus and useOptimistic make it easier to build responsive, interactive forms with great user experience right out of the box.",
+        "tags": ["React", "JavaScript", "Frontend"],
+        "created_at": "2024-03-08T11:15:00Z",
+        "updated_at": "2024-03-11T09:45:00Z",
+        "published_at": "2024-03-12T14:30:00Z"
+    },
+    {
+        "id": 3,
+        "title": "Mastering TypeScript Type Safety",
+        "excerpt": "Deep dive into advanced TypeScript patterns for building type-safe applications at scale.",
+        "author": "Bryson Reece",
+        "date": "2024-03-10",
+        "category": "TypeScript",
+        "content": "TypeScript has become the de facto standard for building large-scale JavaScript applications. But mastering its type system requires understanding several advanced concepts.\n\n## Generic Constraints\n\nGeneric constraints allow you to create reusable functions and components while maintaining strict type safety. They're essential for building robust utility functions.\n\n## Conditional Types\n\nConditional types enable you to create types that adapt based on other types, making your type definitions more flexible and powerful.\n\n## Template Literal Types\n\nTemplate literal types are a powerful feature that allows you to manipulate string types at the type level, perfect for creating type-safe APIs and route definitions.",
+        "tags": ["TypeScript", "JavaScript", "Types"],
+        "created_at": "2024-03-05T14:20:00Z",
+        "updated_at": "2024-03-18T10:30:00Z",
+        "published_at": null
+    },
+    {
+        "id": 4,
+        "title": "Tailwind CSS 4: What's New",
+        "excerpt": "Discover the groundbreaking changes in Tailwind CSS 4, including the new engine and CSS-first configuration.",
+        "author": "Bryson Reece",
+        "date": "2024-03-08",
+        "category": "CSS",
+        "content": "Tailwind CSS 4 is a complete rewrite that brings significant performance improvements and a new way of configuring your design system.\n\n## The New Engine\n\nBuilt with Rust, the new engine is incredibly fast and provides better developer experience with improved error messages and faster build times.\n\n## CSS-First Configuration\n\nThe biggest change is moving from JavaScript configuration to CSS-based configuration using CSS variables. This makes your configuration more portable and easier to integrate with other tools.\n\n## Zero-Config Variants\n\nMany variants that previously required configuration are now available by default, reducing the need for custom configuration in most projects.",
+        "tags": ["CSS", "Tailwind", "Design"],
+        "created_at": "2024-03-01T09:00:00Z",
+        "updated_at": "2024-03-07T15:30:00Z",
+        "published_at": "2026-01-15T09:00:00Z"
+    },
+    {
+        "id": 5,
+        "title": "Inertia.js: The Modern Monolith",
+        "excerpt": "How Inertia.js bridges the gap between traditional server-side frameworks and modern SPAs.",
+        "author": "Bryson Reece",
+        "date": "2024-03-05",
+        "category": "Architecture",
+        "content": "Inertia.js offers a refreshing approach to building modern web applications by letting you build single-page applications using classic server-side routing.\n\n## The Best of Both Worlds\n\nWith Inertia, you get the snappy, modern feel of an SPA without the complexity of managing a separate API layer. Your server-side routes directly render React components.\n\n## Simplified Data Flow\n\nData flows from your controllers to your components as props, making it easy to understand and debug. No need for complex state management solutions for server data.\n\n## Progressive Enhancement\n\nInertia supports server-side rendering out of the box, ensuring your applications are fast and SEO-friendly while still providing that SPA experience.",
+        "tags": ["Inertia", "Laravel", "Architecture"],
+        "created_at": "2024-02-28T13:40:00Z",
+        "updated_at": "2024-03-04T11:20:00Z",
+        "published_at": "2024-03-05T16:45:00Z"
+    },
+    {
+        "id": 6,
+        "title": "Database Optimization Strategies",
+        "excerpt": "Practical tips for optimizing database queries and improving application performance.",
+        "author": "Bryson Reece",
+        "date": "2024-03-01",
+        "category": "Database",
+        "content": "Database performance is crucial for application scalability. Let's explore practical strategies for optimizing your queries and database design.\n\n## Index Optimization\n\nProper indexing can dramatically improve query performance. Learn when to use single-column, composite, and covering indexes for maximum benefit.\n\n## Query Analysis\n\nUse EXPLAIN plans to understand how your database executes queries and identify bottlenecks. This is essential for optimizing complex queries.\n\n## N+1 Problem\n\nThe N+1 query problem is one of the most common performance issues. We'll look at how to identify and fix it using eager loading and proper relationship definitions.",
+        "tags": ["Database", "Performance", "SQL"],
+        "created_at": "2024-02-25T10:00:00Z",
+        "updated_at": "2024-02-29T14:15:00Z",
+        "published_at": null
+    }
+]
