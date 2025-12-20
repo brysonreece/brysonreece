@@ -6,13 +6,14 @@ import type { PropsWithChildren, ReactNode } from 'react';
 
 export default function AppHeaderLayout({
     children,
+    className,
     breadcrumbs,
     actions,
-}: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[]; actions?: ReactNode }>) {
+}: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[]; actions?: ReactNode; className?: string }>) {
     return (
         <AppShell>
             <AppHeader breadcrumbs={breadcrumbs} actions={actions} />
-            <AppContent>{children}</AppContent>
+            <AppContent className={className}>{children}</AppContent>
         </AppShell>
     );
 }
