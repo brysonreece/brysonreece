@@ -6,7 +6,7 @@ import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
 
-import { ProjectEvent } from '@/types';
+import { ProjectEvent } from '@/types/events';
 
 import projects from '@/data/projects.json';
 

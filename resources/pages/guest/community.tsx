@@ -6,7 +6,7 @@ import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
 
-import { CommunityEvent } from '@/types';
+import { CommunityEvent } from '@/types/events';
 
 import events from '@/data/community.json';
 

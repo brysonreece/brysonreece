@@ -6,7 +6,7 @@ import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
 
-import { CareerEvent } from '@/types';
+import { CareerEvent } from '@/types/events';
 
 import career from '@/data/career.json';
 
