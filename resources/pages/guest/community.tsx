@@ -8,7 +8,7 @@ import { Container } from '@/components/ui/container';
 
 import { CommunityEvent } from '@/types';
 
-import events from '@/json/community.json';
+import events from '@/data/community.json';
 
 function CommunityRecord({ event }: { event: CommunityEvent }) {
     return (

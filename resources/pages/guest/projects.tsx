@@ -8,7 +8,7 @@ import { Container } from '@/components/ui/container';
 
 import { ProjectEvent } from '@/types';
 
-import projects from '@/json/projects.json';
+import projects from '@/data/projects.json';
 
 function ProjectRecord({ event }: { event: ProjectEvent }) {
     const [resourceLinks, setResourceLinks] = useState<[string, string][]>([]);

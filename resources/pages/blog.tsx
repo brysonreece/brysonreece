@@ -6,7 +6,7 @@ import { type BreadcrumbItem } from '@/types';
 import { type BlogPost } from '@/types/blog';
 import { Head } from '@inertiajs/react';
 import { useMemo, useState } from 'react';
-import postsData from '../../data/posts.json';
+import postsData from '@/data/posts.json';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {

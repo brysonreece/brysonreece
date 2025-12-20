@@ -8,7 +8,7 @@ import { Container } from '@/components/ui/container';
 
 import { CareerEvent } from '@/types';
 
-import career from '@/json/career.json';
+import career from '@/data/career.json';
 
 function CareerRecord({ event }: { event: CareerEvent }) {
     return (
