@@ -10,12 +10,12 @@ import postsData from '@/data/posts.json';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Blog',
-        href: '/blog',
+        title: 'Posts',
+        href: '/blog/posts',
     },
 ];
 
-export default function Blog() {
+export default function Posts() {
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
     const [searchQuery, setSearchQuery] = useState<string>('');
     const allPosts = postsData as BlogPost[];
@@ -73,7 +73,7 @@ export default function Blog() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs} className="p-0">
-            <Head title="Blog" />
+            <Head title="Posts" />
 
             {/* Mobile view - show list or detail */}
             <div className={`w-full md:hidden ${selectedPost ? 'hidden' : 'block'}`}>

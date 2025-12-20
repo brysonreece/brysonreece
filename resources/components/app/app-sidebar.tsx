@@ -2,7 +2,7 @@ import { NavFooter } from '@/components/nav/nav-footer';
 import { NavMain } from '@/components/nav/nav-main';
 import { NavUser } from '@/components/nav/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar';
-import { type NavItem } from '@/types';
+import { type NavGroup, type NavItem } from '@/types';
 import { BookOpen, FolderIcon, GlobeIcon, LayoutGrid } from 'lucide-react';
 
 const mainNavItems: NavItem[] = [
@@ -11,10 +11,24 @@ const mainNavItems: NavItem[] = [
         url: '/dashboard',
         icon: LayoutGrid,
     },
+];
+
+const blogNavItems: NavItem[] = [
+    {
+        title: 'Posts',
+        url: '/blog/posts',
+        icon: BookOpen,
+    },
+];
+
+const mainNavGroups: NavGroup[] = [
+    {
+        title: '',
+        items: mainNavItems,
+    },
     {
         title: 'Blog',
-        url: '/blog',
-        icon: BookOpen,
+        items: blogNavItems,
     },
 ];
 
@@ -39,7 +53,7 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent className="my-2">
-                <NavMain items={mainNavItems} />
+                <NavMain groups={mainNavGroups} />
             </SidebarContent>
 
             <SidebarFooter>

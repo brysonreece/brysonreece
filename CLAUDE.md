@@ -5,6 +5,7 @@
 ## Project Overview
 
 This is a full-stack web application built with:
+
 - **Backend**: Laravel 12 (PHP 8.2+)
 - **Frontend**: React 19 with TypeScript
 - **Bridge**: Inertia.js 2.x for seamless SPA experience
@@ -15,6 +16,7 @@ This is a full-stack web application built with:
 ## Stack-Specific Context
 
 ### Laravel Backend
+
 - **Version**: Laravel 12.x with PHP 8.2+
 - **Key Services**:
   - Sanctum for API authentication
@@ -25,6 +27,7 @@ This is a full-stack web application built with:
 - **Helpers**: Custom helper functions in `app/helpers.php` (autoloaded in dev)
 
 ### React + TypeScript Frontend
+
 - **React Version**: 19.x (latest with new JSX transform)
 - **TypeScript**: Configured with `moduleResolution: "bundler"` and `target: ESNext`
 - **Entry Points**:
@@ -32,6 +35,7 @@ This is a full-stack web application built with:
   - SSR: `resources/ssr.tsx`
 
 ### Inertia.js Integration
+
 - **Version**: 2.x (@inertiajs/react)
 - **Page Components**: Located in `resources/pages/`
 - **Shared Data**: Available via Inertia's `usePage()` hook
@@ -87,23 +91,23 @@ This is a full-stack web application built with:
 ### Frontend Patterns
 
 1. **Page Components**: Full-page Inertia components in `resources/pages/`
+
    - Named exports for sub-routes (e.g., `auth/login.tsx`)
    - Receive props from Laravel controllers
-
 2. **Shared Components**: Reusable UI in `resources/components/`
+
    - Domain-organized (app, guest, nav, etc.)
    - UI primitives in `resources/components/ui/`
-
 3. **Layouts**: Page layouts in `resources/layouts/`
-
 4. **Hooks**: Custom React hooks in `resources/hooks/`
-   - **Affordance Note**: Project includes custom `use-appearance` hook for theme management with `initializeTheme()` function
 
+   - **Affordance Note**: Project includes custom `use-appearance` hook for theme management with `initializeTheme()` function
 5. **Types**: TypeScript types in `resources/types/`
+
    - Inertia page props types
    - Shared type definitions
-
 6. **Constants**: App-wide constants in `resources/constants.ts`
+
    - **Affordance Note**: `APP_NAME` is exported from constants and used throughout the app
 
 ### Inertia.js Patterns
@@ -205,6 +209,10 @@ npm run lint             # Run ESLint with auto-fix
 
 # Testing
 php artisan test         # Run PHPUnit tests
+
+# Generate TypeScript definitions from backend
+# --path MUST be set to `resources`
+php artisan wayfinder:generate --path=resources
 ```
 
 ### File Generation
@@ -328,10 +336,10 @@ php artisan test         # Run PHPUnit tests
 
 1. **Style**: Short, concise, single-line descriptions in imperative mood
 2. **Format**: Present tense verb + brief description (e.g., "Add feature", "Fix bug", "Update component"). Caveats:
-    - If the current changes solely encompass the installation & setup or removal of a dependency, use "Install"/"Remove" as the verb followed by the package name. (e.g., "Install Vitest" or "Remove Vitest")
-    - If the current changes solely encompass updating Composer dependencies, use "Update Composer dependencies" as the commit message.
-    - If the current changes solely encompass updating NPM dependencies, use "Update NPM dependencies" as the commit message.
-    - If the current changes solely encompass applying recommended fixes from an automated tool or process (e.g., ESLint, Prettier, Rector), use "Apply fixes from [Tool Name]" as the commit message.
+   - If the current changes solely encompass the installation & setup or removal of a dependency, use "Install"/"Remove" as the verb followed by the package name. (e.g., "Install Vitest" or "Remove Vitest")
+   - If the current changes solely encompass updating Composer dependencies, use "Update Composer dependencies" as the commit message.
+   - If the current changes solely encompass updating NPM dependencies, use "Update NPM dependencies" as the commit message.
+   - If the current changes solely encompass applying recommended fixes from an automated tool or process (e.g., ESLint, Prettier, Rector), use "Apply fixes from [Tool Name]" as the commit message.
 3. **Length**: Keep under 60 characters when possible
 4. **Examples**:
    - "Apply fixes from ESLint"

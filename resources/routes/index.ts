@@ -118,46 +118,6 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/app.php:8
-* @route '//bryson.test/blog'
-*/
-export const blog = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: blog.url(options),
-    method: 'get',
-})
-
-blog.definition = {
-    methods: ["get","head"],
-    url: '//bryson.test/blog',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see routes/web/app.php:8
-* @route '//bryson.test/blog'
-*/
-blog.url = (options?: RouteQueryOptions) => {
-    return blog.definition.url + queryParams(options)
-}
-
-/**
-* @see routes/web/app.php:8
-* @route '//bryson.test/blog'
-*/
-blog.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: blog.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/app.php:8
-* @route '//bryson.test/blog'
-*/
-blog.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: blog.url(options),
-    method: 'head',
-})
-
-/**
 * @see routes/web/settings.php:18
 * @route '//bryson.test/settings/appearance'
 */
