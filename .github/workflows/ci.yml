@@ -36,6 +36,9 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Generate Wayfinder assets
+        run: php artisan wayfinder:generate --path=resources
+
       - name: Build assets
         run: npm run build
 

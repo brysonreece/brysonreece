@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../wayfinder'
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
@@ -44,43 +44,6 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
-* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
-* @route '//bryson.test/login'
-*/
-const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: login.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
-* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
-* @route '//bryson.test/login'
-*/
-loginForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: login.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
-* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
-* @route '//bryson.test/login'
-*/
-loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: login.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-login.form = loginForm
-
-/**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:45
 * @route '//bryson.test/logout'
@@ -113,28 +76,6 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logout.url(options),
     method: 'post',
 })
-
-/**
-* @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
-* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:45
-* @route '//bryson.test/logout'
-*/
-const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
-* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:45
-* @route '//bryson.test/logout'
-*/
-logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-logout.form = logoutForm
 
 /**
 * @see routes/web/app.php:7
@@ -177,38 +118,44 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/app.php:7
-* @route '//bryson.test/dashboard'
+* @see routes/web/app.php:8
+* @route '//bryson.test/blog'
 */
-const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url(options),
+export const blog = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: blog.url(options),
+    method: 'get',
+})
+
+blog.definition = {
+    methods: ["get","head"],
+    url: '//bryson.test/blog',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see routes/web/app.php:8
+* @route '//bryson.test/blog'
+*/
+blog.url = (options?: RouteQueryOptions) => {
+    return blog.definition.url + queryParams(options)
+}
+
+/**
+* @see routes/web/app.php:8
+* @route '//bryson.test/blog'
+*/
+blog.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: blog.url(options),
     method: 'get',
 })
 
 /**
-* @see routes/web/app.php:7
-* @route '//bryson.test/dashboard'
+* @see routes/web/app.php:8
+* @route '//bryson.test/blog'
 */
-dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url(options),
-    method: 'get',
+blog.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: blog.url(options),
+    method: 'head',
 })
-
-/**
-* @see routes/web/app.php:7
-* @route '//bryson.test/dashboard'
-*/
-dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-dashboard.form = dashboardForm
 
 /**
 * @see routes/web/settings.php:18
@@ -250,36 +197,3 @@ appearance.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     method: 'head',
 })
 
-/**
-* @see routes/web/settings.php:18
-* @route '//bryson.test/settings/appearance'
-*/
-const appearanceForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: appearance.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/settings.php:18
-* @route '//bryson.test/settings/appearance'
-*/
-appearanceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: appearance.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/settings.php:18
-* @route '//bryson.test/settings/appearance'
-*/
-appearanceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: appearance.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-appearance.form = appearanceForm

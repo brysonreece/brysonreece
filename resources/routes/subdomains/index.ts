@@ -1,6 +1,6 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
-* @see routes/web.php:18
+* @see routes/web.php:16
 * @route '//links.bryson.test/'
 */
 export const links = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -14,7 +14,7 @@ links.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web.php:18
+* @see routes/web.php:16
 * @route '//links.bryson.test/'
 */
 links.url = (options?: RouteQueryOptions) => {
@@ -22,7 +22,7 @@ links.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web.php:18
+* @see routes/web.php:16
 * @route '//links.bryson.test/'
 */
 links.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -31,47 +31,13 @@ links.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web.php:18
+* @see routes/web.php:16
 * @route '//links.bryson.test/'
 */
 links.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: links.url(options),
     method: 'head',
 })
-
-/**
-* @see routes/web.php:18
-* @route '//links.bryson.test/'
-*/
-const linksForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: links.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web.php:18
-* @route '//links.bryson.test/'
-*/
-linksForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: links.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web.php:18
-* @route '//links.bryson.test/'
-*/
-linksForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: links.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-links.form = linksForm
 
 const subdomains = {
     links: Object.assign(links, links),

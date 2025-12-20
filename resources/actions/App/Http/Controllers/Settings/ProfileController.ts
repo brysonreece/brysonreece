@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Settings\ProfileController::edit
 * @see app/Http/Controllers/Settings/ProfileController.php:19
@@ -44,43 +44,6 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\Settings\ProfileController::edit
-* @see app/Http/Controllers/Settings/ProfileController.php:19
-* @route '//bryson.test/settings/profile'
-*/
-const editForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Settings\ProfileController::edit
-* @see app/Http/Controllers/Settings/ProfileController.php:19
-* @route '//bryson.test/settings/profile'
-*/
-editForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(options),
-    method: 'get',
-})
-
-/**
-* @see \App\Http\Controllers\Settings\ProfileController::edit
-* @see app/Http/Controllers/Settings/ProfileController.php:19
-* @route '//bryson.test/settings/profile'
-*/
-editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
-
-/**
 * @see \App\Http\Controllers\Settings\ProfileController::update
 * @see app/Http/Controllers/Settings/ProfileController.php:30
 * @route '//bryson.test/settings/profile'
@@ -115,38 +78,6 @@ update.patch = (options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\Settings\ProfileController::update
-* @see app/Http/Controllers/Settings/ProfileController.php:30
-* @route '//bryson.test/settings/profile'
-*/
-const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Settings\ProfileController::update
-* @see app/Http/Controllers/Settings/ProfileController.php:30
-* @route '//bryson.test/settings/profile'
-*/
-updateForm.patch = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \App\Http\Controllers\Settings\ProfileController::destroy
 * @see app/Http/Controllers/Settings/ProfileController.php:46
 * @route '//bryson.test/settings/profile'
@@ -179,38 +110,6 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(options),
     method: 'delete',
 })
-
-/**
-* @see \App\Http\Controllers\Settings\ProfileController::destroy
-* @see app/Http/Controllers/Settings/ProfileController.php:46
-* @route '//bryson.test/settings/profile'
-*/
-const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\Settings\ProfileController::destroy
-* @see app/Http/Controllers/Settings/ProfileController.php:46
-* @route '//bryson.test/settings/profile'
-*/
-destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const ProfileController = { edit, update, destroy }
 

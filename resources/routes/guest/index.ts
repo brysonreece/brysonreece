@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
 * @see routes/web/guest.php:5
 * @route '//bryson.test/'
@@ -38,40 +38,6 @@ welcome.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: welcome.url(options),
     method: 'head',
 })
-
-/**
-* @see routes/web/guest.php:5
-* @route '//bryson.test/'
-*/
-const welcomeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: welcome.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:5
-* @route '//bryson.test/'
-*/
-welcomeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: welcome.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:5
-* @route '//bryson.test/'
-*/
-welcomeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: welcome.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-welcome.form = welcomeForm
 
 /**
 * @see routes/web/guest.php:8
@@ -114,40 +80,6 @@ about.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:8
-* @route '//bryson.test/about'
-*/
-const aboutForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: about.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:8
-* @route '//bryson.test/about'
-*/
-aboutForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: about.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:8
-* @route '//bryson.test/about'
-*/
-aboutForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: about.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-about.form = aboutForm
-
-/**
 * @see routes/web/guest.php:11
 * @route '//bryson.test/career'
 */
@@ -186,40 +118,6 @@ career.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: career.url(options),
     method: 'head',
 })
-
-/**
-* @see routes/web/guest.php:11
-* @route '//bryson.test/career'
-*/
-const careerForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: career.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:11
-* @route '//bryson.test/career'
-*/
-careerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: career.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:11
-* @route '//bryson.test/career'
-*/
-careerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: career.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-career.form = careerForm
 
 /**
 * @see routes/web/guest.php:14
@@ -262,40 +160,6 @@ projects.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:14
-* @route '//bryson.test/projects'
-*/
-const projectsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: projects.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:14
-* @route '//bryson.test/projects'
-*/
-projectsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: projects.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:14
-* @route '//bryson.test/projects'
-*/
-projectsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: projects.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-projects.form = projectsForm
-
-/**
 * @see routes/web/guest.php:17
 * @route '//bryson.test/community'
 */
@@ -334,40 +198,6 @@ community.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: community.url(options),
     method: 'head',
 })
-
-/**
-* @see routes/web/guest.php:17
-* @route '//bryson.test/community'
-*/
-const communityForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: community.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:17
-* @route '//bryson.test/community'
-*/
-communityForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: community.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:17
-* @route '//bryson.test/community'
-*/
-communityForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: community.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-community.form = communityForm
 
 /**
 * @see routes/web/guest.php:20
@@ -410,40 +240,6 @@ uses.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:20
-* @route '//bryson.test/uses'
-*/
-const usesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: uses.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:20
-* @route '//bryson.test/uses'
-*/
-usesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: uses.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:20
-* @route '//bryson.test/uses'
-*/
-usesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: uses.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-uses.form = usesForm
-
-/**
 * @see routes/web/guest.php:23
 * @route '//bryson.test/links'
 */
@@ -482,40 +278,6 @@ links.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: links.url(options),
     method: 'head',
 })
-
-/**
-* @see routes/web/guest.php:23
-* @route '//bryson.test/links'
-*/
-const linksForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: links.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:23
-* @route '//bryson.test/links'
-*/
-linksForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: links.url(options),
-    method: 'get',
-})
-
-/**
-* @see routes/web/guest.php:23
-* @route '//bryson.test/links'
-*/
-linksForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: links.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-links.form = linksForm
 
 const guest = {
     welcome: Object.assign(welcome, welcome),
