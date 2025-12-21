@@ -177,19 +177,27 @@ export function BlogList({
                             )}
                         >
                             <div className="flex items-start justify-between gap-2">
-                                <div className="flex-1 space-y-1">
+                                <div className="flex-1 space-y-2">
                                     <div className="flex items-center gap-2">
                                         <h3 className="line-clamp-1 text-sm font-semibold">{post.title}</h3>
                                         <div className={cn('h-2 w-2 shrink-0 rounded-full', status.color)} title={status.label} aria-label={status.label} />
                                     </div>
                                     <p className="line-clamp-2 text-xs text-neutral-600 dark:text-neutral-400">{post.description}</p>
-                                    <div className="flex items-center gap-2 pt-1">
+                                    <div className="flex items-end justify-end gap-4 mt-4">
                                         {post.tags.length > 0 && (
-                                            <Badge variant="secondary" className="text-xs">
-                                                {post.tags[0]}
-                                            </Badge>
+                                            <div className="flex-1 w-0 overflow-x-clip flex items-center gap-2 -mb-0.5">
+                                                <Badge variant="secondary" className="text-[0.625rem] leading-tight">
+                                                    {post.tags[0]}
+                                                </Badge>
+
+                                                {post.tags.length > 1 && (
+                                                    <span className="text-neutral-500  text-[0.625rem] leading-tight">
+                                                        + {post.tags.length - 1} more
+                                                    </span>
+                                                )}
+                                            </div>
                                         )}
-                                        <span className="text-xs text-neutral-500">
+                                        <span className="shrink-0 text-neutral-500 text-[0.625rem] leading-tight">
                                             {formatDistanceToNow(new Date(post.published_at || post.created_at), { addSuffix: true })}
                                         </span>
                                     </div>
