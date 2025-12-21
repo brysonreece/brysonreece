@@ -84,16 +84,16 @@ export function parseSearchQuery(query: string): ParsedSearchQuery {
 
 /**
  * Checks if a blog post matches the search text.
- * Searches in title, excerpt, content, category, and tags.
+ * Searches in title, description, content, and tags.
  */
 export function matchesSearchText(
-    post: { title: string; excerpt: string; content: string; category: string; tags: string[] },
+    post: { title: string; description: string; content: string; tags: string[] },
     searchText: string,
 ): boolean {
     if (!searchText) return true;
 
     const lowerSearch = searchText.toLowerCase();
-    const searchableText = [post.title, post.excerpt, post.content, post.category, ...post.tags].join(' ').toLowerCase();
+    const searchableText = [post.title, post.description, post.content, ...post.tags].join(' ').toLowerCase();
 
     return searchableText.includes(lowerSearch);
 }

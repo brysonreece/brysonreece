@@ -35,15 +35,17 @@ export function BlogDetail({ post, onBack, showBackButton = false }: BlogDetailP
             <div className="border-sidebar-border/70 border-b px-6 py-4">
                 <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">{post.title}</h1>
                 <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-neutral-600 dark:text-neutral-400">
-                    <div className="flex items-center gap-1.5">
-                        <User className="h-4 w-4" />
-                        <span>{post.author}</span>
-                    </div>
+                    {post.author && (
+                        <div className="flex items-center gap-1.5">
+                            <User className="h-4 w-4" />
+                            <span>{post.author}</span>
+                        </div>
+                    )}
                     <div className="flex items-center gap-1.5">
                         <Calendar className="h-4 w-4" />
-                        <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
+                        <span>{format(new Date(post.published_at || post.created_at), 'MMMM d, yyyy')}</span>
                     </div>
-                    <Badge variant="secondary">{post.category}</Badge>
+                    {post.tags.length > 0 && <Badge variant="secondary">{post.tags[0]}</Badge>}
                 </div>
             </div>
             <div className="flex-1 overflow-y-auto px-6 py-6">

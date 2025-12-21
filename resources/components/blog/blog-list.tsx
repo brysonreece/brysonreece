@@ -176,13 +176,15 @@ export function BlogList({
                                         <h3 className="line-clamp-1 text-sm font-semibold">{post.title}</h3>
                                         <div className={cn('h-2 w-2 shrink-0 rounded-full', status.color)} title={status.label} aria-label={status.label} />
                                     </div>
-                                    <p className="line-clamp-2 text-xs text-neutral-600 dark:text-neutral-400">{post.excerpt}</p>
+                                    <p className="line-clamp-2 text-xs text-neutral-600 dark:text-neutral-400">{post.description}</p>
                                     <div className="flex items-center gap-2 pt-1">
-                                        <Badge variant="secondary" className="text-xs">
-                                            {post.category}
-                                        </Badge>
+                                        {post.tags.length > 0 && (
+                                            <Badge variant="secondary" className="text-xs">
+                                                {post.tags[0]}
+                                            </Badge>
+                                        )}
                                         <span className="text-xs text-neutral-500">
-                                            {formatDistanceToNow(new Date(post.date), { addSuffix: true })}
+                                            {formatDistanceToNow(new Date(post.published_at || post.created_at), { addSuffix: true })}
                                         </span>
                                     </div>
                                 </div>

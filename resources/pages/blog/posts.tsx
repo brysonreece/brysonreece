@@ -6,7 +6,6 @@ import { type BreadcrumbItem } from '@/types';
 import { type BlogPost } from '@/types/blog';
 import { Head } from '@inertiajs/react';
 import { useMemo, useState } from 'react';
-import postsData from '@/data/posts.json';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -15,10 +14,26 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Posts() {
+interface PostsProps {
+    posts: {
+        data: BlogPost[];
+        meta: {
+            total: number;
+        };
+    };
+    filters: {
+        status?: string;
+        search?: string;
+        tags?: string | string[];
+        sort_by: string;
+        sort_order: string;
+    };
+}
+
+export default function Posts({ posts }: PostsProps) {
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
     const [searchQuery, setSearchQuery] = useState<string>('');
-    const allPosts = postsData as BlogPost[];
+    const allPosts = posts.data;
 
     const filteredAndSortedPosts = useMemo(() => {
         const { searchText, filters, tags, sortBy } = parseSearchQuery(searchQuery);
