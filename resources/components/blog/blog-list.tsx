@@ -48,6 +48,86 @@ export function getPostStatusType(publishedAt: string | null): BlogStatusFilter 
     return 'published';
 }
 
+function SearchHelpPopover() {
+    const [showSearchHelp, setShowSearchHelp] = useState(false);
+
+    return (
+        <Popover open={showSearchHelp} onOpenChange={setShowSearchHelp}>
+            <PopoverTrigger asChild>
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    className="size-6 shrink-0 m-1 -ml-0.5"
+                    onMouseEnter={() => setShowSearchHelp(true)}
+                    onMouseLeave={() => setShowSearchHelp(false)}
+                >
+                    <HelpCircle className="size-3 text-neutral-500" />
+                    <span className="sr-only">Search help</span>
+                </Button>
+            </PopoverTrigger>
+            <PopoverContent
+                className="w-80 mt-4 text-xs"
+                align="end"
+                side="right"
+                sideOffset={8}
+                onMouseEnter={() => setShowSearchHelp(true)}
+                onMouseLeave={() => setShowSearchHelp(false)}
+            >
+                <div className="space-y-4">
+                    <h4 className="text-base font-bold">Search Syntax</h4>
+                    <div className="space-y-4">
+                        <div>
+                            <p className="mb-1.5 font-semibold">Plain text</p>
+                            <p className="text-neutral-600 dark:text-neutral-400">Search in title, excerpt, content, and tags</p>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
+                                Laravel
+                            </code>
+                        </div>
+                        <div>
+                            <p className="mb-1.5 font-semibold">Filter by status</p>
+                            <p className="text-neutral-600 dark:text-neutral-400">
+                                Use <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">published</code>,{' '}
+                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">scheduled</code>, or{' '}
+                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">draft</code>
+                            </p>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
+                                f:published f:scheduled
+                            </code>
+                        </div>
+                        <div>
+                            <p className="mb-1.5 font-semibold">Filter by tag</p>
+                            <p className="text-neutral-600 dark:text-neutral-400">
+                                Use <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">TagName</code>
+                            </p>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
+                                t:Laravel t:PHP
+                            </code>
+                        </div>
+                        <div>
+                            <p className="mb-1.5 font-semibold">Sort results</p>
+                            <p className="text-neutral-600 dark:text-neutral-400">
+                                Use <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">created</code>,{' '}
+                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">updated</code>,{' '}
+                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">published</code>, or{' '}
+                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">title</code>
+                            </p>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
+                                s:created
+                            </code>
+                        </div>
+                        <div>
+                            <p className="mb-2 font-semibold">Combine all</p>
+                            <code className="mt-2 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
+                                Laravel t:PHP f:published s:created
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </PopoverContent>
+        </Popover>
+    );
+}
+
 export function BlogList({
     posts,
     selectedPost,
@@ -57,8 +137,6 @@ export function BlogList({
     searchQuery = '',
     onSearchChange,
 }: BlogListProps) {
-    const [showSearchHelp, setShowSearchHelp] = useState(false);
-
     return (
         <div className="flex h-full flex-col">
             {showBackButton && (
@@ -82,79 +160,7 @@ export function BlogList({
                                 className="h-8 pl-8 pr-2 rounded-none! border-0 focus-visible:ring-0 text-xs!"
                             />
                         </div>
-                        <Popover open={showSearchHelp} onOpenChange={setShowSearchHelp}>
-                            <PopoverTrigger asChild>
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="size-6 shrink-0 m-1 -ml-0.5"
-                                    onMouseEnter={() => setShowSearchHelp(true)}
-                                    onMouseLeave={() => setShowSearchHelp(false)}
-                                >
-                                    <HelpCircle className="size-3 text-neutral-500" />
-                                    <span className="sr-only">Search help</span>
-                                </Button>
-                            </PopoverTrigger>
-                            <PopoverContent
-                                className="w-80 mt-4 text-xs"
-                                align="end"
-                                side="right"
-                                sideOffset={8}
-                                onMouseEnter={() => setShowSearchHelp(true)}
-                                onMouseLeave={() => setShowSearchHelp(false)}
-                            >
-                                <div className="space-y-4">
-                                    <h4 className="text-base font-bold">Search Syntax</h4>
-                                    <div className="space-y-4">
-                                        <div>
-                                            <p className="mb-1.5 font-semibold">Plain text</p>
-                                            <p className="text-neutral-600 dark:text-neutral-400">Search in title, excerpt, content, and tags</p>
-                                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                                Laravel
-                                            </code>
-                                        </div>
-                                        <div>
-                                            <p className="mb-1.5 font-semibold">Filter by status</p>
-                                            <p className="text-neutral-600 dark:text-neutral-400">
-                                                Use <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">published</code>,{' '}
-                                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">scheduled</code>, or{' '}
-                                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">draft</code>
-                                            </p>
-                                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                                f:published f:scheduled
-                                            </code>
-                                        </div>
-                                        <div>
-                                            <p className="mb-1.5 font-semibold">Filter by tag</p>
-                                            <p className="text-neutral-600 dark:text-neutral-400">
-                                                Use <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">TagName</code>
-                                            </p>
-                                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                                t:Laravel t:PHP
-                                            </code>
-                                        </div>
-                                        <div>
-                                            <p className="mb-1.5 font-semibold">Sort results</p>
-                                            <p className="text-neutral-600 dark:text-neutral-400">
-                                                Use <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">created</code>,{' '}
-                                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">updated</code>,{' '}
-                                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">published</code>, or{' '}
-                                                <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">title</code>
-                                            </p>
-                                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                                s:created
-                                            </code>
-                                        </div>
-                                        <div>
-                                            <p className="mb-2 font-semibold">Combine all</p>
-                                            <code className="mt-2 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                                Laravel t:PHP f:published s:created
-                                            </code>
-                                        </div>
-                                    </div>
-                                </div>
-                            </PopoverContent>
-                        </Popover>
+                        <SearchHelpPopover />
                     </div>
                 </div>
             )}
