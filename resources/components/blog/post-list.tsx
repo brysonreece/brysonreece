@@ -5,15 +5,15 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { type BlogPost, type BlogStatusFilter } from '@/types/blog';
 import { formatDistanceToNow } from 'date-fns';
-import { ArrowLeft, HelpCircle, Search } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowLeftFromLine, ArrowRightFromLine, HelpCircle, Search } from 'lucide-react';
+import { ComponentProps, MouseEventHandler, useState } from 'react';
 
-interface BlogListProps {
+interface PostListProps {
     posts: BlogPost[];
     selectedPost: BlogPost | null;
     onSelectPost: (post: BlogPost) => void;
-    onBack?: () => void;
-    showBackButton?: boolean;
+    collapsed: boolean;
+    onCollapseToggle?: MouseEventHandler<HTMLButtonElement>;
     searchQuery?: string;
     onSearchChange?: (query: string) => void;
 }
@@ -54,16 +54,13 @@ function SearchHelpPopover() {
     return (
         <Popover open={showSearchHelp} onOpenChange={setShowSearchHelp}>
             <PopoverTrigger asChild>
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="size-6 shrink-0 m-1 -ml-0.5"
+                <PostListButton
                     onMouseEnter={() => setShowSearchHelp(true)}
                     onMouseLeave={() => setShowSearchHelp(false)}
                 >
                     <HelpCircle className="size-3 text-neutral-500" />
                     <span className="sr-only">Search help</span>
-                </Button>
+                </PostListButton>
             </PopoverTrigger>
             <PopoverContent
                 className="w-80 mt-4 text-xs"
@@ -128,42 +125,78 @@ function SearchHelpPopover() {
     );
 }
 
-export function BlogList({
+export function PostListButton({ children, className, ...props }: ComponentProps<typeof Button>) {
+    return (
+        <div
+            className={cn('shrink-0 flex items-center justify-center w-8 focus:ring-0', className)}
+        >
+            <Button
+                variant="ghost"
+                size="icon"
+                className={cn('size-8 rounded-none', className)}
+                {...props}
+            >
+                {children}
+            </Button>
+        </div>
+    );
+}
+
+export function PostList({
     posts,
     selectedPost,
     onSelectPost,
-    onBack,
-    showBackButton = false,
+    collapsed,
+    onCollapseToggle,
     searchQuery = '',
     onSearchChange,
-}: BlogListProps) {
+}: PostListProps) {
     return (
-        <div className="flex h-full flex-col">
-            {showBackButton && (
-                <div className="border-sidebar-border/70 flex items-center gap-2 border-b px-4 py-3">
-                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onBack}>
-                        <ArrowLeft className="h-4 w-4" />
-                    </Button>
-                    <h2 className="text-lg font-semibold">Posts</h2>
-                </div>
-            )}
-            {!showBackButton && (
-                <div className="border-sidebar-border/70 border-b">
-                    <div className="relative flex items-center">
-                        <div className="relative flex-1">
-                            <Search className="absolute left-2.5 top-1/2 size-3 -translate-y-1/2 text-neutral-500" />
-                            <Input
-                                type="text"
-                                placeholder="Search posts..."
-                                value={searchQuery}
-                                onChange={(e) => onSearchChange?.(e.target.value)}
-                                className="h-8 pl-8 pr-2 rounded-none! border-0 focus-visible:ring-0 text-xs!"
-                            />
-                        </div>
-                        <SearchHelpPopover />
+        <div className={cn('flex h-full flex-col divide-y divide-sidebar-border', collapsed ? 'w-8' : 'w-full')}>
+            {collapsed ? (
+                <>
+                    {onCollapseToggle && (
+                        <PostListButton onClick={onCollapseToggle}>
+                            <ArrowRightFromLine className="size-3 text-neutral-500" />
+                            <span className="sr-only">Expand posts list</span>
+                        </PostListButton>
+                    )}
+                    <PostListButton onClick={(e) => {
+                        const searchInput = document.getElementById('post-search');
+
+                        if (searchInput) {
+                            onCollapseToggle?.(e);
+                            (searchInput as HTMLInputElement).focus();
+                        }
+                    }}>
+                        <Search className="size-3 text-neutral-500" />
+                        <span className="sr-only">Focus search input</span>
+                    </PostListButton>
+                </>
+            ) : (
+                <div className="flex items-center divide-x divide-sidebar-border">
+                    <div className='flex-1'>
+                        <Input
+                            id="post-search"
+                            type="text"
+                            placeholder="Search posts..."
+                            value={searchQuery}
+                            onChange={(e) => onSearchChange?.(e.target.value)}
+                            className="h-8 rounded-none! border-0 focus-visible:ring-0 text-xs!"
+                        />
                     </div>
+
+                    <SearchHelpPopover />
+
+                    {onCollapseToggle && (
+                        <PostListButton onClick={onCollapseToggle}>
+                            <ArrowLeftFromLine className="size-3 text-neutral-500" />
+                            <span className="sr-only">Collapse posts list</span>
+                        </PostListButton>
+                    )}
                 </div>
             )}
+
             <div className="flex-1 overflow-y-auto">
                 {posts.map((post) => {
                     const status = getPostStatus(post.published_at);
@@ -172,37 +205,45 @@ export function BlogList({
                             key={post.id}
                             onClick={() => onSelectPost(post)}
                             className={cn(
-                                'border-sidebar-border/70 w-full border-b p-4 text-left transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900',
+                                'text-left border-sidebar-border/70 w-full border-b transition-colors hover:bg-accent hover:text-accent-foreground',
+                                collapsed ? 'w-auto' : 'w-full p-4',
                                 selectedPost?.id === post.id && 'bg-neutral-100 dark:bg-neutral-800',
                             )}
                         >
-                            <div className="flex items-start justify-between gap-2">
-                                <div className="flex-1 space-y-2">
-                                    <div className="flex items-center gap-2">
-                                        <h3 className="line-clamp-1 text-sm font-semibold">{post.title}</h3>
-                                        <div className={cn('h-2 w-2 shrink-0 rounded-full', status.color)} title={status.label} aria-label={status.label} />
-                                    </div>
-                                    <p className="line-clamp-2 text-xs text-neutral-600 dark:text-neutral-400">{post.description}</p>
-                                    <div className="flex items-end justify-end gap-4 mt-4">
-                                        {post.tags.length > 0 && (
-                                            <div className="flex-1 w-0 overflow-x-clip flex items-center gap-2 -mb-0.5">
-                                                <Badge variant="secondary" className="text-[0.625rem] leading-tight">
-                                                    {post.tags[0]}
-                                                </Badge>
+                            {collapsed ? (
+                                <div className="flex flex-col items-center justify-center size-8">
+                                    <div className={cn('h-2 w-2 shrink-0 rounded-full', status.color)} title={status.label} aria-label={status.label} />
+                                    <span className="sr-only">{post.title}</span>
+                                </div>
+                            ) : (
+                                <div className="flex items-start justify-between gap-2">
+                                    <div className="flex-1 space-y-2">
+                                        <div className="flex items-center justify-between gap-2">
+                                            <h3 className="line-clamp-1 text-sm font-semibold">{post.title}</h3>
+                                            <div className={cn('h-2 w-2 shrink-0 rounded-full', status.color)} title={status.label} aria-label={status.label} />
+                                        </div>
+                                        <p className="line-clamp-2 text-xs text-neutral-600 dark:text-neutral-400">{post.description}</p>
+                                        <div className="flex items-end justify-end gap-4 mt-4">
+                                            {post.tags.length > 0 && (
+                                                <div className="flex-1 w-0 overflow-x-clip flex items-center gap-2 -mb-0.5">
+                                                    <Badge variant="secondary" className="text-[0.625rem] leading-tight">
+                                                        {post.tags[0]}
+                                                    </Badge>
 
-                                                {post.tags.length > 1 && (
-                                                    <span className="text-neutral-500  text-[0.625rem] leading-tight">
-                                                        + {post.tags.length - 1} more
-                                                    </span>
-                                                )}
-                                            </div>
-                                        )}
-                                        <span className="shrink-0 text-neutral-500 text-[0.625rem] leading-tight">
-                                            {formatDistanceToNow(new Date(post.published_at || post.created_at), { addSuffix: true })}
-                                        </span>
+                                                    {post.tags.length > 1 && (
+                                                        <span className="text-neutral-500  text-[0.625rem] leading-tight truncate">
+                                                            + {post.tags.length - 1} more
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            )}
+                                            <span className="shrink-0 text-neutral-500 text-[0.625rem] leading-tight">
+                                                {formatDistanceToNow(new Date(post.published_at || post.created_at), { addSuffix: true })}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            )}
                         </button>
                     );
                 })}

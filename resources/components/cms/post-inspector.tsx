@@ -4,13 +4,14 @@ import { format } from 'date-fns';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import { PostListButton } from './post-list';
 
-interface BlogDetailProps {
+interface InspectorProps {
     post: BlogPost | null;
     onBack?: () => void;
     showBackButton?: boolean;
+    showExpandButton?: boolean;
 }
 
-export function BlogDetail({ post, onBack, showBackButton = false }: BlogDetailProps) {
+export function PostInspector({ post, onBack, showBackButton = false }: InspectorProps) {
     if (!post) {
         return (
             <div className="relative flex w-full h-full items-center justify-center p-8">
