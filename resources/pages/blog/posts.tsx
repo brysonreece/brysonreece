@@ -1,13 +1,17 @@
-import { BlogDetail } from '@/components/blog/blog-detail';
-import { PostList, getPostStatusType } from '@/components/blog/post-list';
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
-import AppLayout from '@/layouts/app-layout';
-import { matchesSearchText, parseSearchQuery } from '@/lib/blog/search-parser';
-import { type BreadcrumbItem } from '@/types';
-import { type BlogPost } from '@/types/blog';
 import { Head } from '@inertiajs/react';
 import { useEffect, useMemo, useState } from 'react';
 import { usePanelCallbackRef } from 'react-resizable-panels';
+
+import { matchesSearchText, parseSearchQuery } from '@/lib/blog/search-parser';
+
+import AppLayout from '@/layouts/app-layout';
+
+import { PostInspector } from '@/components/cms/post-inspector';
+import { PostList } from '@/components/cms/post-list';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
+
+import { type BreadcrumbItem } from '@/types';
+import { type BlogPost } from '@/types/blog';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -49,8 +53,7 @@ export default function Posts({ posts }: PostsProps) {
 
         // First, filter by status, tags, and search text
         const filtered = allPosts.filter((post) => {
-            const postStatus = getPostStatusType(post.published_at);
-            const matchesStatus = filters.includes(postStatus);
+            const matchesStatus = filters.includes(post.status);
             const matchesText = matchesSearchText(post, searchText);
 
             // If tags are specified, check if post has at least one of them
@@ -85,10 +88,6 @@ export default function Posts({ posts }: PostsProps) {
 
     const handleSelectPost = (post: BlogPost) => {
         setSelectedPost(post);
-    };
-
-    const handleBack = () => {
-        setSelectedPost(null);
     };
 
     const handleSearchChange = (query: string) => {
@@ -136,7 +135,7 @@ export default function Posts({ posts }: PostsProps) {
             </div>
 
             <div className={`w-full sm:hidden ${selectedPost ? 'block' : 'hidden'}`}>
-                <BlogDetail post={selectedPost} onBack={handleBack} showBackButton />
+                <PostInspector post={selectedPost} onBack={() => setSelectedPost(null)} />
             </div>
 
             {/* Desktop view - show both side by side with resizable panels */}
@@ -183,7 +182,7 @@ export default function Posts({ posts }: PostsProps) {
                         }
                     }} />
                     <ResizablePanel>
-                        <BlogDetail post={selectedPost} />
+                        <PostInspector post={selectedPost} onBack={() => setSelectedPost(null)} />
                     </ResizablePanel>
                 </ResizablePanelGroup>
             </div>

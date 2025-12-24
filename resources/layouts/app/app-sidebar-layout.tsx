@@ -15,7 +15,7 @@ export default function AppSidebarLayout({
     return (
         <AppShell variant="sidebar">
             <AppSidebar />
-            <AppContent variant="sidebar">
+            <AppContent variant="sidebar" className="max-w-full">
                 <AppSidebarHeader breadcrumbs={breadcrumbs} actions={actions} />
                 <div className={cn('flex p-4 h-full flex-1 overflow-hidden rounded-b-xl border-sidebar-border/70 dark:border-sidebar-border border border-t-0', className)}>
                     {children}

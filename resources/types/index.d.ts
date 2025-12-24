@@ -47,3 +47,5 @@ export interface Session {
     };
     last_active: DateTime;
 }
+
+export type Orientation = 'horizontal' | 'vertical';
