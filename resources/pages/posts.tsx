@@ -6,6 +6,8 @@ import { matchesSearchText, parseSearchQuery } from '@/lib/blog/search-parser';
 
 import AppLayout from '@/layouts/app-layout';
 
+import { PostCreateDialog } from '@/components/cms/post-create-dialog';
+import { PostEditor } from '@/components/cms/post-editor';
 import { PostInspector } from '@/components/cms/post-inspector';
 import { PostList } from '@/components/cms/post-list';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
@@ -43,6 +45,8 @@ export default function Posts({ posts }: PostsProps) {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+    const [editMode, setEditMode] = useState<boolean>(false);
+    const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false);
 
     const [listRef, setListRef] = usePanelCallbackRef();
 
@@ -98,6 +102,15 @@ export default function Posts({ posts }: PostsProps) {
         setCollapsed(!collapsed);
     };
 
+    const handleNewPost = () => {
+        setShowCreateDialog(true);
+    };
+
+    const handleCreateSuccess = (post: BlogPost) => {
+        setSelectedPost(post);
+        setEditMode(true);
+    };
+
     useEffect(() => {
         // Reset selected post when posts list changes
         setSelectedPost(null);
@@ -122,6 +135,12 @@ export default function Posts({ posts }: PostsProps) {
         <AppLayout breadcrumbs={breadcrumbs} className="p-0">
             <Head title="Posts" />
 
+            <PostCreateDialog
+                open={showCreateDialog}
+                onOpenChange={setShowCreateDialog}
+                onSuccess={handleCreateSuccess}
+            />
+
             {/* Mobile view - show list or detail */}
             <div className={`w-full sm:hidden ${selectedPost ? 'hidden' : 'block'}`}>
                 <PostList
@@ -131,11 +150,23 @@ export default function Posts({ posts }: PostsProps) {
                     onSelectPost={handleSelectPost}
                     searchQuery={searchQuery}
                     onSearchChange={handleSearchChange}
+                    onNewPost={handleNewPost}
                 />
             </div>
 
             <div className={`w-full sm:hidden ${selectedPost ? 'block' : 'hidden'}`}>
-                <PostInspector post={selectedPost} onBack={() => setSelectedPost(null)} />
+                {editMode ? (
+                    <PostEditor
+                        post={selectedPost}
+                        onBack={() => setSelectedPost(null)}
+                    />
+                ) : (
+                    <PostInspector
+                        post={selectedPost}
+                        onBack={() => setSelectedPost(null)}
+                        onEdit={() => setEditMode(true)}
+                    />
+                )}
             </div>
 
             {/* Desktop view - show both side by side with resizable panels */}
@@ -167,6 +198,7 @@ export default function Posts({ posts }: PostsProps) {
                             onCollapseToggle={handleCollapseToggle}
                             searchQuery={searchQuery}
                             onSearchChange={handleSearchChange}
+                            onNewPost={handleNewPost}
                         />
                     </ResizablePanel>
                     <ResizableHandle withHandle className="bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0" onDoubleClick={() => {
@@ -182,7 +214,18 @@ export default function Posts({ posts }: PostsProps) {
                         }
                     }} />
                     <ResizablePanel>
-                        <PostInspector post={selectedPost} onBack={() => setSelectedPost(null)} />
+                        {editMode ? (
+                            <PostEditor
+                                post={selectedPost}
+                                onBack={() => setSelectedPost(null)}
+                            />
+                        ) : (
+                            <PostInspector
+                                post={selectedPost}
+                                onBack={() => setSelectedPost(null)}
+                                onEdit={() => setEditMode(true)}
+                            />
+                        )}
                     </ResizablePanel>
                 </ResizablePanelGroup>
             </div>

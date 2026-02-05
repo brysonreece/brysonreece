@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Blog\ImageController;
 use App\Http\Controllers\Blog\PostController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -12,4 +13,7 @@ Route::middleware(['local', 'auth', 'verified'])->group(function () {
     Route::post('blog/posts', [PostController::class, 'store'])->name('blog.posts.store');
     Route::put('blog/posts/{post}', [PostController::class, 'update'])->name('blog.posts.update');
     Route::delete('blog/posts/{post}', [PostController::class, 'destroy'])->name('blog.posts.destroy');
+
+    // Blog Image Upload Route
+    Route::post('blog/images', [ImageController::class, 'store'])->name('blog.images.store');
 });

@@ -1,6 +1,8 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import { format } from 'date-fns';
-import { ArrowLeft, Calendar, LucideIcon, User } from 'lucide-react';
+import { ArrowLeft, Calendar, Loader2, LucideIcon, PencilIcon, Trash2, User } from 'lucide-react';
+import { router } from '@inertiajs/react';
+import { toast } from 'sonner';
 
 import { Badge } from '@/components/ui/badge';
 
@@ -8,13 +10,37 @@ import { PanelButton, PanelControls } from './panel-controls';
 
 import { type Post } from '@/types/cms';
 import { Container } from '../ui/container';
+import { destroy as destroyPost } from '@/actions/App/Http/Controllers/Blog/PostController';
 
 interface PostInspectorProps {
     post: Post | null;
     onBack: MouseEventHandler<HTMLButtonElement>;
+    onEdit: MouseEventHandler<HTMLButtonElement>;
 }
 
-export function PostInspector({ post, onBack }: PostInspectorProps) {
+export function PostInspector({ post, onBack, onEdit }: PostInspectorProps) {
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    const handleDelete = () => {
+        if (!post) return;
+
+        if (!confirm(`Are you sure you want to delete "${post.title}"? This action cannot be undone.`)) {
+            return;
+        }
+
+        setIsDeleting(true);
+
+        router.delete(destroyPost({ post: post.id }).url, {
+            onSuccess: () => {
+                toast.success('Post deleted successfully');
+            },
+            onError: () => {
+                toast.error('Failed to delete post');
+                setIsDeleting(false);
+            },
+        });
+    };
+
     if (!post) {
         return (
             <div className="relative flex w-full h-full items-center justify-center p-8">
@@ -28,8 +54,13 @@ export function PostInspector({ post, onBack }: PostInspectorProps) {
 
     return (
         <div className="h-full divide-y divide-sidebar-border">
-            <div className="w-full sm:hidden">
-                <PostInspectorControls onBack={onBack} />
+            <div className="w-full">
+                <PostInspectorControls
+                    onBack={onBack}
+                    onEdit={onEdit}
+                    onDelete={handleDelete}
+                    isDeleting={isDeleting}
+                />
             </div>
 
             <div className="w-full">
@@ -106,21 +137,34 @@ function PostAttribute({ value, icon: Icon }: PostAttributeProps) {
 
 interface PostInspectorControlsProps {
     onBack: MouseEventHandler<HTMLButtonElement>;
+    onEdit: MouseEventHandler<HTMLButtonElement>;
+    onDelete: () => void;
+    isDeleting: boolean;
 }
 
-function PostInspectorControls({ onBack }: PostInspectorControlsProps) {
+function PostInspectorControls({ onBack, onEdit, onDelete, isDeleting }: PostInspectorControlsProps) {
     return (
         <PanelControls
             className="border-b-0"
             orientation='horizontal'
             actions={() => (
                 <>
-                    <PanelButton onClick={onBack}>
+                    <PanelButton className="sm:hidden" onClick={onBack}>
                         <ArrowLeft className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <div className="flex-1 px-3 py-2">
-                        <h2 className="text-xs font-medium text-neutral-500">Back to list</h2>
+                    <div className="flex-1 h-8 px-3 py-2 sm:p-0">
+                        <h2 className="sm:hidden text-xs font-medium text-neutral-500">Back to list</h2>
                     </div>
+                    <PanelButton onClick={onEdit} disabled={isDeleting}>
+                        <PencilIcon className="size-3 text-neutral-500" />
+                    </PanelButton>
+                    <PanelButton onClick={onDelete} disabled={isDeleting}>
+                        {isDeleting ? (
+                            <Loader2 className="size-3 text-neutral-500 animate-spin" />
+                        ) : (
+                            <Trash2 className="size-3 text-red-500" />
+                        )}
+                    </PanelButton>
                 </>
             )}
         />

@@ -78,7 +78,7 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see routes/web/app.php:7
+* @see routes/web/app.php:9
 * @route '//bryson.test/dashboard'
 */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -92,7 +92,7 @@ dashboard.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/app.php:7
+* @see routes/web/app.php:9
 * @route '//bryson.test/dashboard'
 */
 dashboard.url = (options?: RouteQueryOptions) => {
@@ -100,7 +100,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/app.php:7
+* @see routes/web/app.php:9
 * @route '//bryson.test/dashboard'
 */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -109,7 +109,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/app.php:7
+* @see routes/web/app.php:9
 * @route '//bryson.test/dashboard'
 */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({

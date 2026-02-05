@@ -19,16 +19,16 @@ class PostResource extends JsonResource
             'title' => $this->title,
             'content' => $this->content,
             'description' => $this->description,
-            'status' => $this->status,
-            'published_at' => $this->published_at?->toIso8601String(),
+            'status' => $this->getStatus(),
+            'published_at' => $this->published_at?->format('c'),
             'cover_image_url' => $this->cover_image_url,
-            'preview_image_url' => $this->preview_image_url,
+            'preview_image_url' => $this->getPreviewImageUrl(),
             'author' => $this->author,
             'tags' => $this->tags ?? [],
             'meta_title' => $this->meta_title,
             'meta_description' => $this->meta_description,
-            'created_at' => $this->created_at?->toIso8601String(),
-            'updated_at' => $this->updated_at?->toIso8601String(),
+            'created_at' => $this->created_at->format('c'),
+            'updated_at' => $this->updated_at->format('c'),
         ];
     }
 }

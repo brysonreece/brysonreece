@@ -161,3 +161,115 @@
         transform: rotateY(180deg);
     }
 }
+
+/* MDXEditor Theme Customization */
+@layer components {
+    /* Light mode styles */
+    .mdxeditor {
+        --accentColor: var(--primary);
+        --basePageBg: var(--background);
+        --backgroundColor: transparent;
+        --borderColor: var(--border);
+        --textColor: var(--foreground);
+        --toolbarBg: var(--muted);
+        --admonitionTipBg: var(--accent);
+        --admonitionInfoBg: var(--accent);
+        --admonitionCautionBg: var(--muted);
+
+        border: 0;
+        border-radius: var(--radius-md);
+        font-family: var(--font-sans);
+        background-color: transparent;
+        color: var(--foreground);
+    }
+
+    .mdxeditor-toolbar {
+        background-color: var(--muted);
+        border-bottom: 1px solid var(--border);
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+        padding: 0.5rem;
+    }
+
+    .mdxeditor-toolbar button {
+        color: var(--muted-foreground);
+        border-radius: var(--radius-sm);
+    }
+
+    .mdxeditor-toolbar button:hover {
+        background-color: var(--accent);
+        color: var(--accent-foreground);
+    }
+
+    .mdxeditor-toolbar button[data-state="on"],
+    .mdxeditor-toolbar button[aria-pressed="true"] {
+        background-color: var(--accent);
+        color: var(--accent-foreground);
+    }
+
+    .mdxeditor-root-contenteditable {
+        background-color: transparent;
+        color: var(--foreground);
+    }
+
+    .mdxeditor-popup {
+        background-color: var(--popover);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    .mdxeditor-select-content {
+        background-color: var(--popover);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        color: var(--popover-foreground);
+    }
+
+    .mdxeditor-select-item {
+        color: var(--popover-foreground);
+    }
+
+    .mdxeditor-select-item:hover {
+        background-color: var(--accent);
+        color: var(--accent-foreground);
+    }
+
+    /* Dark mode overrides */
+    .dark .mdxeditor {
+        --accentColor: var(--primary);
+        --basePageBg: var(--background);
+        --backgroundColor: transparent;
+        --borderColor: var(--border);
+        --textColor: var(--foreground);
+        --toolbarBg: var(--muted);
+
+        background-color: transparent;
+        color: var(--foreground);
+    }
+
+    .dark .mdxeditor-toolbar {
+        background-color: var(--muted);
+        border-bottom-color: var(--border);
+    }
+
+    .dark .mdxeditor-toolbar button {
+        color: var(--muted-foreground);
+    }
+
+    .dark .mdxeditor-toolbar button:hover {
+        background-color: var(--accent);
+        color: var(--accent-foreground);
+    }
+
+    .dark .mdxeditor-root-contenteditable {
+        background-color: transparent;
+        color: var(--foreground);
+    }
+
+    .dark .mdxeditor-popup,
+    .dark .mdxeditor-select-content {
+        background-color: var(--popover);
+        border-color: var(--border);
+        color: var(--popover-foreground);
+    }
+}

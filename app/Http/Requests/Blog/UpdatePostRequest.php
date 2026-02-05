@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Blog;
 
-use App\Models\Blog\Post;
 use App\Rules\Blog\UniquePostSlug;
+use App\Services\Blog\PostService;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,8 +24,8 @@ class UpdatePostRequest extends FormRequest
      */
     public function rules(): array
     {
-        $post = Post::find($this->route('post'));
-        $currentSlug = $post?->slug;
+        $post = app(PostService::class)->find($this->route('post'));
+        $currentSlug = $post?->id;
 
         return [
             'title' => ['sometimes', 'required', 'string', 'max:255'],

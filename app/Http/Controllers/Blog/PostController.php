@@ -30,9 +30,9 @@ class PostController extends Controller
             'sort_order' => $request->get('sort_order', 'desc'),
         ];
 
-        $posts = $this->postService->index($filters);
+        $posts = $this->postService->all($filters);
 
-        return inertia('blog/posts', [
+        return inertia('posts', [
             'posts' => new PostCollection($posts),
             'filters' => $filters,
         ]);
@@ -45,8 +45,9 @@ class PostController extends Controller
     {
         $post = $this->postService->create($request->validated());
 
-        return to_route('blog.posts.index', $post)
-            ->with('success', 'Post created successfully.');
+        return to_route('blog.posts.index')
+            ->with('success', 'Post created successfully.')
+            ->with('post', $post);
     }
 
     /**
@@ -54,7 +55,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, string $slug): RedirectResponse
     {
-        $post = $this->postService->findBySlug($slug);
+        $post = $this->postService->find($slug);
 
         if (! $post) {
             abort(404);
@@ -70,7 +71,7 @@ class PostController extends Controller
      */
     public function destroy(string $slug): RedirectResponse
     {
-        $post = $this->postService->findBySlug($slug);
+        $post = $this->postService->find($slug);
 
         if (! $post) {
             abort(404);

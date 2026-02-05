@@ -4,7 +4,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { type BlogPost } from '@/types/blog';
 import { formatDistanceToNow } from 'date-fns';
-import { ArrowLeftFromLine, ArrowRightFromLine, HelpCircle, Search } from 'lucide-react';
+import { ArrowLeftFromLine, ArrowRightFromLine, HelpCircle, Plus, Search } from 'lucide-react';
 import { HTMLAttributes, MouseEventHandler, useMemo, useState } from 'react';
 import { PanelButton, PanelControls } from './panel-controls';
 
@@ -17,6 +17,7 @@ interface PostListProps {
     searchQuery?: string;
     onSearchChange?: (query: string) => void;
     onSearchExpand?: MouseEventHandler<HTMLButtonElement>;
+    onNewPost?: () => void;
 }
 
 export function PostList({
@@ -28,6 +29,7 @@ export function PostList({
     searchQuery = '',
     onSearchChange,
     onSearchExpand,
+    onNewPost,
 }: PostListProps) {
     return (
         <div className={cn('h-full flex flex-col divide-y divide-sidebar-border', collapsed ? 'w-8' : 'w-full')}>
@@ -37,6 +39,7 @@ export function PostList({
                 onSearchChange={onSearchChange}
                 onSearchExpand={onSearchExpand}
                 onCollapseToggle={onCollapseToggle}
+                onNewPost={onNewPost}
             />
 
             <div className="flex-1 overflow-y-auto">
@@ -98,6 +101,7 @@ interface PostListControlsProps {
     onSearchChange?: (query: string) => void;
     onSearchExpand?: MouseEventHandler<HTMLButtonElement>;
     onCollapseToggle?: MouseEventHandler<HTMLButtonElement>;
+    onNewPost?: () => void;
 };
 
 function PostListControls({
@@ -106,6 +110,7 @@ function PostListControls({
     onSearchChange,
     onSearchExpand,
     onCollapseToggle,
+    onNewPost,
 }: PostListControlsProps) {
     return (
         <PanelControls
@@ -113,6 +118,10 @@ function PostListControls({
             actions={(orientation) => (
                 (orientation === 'vertical') ? (
                     <>
+                        <PanelButton onClick={onNewPost}>
+                            <Plus className="size-3 text-neutral-500" />
+                            <span className="sr-only">New post</span>
+                        </PanelButton>
                         <PanelButton onClick={onCollapseToggle}>
                             <ArrowRightFromLine className="size-3 text-neutral-500" />
                             <span className="sr-only">Expand posts list</span>
@@ -124,6 +133,10 @@ function PostListControls({
                     </>
                 ) : (
                     <>
+                        <PanelButton onClick={onNewPost}>
+                            <Plus className="size-3 text-neutral-500" />
+                            <span className="sr-only">New post</span>
+                        </PanelButton>
                         <div className="flex-1">
                             <Input
                                 id="post-search"
