@@ -87,7 +87,7 @@ export default function Links() {
                     </Avatar>
                     <div className="my-8">
                         <h1 className="mx-auto mb-4 w-fit font-mono text-2xl">Bryson Reece</h1>
-                        <div className="mx-auto w-full max-w-4/5 border-b-1 border-stone-300 dark:border-stone-700"></div>
+                        <div className="mx-auto w-full max-w-4/5 border-b border-stone-300 dark:border-stone-700"></div>
                     </div>
                     <ul className="space-y-4">
                         {links.map((link) => (
