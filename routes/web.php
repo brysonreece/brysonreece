@@ -19,3 +19,7 @@ Route::domain("links.{$host}")
 Route::domain("recall.{$host}")
     ->get('/', fn () => inertia('subdomains/recall'))
     ->name('subdomains.recall');
+
+Route::domain("pomelo.{$host}")
+    ->get('/', fn () => inertia('subdomains/pomelo'))
+    ->name('subdomains.pomelo');
