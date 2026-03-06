@@ -53,7 +53,7 @@ class GenerateImageVariationJob implements ShouldQueue
 
         /** @var \Illuminate\Filesystem\FilesystemAdapter $outputDisk */
         $outputDisk = Storage::disk($this->disk());
-        $url = $outputDisk->url($outputPath);
+        $url = $outputDisk->temporaryUrl($outputPath, now()->addMinutes(self::CACHE_TTL_MINUTES));
 
         Cache::put(
             "pomelo:{$this->cacheKey}:{$this->index}",
