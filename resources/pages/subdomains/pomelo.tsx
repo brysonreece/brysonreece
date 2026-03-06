@@ -1,9 +1,12 @@
 import { Head } from '@inertiajs/react';
+import axios from 'axios';
 import { ChevronLeft, ChevronRight, FlaskConical, ImageIcon, Loader2, Sparkles, Upload, X, Zap } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-const SAMPLE_IMAGE_URL = 'https://bryson.test/storage/img/pomelo/sunscreen.jpg';
+const IMAGE_POLLING_INTERVAL = 5000;
+
+const SAMPLE_IMAGE_PATH = '/storage/img/pomelo/sunscreen.jpg';
 const SAMPLE_PROMPT = 'Show the sunscreen bottle on a sunny beach with a towel and umbrella adorning the immediate vicinity. The ocean is situated far behind the product, with people splashing around enjoying the sun. Medium focus, soft bokeh.';
 
 const PAGE_STYLES = `
@@ -49,14 +52,9 @@ interface GeneratedImage {
     label: string;
 }
 
-const PLACEHOLDER_IMAGES: GeneratedImage[] = [
-    { id: '1', url: '', label: 'Variation 01' },
-    { id: '2', url: '', label: 'Variation 02' },
-    { id: '3', url: '', label: 'Variation 03' },
-];
-
 export default function Pomelo(): ReactNode {
     const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [uploadedFileName, setUploadedFileName] = useState<string>('');
     const [isDragging, setIsDragging] = useState(false);
     const [prompt, setPrompt] = useState('');
@@ -64,8 +62,67 @@ export default function Pomelo(): ReactNode {
     const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
     const [carouselIndex, setCarouselIndex] = useState(0);
     const [outputCount, setOutputCount] = useState(3);
+    const [error, setError] = useState<string | null>(null);
+    const [isLoadingExample, setIsLoadingExample] = useState(false);
+    const [batchProgress, setBatchProgress] = useState(0);
+    const [batchStatus, setBatchStatus] = useState<'queued' | 'generating' | 'complete'>('queued');
+    const [inProgressImages, setInProgressImages] = useState<string[]>([]);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+    const stopPolling = useCallback(() => {
+        if (pollRef.current) {
+            clearInterval(pollRef.current);
+            pollRef.current = null;
+        }
+    }, []);
+
+    const startPolling = useCallback(
+        (id: string) => {
+            stopPolling();
+            pollRef.current = setInterval(async () => {
+                try {
+                    const { data } = await axios.get<{
+                        status: 'pending' | 'complete' | 'failed';
+                        progress: number;
+                        total: number;
+                        images: { url: string }[];
+                    }>(`/variations/${id}`);
+
+                    const pct = data.total > 0 ? Math.round((data.progress / data.total) * 100) : 0;
+                    setBatchProgress(pct);
+                    setBatchStatus(pct > 0 ? 'complete' : 'generating');
+                    setInProgressImages(data.images.map((img) => img.url));
+
+                    if (data.status === 'complete') {
+                        stopPolling();
+                        setGeneratedImages(
+                            data.images.map((img, i) => ({
+                                id: String(i + 1),
+                                url: img.url,
+                                label: `Variation ${String(i + 1).padStart(2, '0')}`,
+                            })),
+                        );
+                        setIsGenerating(false);
+                    } else if (data.status === 'failed') {
+                        stopPolling();
+                        setError('Image generation failed. Please try again.');
+                        setIsGenerating(false);
+                    }
+                } catch {
+                    stopPolling();
+                    setError('Lost connection while generating. Please try again.');
+                    setIsGenerating(false);
+                }
+            }, IMAGE_POLLING_INTERVAL);
+        },
+        [stopPolling],
+    );
+
+    useEffect(() => {
+        return () => stopPolling();
+    }, [stopPolling]);
 
     const handleFile = useCallback((file: File) => {
         if (!file.type.startsWith('image/')) {
@@ -74,9 +131,11 @@ export default function Pomelo(): ReactNode {
         const reader = new FileReader();
         reader.onload = (e) => {
             setUploadedImage(e.target?.result as string);
+            setUploadedFile(file);
             setUploadedFileName(file.name);
             setGeneratedImages([]);
             setCarouselIndex(0);
+            setError(null);
         };
         reader.readAsDataURL(file);
     }, []);
@@ -107,48 +166,70 @@ export default function Pomelo(): ReactNode {
         }
     };
 
-    const handleLoadExample = () => {
-        setUploadedImage(SAMPLE_IMAGE_URL);
+    const handleLoadExample = async () => {
+        setUploadedImage(SAMPLE_IMAGE_PATH);
         setUploadedFileName('sunscreen.jpg');
         setPrompt(SAMPLE_PROMPT);
         setGeneratedImages([]);
         setCarouselIndex(0);
+        setError(null);
+        setIsLoadingExample(true);
+
+        try {
+            const response = await fetch(SAMPLE_IMAGE_PATH);
+            const blob = await response.blob();
+            setUploadedFile(new File([blob], 'sunscreen.jpg', { type: blob.type }));
+        } finally {
+            setIsLoadingExample(false);
+        }
     };
 
     const handleClearImage = () => {
         setUploadedImage(null);
+        setUploadedFile(null);
         setUploadedFileName('');
         setGeneratedImages([]);
         setCarouselIndex(0);
+        setError(null);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
     };
 
-    const handleGenerate = () => {
-        if (!uploadedImage) {
+    const handleGenerate = async () => {
+        if (!uploadedFile) {
             return;
         }
+
         setIsGenerating(true);
         setGeneratedImages([]);
         setCarouselIndex(0);
+        setError(null);
+        setBatchProgress(0);
+        setBatchStatus('queued');
+        setInProgressImages([]);
 
-        // Stub: simulate async generation
-        setTimeout(() => {
-            const placeholders: GeneratedImage[] = Array.from({ length: outputCount }, (_, i) => ({
-                id: String(i + 1),
-                url: uploadedImage,
-                label: `Variation ${String(i + 1).padStart(2, '0')}`,
-            }));
-            setGeneratedImages(placeholders);
+        try {
+            const body = new FormData();
+            body.append('image', uploadedFile);
+            body.append('prompt', prompt);
+            body.append('count', String(outputCount));
+
+            const { data } = await axios.post<{ batchId: string }>('/variations', body);
+            startPolling(data.batchId);
+        } catch (err) {
+            const message =
+                (err as { response?: { data?: { message?: string } } })?.response?.data?.message ??
+                (err instanceof Error ? err.message : 'An unexpected error occurred.');
+            setError(message);
             setIsGenerating(false);
-        }, 2200);
+        }
     };
 
-    const canGenerate = !!uploadedImage && !isGenerating;
+    const canGenerate = !!uploadedFile && !isGenerating && !isLoadingExample;
 
-    const totalSlides = generatedImages.length || outputCount;
-    const displayImages = generatedImages.length > 0 ? generatedImages : PLACEHOLDER_IMAGES.slice(0, outputCount);
+    const totalSlides = generatedImages.length;
+    const displayImages = generatedImages;
 
     const prevSlide = () => setCarouselIndex((i) => Math.max(0, i - 1));
     const nextSlide = () => setCarouselIndex((i) => Math.min(totalSlides - 1, i + 1));
@@ -216,14 +297,18 @@ export default function Pomelo(): ReactNode {
                                     </span>
                                     <button
                                         onClick={handleLoadExample}
-                                        disabled={!!uploadedImage}
+                                        disabled={!!uploadedImage || isLoadingExample}
                                         className={`ml-auto flex items-center gap-1.5 px-2 py-1 text-xs font-bold tracking-wider transition-all ${
-                                            !uploadedImage
+                                            !uploadedImage && !isLoadingExample
                                                 ? 'bg-primary text-primary-foreground hover:opacity-90 cursor-pointer'
                                                 : 'bg-background text-muted-foreground/30 cursor-not-allowed'
                                         }`}
                                     >
-                                        <FlaskConical size={11} strokeWidth={2.5} />
+                                        {isLoadingExample ? (
+                                            <Loader2 size={11} className="animate-spin [animation-duration:1.2s]" />
+                                        ) : (
+                                            <FlaskConical size={11} strokeWidth={2.5} />
+                                        )}
                                         LOAD EXAMPLE
                                     </button>
                                 </div>
@@ -354,6 +439,12 @@ export default function Pomelo(): ReactNode {
                                         Upload a product image to begin
                                     </p>
                                 )}
+
+                                {error && (
+                                    <p className="text-destructive mt-3 text-center text-xs tracking-wide">
+                                        {error}
+                                    </p>
+                                )}
                             </div>
                         </div>
 
@@ -369,7 +460,7 @@ export default function Pomelo(): ReactNode {
                                             GENERATED VARIATIONS
                                         </span>
                                     </div>
-                                    {(generatedImages.length > 0 || isGenerating) && (
+                                    {generatedImages.length > 0 && (
                                         <span className="text-muted-foreground/60 text-xs tabular-nums tracking-wider">
                                             {carouselIndex + 1} / {totalSlides}
                                         </span>
@@ -405,28 +496,40 @@ export default function Pomelo(): ReactNode {
                                 {/* Generating skeleton */}
                                 {isGenerating && (
                                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 p-8">
-                                        <div className="w-full max-w-md">
-                                            <div className="border-border relative overflow-hidden border-2" style={{ aspectRatio: '4/3' }}>
-                                                <div className="from-muted to-muted/40 absolute inset-0 animate-pulse bg-linear-to-br" />
-                                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                                                    <Loader2 size={28} strokeWidth={1.5} className="text-muted-foreground/40 animate-spin [animation-duration:1.2s]" />
-                                                    <span className="text-muted-foreground/40 animate-pulse pomelo-font-mono text-xs tracking-widest">
-                                                        PROCESSING...
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         {/* Skeleton thumbnails */}
                                         <div className="flex gap-2">
-                                            {Array.from({ length: outputCount }).map((_, i) => (
-                                                <div
-                                                    key={i}
-                                                    className="border-border bg-muted/50 animate-pulse border-2"
-                                                    style={{ width: 56, height: 56, animationDelay: `${i * 150}ms` }}
-                                                />
-                                            ))}
+                                            {Array.from({ length: outputCount }).map((_, i) =>
+                                                inProgressImages[i] ? (
+                                                    <img
+                                                        key={i}
+                                                        src={inProgressImages[i]}
+                                                        className="border-border border-2 object-cover"
+                                                        style={{ width: 56, height: 56 }}
+                                                    />
+                                                ) : (
+                                                    <div
+                                                        key={i}
+                                                        className="border-border bg-muted/50 animate-pulse border-2"
+                                                        style={{ width: 56, height: 56, animationDelay: `${i * 150}ms` }}
+                                                    />
+                                                ),
+                                            )}
                                         </div>
+
+                                        {/* Progress bar */}
+                                        {outputCount > 1 && (
+                                            <div className="w-full max-w-md space-y-2">
+                                                <div className="border-border h-1.5 w-full overflow-hidden border">
+                                                    <div
+                                                        className="bg-primary h-full transition-all duration-500 ease-out"
+                                                        style={{ width: `${batchProgress}%` }}
+                                                    />
+                                                </div>
+                                                <p className="text-muted-foreground/40 pomelo-font-mono text-center text-xs tracking-widest">
+                                                    {batchStatus === 'queued' ? 'QUEUED...' : `GENERATING... ${batchProgress}% COMPLETE`}
+                                                </p>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 
