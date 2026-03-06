@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Asterisk, Bookmark, Clapperboard, ChevronLeft, ChevronRight, FlaskConical, ImageIcon, Loader2, Sparkles, Type, Wand2 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const STORAGE_KEY = 'brando:favorites';
 
@@ -230,25 +231,35 @@ function NameCard({
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
                     {onLogoClick && (
-                        <button
-                            onClick={() => onLogoClick(brand)}
-                            aria-label={`Generate a logo for ${brand.name}`}
-                            className="fav-btn cursor-pointer opacity-0 group-hover:opacity-40"
-                        >
-                            <Wand2 size={14} strokeWidth={2} className="text-muted-foreground" />
-                        </button>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <button
+                                    onClick={() => onLogoClick(brand)}
+                                    aria-label={`Generate a logo for ${brand.name}`}
+                                    className="fav-btn cursor-pointer opacity-0 group-hover:opacity-40"
+                                >
+                                    <Wand2 size={14} strokeWidth={2} className="text-muted-foreground" />
+                                </button>
+                            </TooltipTrigger>
+                            <TooltipContent>Generate Logo</TooltipContent>
+                        </Tooltip>
                     )}
-                    <button
-                        onClick={() => onToggle(brand)}
-                        aria-label={isFavorited ? `Remove ${brand.name} from favorites` : `Save ${brand.name} to favorites`}
-                        className={`fav-btn cursor-pointer ${isFavorited ? 'opacity-100' : 'opacity-0 group-hover:opacity-40'}`}
-                    >
-                        <Bookmark
-                            size={14}
-                            strokeWidth={2}
-                            className={isFavorited ? 'fill-primary text-primary' : 'text-muted-foreground'}
-                        />
-                    </button>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <button
+                                onClick={() => onToggle(brand)}
+                                aria-label={isFavorited ? `Remove ${brand.name} from Favorites` : `Save ${brand.name} to Favorites`}
+                                className={`fav-btn cursor-pointer ${isFavorited ? 'opacity-100' : 'opacity-0 group-hover:opacity-40'}`}
+                            >
+                                <Bookmark
+                                    size={14}
+                                    strokeWidth={2}
+                                    className={isFavorited ? 'fill-primary text-primary' : 'text-muted-foreground'}
+                                />
+                            </button>
+                        </TooltipTrigger>
+                        <TooltipContent>{isFavorited ? 'Remove from Favorites' : 'Save to Favorites'}</TooltipContent>
+                    </Tooltip>
                     <span className="brando-font-mono text-muted-foreground/25 text-xs tabular-nums tracking-wider">
                         {String(index + 1).padStart(2, '0')}
                     </span>
