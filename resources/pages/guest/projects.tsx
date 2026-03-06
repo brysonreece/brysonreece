@@ -83,7 +83,7 @@ export default function Projects() {
                 </p>
 
                 <label className="mb-4 block text-sm font-medium text-stone-700 dark:text-stone-300">Featured</label>
-                <ul role="list" className="mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <ul role="list" className="mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {featured.map((event, idx) => (
                         <li key={idx} className="h-full break-inside-avoid-column">
                             <ProjectRecord key={idx} event={event} />

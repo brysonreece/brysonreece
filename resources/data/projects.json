@@ -1,6 +1,33 @@
 {
     "featured": [
         {
+            "title": "Pomelo",
+            "description": "A lightweight product image generator that leverages the power of AI to create high-quality visuals for e-commerce businesses",
+            "dates": ["Mar 2026", null],
+            "content": null,
+            "resources": {
+                "View Online": "https://pomelo.bryson.cc"
+            }
+        },
+        {
+            "title": "Recall",
+            "description": "An in-browser, client-side RAG pipeline demonstration that retrieves and summarizes relevant information from uploaded documents in real time",
+            "dates": ["Feb 2026", null],
+            "content": null,
+            "resources": {
+                "View Online": "https://recall.bryson.cc"
+            }
+        },
+        {
+            "title": "Emojicons",
+            "description": "A developer tool that allows you to use emojis as favicon icons in your web projects, built with TypeScript and React",
+            "dates": ["Apr 2021", "Oct 2025"],
+            "content": null,
+            "resources": {
+                "View Online": "https://emojicons.dev"
+            }
+        },
+        {
             "title": "Stream",
             "description": "A video torrent streaming platform developed for XBMC / Kodi, ~105k unique users",
             "dates": ["Jun 2014", "May 2016"],
@@ -19,15 +46,6 @@
                 "GitHub (v1)": "https://github.com/OVAL-VR",
                 "GitHub (v2)": "https://github.com/OULibraries/OVAL2.0",
                 "Article": "https://campustechnology.com/articles/2017/10/09/multi-campus-vr-session-tours-remote-cave-art.aspx"
-            }
-        },
-        {
-            "title": "Athena",
-            "description": "An award-winning pedagogy application that seamlessly augments traditional learning material with 3D objects and an explorative toolset",
-            "dates": ["Apr 2017", "Mar 2018"],
-            "content": null,
-            "resources": {
-                "GitHub": "https://github.com/athena-app"
             }
         },
         {
