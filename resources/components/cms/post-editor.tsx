@@ -90,14 +90,7 @@ export function PostEditor({ post, onBack }: PostEditorProps) {
             });
             setIsDirty(false);
         }
-    }, [post?.id]);
-
-    // Track changes to mark as dirty
-    useEffect(() => {
-        if (post && form.data.title !== post.title) {
-            setIsDirty(true);
-        }
-    }, [form.data]);
+    }, [form, post]);
 
     // Warn before leaving with unsaved changes
     useEffect(() => {

@@ -19,6 +19,7 @@ import { store as storePost } from '@/actions/App/Http/Controllers/Blog/PostCont
 interface PostCreateDialogProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onSuccess?: (post: any) => void;
 }
 
