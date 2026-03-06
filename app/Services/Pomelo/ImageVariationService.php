@@ -38,6 +38,12 @@ class ImageVariationService
             now()->addMinutes(self::CACHE_TTL_MINUTES),
         );
 
+        Cache::put(
+            "pomelo:{$batchId}:failed",
+            0,
+            now()->addMinutes(self::CACHE_TTL_MINUTES),
+        );
+
         $jobs = [];
         for ($i = 0; $i < $count; $i++) {
             $jobs[] = new GenerateImageVariationJob(
