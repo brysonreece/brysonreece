@@ -591,16 +591,17 @@ export default function Pomelo(): ReactNode {
                                         </div>
 
                                         {/* Thumbnail strip */}
-                                        <div className="border-border shrink-0 border-t-2 px-4 py-3 md:px-6 md:py-4">
-                                            <div className="flex items-center gap-3">
-                                                {/* Prev */}
-                                                <button
-                                                    onClick={prevSlide}
-                                                    disabled={carouselIndex === 0}
-                                                    className="border-border bg-background hover:bg-muted grid h-9 w-9 shrink-0 cursor-pointer place-items-center border-2 transition-all disabled:cursor-default disabled:opacity-30"
-                                                >
-                                                    <ChevronLeft size={14} strokeWidth={2.5} />
-                                                </button>
+                                        {generatedImages.length > 1 && (
+                                            <div className="border-border shrink-0 border-t-2 px-4 py-3 md:px-6 md:py-4">
+                                                <div className="flex items-center gap-3">
+                                                    {/* Prev */}
+                                                    <button
+                                                        onClick={prevSlide}
+                                                        disabled={carouselIndex === 0}
+                                                        className="border-border bg-background hover:bg-muted grid h-9 w-9 shrink-0 cursor-pointer place-items-center border-2 transition-all disabled:cursor-default disabled:opacity-30"
+                                                    >
+                                                        <ChevronLeft size={14} strokeWidth={2.5} />
+                                                    </button>
 
                                                 {/* Thumbnails */}
                                                 <div className="flex flex-1 justify-center gap-2">
