@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 import axios from 'axios';
-import { ChevronLeft, ChevronRight, FlaskConical, ImageIcon, Loader2, SignalHigh, SignalLow, SignalMedium, Sparkles, Upload, X, Zap } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Egg, FlaskConical, ImageIcon, Loader2, SignalHigh, SignalLow, SignalMedium, Sparkles, Upload, X, Zap } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -247,9 +247,9 @@ export default function Pomelo(): ReactNode {
                 <header className="border-border shrink-0 border-b-2">
                     <div className="flex items-center justify-between px-4 py-4 md:px-8 md:py-5">
                         <div className="flex items-center gap-3 md:gap-4">
-                            <div className="border-primary grid h-8 w-8 place-items-center border-2 md:h-10 md:w-10">
-                                <Sparkles size={14} strokeWidth={2.5} className="md:hidden" />
-                                <Sparkles size={18} strokeWidth={2.5} className="hidden md:block" />
+                            <div className="grid place-items-center">
+                                <Egg size={32} strokeWidth={2.5} className="md:hidden rotate-24" />
+                                <Egg size={40} strokeWidth={2.5} className="hidden md:block rotate-24" />
                             </div>
                             <div>
                                 <h1 className="pomelo-font-display text-sm leading-none font-bold tracking-widest md:text-lg">
