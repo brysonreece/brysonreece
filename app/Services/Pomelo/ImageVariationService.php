@@ -12,19 +12,23 @@ use Illuminate\Support\Str;
 
 class ImageVariationService
 {
-    private const TEMP_DISK = 'local';
-
-    private const TEMP_PATH = 'pomelo/uploads';
+    private const TEMP_PATH = 'uploads';
 
     private const CACHE_TTL_MINUTES = 25;
 
     /**
      * Dispatch a batch of image variation jobs and return the batch ID.
      */
+    private function disk(): string
+    {
+        return config('filesystems.pomelo_disk');
+    }
+
     public function dispatch(UploadedFile $upload, ?string $prompt, int $count, string $quality = 'medium'): string
     {
-        $tempPath = $this->storeTempUpload($upload);
-        $absoluteTempPath = Storage::disk(self::TEMP_DISK)->path($tempPath);
+        $disk = $this->disk();
+        $tempPath = $this->storeTempUpload($upload, $disk);
+        $absoluteTempPath = Storage::disk($disk)->path($tempPath);
         $fullPrompt = $this->buildPrompt($prompt);
         $batchId = Str::uuid()->toString();
 
@@ -48,8 +52,8 @@ class ImageVariationService
         Bus::batch($jobs)
             ->name("pomelo:{$batchId}")
             ->allowFailures()
-            ->finally(function (Batch $batch) use ($tempPath): void {
-                Storage::disk(self::TEMP_DISK)->delete($tempPath);
+            ->finally(function (Batch $batch) use ($disk, $tempPath): void {
+                Storage::disk($disk)->delete($tempPath);
             })
             ->dispatch();
 
@@ -59,12 +63,12 @@ class ImageVariationService
     /**
      * Store the uploaded image to the local disk under a random filename.
      */
-    private function storeTempUpload(UploadedFile $upload): string
+    private function storeTempUpload(UploadedFile $upload, string $disk): string
     {
         $extension = $upload->extension();
         $filename = Str::uuid()->toString().'.'.$extension;
 
-        $upload->storeAs(self::TEMP_PATH, $filename, self::TEMP_DISK);
+        $upload->storeAs(self::TEMP_PATH, $filename, $disk);
 
         return self::TEMP_PATH.'/'.$filename;
     }

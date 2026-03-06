@@ -15,6 +15,8 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
+    'pomelo_disk' => env('POMELO_FILESYSTEM_DISK', 'pomelo'),
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -42,6 +44,15 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'pomelo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/pomelo'),
+            'url' => env('APP_URL').'/storage/pomelo',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
@@ -75,6 +86,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('storage/pomelo') => storage_path('app/pomelo'),
     ],
 
 ];

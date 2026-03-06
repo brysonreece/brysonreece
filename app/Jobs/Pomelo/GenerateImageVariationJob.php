@@ -15,9 +15,7 @@ class GenerateImageVariationJob implements ShouldQueue
 {
     use Batchable, Queueable;
 
-    private const OUTPUT_DISK = 'public';
-
-    private const OUTPUT_PATH = 'pomelo/generated';
+    private const OUTPUT_PATH = 'generated';
 
     private const OUTPUT_TTL_MINUTES = 15;
 
@@ -30,6 +28,11 @@ class GenerateImageVariationJob implements ShouldQueue
         public readonly string $prompt,
         public readonly string $quality = 'medium',
     ) {}
+
+    private function disk(): string
+    {
+        return config('filesystems.pomelo_disk');
+    }
 
     public function handle(): void
     {
@@ -46,10 +49,10 @@ class GenerateImageVariationJob implements ShouldQueue
             ->square()
             ->generate();
 
-        $response->storePubliclyAs(self::OUTPUT_PATH, $filename, self::OUTPUT_DISK);
+        $response->storePubliclyAs(self::OUTPUT_PATH, $filename, $this->disk());
 
         /** @var \Illuminate\Filesystem\FilesystemAdapter $outputDisk */
-        $outputDisk = Storage::disk(self::OUTPUT_DISK);
+        $outputDisk = Storage::disk($this->disk());
         $url = $outputDisk->url($outputPath);
 
         Cache::put(
