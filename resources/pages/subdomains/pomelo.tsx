@@ -102,7 +102,7 @@ export default function Pomelo(): ReactNode {
                             data.images.map((img, i) => ({
                                 id: String(i + 1),
                                 url: img.url,
-                                label: `Variation ${String(i + 1).padStart(2, '0')}`,
+                                label: `Image ${String(i + 1).padStart(2, '0')}`,
                             })),
                         );
                         setIsGenerating(false);
@@ -238,7 +238,7 @@ export default function Pomelo(): ReactNode {
 
     return (
         <>
-            <Head title="Pomelo | AI Product Image Variations" />
+            <Head title="Pomelo | AI Product Image Generator" />
 
             <div className="bg-background text-foreground pomelo-font-mono flex h-screen flex-col">
                 <style>{PAGE_STYLES}</style>
@@ -256,7 +256,7 @@ export default function Pomelo(): ReactNode {
                                     POMELO
                                 </h1>
                                 <p className="text-muted-foreground mt-1 text-xs font-medium tracking-wider md:mt-1.5">
-                                    AI PRODUCT IMAGE VARIATION GENERATOR
+                                    AI PRODUCT IMAGE GENERATOR
                                 </p>
                             </div>
                         </div>
@@ -399,7 +399,7 @@ export default function Pomelo(): ReactNode {
                                     <textarea
                                         value={prompt}
                                         onChange={(e) => setPrompt(e.target.value)}
-                                        placeholder="Describe the desired variation style, lighting, environment, or mood..."
+                                        placeholder="Describe the desired image style, lighting, environment, or mood..."
                                         rows={4}
                                         className="pomelo-font-mono bg-background text-foreground placeholder:text-muted-foreground/30 w-full resize-none p-3 text-xs leading-relaxed tracking-wide outline-none md:text-sm focus:ring-0 border-0"
                                     />
@@ -459,12 +459,12 @@ export default function Pomelo(): ReactNode {
                                     {isGenerating ? (
                                         <>
                                             <Loader2 size={15} className="animate-spin [animation-duration:1.2s]" />
-                                            GENERATING VARIATIONS...
+                                            GENERATING IMAGES...
                                         </>
                                     ) : (
                                         <>
                                             <Sparkles size={15} strokeWidth={2.5} />
-                                            GENERATE {outputCount} VARIATION{outputCount !== 1 ? 'S' : ''}
+                                            GENERATE {outputCount !== 1 ? `${outputCount} ` : ''}IMAGE{outputCount !== 1 ? 'S' : ''}
                                         </>
                                     )}
                                 </button>
@@ -492,7 +492,7 @@ export default function Pomelo(): ReactNode {
                                     <div className="flex items-center gap-2">
                                         <Sparkles size={11} strokeWidth={2.5} className="text-muted-foreground" />
                                         <span className="text-muted-foreground text-xs font-medium tracking-wider">
-                                            GENERATED VARIATIONS
+                                            GENERATED IMAGE{outputCount !== 1 ? 'S' : ''}
                                         </span>
                                     </div>
                                     {generatedImages.length > 0 && (
@@ -517,7 +517,7 @@ export default function Pomelo(): ReactNode {
                                                 AWAITING GENERATION
                                             </p>
                                             <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">
-                                                {outputCount} VARIATION{outputCount !== 1 ? 'S' : ''} WILL APPEAR HERE
+                                                {outputCount !== 1 ? `${outputCount} ` : ''}IMAGE{outputCount !== 1 ? 'S' : ''} WILL APPEAR HERE
                                             </p>
                                         </div>
                                         {/* Decorative corner marks */}
@@ -643,11 +643,11 @@ export default function Pomelo(): ReactNode {
                 <footer className="border-border border-t px-4 py-3 md:px-8 md:py-5">
                     <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-0">
                         <span className="text-muted-foreground/40 text-xs font-medium tracking-wide">
-                            POMELO · PRODUCT IMAGE AI
+                            POMELO · PRODUCT IMAGE GENERATOR
                         </span>
-                        <span className="text-muted-foreground/40 text-xs font-medium tracking-wide md:text-right">
-                            UPLOAD · PROMPT · GENERATE
-                        </span>
+                        <a href="https://bryson.cc" target="_blank" className="text-muted-foreground/40 hover:text-muted-foreground text-xs font-medium tracking-wide md:text-right">
+                            BRYSON.CC
+                        </a>
                     </div>
                 </footer>
             </div>
