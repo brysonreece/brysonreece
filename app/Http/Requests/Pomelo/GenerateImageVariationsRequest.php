@@ -21,6 +21,7 @@ class GenerateImageVariationsRequest extends FormRequest
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:10240'],
             'prompt' => ['nullable', 'string', 'max:1000'],
             'count' => ['required', 'integer', 'min:1', 'max:5'],
+            'quality' => ['required', 'string', 'in:low,medium,high'],
         ];
     }
 

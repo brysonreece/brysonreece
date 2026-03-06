@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 import axios from 'axios';
-import { ChevronLeft, ChevronRight, FlaskConical, ImageIcon, Loader2, Sparkles, Upload, X, Zap } from 'lucide-react';
+import { ChevronLeft, ChevronRight, FlaskConical, ImageIcon, Loader2, SignalHigh, SignalLow, SignalMedium, Sparkles, Upload, X, Zap } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -58,6 +58,7 @@ export default function Pomelo(): ReactNode {
     const [uploadedFileName, setUploadedFileName] = useState<string>('');
     const [isDragging, setIsDragging] = useState(false);
     const [prompt, setPrompt] = useState('');
+    const [quality, setQuality] = useState<'low' | 'medium' | 'high'>('medium');
     const [isGenerating, setIsGenerating] = useState(false);
     const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
     const [carouselIndex, setCarouselIndex] = useState(0);
@@ -214,6 +215,7 @@ export default function Pomelo(): ReactNode {
             body.append('image', uploadedFile);
             body.append('prompt', prompt);
             body.append('count', String(outputCount));
+            body.append('quality', quality);
 
             const { data } = await axios.post<{ batchId: string }>('/variations', body);
             startPolling(data.batchId);
@@ -405,6 +407,39 @@ export default function Pomelo(): ReactNode {
                                         <span className="text-muted-foreground/40 text-xs tabular-nums tracking-wide">
                                             {prompt.length} CHARS
                                         </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Quality */}
+                            <div className="border-border border-b-2 p-4 md:p-6">
+                                <div className="flex flex-col gap-4">
+                                    <div>
+                                        <div className="mb-3 flex items-center gap-2">
+                                            <span className="text-muted-foreground text-xs font-medium tracking-wider">QUALITY</span>
+                                        </div>
+                                        <div className="border-border flex border-2">
+                                            {([
+                                                { value: 'low', Icon: SignalLow },
+                                                { value: 'medium', Icon: SignalMedium },
+                                                { value: 'high', Icon: SignalHigh },
+                                            ] as const).map(({ value, Icon }) => (
+                                                <button
+                                                    key={value}
+                                                    onClick={() => setQuality(value)}
+                                                    className={`flex flex-1 cursor-pointer items-center justify-center py-2.5 transition-all ${
+                                                        quality === value
+                                                            ? 'bg-primary text-primary-foreground'
+                                                            : 'bg-background text-muted-foreground hover:bg-muted'
+                                                    }`}
+                                                >
+                                                    <Icon size={14} strokeWidth={2} />
+                                                </button>
+                                            ))}
+                                        </div>
+                                        <p className="text-muted-foreground/40 mt-1.5 text-center text-xs tracking-wider">
+                                            {quality.toUpperCase()}
+                                        </p>
                                     </div>
                                 </div>
                             </div>

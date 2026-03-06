@@ -21,6 +21,7 @@ class ImageVariationControllerTest extends TestCase
             'image' => $image,
             'prompt' => 'sunny beach',
             'count' => 2,
+            'quality' => 'medium',
         ]);
 
         $response->assertStatus(202)

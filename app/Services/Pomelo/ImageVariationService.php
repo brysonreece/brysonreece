@@ -21,7 +21,7 @@ class ImageVariationService
     /**
      * Dispatch a batch of image variation jobs and return the batch ID.
      */
-    public function dispatch(UploadedFile $upload, ?string $prompt, int $count): string
+    public function dispatch(UploadedFile $upload, ?string $prompt, int $count, string $quality = 'medium'): string
     {
         $tempPath = $this->storeTempUpload($upload);
         $absoluteTempPath = Storage::disk(self::TEMP_DISK)->path($tempPath);
@@ -41,6 +41,7 @@ class ImageVariationService
                 index: $i,
                 absoluteTempPath: $absoluteTempPath,
                 prompt: $fullPrompt,
+                quality: $quality,
             );
         }
 
@@ -79,6 +80,6 @@ class ImageVariationService
             return $base.' '.$userPrompt;
         }
 
-        return $base.' Keep the same product, lighting, and composition as the reference.';
+        return $base;
     }
 }

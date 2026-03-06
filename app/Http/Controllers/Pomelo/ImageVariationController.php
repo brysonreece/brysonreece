@@ -21,6 +21,7 @@ class ImageVariationController extends Controller
             upload: $request->file('image'),
             prompt: $request->string('prompt')->trim()->value(),
             count: $request->integer('count'),
+            quality: $request->string('quality')->value(),
         );
 
         return response()->json(['batchId' => $batchId], 202);

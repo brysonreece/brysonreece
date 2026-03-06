@@ -28,6 +28,7 @@ class GenerateImageVariationJob implements ShouldQueue
         public readonly int $index,
         public readonly string $absoluteTempPath,
         public readonly string $prompt,
+        public readonly string $quality = 'medium',
     ) {}
 
     public function handle(): void
@@ -41,6 +42,7 @@ class GenerateImageVariationJob implements ShouldQueue
 
         $response = Image::of($this->prompt)
             ->attachments([AiImage::fromPath($this->absoluteTempPath)])
+            ->quality($this->quality)
             ->square()
             ->generate();
 
