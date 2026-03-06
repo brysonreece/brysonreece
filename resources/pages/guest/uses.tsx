@@ -203,11 +203,13 @@ export default function Uses() {
                             </a>
                         </li>
                         <li>
+                            Google Glass{' '}
                             <a href="https://developers.google.com/glass" target="_blank" rel="noopener noreferrer">
-                                Google Glass (Explorer Edition)
+                                (Explorer Edition)
                             </a>
+                            {' / '}
                             <a href="https://blog.google/products-and-platforms/devices/glass-enterprise-edition-2/" target="_blank" rel="noopener noreferrer">
-                                Google Glass (Enterprise Edition 2)
+                                (Enterprise Edition 2)
                             </a>
                         </li>
                         <li>
