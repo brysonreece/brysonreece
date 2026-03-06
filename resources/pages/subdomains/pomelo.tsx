@@ -552,19 +552,20 @@ export default function Pomelo(): ReactNode {
                                         </div>
 
                                         {/* Progress bar */}
-                                        {outputCount > 1 && (
-                                            <div className="w-full max-w-md space-y-2">
+                                        <div className="w-full max-w-md space-y-2">
+                                            {outputCount > 1 && (
                                                 <div className="border-border h-1.5 w-full overflow-hidden border">
                                                     <div
                                                         className="bg-primary h-full transition-all duration-500 ease-out"
                                                         style={{ width: `${batchProgress}%` }}
                                                     />
                                                 </div>
-                                                <p className="text-muted-foreground/40 pomelo-font-mono text-center text-xs tracking-widest">
-                                                    {batchStatus === 'queued' ? 'QUEUED...' : `GENERATING... ${batchProgress}% COMPLETE`}
-                                                </p>
-                                            </div>
-                                        )}
+                                            )}
+                                            <p className="text-muted-foreground/40 pomelo-font-mono text-center text-xs tracking-widest">
+                                                {batchStatus === 'queued' ? 'QUEUED...' : `GENERATING...`}
+                                                {batchStatus === 'generating' && outputCount > 1 && ` ${batchProgress}%`}
+                                            </p>
+                                        </div>
                                     </div>
                                 )}
 
@@ -603,36 +604,37 @@ export default function Pomelo(): ReactNode {
                                                         <ChevronLeft size={14} strokeWidth={2.5} />
                                                     </button>
 
-                                                {/* Thumbnails */}
-                                                <div className="flex flex-1 justify-center gap-2">
-                                                    {displayImages.map((img, i) => (
-                                                        <button
-                                                            key={img.id}
-                                                            onClick={() => setCarouselIndex(i)}
-                                                            className={`border-2 cursor-pointer overflow-hidden transition-all shrink-0
-                                                                ${i === carouselIndex ? 'border-primary scale-105' : 'border-border hover:border-muted-foreground/50 opacity-60 hover:opacity-80'}`}
-                                                            style={{ width: 56, height: 56 }}
-                                                            title={img.label}
-                                                        >
-                                                            <img
-                                                                src={img.url}
-                                                                alt={img.label}
-                                                                className="h-full w-full object-cover"
-                                                            />
-                                                        </button>
-                                                    ))}
-                                                </div>
+                                                    {/* Thumbnails */}
+                                                    <div className="flex flex-1 justify-center gap-2">
+                                                        {displayImages.map((img, i) => (
+                                                            <button
+                                                                key={img.id}
+                                                                onClick={() => setCarouselIndex(i)}
+                                                                className={`border-2 cursor-pointer overflow-hidden transition-all shrink-0
+                                                                    ${i === carouselIndex ? 'border-primary scale-105' : 'border-border hover:border-muted-foreground/50 opacity-60 hover:opacity-80'}`}
+                                                                style={{ width: 56, height: 56 }}
+                                                                title={img.label}
+                                                            >
+                                                                <img
+                                                                    src={img.url}
+                                                                    alt={img.label}
+                                                                    className="h-full w-full object-cover"
+                                                                />
+                                                            </button>
+                                                        ))}
+                                                    </div>
 
-                                                {/* Next */}
-                                                <button
-                                                    onClick={nextSlide}
-                                                    disabled={carouselIndex === totalSlides - 1}
-                                                    className="border-border bg-background hover:bg-muted grid h-9 w-9 shrink-0 cursor-pointer place-items-center border-2 transition-all disabled:cursor-default disabled:opacity-30"
-                                                >
-                                                    <ChevronRight size={14} strokeWidth={2.5} />
-                                                </button>
+                                                    {/* Next */}
+                                                    <button
+                                                        onClick={nextSlide}
+                                                        disabled={carouselIndex === totalSlides - 1}
+                                                        className="border-border bg-background hover:bg-muted grid h-9 w-9 shrink-0 cursor-pointer place-items-center border-2 transition-all disabled:cursor-default disabled:opacity-30"
+                                                    >
+                                                        <ChevronRight size={14} strokeWidth={2.5} />
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
                                 )}
                             </div>
