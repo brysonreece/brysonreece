@@ -95,6 +95,25 @@ function useFavorites() {
     return { favorites, toggle, isFavorited };
 }
 
+function toggleSetItem<T>(set: Set<T>, item: T): Set<T> {
+    const next = new Set(set);
+    if (next.has(item)) {
+        next.delete(item);
+    } else {
+        next.add(item);
+    }
+    return next;
+}
+
+function extractErrorMessage(err: unknown, primaryField: string): string {
+    const response = (err as { response?: { data?: { errors?: Record<string, string[]>; message?: string } } })?.response;
+    return (
+        response?.data?.errors?.[primaryField]?.[0] ??
+        response?.data?.message ??
+        (err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    );
+}
+
 function Slider({
     value,
     onChange,
@@ -124,6 +143,55 @@ function Slider({
                 disabled={disabled}
                 className="brando-slider"
             />
+        </div>
+    );
+}
+
+function StyleSelector({
+    selected,
+    onChange,
+}: {
+    selected: Set<string>;
+    onChange: (next: Set<string>) => void;
+}) {
+    return (
+        <>
+            <div className="border-border flex border-2">
+                {STYLE_OPTIONS.map((s) => (
+                    <button
+                        key={s}
+                        onClick={() => onChange(toggleSetItem(selected, s))}
+                        className={`brando-font-mono flex flex-1 cursor-pointer items-center justify-center py-2.5 text-xs font-medium tracking-wider transition-all ${
+                            selected.has(s)
+                                ? 'bg-primary text-primary-foreground'
+                                : 'bg-background text-muted-foreground hover:bg-muted'
+                        }`}
+                    >
+                        {s}
+                    </button>
+                ))}
+            </div>
+            <p className="text-muted-foreground/40 mt-4 text-center text-xs tracking-wider">
+                {selected.size === 0 ? 'SELECT ALL THAT APPLY' : [...selected].join(' \u00b7 ')}
+            </p>
+        </>
+    );
+}
+
+function EmptyState({ icon, title, subtitle, dimIcon }: { icon: ReactNode; title: string; subtitle: string; dimIcon?: boolean }) {
+    return (
+        <div className="brando-grid-bg absolute inset-0 flex flex-col items-center justify-center gap-6">
+            <div className={`border-border grid h-20 w-20 place-items-center border-2${dimIcon ? ' opacity-25' : ''}`}>
+                {icon}
+            </div>
+            <div className="text-center">
+                <p className="text-muted-foreground/40 text-sm font-medium tracking-widest">{title}</p>
+                <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">{subtitle}</p>
+            </div>
+            <div className="border-muted-foreground/10 absolute top-4 left-4 h-8 w-8 border-t-2 border-l-2" />
+            <div className="border-muted-foreground/10 absolute top-4 right-4 h-8 w-8 border-t-2 border-r-2" />
+            <div className="border-muted-foreground/10 absolute bottom-4 left-4 h-8 w-8 border-b-2 border-l-2" />
+            <div className="border-muted-foreground/10 absolute bottom-4 right-4 h-8 w-8 border-b-2 border-r-2" />
         </div>
     );
 }
@@ -270,18 +338,6 @@ export default function Brando(): ReactNode {
         return () => stopPolling();
     }, [stopPolling]);
 
-    const toggleNameStyle = (style: string) => {
-        setNameStyles((prev) => {
-            const next = new Set(prev);
-            if (next.has(style)) {
-                next.delete(style);
-            } else {
-                next.add(style);
-            }
-            return next;
-        });
-    };
-
     const handleLoadExample = () => {
         setDescription(SAMPLE_DESCRIPTION);
         setNameResults([]);
@@ -305,12 +361,7 @@ export default function Brando(): ReactNode {
             );
             setNameResults(data.names);
         } catch (err) {
-            const message =
-                (err as { response?: { data?: { errors?: Record<string, string[]>; message?: string } } })
-                    ?.response?.data?.errors?.description?.[0] ??
-                (err as { response?: { data?: { message?: string } } })?.response?.data?.message ??
-                (err instanceof Error ? err.message : 'Something went wrong. Please try again.');
-            setNameError(message);
+            setNameError(extractErrorMessage(err, 'description'));
         } finally {
             setIsGeneratingNames(false);
         }
@@ -341,12 +392,7 @@ export default function Brando(): ReactNode {
             });
             startPolling(data.batchId);
         } catch (err) {
-            const message =
-                (err as { response?: { data?: { errors?: Record<string, string[]>; message?: string } } })
-                    ?.response?.data?.errors?.name?.[0] ??
-                (err as { response?: { data?: { message?: string } } })?.response?.data?.message ??
-                (err instanceof Error ? err.message : 'An unexpected error occurred.');
-            setLogoError(message);
+            setLogoError(extractErrorMessage(err, 'name'));
             setIsGeneratingLogos(false);
         }
     };
@@ -473,24 +519,7 @@ export default function Brando(): ReactNode {
                                             <div className="mb-3 flex items-center gap-2">
                                                 <span className="text-muted-foreground text-xs font-medium tracking-wider">STYLE</span>
                                             </div>
-                                            <div className="border-border flex border-2">
-                                                {STYLE_OPTIONS.map((s) => (
-                                                    <button
-                                                        key={s}
-                                                        onClick={() => toggleNameStyle(s)}
-                                                        className={`brando-font-mono flex flex-1 cursor-pointer items-center justify-center py-2.5 text-xs font-medium tracking-wider transition-all ${
-                                                            nameStyles.has(s)
-                                                                ? 'bg-primary text-primary-foreground'
-                                                                : 'bg-background text-muted-foreground hover:bg-muted'
-                                                        }`}
-                                                    >
-                                                        {s}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                            <p className="text-muted-foreground/40 mt-4 text-center text-xs tracking-wider">
-                                                {nameStyles.size === 0 ? 'SELECT ALL THAT APPLY' : [...nameStyles].join(' · ')}
-                                            </p>
+                                            <StyleSelector selected={nameStyles} onChange={setNameStyles} />
                                         </div>
 
                                         {/* Result count slider */}
@@ -604,28 +633,7 @@ export default function Brando(): ReactNode {
                                                 <span className="text-muted-foreground text-xs font-medium tracking-wider">STYLE</span>
                                                 <span className="text-muted-foreground/40 text-xs tracking-wider">OPTIONAL</span>
                                             </div>
-                                            <div className="border-border flex border-2">
-                                                {STYLE_OPTIONS.map((s) => (
-                                                    <button
-                                                        key={s}
-                                                        onClick={() => setLogoStyles((prev) => {
-                                                            const next = new Set(prev);
-                                                            if (next.has(s)) { next.delete(s); } else { next.add(s); }
-                                                            return next;
-                                                        })}
-                                                        className={`brando-font-mono flex flex-1 cursor-pointer items-center justify-center py-2.5 text-xs font-medium tracking-wider transition-all ${
-                                                            logoStyles.has(s)
-                                                                ? 'bg-primary text-primary-foreground'
-                                                                : 'bg-background text-muted-foreground hover:bg-muted'
-                                                        }`}
-                                                    >
-                                                        {s}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                            <p className="text-muted-foreground/40 mt-4 text-center text-xs tracking-wider">
-                                                {logoStyles.size === 0 ? 'SELECT ALL THAT APPLY' : [...logoStyles].join(' · ')}
-                                            </p>
+                                            <StyleSelector selected={logoStyles} onChange={setLogoStyles} />
                                         </div>
 
                                         {/* Logo count slider */}
@@ -742,23 +750,11 @@ export default function Brando(): ReactNode {
                                         {leftTab === 'names' && (
                                             <>
                                                 {!isGeneratingNames && nameResults.length === 0 && (
-                                                    <div className="brando-grid-bg absolute inset-0 flex flex-col items-center justify-center gap-6">
-                                                        <div className="border-border grid h-20 w-20 place-items-center border-2">
-                                                            <Asterisk size={32} strokeWidth={1} />
-                                                        </div>
-                                                        <div className="text-center">
-                                                            <p className="text-muted-foreground/40 text-sm font-medium tracking-widest">
-                                                                AWAITING GENERATION
-                                                            </p>
-                                                            <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">
-                                                                {nameCount} BRAND NAMES WILL APPEAR HERE
-                                                            </p>
-                                                        </div>
-                                                        <div className="border-muted-foreground/10 absolute top-4 left-4 h-8 w-8 border-t-2 border-l-2" />
-                                                        <div className="border-muted-foreground/10 absolute top-4 right-4 h-8 w-8 border-t-2 border-r-2" />
-                                                        <div className="border-muted-foreground/10 absolute bottom-4 left-4 h-8 w-8 border-b-2 border-l-2" />
-                                                        <div className="border-muted-foreground/10 absolute bottom-4 right-4 h-8 w-8 border-b-2 border-r-2" />
-                                                    </div>
+                                                    <EmptyState
+                                                        icon={<Asterisk size={32} strokeWidth={1} />}
+                                                        title="AWAITING GENERATION"
+                                                        subtitle={`${nameCount} BRAND NAMES WILL APPEAR HERE`}
+                                                    />
                                                 )}
 
                                                 {isGeneratingNames && (
@@ -798,23 +794,12 @@ export default function Brando(): ReactNode {
                                         {leftTab === 'logo' && (
                                             <div className="relative h-full overflow-hidden">
                                                 {!isGeneratingLogos && generatedLogos.length === 0 && (
-                                                    <div className="brando-grid-bg absolute inset-0 flex flex-col items-center justify-center gap-6">
-                                                        <div className="border-border grid h-20 w-20 place-items-center border-2 opacity-25">
-                                                            <ImageIcon size={32} strokeWidth={1} />
-                                                        </div>
-                                                        <div className="text-center">
-                                                            <p className="text-muted-foreground/40 text-sm font-medium tracking-widest">
-                                                                AWAITING GENERATION
-                                                            </p>
-                                                            <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">
-                                                                {logoCount !== 1 ? `${logoCount} ` : ''}LOGO{logoCount !== 1 ? 'S' : ''} WILL APPEAR HERE
-                                                            </p>
-                                                        </div>
-                                                        <div className="border-muted-foreground/10 absolute top-4 left-4 h-8 w-8 border-t-2 border-l-2" />
-                                                        <div className="border-muted-foreground/10 absolute top-4 right-4 h-8 w-8 border-t-2 border-r-2" />
-                                                        <div className="border-muted-foreground/10 absolute bottom-4 left-4 h-8 w-8 border-b-2 border-l-2" />
-                                                        <div className="border-muted-foreground/10 absolute bottom-4 right-4 h-8 w-8 border-b-2 border-r-2" />
-                                                    </div>
+                                                    <EmptyState
+                                                        icon={<ImageIcon size={32} strokeWidth={1} />}
+                                                        title="AWAITING GENERATION"
+                                                        subtitle={`${logoCount !== 1 ? `${logoCount} ` : ''}LOGO${logoCount !== 1 ? 'S' : ''} WILL APPEAR HERE`}
+                                                        dimIcon
+                                                    />
                                                 )}
 
                                                 {isGeneratingLogos && (
@@ -928,23 +913,12 @@ export default function Brando(): ReactNode {
                                 {rightTab === 'favorites' && (
                                     <>
                                         {favorites.length === 0 ? (
-                                            <div className="brando-grid-bg absolute inset-0 flex flex-col items-center justify-center gap-6">
-                                                <div className="border-border grid h-20 w-20 place-items-center border-2 opacity-25">
-                                                    <Bookmark size={32} strokeWidth={1} />
-                                                </div>
-                                                <div className="text-center">
-                                                    <p className="text-muted-foreground/40 text-sm font-medium tracking-widest">
-                                                        NO FAVORITES YET
-                                                    </p>
-                                                    <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">
-                                                        BOOKMARK NAMES FROM YOUR RESULTS
-                                                    </p>
-                                                </div>
-                                                <div className="border-muted-foreground/10 absolute top-4 left-4 h-8 w-8 border-t-2 border-l-2" />
-                                                <div className="border-muted-foreground/10 absolute top-4 right-4 h-8 w-8 border-t-2 border-r-2" />
-                                                <div className="border-muted-foreground/10 absolute bottom-4 left-4 h-8 w-8 border-b-2 border-l-2" />
-                                                <div className="border-muted-foreground/10 absolute bottom-4 right-4 h-8 w-8 border-b-2 border-r-2" />
-                                            </div>
+                                            <EmptyState
+                                                icon={<Bookmark size={32} strokeWidth={1} />}
+                                                title="NO FAVORITES YET"
+                                                subtitle="BOOKMARK NAMES FROM YOUR RESULTS"
+                                                dimIcon
+                                            />
                                         ) : (
                                             <div className="space-y-3 p-4 md:p-6">
                                                 {favorites.map((brand, i) => (
