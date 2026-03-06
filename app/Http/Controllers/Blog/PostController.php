@@ -57,11 +57,9 @@ class PostController extends Controller
     {
         $post = $this->postService->find($slug);
 
-        if (! $post) {
-            abort(404);
-        }
+        abort_unless($post, 404);
 
-        $updatedPost = $this->postService->update($post, $request->validated());
+        $this->postService->update($post, $request->validated());
 
         return back()->with('success', 'Post updated successfully.');
     }
@@ -73,9 +71,7 @@ class PostController extends Controller
     {
         $post = $this->postService->find($slug);
 
-        if (! $post) {
-            abort(404);
-        }
+        abort_unless($post, 404);
 
         $this->postService->delete($post);
 

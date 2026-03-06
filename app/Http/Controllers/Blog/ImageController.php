@@ -16,7 +16,7 @@ class ImageController extends Controller
     public function store(Request $request): JsonResponse
     {
         $request->validate([
-            'image' => 'required|image|max:2048', // 2MB max
+            'image' => ['required', 'image', 'max:2048'], // 2MB max
         ]);
 
         // Generate a unique filename

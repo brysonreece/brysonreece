@@ -207,8 +207,8 @@ class PostService
         if (isset($filters['search'])) {
             $search = strtolower($filters['search']);
             $posts = $posts->filter(function ($p) use ($search) {
-                return str_contains(strtolower($p->title), $search)
-                    || str_contains(strtolower($p->content), $search)
+                return str_contains(strtolower((string) $p->title), $search)
+                    || str_contains(strtolower((string) $p->content), $search)
                     || str_contains(strtolower($p->description ?? ''), $search);
             });
         }
@@ -217,7 +217,7 @@ class PostService
         if (isset($filters['tags'])) {
             $tags = is_array($filters['tags']) ? $filters['tags'] : [$filters['tags']];
             $posts = $posts->filter(function ($p) use ($tags) {
-                return ! empty(array_intersect($tags, $p->tags));
+                return array_intersect($tags, $p->tags) !== [];
             });
         }
 

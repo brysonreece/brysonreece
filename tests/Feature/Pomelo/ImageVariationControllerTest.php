@@ -39,7 +39,7 @@ class ImageVariationControllerTest extends TestCase
                 'count' => 1,
             ]);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
     }
 
     public function test_store_requires_count_between_1_and_5(): void
@@ -51,13 +51,13 @@ class ImageVariationControllerTest extends TestCase
             ->post('http://pomelo.bryson.test/variations', [
                 'image' => $image,
                 'count' => 0,
-            ])->assertStatus(422);
+            ])->assertUnprocessable();
 
         $this->withHeaders(['Accept' => 'application/json'])
             ->post('http://pomelo.bryson.test/variations', [
                 'image' => $image,
                 'count' => 6,
-            ])->assertStatus(422);
+            ])->assertUnprocessable();
     }
 
     public function test_status_returns_404_for_unknown_batch(): void
