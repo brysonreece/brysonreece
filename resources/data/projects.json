@@ -27,13 +27,16 @@
                 "View Online": "https://emojicons.dev"
             }
         },
+
         {
-            "title": "Stream",
-            "description": "A video torrent streaming platform developed for XBMC / Kodi, ~105k unique users",
-            "dates": ["Jun 2014", "May 2016"],
-            "content": null,
+            "title": "Seedling",
+            "description": "A patented, interactive childrens' toy that teaches PinYin speakers English pronunciation using novel learning techniques",
+            "dates": ["Aug 2017", "Oct 2017"],
+            "featured": true,
+            "content": "On permanent display at the University of Beijing",
             "resources": {
-                "GitHub": "https://github.com/brysonreece/stream"
+                "Exhibit": "https://poeticsofinvention.ou.edu/features/seedling.html",
+                "Feature": "https://poeticsofinvention.ou.edu/features/seedling-blocks.html"
             }
         },
         {
@@ -49,34 +52,24 @@
             }
         },
         {
-            "title": "Seedling",
-            "description": "A patented, interactive childrens' toy that teaches PinYin speakers English pronunciation using novel learning techniques",
-            "dates": ["Aug 2017", "Oct 2017"],
-            "featured": true,
-            "content": "On permanent display at the University of Beijing",
+            "title": "Stream",
+            "description": "A video torrent streaming platform developed for XBMC / Kodi, ~105k unique users",
+            "dates": ["Jun 2014", "May 2016"],
+            "content": null,
             "resources": {
-                "Exhibit": "https://poeticsofinvention.ou.edu/features/seedling.html",
-                "Feature": "https://poeticsofinvention.ou.edu/features/seedling-blocks.html"
+                "GitHub": "https://github.com/brysonreece/stream"
             }
         }
     ],
     "completed": [
         {
-            "title": "Kore",
-            "description": "3D-printable assistive devices for those physically impaired",
-            "dates": ["Nov 2015", null],
+            "title": "EmPy",
+            "description": "Determines sentiment of Instagram posts using ML and Microsoft Cloud APIs",
+            "dates": ["Apr 2017", "Mar 2018"],
+            "featured": false,
             "content": null,
             "resources": {
-                "GitHub": "https://github.com/brysonreece/kore"
-            }
-        },
-        {
-            "title": "File.io",
-            "description": "Decentralized file storage from a keychain computer",
-            "dates": ["Feb 2016", null],
-            "content": null,
-            "resources": {
-                "GitHub": "https://github.com/brysonreece/file.io"
+                "GitHub": "https://github.com/brysonreece/empy"
             }
         },
         {
@@ -89,24 +82,33 @@
             }
         },
         {
-            "title": "EmPy",
-            "description": "Determines sentiment of Instagram posts using ML and Microsoft Cloud APIs",
-            "dates": ["Apr 2017", "Mar 2018"],
-            "featured": false,
+            "title": "File.io",
+            "description": "Decentralized file storage from a keychain computer",
+            "dates": ["Feb 2016", null],
             "content": null,
             "resources": {
-                "GitHub": "https://github.com/brysonreece/empy"
+                "GitHub": "https://github.com/brysonreece/file.io"
+            }
+        },
+        {
+            "title": "Kore",
+            "description": "3D-printable assistive devices for those physically impaired",
+            "dates": ["Nov 2015", null],
+            "content": null,
+            "resources": {
+                "GitHub": "https://github.com/brysonreece/kore"
             }
         }
     ],
     "limbo": [
         {
-            "title": "OctoFii",
-            "description": "Receive OctoPrint notifications across a variety of platforms",
-            "dates": ["May 2016", null],
+            "title": "tailwind-colors",
+            "description": "A collection of Tailwind CSS color palettes 🎨 🖌",
+            "dates": ["Feb 2020", null],
+            "featured": false,
             "content": null,
             "resources": {
-                "GitHub": "https://github.com/brysonreece/octofii"
+                "GitHub": "https://github.com/brysonreece/tailwind-colors"
             }
         },
         {
@@ -120,13 +122,12 @@
             }
         },
         {
-            "title": "tailwind-colors",
-            "description": "A collection of Tailwind CSS color palettes 🎨 🖌",
-            "dates": ["Feb 2020", null],
-            "featured": false,
+            "title": "OctoFii",
+            "description": "Receive OctoPrint notifications across a variety of platforms",
+            "dates": ["May 2016", null],
             "content": null,
             "resources": {
-                "GitHub": "https://github.com/brysonreece/tailwind-colors"
+                "GitHub": "https://github.com/brysonreece/octofii"
             }
         }
     ]
