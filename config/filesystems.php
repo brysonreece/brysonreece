@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => 'local',
 
     'pomelo_disk' => env('POMELO_FILESYSTEM_DISK', 'pomelo'),
 
