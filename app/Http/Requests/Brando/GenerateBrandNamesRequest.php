@@ -21,6 +21,7 @@ class GenerateBrandNamesRequest extends FormRequest
             'description' => ['required', 'string', 'min:10', 'max:2000'],
             'tones' => ['nullable', 'array'],
             'tones.*' => ['string', 'in:BOLD,MINIMAL,PLAYFUL,PRO'],
+            'count' => ['nullable', 'integer', 'min:5', 'max:20'],
         ];
     }
 

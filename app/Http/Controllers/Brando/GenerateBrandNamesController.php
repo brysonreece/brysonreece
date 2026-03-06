@@ -21,7 +21,9 @@ class GenerateBrandNamesController extends Controller
             ? "Brand description: {$description}\n\nPreferred tone(s): {$tones}"
             : "Brand description: {$description}";
 
-        $response = (new BrandNameAgent)->prompt($prompt);
+        $count = $request->integer('count', 10);
+
+        $response = (new BrandNameAgent($count))->prompt($prompt);
 
         return response()->json([
             'names' => $response['names'],

@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 import axios from 'axios';
-import { Asterisk, Bookmark, Clapperboard, Fingerprint, FlaskConical, Loader2, Sparkles, Type } from 'lucide-react';
+import { Asterisk, Bookmark, Clapperboard, FlaskConical, Loader2, Sparkles } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
@@ -46,6 +46,9 @@ const PAGE_STYLES = `
     .fav-btn { transition: opacity 0.15s, transform 0.15s; }
     .fav-btn:hover { opacity: 1 !important; transform: scale(1.1); }
     .fav-btn:active { transform: scale(0.92); }
+
+    .brando-slider { appearance: none; -webkit-appearance: none; position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; margin: 0; }
+    .brando-slider:disabled { cursor: not-allowed; }
 `;
 
 interface BrandName {
@@ -133,6 +136,7 @@ function NameCard({
 export default function Brando(): ReactNode {
     const [description, setDescription] = useState('');
     const [tones, setTones] = useState<Set<string>>(new Set());
+    const [count, setCount] = useState(10);
     const [isGenerating, setIsGenerating] = useState(false);
     const [results, setResults] = useState<BrandName[]>([]);
     const [error, setError] = useState<string | null>(null);
@@ -171,7 +175,7 @@ export default function Brando(): ReactNode {
         try {
             const { data } = await axios.post<{ names: BrandName[] }>(
                 '//brando.bryson.test/generations',
-                { description: description.trim(), tones: [...tones] },
+                { description: description.trim(), tones: [...tones], count },
             );
             setResults(data.names);
         } catch (err) {
@@ -282,6 +286,46 @@ export default function Brando(): ReactNode {
                                 </p>
                             </div>
 
+                            {/* Result count slider */}
+                            <div className={`border-border border-b-2 p-4 md:p-6 ${isGenerating ? 'opacity-40' : ''}`}>
+                                <div className="mb-3 flex items-center justify-between">
+                                    <span className="text-muted-foreground text-xs font-medium tracking-wider">RESULTS</span>
+                                    <span className="brando-font-mono text-foreground text-xs font-bold tabular-nums tracking-wider">
+                                        {count}
+                                    </span>
+                                </div>
+                                {/* Custom track with overlaid invisible native input */}
+                                <div className="relative h-5 cursor-pointer">
+                                    {/* Track */}
+                                    <div className="bg-foreground/15 absolute top-1/2 right-0 left-0 h-0.5 -translate-y-1/2" />
+                                    {/* Fill */}
+                                    <div
+                                        className="bg-foreground absolute top-1/2 left-0 h-0.5 -translate-y-1/2"
+                                        style={{ width: `${((count - 5) / 15) * 100}%` }}
+                                    />
+                                    {/* Thumb */}
+                                    <div
+                                        className="bg-foreground absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2"
+                                        style={{ left: `${((count - 5) / 15) * 100}%` }}
+                                    />
+                                    {/* Native input (invisible, handles interaction) */}
+                                    <input
+                                        type="range"
+                                        min={5}
+                                        max={20}
+                                        step={1}
+                                        value={count}
+                                        onChange={(e) => setCount(Number(e.target.value))}
+                                        disabled={isGenerating}
+                                        className="brando-slider"
+                                    />
+                                </div>
+                                <div className="text-muted-foreground/40 mt-1 flex justify-between text-xs tabular-nums tracking-wide">
+                                    <span>5</span>
+                                    <span>20</span>
+                                </div>
+                            </div>
+
                             {/* Generate button */}
                             <div className="p-4 md:p-6">
                                 <button
@@ -290,7 +334,7 @@ export default function Brando(): ReactNode {
                                     className={`flex w-full cursor-pointer items-center justify-center gap-3 py-3.5 text-sm font-semibold tracking-widest transition-all md:py-4 ${
                                         canGenerate
                                             ? 'bg-primary text-primary-foreground hover:opacity-90 active:scale-[0.99]'
-                                            : 'bg-muted text-muted-foreground cursor-not-allowed opacity-50'
+                                            : 'bg-primary opacity-20 dark:bg-muted dark:opacity-100 text-white dark:text-muted-foreground cursor-not-allowed'
                                     }`}
                                 >
                                     {isGenerating ? (
@@ -378,7 +422,7 @@ export default function Brando(): ReactNode {
                                                         AWAITING GENERATION
                                                     </p>
                                                     <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">
-                                                        10 BRAND NAMES WILL APPEAR HERE
+                                                        {count} BRAND NAMES WILL APPEAR HERE
                                                     </p>
                                                 </div>
                                                 <div className="border-muted-foreground/10 absolute top-4 left-4 h-8 w-8 border-t-2 border-l-2" />

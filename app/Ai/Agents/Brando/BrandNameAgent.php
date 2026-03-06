@@ -19,15 +19,17 @@ class BrandNameAgent implements Agent, HasStructuredOutput
 {
     use Promptable;
 
+    public function __construct(private readonly int $count = 10) {}
+
     /**
      * Get the instructions the agent should follow.
      */
     public function instructions(): Stringable|string
     {
-        return <<<'PROMPT'
+        return <<<PROMPT
         You are a brand naming expert for early-stage startups and solo founders.
 
-        When given a brand description, generate exactly 10 creative, memorable brand name suggestions.
+        When given a brand description, generate exactly {$this->count} creative, memorable brand name suggestions.
         Each name should:
         - Be short (1–2 words, ideally a single coined or evocative word)
         - Be brandable and domain-friendly (avoid generic dictionary words)
