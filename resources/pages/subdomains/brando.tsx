@@ -426,7 +426,7 @@ export default function Brando(): ReactNode {
 
     return (
         <>
-            <Head title="Brando | AI Brand Name Generator" />
+            <Head title="Brando | AI Brand Generator" />
 
             <div className="bg-background text-foreground brando-font-mono flex h-screen flex-col">
                 <style>{PAGE_STYLES}</style>
@@ -444,7 +444,7 @@ export default function Brando(): ReactNode {
                                     BRANDO
                                 </h1>
                                 <p className="text-muted-foreground mt-1 text-xs font-medium tracking-wider md:mt-1.5">
-                                    AI BRAND NAME GENERATOR
+                                    AI BRAND GENERATOR
                                 </p>
                             </div>
                         </div>
@@ -969,7 +969,7 @@ export default function Brando(): ReactNode {
                 <footer className="border-border border-t px-4 py-3 md:px-8 md:py-5">
                     <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-0">
                         <span className="text-muted-foreground/40 text-xs font-medium tracking-wide">
-                            BRANDO · AI BRAND NAME GENERATOR
+                            BRANDO · AI BRAND GENERATOR
                         </span>
                         <a
                             href="https://bryson.cc"
