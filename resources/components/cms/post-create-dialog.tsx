@@ -123,7 +123,7 @@ export function PostCreateDialog({ open, onOpenChange, onSuccess }: PostCreateDi
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-106.25">
                 <form onSubmit={handleSubmit}>
                     <DialogHeader>
                         <DialogTitle>Create New Post</DialogTitle>
