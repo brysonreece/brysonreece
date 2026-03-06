@@ -343,6 +343,7 @@ export default function Brando(): ReactNode {
 
     const handleLoadNameExample = () => {
         setDescription(SAMPLE_DESCRIPTION);
+        setNameStyles(new Set(['MINIMAL', 'PLAYFUL']));
         setNameResults([]);
         setNameError(null);
     };
@@ -351,6 +352,7 @@ export default function Brando(): ReactNode {
         setLogoName(SAMPLE_LOGO_NAME);
         setLogoTagline(SAMPLE_LOGO_TAGLINE);
         setLogoDescription(SAMPLE_DESCRIPTION);
+        setLogoStyles(new Set(['MINIMAL', 'PLAYFUL']));
         setGeneratedLogos([]);
         setLogoError(null);
     };
