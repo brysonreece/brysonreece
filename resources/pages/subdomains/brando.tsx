@@ -9,6 +9,9 @@ const STORAGE_KEY = 'brando:favorites';
 const SAMPLE_DESCRIPTION =
     'A productivity tool for early-stage founders to track decisions, capture context, and stay aligned with their co-founders — even when working async across time zones.';
 
+const SAMPLE_LOGO_NAME = 'Zest';
+const SAMPLE_LOGO_TAGLINE = 'Make big decisions with small-team speed.';
+
 const STYLE_OPTIONS = ['BOLD', 'MINIMAL', 'PLAYFUL', 'ELEGANT'] as const;
 const IMAGE_POLLING_INTERVAL = 5000;
 
@@ -338,10 +341,18 @@ export default function Brando(): ReactNode {
         return () => stopPolling();
     }, [stopPolling]);
 
-    const handleLoadExample = () => {
+    const handleLoadNameExample = () => {
         setDescription(SAMPLE_DESCRIPTION);
         setNameResults([]);
         setNameError(null);
+    };
+
+    const handleLoadLogoExample = () => {
+        setLogoName(SAMPLE_LOGO_NAME);
+        setLogoTagline(SAMPLE_LOGO_TAGLINE);
+        setLogoDescription(SAMPLE_DESCRIPTION);
+        setGeneratedLogos([]);
+        setLogoError(null);
     };
 
     const handleGenerateNames = async () => {
@@ -486,7 +497,7 @@ export default function Brando(): ReactNode {
                                                     BRAND IDENTITY
                                                 </span>
                                                 <button
-                                                    onClick={handleLoadExample}
+                                                    onClick={handleLoadNameExample}
                                                     disabled={isGeneratingNames}
                                                     className={`ml-auto flex items-center gap-1.5 px-2 py-1 text-xs font-bold tracking-wider transition-all ${
                                                         !isGeneratingNames
@@ -583,6 +594,18 @@ export default function Brando(): ReactNode {
                                         <div className="border-border border-b-2 p-4 md:p-6">
                                             <div className="mb-3 flex items-center gap-2">
                                                 <span className="text-muted-foreground text-xs font-medium tracking-wider">BRAND NAME</span>
+                                                <button
+                                                    onClick={handleLoadLogoExample}
+                                                    disabled={isGeneratingLogos}
+                                                    className={`ml-auto flex items-center gap-1.5 px-2 py-1 text-xs font-bold tracking-wider transition-all ${
+                                                        !isGeneratingLogos
+                                                            ? 'bg-primary text-primary-foreground hover:opacity-90 cursor-pointer'
+                                                            : 'bg-background text-muted-foreground/30 cursor-not-allowed'
+                                                    }`}
+                                                >
+                                                    <FlaskConical size={11} strokeWidth={2.5} />
+                                                    LOAD EXAMPLE
+                                                </button>
                                             </div>
                                             <input
                                                 type="text"
