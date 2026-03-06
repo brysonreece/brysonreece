@@ -177,8 +177,8 @@ export default function Uses() {
                     </ul>
                     <h2>Neat Collectibles</h2>
                     <p>
-                        I'm an avid collector of memorable pieces of technology that have shaped their own corners of the industry. Here are some of
-                        my favorites:
+                        I'm an avid collector of memorable pieces of technology that have shaped their own corners of the industry.{' '}
+                        Here are some of my favorites:
                     </p>
                     <ul>
                         <li>
@@ -205,6 +205,9 @@ export default function Uses() {
                         <li>
                             <a href="https://developers.google.com/glass" target="_blank" rel="noopener noreferrer">
                                 Google Glass (Explorer Edition)
+                            </a>
+                            <a href="https://blog.google/products-and-platforms/devices/glass-enterprise-edition-2/" target="_blank" rel="noopener noreferrer">
+                                Google Glass (Enterprise Edition 2)
                             </a>
                         </li>
                         <li>
