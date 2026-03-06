@@ -380,7 +380,7 @@ export default function Brando(): ReactNode {
 
         try {
             const { data } = await axios.post<{ names: BrandName[] }>(
-                '//brando.bryson.test/generations',
+                '/generations',
                 { description: description.trim(), tones: [...nameStyles], count: nameCount },
             );
             setNameResults(data.names);
