@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use Rector\CodeQuality\Rector\If_\ExplicitBoolCompareRector;
 use Rector\Config\RectorConfig;
+use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use RectorLaravel\Rector\ArrayDimFetch\RequestVariablesToRequestFacadeRector;
@@ -41,7 +43,6 @@ use RectorLaravel\Rector\MethodCall\RedirectBackToBackHelperRector;
 use RectorLaravel\Rector\MethodCall\RedirectRouteToToRouteHelperRector;
 use RectorLaravel\Rector\MethodCall\RefactorBlueprintGeometryColumnsRector;
 use RectorLaravel\Rector\MethodCall\ReplaceWithoutJobsEventsAndNotificationsWithFacadeFakeRector;
-use RectorLaravel\Rector\MethodCall\ResponseHelperCallToJsonResponseRector;
 use RectorLaravel\Rector\MethodCall\ReverseConditionableMethodCallRector;
 use RectorLaravel\Rector\MethodCall\ValidationRuleArrayStringValueToArrayRector;
 use RectorLaravel\Rector\MethodCall\WhereToWhereLikeRector;
@@ -71,6 +72,11 @@ return static function (RectorConfig $rectorConfig): void {
         LevelSetList::UP_TO_PHP_82,
     ]);
 
+    $rectorConfig->skip([
+        ExplicitBoolCompareRector::class,
+        ClosureToArrowFunctionRector::class,
+    ]);
+
     $rectorConfig->rules([
         AbortIfRector::class,
         AddExtendsAnnotationToModelFactoriesRector::class,
@@ -78,9 +84,7 @@ return static function (RectorConfig $rectorConfig): void {
         AnonymousMigrationsRector::class,
         AppEnvironmentComparisonToParameterRector::class,
         AssertStatusToAssertMethodRector::class,
-        AvoidNegatedCollectionFilterOrRejectRector::class,
         CarbonSetTestNowToTravelToRector::class,
-        DispatchToHelperFunctionsRector::class,
         EloquentMagicMethodToQueryBuilderRector::class,
         EloquentOrderByToLatestOrOldestRector::class,
         EloquentWhereRelationTypeHintingParameterRector::class,
@@ -107,15 +111,12 @@ return static function (RectorConfig $rectorConfig): void {
         ReportIfRector::class,
         RequestStaticValidateToInjectRector::class,
         RequestVariablesToRequestFacadeRector::class,
-        ResponseHelperCallToJsonResponseRector::class,
         ReverseConditionableMethodCallRector::class,
         RouteActionCallableRector::class,
         ServerVariableToRequestFacadeRector::class,
         SessionVariableToSessionFacadeRector::class,
         SleepFuncToSleepStaticCallRector::class,
         SubStrToStartsWithOrEndsWithStaticMethodCallRector::class,
-        ThrowIfAndThrowUnlessExceptionsToUseClassStringRector::class,
-        ThrowIfRector::class,
         TypeHintTappableCallRector::class,
         UnifyModelDatesWithCastsRector::class,
         ValidationRuleArrayStringValueToArrayRector::class,
