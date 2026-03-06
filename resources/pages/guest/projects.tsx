@@ -92,7 +92,7 @@ export default function Projects() {
                 </ul>
 
                 <label className="mb-4 block text-sm font-medium text-stone-700 dark:text-stone-300">Archive</label>
-                <ul role="list" className="mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <ul role="list" className="mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {completed.map((event, idx) => (
                         <li key={idx} className="h-full break-inside-avoid-column">
                             <ProjectRecord key={idx} event={event} />
@@ -101,7 +101,7 @@ export default function Projects() {
                 </ul>
 
                 <label className="mb-4 block text-sm font-medium text-stone-700 dark:text-stone-300">Incomplete</label>
-                <ul role="list" className="mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <ul role="list" className="mb-24 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {limbo.map((event, idx) => (
                         <li key={idx} className="h-full break-inside-avoid-column">
                             <ProjectRecord key={idx} event={event} />

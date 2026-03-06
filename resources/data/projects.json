@@ -1,6 +1,15 @@
 {
     "featured": [
         {
+            "title": "Brando",
+            "description": "A brand name & logo generator that uses Google Gemini to create a unique and memorable identity for your business",
+            "dates": ["Mar 2026", null],
+            "content": null,
+            "resources": {
+                "View Online": "https://brando.bryson.cc"
+            }
+        },
+        {
             "title": "Pomelo",
             "description": "A lightweight product image generator that leverages the power of AI to create high-quality visuals for e-commerce businesses",
             "dates": ["Mar 2026", null],
@@ -25,18 +34,6 @@
             "content": null,
             "resources": {
                 "View Online": "https://emojicons.dev"
-            }
-        },
-
-        {
-            "title": "Seedling",
-            "description": "A patented, interactive childrens' toy that teaches PinYin speakers English pronunciation using novel learning techniques",
-            "dates": ["Aug 2017", "Oct 2017"],
-            "featured": true,
-            "content": "On permanent display at the University of Beijing",
-            "resources": {
-                "Exhibit": "https://poeticsofinvention.ou.edu/features/seedling.html",
-                "Feature": "https://poeticsofinvention.ou.edu/features/seedling-blocks.html"
             }
         },
         {
@@ -70,6 +67,26 @@
             "content": null,
             "resources": {
                 "GitHub": "https://github.com/brysonreece/empy"
+            }
+        },
+        {
+            "title": "Athena",
+            "description": "An award-winning pedagogy application that seamlessly augments traditional learning material with 3D objects and an explorative toolset",
+            "dates": ["Apr 2017", "Mar 2018"],
+            "content": null,
+            "resources": {
+                "GitHub": "https://github.com/athena-app"
+            }
+        },
+        {
+            "title": "Seedling",
+            "description": "A patented, interactive childrens' toy that teaches PinYin speakers English pronunciation using novel learning techniques",
+            "dates": ["Aug 2017", "Oct 2017"],
+            "featured": true,
+            "content": "On permanent display at the University of Beijing",
+            "resources": {
+                "Exhibit": "https://poeticsofinvention.ou.edu/features/seedling.html",
+                "Feature": "https://poeticsofinvention.ou.edu/features/seedling-blocks.html"
             }
         },
         {
