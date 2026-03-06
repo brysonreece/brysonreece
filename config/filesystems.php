@@ -17,6 +17,8 @@ return [
 
     'pomelo_disk' => env('POMELO_FILESYSTEM_DISK', 'pomelo'),
 
+    'brando_disk' => env('BRANDO_FILESYSTEM_DISK', 'brando'),
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -58,6 +60,15 @@ return [
             'report' => false,
         ],
 
+        'brando' => [
+            'driver' => 'local',
+            'root' => storage_path('app/brando'),
+            'url' => env('APP_URL').'/storage/brando',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -87,6 +98,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('storage/pomelo') => storage_path('app/pomelo'),
+        public_path('storage/brando') => storage_path('app/brando'),
     ],
 
 ];

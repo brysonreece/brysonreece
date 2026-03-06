@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs\Pomelo;
+namespace App\Jobs\Brando;
 
 use Illuminate\Bus\Batchable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,10 +8,9 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Laravel\Ai\Files\Image as AiImage;
 use Laravel\Ai\Image;
 
-class GenerateImageVariationJob implements ShouldQueue
+class GenerateLogoJob implements ShouldQueue
 {
     use Batchable, Queueable;
 
@@ -24,14 +23,13 @@ class GenerateImageVariationJob implements ShouldQueue
     public function __construct(
         public readonly string $cacheKey,
         public readonly int $index,
-        public readonly string $absoluteTempPath,
         public readonly string $prompt,
         public readonly string $quality = 'medium',
     ) {}
 
     private function disk(): string
     {
-        return config('filesystems.pomelo_disk');
+        return config('filesystems.brando_disk');
     }
 
     public function handle(): void
@@ -44,7 +42,6 @@ class GenerateImageVariationJob implements ShouldQueue
         $outputPath = self::OUTPUT_PATH.'/'.$filename;
 
         $response = Image::of($this->prompt)
-            ->attachments([AiImage::fromStorage($this->absoluteTempPath, $this->disk())])
             ->quality($this->quality)
             ->square()
             ->generate();
@@ -59,17 +56,17 @@ class GenerateImageVariationJob implements ShouldQueue
             : $outputDisk->temporaryUrl($outputPath, now()->addMinutes(self::CACHE_TTL_MINUTES));
 
         Cache::put(
-            "pomelo:{$this->cacheKey}:{$this->index}",
+            "brando:{$this->cacheKey}:{$this->index}",
             $url,
             now()->addMinutes(self::CACHE_TTL_MINUTES),
         );
 
-        PruneGeneratedImageJob::dispatch($outputPath)
+        PruneLogoJob::dispatch($outputPath, $this->disk())
             ->delay(now()->addMinutes(self::OUTPUT_TTL_MINUTES));
     }
 
     public function failed(\Throwable $exception): void
     {
-        Cache::increment("pomelo:{$this->cacheKey}:failed");
+        Cache::increment("brando:{$this->cacheKey}:failed");
     }
 }
