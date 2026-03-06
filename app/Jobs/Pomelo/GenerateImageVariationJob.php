@@ -44,7 +44,7 @@ class GenerateImageVariationJob implements ShouldQueue
         $outputPath = self::OUTPUT_PATH.'/'.$filename;
 
         $response = Image::of($this->prompt)
-            ->attachments([AiImage::fromPath($this->absoluteTempPath)])
+            ->attachments([AiImage::fromStorage($this->absoluteTempPath, $this->disk())])
             ->quality($this->quality)
             ->square()
             ->generate();
