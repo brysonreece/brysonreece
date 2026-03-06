@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Brando\GenerateBrandNamesController;
 use App\Http\Controllers\Pomelo\ImageVariationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Uri;
@@ -25,4 +26,9 @@ Route::domain("pomelo.{$host}")->group(function () {
     Route::get('/', fn () => inertia('subdomains/pomelo'))->name('subdomains.pomelo');
     Route::post('/variations', [ImageVariationController::class, 'store'])->name('pomelo.variations.store');
     Route::get('/variations/{batchId}', [ImageVariationController::class, 'status'])->name('pomelo.variations.status');
+});
+
+Route::domain("brando.{$host}")->group(function () {
+    Route::get('/', fn () => inertia('subdomains/brando'))->name('subdomains.brando');
+    Route::post('/generations', GenerateBrandNamesController::class)->name('brando.generations.store');
 });
