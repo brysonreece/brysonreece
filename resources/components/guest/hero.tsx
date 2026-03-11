@@ -165,6 +165,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                         pMax={10}
                         stepSize={5}
                         imgSize={256}
+                        enabled={isCosmoMode}
                     />
                 </div>
                 <Avatar

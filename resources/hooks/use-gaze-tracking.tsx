@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, RefObject } from 'react';
+import { useState, useEffect, useCallback, useRef, RefObject } from 'react';
 
 /**
  * This component includes portions of code adapted from https://github.com/kylan02/face_looker
@@ -41,8 +41,45 @@ export default function useGazeTracking(
     pMax: number = DEFAULT_P_MAX,
     stepSize: number = DEFAULT_STEP_SIZE,
     imgSize: number = 256,
+    enabled: boolean = true,
 ) {
   const [currentImage, setCurrentImage] = useState('');
+  // Maps network URL -> blob URL for client-side image swapping
+  const blobCacheRef = useRef<Map<string, string>>(new Map());
+
+  // Fetch all grid images once on mount and store as in-memory blob URLs
+  useEffect(() => {
+    let cancelled = false;
+    const createdBlobUrls: string[] = [];
+    const blobCache = blobCacheRef.current;
+
+    for (let x = pMin; x <= pMax; x += stepSize) {
+      for (let y = pMin; y <= pMax; y += stepSize) {
+        const networkUrl = `${basePath}/${postionalFilename(x, y, imgSize)}`;
+        fetch(networkUrl)
+          .then((r) => r.blob())
+          .then((blob) => {
+            if (cancelled) return;
+            const blobUrl = URL.createObjectURL(blob);
+            blobCache.set(networkUrl, blobUrl);
+            createdBlobUrls.push(blobUrl);
+          })
+          .catch(() => {
+            // Fall back to network URL if fetch fails
+          });
+      }
+    }
+
+    return () => {
+      cancelled = true;
+      createdBlobUrls.forEach((url) => URL.revokeObjectURL(url));
+      blobCache.clear();
+    };
+  }, [basePath, pMin, pMax, stepSize, imgSize]);
+
+  const resolveBlobUrl = useCallback((networkUrl: string) => {
+    return blobCacheRef.current.get(networkUrl) ?? networkUrl;
+  }, []);
 
   const updateGaze = useCallback((clientX: number, clientY: number) => {
     if (!containerRef.current) {
@@ -50,7 +87,7 @@ export default function useGazeTracking(
         const centerY = quantize(0, pMin, pMax, stepSize);
         const centerFilename = postionalFilename(centerX, centerY, imgSize);
 
-        setCurrentImage(`${basePath}/${centerFilename}`);
+        setCurrentImage(resolveBlobUrl(`${basePath}/${centerFilename}`));
         return;
     }
 
@@ -73,8 +110,8 @@ export default function useGazeTracking(
     // Set the current image based on quantized coordinates
     const filename = postionalFilename(px, py, imgSize);
 
-    setCurrentImage(`${basePath}/${filename}`);
-  }, [containerRef, basePath, pMax, pMin, stepSize, imgSize]);
+    setCurrentImage(resolveBlobUrl(`${basePath}/${filename}`));
+  }, [containerRef, basePath, pMax, pMin, stepSize, imgSize, resolveBlobUrl]);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     updateGaze(e.clientX, e.clientY);
@@ -88,6 +125,8 @@ export default function useGazeTracking(
   }, [updateGaze]);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const container = containerRef.current;
 
     if (!container) return;
@@ -106,7 +145,7 @@ export default function useGazeTracking(
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [containerRef, handleMouseMove, handleTouchMove, updateGaze]);
+  }, [enabled, containerRef, handleMouseMove, handleTouchMove, updateGaze]);
 
   return currentImage;
 };

@@ -16,6 +16,7 @@ type GazeTrackerProps = {
     stepSize?: number;
     imgSize?: number;
     containerRef?: RefObject<HTMLDivElement | null>;
+    enabled?: boolean;
 };
 
 export const GazeTracker = forwardRef<HTMLDivElement, GazeTrackerProps>(({
@@ -27,11 +28,12 @@ export const GazeTracker = forwardRef<HTMLDivElement, GazeTrackerProps>(({
   stepSize,
   imgSize,
   containerRef: externalRef,
+  enabled = true,
 }, forwardedRef) => {
   const internalRef = useRef<HTMLDivElement>(null);
   const trackerRef = (forwardedRef as RefObject<HTMLDivElement>) || internalRef;
   const trackingContainerRef = externalRef || trackerRef;
-  const currentImage = useGazeTracking(trackingContainerRef, basePath, pMin, pMax, stepSize, imgSize);
+  const currentImage = useGazeTracking(trackingContainerRef, basePath, pMin, pMax, stepSize, imgSize, enabled);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove: MouseEventHandler<HTMLDivElement> = (event) => {
