@@ -1,6 +1,5 @@
 import { CloudDownloadIcon } from 'lucide-react';
 
-import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { GazeTracker } from '@/components/gaze-tracker';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { about } from '@/routes/guest';
@@ -168,20 +167,20 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                         enabled={isCosmoMode}
                     />
                 </div>
-                <Avatar
+                <div
                     id="avatar"
                     onClick={toggleCosmoMode}
-                    className={`absolute inset-0 size-64 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-80 transform-3d cursor-pointer transition-opacity duration-500 ${
+                    className={`absolute inset-0 size-64 overflow-hidden rounded-full border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800 transform-3d cursor-pointer transition-opacity duration-500 ${
                         isCosmoMode ? 'opacity-0 pointer-events-none' : 'opacity-100'
                     }`}
                 >
-                    <AvatarImage
-                        className="h-full w-full rounded-full"
+                    <img
+                        className="h-full w-full object-cover"
                         src="/storage/img/me.webp"
                         alt="Bryson Reece"
                         fetchPriority="high"
                     />
-                </Avatar>
+                </div>
             </div>
 
             <h1 className="font-display mx-auto mt-12 max-w-4xl text-5xl font-medium tracking-tight text-stone-900 sm:text-7xl dark:text-stone-400">
