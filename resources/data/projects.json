@@ -1,6 +1,24 @@
 {
     "featured": [
         {
+            "title": "monarch-api",
+            "description": "An expressive TypeScript SDK for interacting with the Monarch API",
+            "dates": ["Mar 2026", null],
+            "content": null,
+            "resources": {
+                "GitHub": "https://github.com/brysonreece/monarch-api"
+            }
+        },
+        {
+            "title": "better-skill-creator",
+            "description": "A refined skill-creator for Claude based on recommendations from Anthropic Research",
+            "dates": ["Mar 2026", null],
+            "content": null,
+            "resources": {
+                "GitHub": "https://github.com/brysonreece/better-skill-creator"
+            }
+        },
+        {
             "title": "Brando",
             "description": "A brand name & logo generator that uses Google Gemini to create a unique and memorable identity for your business",
             "dates": ["Mar 2026", null],
