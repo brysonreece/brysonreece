@@ -12,7 +12,9 @@ export default defineConfig({
             ssr: 'resources/ssr.tsx',
             refresh: true,
         }),
-        wayfinder(),
+        wayfinder({
+            path: resolve(__dirname, 'resources'),
+        }),
         react(),
         tailwindcss(),
     ],
