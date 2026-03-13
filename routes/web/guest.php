@@ -14,8 +14,8 @@ Route::get('career', fn () => inertia('guest/career'))
 Route::get('projects', fn () => inertia('guest/projects'))
     ->name('guest.projects');
 
-Route::get('community', fn () => inertia('guest/community'))
-    ->name('guest.community');
+Route::get('talks', fn () => inertia('guest/talks'))
+    ->name('guest.talks');
 
 Route::get('uses', fn () => inertia('guest/uses'))
     ->name('guest.uses');

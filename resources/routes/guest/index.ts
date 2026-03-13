@@ -161,41 +161,41 @@ projects.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see routes/web/guest.php:17
-* @route '//bryson.test/community'
+* @route '//bryson.test/talks'
 */
-export const community = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: community.url(options),
+export const talks = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: talks.url(options),
     method: 'get',
 })
 
-community.definition = {
+talks.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/community',
+    url: '//bryson.test/talks',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web/guest.php:17
-* @route '//bryson.test/community'
+* @route '//bryson.test/talks'
 */
-community.url = (options?: RouteQueryOptions) => {
-    return community.definition.url + queryParams(options)
+talks.url = (options?: RouteQueryOptions) => {
+    return talks.definition.url + queryParams(options)
 }
 
 /**
 * @see routes/web/guest.php:17
-* @route '//bryson.test/community'
+* @route '//bryson.test/talks'
 */
-community.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: community.url(options),
+talks.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: talks.url(options),
     method: 'get',
 })
 
 /**
 * @see routes/web/guest.php:17
-* @route '//bryson.test/community'
+* @route '//bryson.test/talks'
 */
-community.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: community.url(options),
+talks.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: talks.url(options),
     method: 'head',
 })
 
@@ -284,7 +284,7 @@ const guest = {
     about: Object.assign(about, about),
     career: Object.assign(career, career),
     projects: Object.assign(projects, projects),
-    community: Object.assign(community, community),
+    talks: Object.assign(talks, talks),
     uses: Object.assign(uses, uses),
     links: Object.assign(links, links),
 }

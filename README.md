@@ -3,7 +3,7 @@
 [![About](https://img.shields.io/badge/-about-inactive)](https://bryson.cc/about)
 [![Career](https://img.shields.io/badge/-career-inactive)](https://bryson.cc/career)
 [![Projects](https://img.shields.io/badge/-projects-inactive)](https://bryson.cc/projects)
-[![Community](https://img.shields.io/badge/-community-inactive)](https://bryson.cc/community)
+[![Talks](https://img.shields.io/badge/-talks-inactive)](https://bryson.cc/talks)
 [![Uses](https://img.shields.io/badge/-uses-inactive)](https://bryson.cc/uses)
 
   <br>

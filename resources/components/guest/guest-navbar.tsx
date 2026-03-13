@@ -2,14 +2,14 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { Link, usePage } from '@inertiajs/react';
 import clsx from 'clsx';
 import { MenuIcon, XIcon } from 'lucide-react';
-import { about, career, projects, community, uses, welcome } from '@/routes/guest';
+import { about, career, projects, talks, uses, welcome } from '@/routes/guest';
 import type { RouteDefinition } from '@/wayfinder';
 
 const navigation = [
     { name: 'About', component: 'guest/about', action: about },
     { name: 'Career', component: 'guest/career', action: career },
     { name: 'Projects', component: 'guest/projects', action: projects },
-    { name: 'Community', component: 'guest/community', action: community },
+    { name: 'Talks', component: 'guest/talks', action: talks },
     { name: 'Uses', component: 'guest/uses', action: uses },
 ] satisfies Array<{ name: string; component: string; action: () => RouteDefinition<'get'> }>;
 

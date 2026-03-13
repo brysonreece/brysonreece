@@ -1,7 +1,7 @@
 
 export enum EventType {
     CareerEventType,
-    CommunityEventType,
+    TalkEventType,
     ProjectEventType,
 }
 
@@ -21,8 +21,8 @@ export interface CareerEvent extends Event {
     content: string;
 }
 
-export interface CommunityEvent extends Event {
-    type: EventType.CommunityEventType;
+export interface TalkEvent extends Event {
+    type: EventType.TalkEventType;
     host: string;
     iconImage: string;
     title: string;

@@ -131,7 +131,7 @@ update.put = (args: { post: string | number } | [post: string | number ] | strin
 
 /**
 * @see \App\Http\Controllers\Blog\PostController::destroy
-* @see app/Http/Controllers/Blog/PostController.php:72
+* @see app/Http/Controllers/Blog/PostController.php:70
 * @route '//bryson.test/blog/posts/{post}'
 */
 export const destroy = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -146,7 +146,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Blog\PostController::destroy
-* @see app/Http/Controllers/Blog/PostController.php:72
+* @see app/Http/Controllers/Blog/PostController.php:70
 * @route '//bryson.test/blog/posts/{post}'
 */
 destroy.url = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -173,7 +173,7 @@ destroy.url = (args: { post: string | number } | [post: string | number ] | stri
 
 /**
 * @see \App\Http\Controllers\Blog\PostController::destroy
-* @see app/Http/Controllers/Blog/PostController.php:72
+* @see app/Http/Controllers/Blog/PostController.php:70
 * @route '//bryson.test/blog/posts/{post}'
 */
 destroy.delete = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({

@@ -6,11 +6,11 @@ import { GuestLayout } from '@/layouts/guest-layout';
 
 import { Container } from '@/components/ui/container';
 
-import { CommunityEvent } from '@/types/events';
+import { TalkEvent } from '@/types/events';
 
-import events from '@/data/community.json';
+import events from '@/data/talks.json';
 
-function CommunityRecord({ event }: { event: CommunityEvent }) {
+function TalkRecord({ event }: { event: TalkEvent }) {
     return (
         <>
             <img src={event.iconImage} alt={event.host} className="relative h-16 w-16 flex-none rounded-full bg-white p-2" />
@@ -42,10 +42,10 @@ function CommunityRecord({ event }: { event: CommunityEvent }) {
     );
 }
 
-export default function Community() {
+export default function Talks() {
     return (
         <>
-            <Head title="Community" />
+            <Head title="Talks & Workshops" />
 
             <Container className="mb-16 max-w-2xl">
                 <h1 className="font-display mx-auto mt-12 mb-0 max-w-4xl text-center text-5xl font-medium tracking-tight text-stone-900 sm:text-6xl dark:text-stone-100">
@@ -56,19 +56,19 @@ export default function Community() {
                 </p>
 
                 <ul role="list" className="space-y-12 px-0">
-                    {(events as unknown as CommunityEvent[]).toReversed().map(function (event, idx) {
+                    {(events as unknown as TalkEvent[]).toReversed().map(function (event, idx) {
                         return (
                             <li key={idx} className="relative flex gap-x-4 pl-4">
                                 <div
                                     className={clsx(
-                                        idx === (events as unknown as CommunityEvent[]).length - 1 ? 'display-none' : '-bottom-8',
+                                        idx === (events as unknown as TalkEvent[]).length - 1 ? 'display-none' : '-bottom-8',
                                         'absolute top-20 flex w-16 justify-center',
                                     )}
                                 >
                                     <div className="w-px bg-stone-300 dark:bg-stone-700" />
                                 </div>
 
-                                <CommunityRecord event={event} />
+                                <TalkRecord event={event} />
                             </li>
                         );
                     })}
@@ -78,4 +78,4 @@ export default function Community() {
     );
 }
 
-Community.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
+Talks.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
