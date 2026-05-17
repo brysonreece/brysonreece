@@ -27,13 +27,11 @@ use RectorLaravel\Rector\FuncCall\RemoveDumpDataDeadCodeRector;
 use RectorLaravel\Rector\FuncCall\RemoveRedundantValueCallsRector;
 use RectorLaravel\Rector\FuncCall\RemoveRedundantWithCallsRector;
 use RectorLaravel\Rector\FuncCall\SleepFuncToSleepStaticCallRector;
-use RectorLaravel\Rector\FuncCall\ThrowIfAndThrowUnlessExceptionsToUseClassStringRector;
 use RectorLaravel\Rector\FuncCall\TypeHintTappableCallRector;
 use RectorLaravel\Rector\If_\AbortIfRector;
 use RectorLaravel\Rector\If_\ReportIfRector;
 use RectorLaravel\Rector\If_\ThrowIfRector;
 use RectorLaravel\Rector\MethodCall\AssertStatusToAssertMethodRector;
-use RectorLaravel\Rector\MethodCall\AvoidNegatedCollectionFilterOrRejectRector;
 use RectorLaravel\Rector\MethodCall\EloquentOrderByToLatestOrOldestRector;
 use RectorLaravel\Rector\MethodCall\EloquentWhereRelationTypeHintingParameterRector;
 use RectorLaravel\Rector\MethodCall\EloquentWhereTypeHintClosureParameterRector;
@@ -49,7 +47,6 @@ use RectorLaravel\Rector\MethodCall\WhereToWhereLikeRector;
 use RectorLaravel\Rector\Namespace_\FactoryDefinitionRector;
 use RectorLaravel\Rector\PropertyFetch\ReplaceFakerInstanceWithHelperRector;
 use RectorLaravel\Rector\StaticCall\CarbonSetTestNowToTravelToRector;
-use RectorLaravel\Rector\StaticCall\DispatchToHelperFunctionsRector;
 use RectorLaravel\Rector\StaticCall\EloquentMagicMethodToQueryBuilderRector;
 use RectorLaravel\Rector\StaticCall\Redirect301ToPermanentRedirectRector;
 use RectorLaravel\Rector\StaticCall\RequestStaticValidateToInjectRector;
@@ -69,7 +66,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         SetList::DEAD_CODE,
         SetList::CODE_QUALITY,
-        LevelSetList::UP_TO_PHP_82,
+        LevelSetList::UP_TO_PHP_85,
     ]);
 
     $rectorConfig->skip([
