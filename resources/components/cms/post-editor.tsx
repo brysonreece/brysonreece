@@ -19,23 +19,6 @@ import {
     Table,
     User,
 } from 'lucide-react';
-import {
-    MDXEditor,
-    type MDXEditorMethods,
-    headingsPlugin,
-    listsPlugin,
-    quotePlugin,
-    thematicBreakPlugin,
-    markdownShortcutPlugin,
-    linkPlugin,
-    linkDialogPlugin,
-    imagePlugin,
-    tablePlugin,
-    codeBlockPlugin,
-    codeMirrorPlugin,
-    diffSourcePlugin,
-} from '@mdxeditor/editor';
-import '@mdxeditor/editor/style.css';
 import { router, useForm } from '@inertiajs/react';
 import { toast } from 'sonner';
 
@@ -57,7 +40,7 @@ interface PostEditorProps {
 export function PostEditor({ post, onBack }: PostEditorProps) {
     const [isPreview, setIsPreview] = useState<boolean>(false);
     const [isDirty, setIsDirty] = useState<boolean>(false);
-    const editorRef = useRef<MDXEditorMethods>(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
     const isSavingRef = useRef<boolean>(false);
 
     const form = useForm({
@@ -199,28 +182,14 @@ export function PostEditor({ post, onBack }: PostEditorProps) {
                     </Container>
                 ) : (
                     <div className="w-full h-full flex flex-col overflow-hidden">
-                        <MdxEditorControls editorRef={editorRef} />
+                        <MarkdownEditorControls textareaRef={textareaRef} onInsert={(md) => handleFormChange({ content: form.data.content + md })} />
                         <Container className="p-4 sm:p-6 lg:p-8 max-w-3xl flex-1 overflow-hidden">
-                            <MDXEditor
-                                ref={editorRef}
-                                markdown={form.data.content}
-                                onChange={(content) => handleFormChange({ content })}
-                                plugins={[
-                                    headingsPlugin(),
-                                    listsPlugin(),
-                                    quotePlugin(),
-                                    thematicBreakPlugin(),
-                                    linkPlugin(),
-                                    linkDialogPlugin(),
-                                    imagePlugin(),
-                                    tablePlugin(),
-                                    codeBlockPlugin({ defaultCodeBlockLanguage: 'js' }),
-                                    codeMirrorPlugin({ codeBlockLanguages: { js: 'JavaScript', ts: 'TypeScript', tsx: 'TypeScript (JSX)', jsx: 'JavaScript (JSX)', css: 'CSS', html: 'HTML', json: 'JSON', md: 'Markdown', bash: 'Bash', sh: 'Shell', php: 'PHP' } }),
-                                    diffSourcePlugin({ viewMode: 'rich-text' }),
-                                    markdownShortcutPlugin(),
-                                ]}
-                                className="dark-theme bg-transparent prose border-0 [&_.mdxeditor-root-contenteditable]:bg-transparent"
-                                contentEditableClassName="prose prose-neutral dark:prose-invert max-w-none p-0! prose-headings:mt-8! prose-headings:mb-4! prose-headings:text-xl prose-headings:font-bold prose-headings:first:mt-0 prose-p:text-sm prose-p:leading-6 prose-p:my-2 prose-p:first:mt-0 prose-p:text-[var(--tw-prose-body)]"
+                            <textarea
+                                ref={textareaRef}
+                                className="w-full h-full resize-none bg-transparent text-sm font-mono text-neutral-900 dark:text-neutral-100 focus:outline-none"
+                                value={form.data.content}
+                                onChange={(e) => handleFormChange({ content: e.target.value })}
+                                placeholder="Write your post in Markdown…"
                             />
                         </Container>
                     </div>
@@ -364,58 +333,51 @@ function PostEditorControls({ onBack, onSave, onPreviewToggle, previewing, savin
     );
 }
 
-interface MdxEditorControlsProps {
-    editorRef: React.RefObject<MDXEditorMethods | null>;
+interface MarkdownEditorControlsProps {
+    textareaRef: React.RefObject<HTMLTextAreaElement | null>;
+    onInsert: (markdown: string) => void;
 }
 
-function MdxEditorControls({ editorRef }: MdxEditorControlsProps) {
-    const insertMarkdown = (markdown: string) => {
-        if (!editorRef.current) return;
-
-        const currentMarkdown = editorRef.current.getMarkdown();
-        editorRef.current.setMarkdown(currentMarkdown + markdown);
-        editorRef.current.focus();
-    };
-
+function MarkdownEditorControls({ onInsert }: MarkdownEditorControlsProps) {
     return (
         <PanelControls
             orientation='horizontal'
             actions={() => (
                 <>
-                    <PanelButton onClick={() => insertMarkdown('**bold**')} title="Bold">
+                    <PanelButton onClick={() => onInsert('**bold**')} title="Bold">
                         <Bold className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('*italic*')} title="Italic">
+                    <PanelButton onClick={() => onInsert('*italic*')} title="Italic">
                         <Italic className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('`code`')} title="Code">
+                    <PanelButton onClick={() => onInsert('`code`')} title="Code">
                         <Code className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('\n# Heading 1\n')} title="Heading 1">
+                    <PanelButton onClick={() => onInsert('\n# Heading 1\n')} title="Heading 1">
                         <Heading1 className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('\n## Heading 2\n')} title="Heading 2">
+                    <PanelButton onClick={() => onInsert('\n## Heading 2\n')} title="Heading 2">
                         <Heading2 className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('\n### Heading 3\n')} title="Heading 3">
+                    <PanelButton onClick={() => onInsert('\n### Heading 3\n')} title="Heading 3">
                         <Heading3 className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('\n- List item\n')} title="Bullet List">
+                    <PanelButton onClick={() => onInsert('\n- List item\n')} title="Bullet List">
                         <List className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('\n1. List item\n')} title="Numbered List">
+                    <PanelButton onClick={() => onInsert('\n1. List item\n')} title="Numbered List">
                         <ListOrdered className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('[link text](url)')} title="Insert Link">
+                    <PanelButton onClick={() => onInsert('[link text](url)')} title="Insert Link">
                         <Link className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('![alt text](image-url)')} title="Insert Image">
+                    <PanelButton onClick={() => onInsert('![alt text](image-url)')} title="Insert Image">
                         <Image className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('\n| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |\n')} title="Insert Table">
+                    <PanelButton onClick={() => onInsert('\n| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |\n')} title="Insert Table">
                         <Table className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => insertMarkdown('\n---\n')} title="Horizontal Rule">
+                    <PanelButton onClick={() => onInsert('\n---\n')} title="Horizontal Rule">
                         <Minus className="size-3 text-neutral-500" />
                     </PanelButton>
                     <div className="flex-1" />
