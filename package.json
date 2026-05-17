@@ -4,7 +4,7 @@
     "scripts": {
         "build": "tsc && vite build && vite build --ssr",
         "dev": "vite",
-        "lint": "eslint resources --ext .js,.jsx,.ts,.tsx --ignore-pattern .gitignore --fix",
+        "lint": "eslint resources --fix",
         "test": "vitest",
         "test:ui": "vitest --ui",
         "test:coverage": "vitest --coverage"
