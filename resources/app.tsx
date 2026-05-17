@@ -1,6 +1,5 @@
 import { APP_NAME } from './constants';
 
-import './bootstrap';
 import './styles/app.css';
 
 import { createInertiaApp } from '@inertiajs/react';
