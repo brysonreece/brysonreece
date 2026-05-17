@@ -996,4 +996,4 @@ export default function Brando(): ReactNode {
     );
 }
 
-Brando.layout = (children: ReactNode | undefined) => <>{children}</>;
+Brando.layout = [(children: ReactNode | undefined) => <>{children}</>];

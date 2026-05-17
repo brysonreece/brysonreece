@@ -121,4 +121,4 @@ export default function Links() {
     );
 }
 
-Links.layout = (children: ReactNode | undefined) => <>{children}</>;
+Links.layout = [(children: ReactNode | undefined) => <>{children}</>];

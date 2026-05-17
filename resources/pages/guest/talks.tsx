@@ -78,4 +78,4 @@ export default function Talks() {
     );
 }
 
-Talks.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
+Talks.layout = [(children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>];

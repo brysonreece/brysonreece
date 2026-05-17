@@ -264,4 +264,4 @@ export default function About() {
     );
 }
 
-About.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
+About.layout = [(children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>];

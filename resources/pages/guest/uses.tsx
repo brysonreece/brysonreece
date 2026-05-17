@@ -230,4 +230,4 @@ export default function Uses() {
     );
 }
 
-Uses.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
+Uses.layout = [(children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>];

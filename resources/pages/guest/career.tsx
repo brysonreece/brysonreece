@@ -78,4 +78,4 @@ export default function Career() {
     );
 }
 
-Career.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
+Career.layout = [(children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>];

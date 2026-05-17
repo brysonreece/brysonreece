@@ -113,4 +113,4 @@ export default function Projects() {
     );
 }
 
-Projects.layout = (children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>;
+Projects.layout = [(children: ReactNode | undefined) => <GuestLayout>{children}</GuestLayout>];

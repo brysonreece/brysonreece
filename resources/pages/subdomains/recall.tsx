@@ -161,4 +161,4 @@ export default function Recall(): ReactNode {
     );
 }
 
-Recall.layout = (children: ReactNode | undefined) => <>{children}</>;
+Recall.layout = [(children: ReactNode | undefined) => <>{children}</>];
