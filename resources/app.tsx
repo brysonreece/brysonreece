@@ -3,17 +3,20 @@ import { APP_NAME } from './constants';
 import './styles/app.css';
 
 import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { createRoot } from 'react-dom/client';
 import { initializeTheme } from './hooks/use-appearance';
+import { TooltipProvider } from './components/ui/tooltip';
+import { Toaster } from './components/ui/sonner';
 
 createInertiaApp({
     title: (title) => (title ? `${title} // ${APP_NAME}` : `// ${APP_NAME}`),
-    resolve: (name) => resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
-    setup({ el, App, props }) {
-        const root = createRoot(el);
-
-        root.render(<App {...props} />);
+    strictMode: true,
+    withApp(app) {
+        return (
+            <TooltipProvider delayDuration={0}>
+                {app}
+                <Toaster />
+            </TooltipProvider>
+        );
     },
     progress: {
         color: '#4b5563',

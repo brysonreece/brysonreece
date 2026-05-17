@@ -9,7 +9,6 @@ export default defineConfig({
     plugins: [
         laravel({
             input: 'resources/app.tsx',
-            ssr: 'resources/ssr.tsx',
             refresh: true,
         }),
         wayfinder({

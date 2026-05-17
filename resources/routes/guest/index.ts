@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
 * @see routes/web/guest.php:5
-* @route '//bryson.test/'
+* @route '//bryson.test'
 */
 export const welcome = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: welcome.url(options),
@@ -10,12 +10,12 @@ export const welcome = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 
 welcome.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/',
+    url: '//bryson.test',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web/guest.php:5
-* @route '//bryson.test/'
+* @route '//bryson.test'
 */
 welcome.url = (options?: RouteQueryOptions) => {
     return welcome.definition.url + queryParams(options)
@@ -23,7 +23,7 @@ welcome.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see routes/web/guest.php:5
-* @route '//bryson.test/'
+* @route '//bryson.test'
 */
 welcome.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: welcome.url(options),
@@ -32,7 +32,7 @@ welcome.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see routes/web/guest.php:5
-* @route '//bryson.test/'
+* @route '//bryson.test'
 */
 welcome.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: welcome.url(options),
