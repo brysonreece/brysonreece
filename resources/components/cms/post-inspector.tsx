@@ -1,8 +1,6 @@
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler } from 'react';
 import { format } from 'date-fns';
-import { ArrowLeft, Calendar, Loader2, LucideIcon, PencilIcon, Trash2, User } from 'lucide-react';
-import { router } from '@inertiajs/react';
-import { toast } from 'sonner';
+import { ArrowLeft, Calendar, LucideIcon, PencilIcon, Trash2, User } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 
@@ -10,36 +8,15 @@ import { PanelButton, PanelControls } from './panel-controls';
 
 import { type Post } from '@/types/cms';
 import { Container } from '../ui/container';
-import { destroy as destroyPost } from '@/actions/App/Http/Controllers/Blog/PostController';
 
 interface PostInspectorProps {
     post: Post | null;
     onBack: MouseEventHandler<HTMLButtonElement>;
     onEdit: MouseEventHandler<HTMLButtonElement>;
+    onDelete: () => void;
 }
 
-export function PostInspector({ post, onBack, onEdit }: PostInspectorProps) {
-    const [isDeleting, setIsDeleting] = useState(false);
-
-    const handleDelete = () => {
-        if (!post) return;
-
-        if (!confirm(`Are you sure you want to delete "${post.title}"? This action cannot be undone.`)) {
-            return;
-        }
-
-        setIsDeleting(true);
-
-        router.delete(destroyPost({ post: post.id }).url, {
-            onSuccess: () => {
-                toast.success('Post deleted successfully');
-            },
-            onError: () => {
-                toast.error('Failed to delete post');
-                setIsDeleting(false);
-            },
-        });
-    };
+export function PostInspector({ post, onBack, onEdit, onDelete }: PostInspectorProps) {
 
     if (!post) {
         return (
@@ -58,8 +35,7 @@ export function PostInspector({ post, onBack, onEdit }: PostInspectorProps) {
                 <PostInspectorControls
                     onBack={onBack}
                     onEdit={onEdit}
-                    onDelete={handleDelete}
-                    isDeleting={isDeleting}
+                    onDelete={onDelete}
                 />
             </div>
 
@@ -139,10 +115,9 @@ interface PostInspectorControlsProps {
     onBack: MouseEventHandler<HTMLButtonElement>;
     onEdit: MouseEventHandler<HTMLButtonElement>;
     onDelete: () => void;
-    isDeleting: boolean;
 }
 
-function PostInspectorControls({ onBack, onEdit, onDelete, isDeleting }: PostInspectorControlsProps) {
+function PostInspectorControls({ onBack, onEdit, onDelete }: PostInspectorControlsProps) {
     return (
         <PanelControls
             className="border-b-0"
@@ -155,15 +130,11 @@ function PostInspectorControls({ onBack, onEdit, onDelete, isDeleting }: PostIns
                     <div className="flex-1 h-8 px-3 py-2 sm:p-0">
                         <h2 className="sm:hidden text-xs font-medium text-neutral-500">Back to list</h2>
                     </div>
-                    <PanelButton onClick={onEdit} disabled={isDeleting}>
+                    <PanelButton onClick={onEdit}>
                         <PencilIcon className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={onDelete} disabled={isDeleting}>
-                        {isDeleting ? (
-                            <Loader2 className="size-3 text-neutral-500 animate-spin" />
-                        ) : (
-                            <Trash2 className="size-3 text-red-500" />
-                        )}
+                    <PanelButton onClick={onDelete}>
+                        <Trash2 className="size-3 text-red-500" />
                     </PanelButton>
                 </>
             )}

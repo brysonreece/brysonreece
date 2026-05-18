@@ -1,5 +1,8 @@
-import { Head } from '@inertiajs/react';
-import { useEffect, useMemo, useState, useTransition } from 'react';
+import { Head, router } from '@inertiajs/react';
+import { useEffect, useMemo, useOptimistic, useState, useTransition } from 'react';
+import { toast } from 'sonner';
+
+import { destroy as destroyPost } from '@/actions/App/Http/Controllers/Blog/PostController';
 import { usePanelCallbackRef } from 'react-resizable-panels';
 
 import { matchesSearchText, parseSearchQuery } from '@/lib/blog/search-parser';
@@ -54,11 +57,16 @@ export default function Posts({ posts }: PostsProps) {
 
     const allPosts = posts.data;
 
+    const [optimisticPosts, addOptimisticPost] = useOptimistic(
+        allPosts,
+        (current, id: string) => current.filter((p) => p.id !== id),
+    );
+
     const filteredAndSortedPosts = useMemo(() => {
         const { searchText, filters, tags, sortBy } = parseSearchQuery(searchQuery);
 
         // First, filter by status, tags, and search text
-        const filtered = allPosts.filter((post) => {
+        const filtered = optimisticPosts.filter((post) => {
             const matchesStatus = filters.includes(post.status);
             const matchesText = matchesSearchText(post, searchText);
 
@@ -90,10 +98,24 @@ export default function Posts({ posts }: PostsProps) {
             default:
                 return sorted;
         }
-    }, [allPosts, searchQuery]);
+    }, [optimisticPosts, searchQuery]);
 
     const handleSelectPost = (post: BlogPost) => {
         setSelectedPost(post);
+    };
+
+    const handleDelete = (post: BlogPost) => {
+        if (!confirm(`Are you sure you want to delete "${post.title}"? This action cannot be undone.`)) {
+            return;
+        }
+
+        addOptimisticPost(post.id);
+        setSelectedPost(null);
+
+        router.delete(destroyPost({ post: post.id }).url, {
+            onSuccess: () => toast.success('Post deleted successfully'),
+            onError: () => toast.error('Failed to delete post'),
+        });
     };
 
     const handleSearchChange = (query: string) => {
@@ -167,6 +189,7 @@ export default function Posts({ posts }: PostsProps) {
                         post={selectedPost}
                         onBack={() => setSelectedPost(null)}
                         onEdit={() => setEditMode(true)}
+                        onDelete={() => selectedPost && handleDelete(selectedPost)}
                     />
                 )}
             </div>
@@ -226,6 +249,7 @@ export default function Posts({ posts }: PostsProps) {
                                 post={selectedPost}
                                 onBack={() => setSelectedPost(null)}
                                 onEdit={() => setEditMode(true)}
+                                onDelete={() => selectedPost && handleDelete(selectedPost)}
                             />
                         )}
                     </ResizablePanel>
