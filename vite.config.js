@@ -16,12 +16,13 @@ export default defineConfig({
         wayfinder({
             path: resolve(__dirname, 'resources'),
         }),
-        react(),
+        react({
+            babel: {
+                plugins: ['babel-plugin-react-compiler'],
+            },
+        }),
         tailwindcss(),
     ],
-    esbuild: {
-        jsx: 'automatic',
-    },
     resolve: {
         alias: {
             '@': resolve(__dirname, 'resources'),
