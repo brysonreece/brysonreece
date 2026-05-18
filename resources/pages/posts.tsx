@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useTransition } from 'react';
 import { usePanelCallbackRef } from 'react-resizable-panels';
 
 import { matchesSearchText, parseSearchQuery } from '@/lib/blog/search-parser';
@@ -48,6 +48,8 @@ export default function Posts({ posts }: PostsProps) {
     const [editMode, setEditMode] = useState<boolean>(false);
     const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false);
 
+    const [isPending, startTransition] = useTransition();
+
     const [listRef, setListRef] = usePanelCallbackRef();
 
     const allPosts = posts.data;
@@ -95,7 +97,7 @@ export default function Posts({ posts }: PostsProps) {
     };
 
     const handleSearchChange = (query: string) => {
-        setSearchQuery(query);
+        startTransition(() => setSearchQuery(query));
     };
 
     const handleCollapseToggle = () => {
@@ -142,7 +144,7 @@ export default function Posts({ posts }: PostsProps) {
             />
 
             {/* Mobile view - show list or detail */}
-            <div className={`w-full sm:hidden ${selectedPost ? 'hidden' : 'block'}`}>
+            <div className={`w-full sm:hidden ${selectedPost ? 'hidden' : 'block'} ${isPending ? 'opacity-50' : ''} transition-opacity`}>
                 <PostList
                     collapsed={false}
                     posts={filteredAndSortedPosts}
@@ -175,7 +177,7 @@ export default function Posts({ posts }: PostsProps) {
                     <ResizablePanel
                         panelRef={setListRef}
                         collapsible
-                        className='border-r border-sidebar-border'
+                        className={`border-r border-sidebar-border ${isPending ? 'opacity-50' : ''} transition-opacity`}
                         collapsedSize='32px'
                         defaultSize='300px'
                         minSize='200px'
