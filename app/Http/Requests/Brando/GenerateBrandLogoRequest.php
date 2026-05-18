@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Brando;
 
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -31,6 +33,7 @@ class GenerateBrandLogoRequest extends FormRequest
     /**
      * @return array<string, string>
      */
+    #[\Override]
     public function messages(): array
     {
         return [

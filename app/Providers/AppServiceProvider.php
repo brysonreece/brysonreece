@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
+use App\Inertia\Ssr\GuestHttpGateway;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Ssr\HttpGateway;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,12 +16,13 @@ class AppServiceProvider extends ServiceProvider
      * @var array<string, string>
      */
     public $bindings = [
-        \Inertia\Ssr\HttpGateway::class => \App\Inertia\Ssr\GuestHttpGateway::class,
+        HttpGateway::class => GuestHttpGateway::class,
     ];
 
     /**
      * Register any application services.
      */
+    #[\Override]
     public function register(): void
     {
         //

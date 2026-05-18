@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class LogoGeneratorService
 {
-    private const CACHE_TTL_MINUTES = 25;
+    private const int CACHE_TTL_MINUTES = 25;
 
     public function dispatch(
         string $name,
@@ -71,8 +71,6 @@ class LogoGeneratorService
             $prompt .= ' Visual style: '.implode(', ', $styles).'.';
         }
 
-        $prompt .= ' The logo should be clean, modern, and work well at small sizes. Square format, white or minimal background, no text other than the brand name.';
-
-        return $prompt;
+        return $prompt.' The logo should be clean, modern, and work well at small sizes. Square format, white or minimal background, no text other than the brand name.';
     }
 }

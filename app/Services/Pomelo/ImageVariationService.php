@@ -12,9 +12,9 @@ use Illuminate\Support\Str;
 
 class ImageVariationService
 {
-    private const TEMP_PATH = 'uploads';
+    private const string TEMP_PATH = 'uploads';
 
-    private const CACHE_TTL_MINUTES = 25;
+    private const int CACHE_TTL_MINUTES = 25;
 
     /**
      * Dispatch a batch of image variation jobs and return the batch ID.

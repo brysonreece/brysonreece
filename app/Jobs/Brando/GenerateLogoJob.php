@@ -4,6 +4,7 @@ namespace App\Jobs\Brando;
 
 use Illuminate\Bus\Batchable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
@@ -14,11 +15,11 @@ class GenerateLogoJob implements ShouldQueue
 {
     use Batchable, Queueable;
 
-    private const OUTPUT_PATH = 'generated';
+    private const string OUTPUT_PATH = 'generated';
 
-    private const OUTPUT_TTL_MINUTES = 15;
+    private const int OUTPUT_TTL_MINUTES = 15;
 
-    private const CACHE_TTL_MINUTES = 20;
+    private const int CACHE_TTL_MINUTES = 20;
 
     public function __construct(
         public readonly string $cacheKey,
@@ -48,7 +49,7 @@ class GenerateLogoJob implements ShouldQueue
 
         $response->storePubliclyAs(self::OUTPUT_PATH, $filename, $this->disk());
 
-        /** @var \Illuminate\Filesystem\FilesystemAdapter $outputDisk */
+        /** @var FilesystemAdapter $outputDisk */
         $outputDisk = Storage::disk($this->disk());
 
         $url = config('filesystems.disks.'.$this->disk().'.driver') === 'local'

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Pomelo;
 
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -28,6 +30,7 @@ class GenerateImageVariationsRequest extends FormRequest
     /**
      * @return array<string, string>
      */
+    #[\Override]
     public function messages(): array
     {
         return [

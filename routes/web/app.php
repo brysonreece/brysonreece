@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers\Blog\ImageController;
 use App\Http\Controllers\Blog\PostController;
 use Illuminate\Support\Facades\Route;

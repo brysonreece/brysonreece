@@ -23,7 +23,7 @@ class GenerateBrandNamesController extends Controller
 
         $count = $request->integer('count', 10);
 
-        $response = (new BrandNameAgent($count))->prompt($prompt);
+        $response = new BrandNameAgent($count)->prompt($prompt);
 
         return response()->json([
             'names' => $response['names'],

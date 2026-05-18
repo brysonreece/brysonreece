@@ -13,6 +13,7 @@ class GuestHttpGateway extends HttpGateway
     /**
      * Dispatch the Inertia page to the Server Side Rendering engine.
      */
+    #[\Override]
     public function dispatch(array $page, ?Request $request = null): ?Response
     {
         if (isset($page['url']) && in_array($page['url'], $this->guestUrls())) {

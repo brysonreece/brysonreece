@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Blog;
 
 use App\Rules\Blog\UniquePostSlug;
@@ -44,6 +46,7 @@ class StorePostRequest extends FormRequest
      *
      * @return array<string, string>
      */
+    #[\Override]
     public function messages(): array
     {
         return [
