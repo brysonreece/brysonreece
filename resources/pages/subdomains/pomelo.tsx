@@ -658,4 +658,4 @@ export default function Pomelo(): ReactNode {
     );
 }
 
-Pomelo.layout = [(children: ReactNode | undefined) => <>{children}</>];
+Pomelo.layout = (page: ReactNode) => <>{page}</>;

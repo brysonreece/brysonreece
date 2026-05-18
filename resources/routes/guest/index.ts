@@ -1,6 +1,6 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
-* @see routes/web/guest.php:5
+* @see routes/web/guest.php:7
 * @route '//bryson.test'
 */
 export const welcome = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -14,7 +14,7 @@ welcome.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/guest.php:5
+* @see routes/web/guest.php:7
 * @route '//bryson.test'
 */
 welcome.url = (options?: RouteQueryOptions) => {
@@ -22,7 +22,7 @@ welcome.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/guest.php:5
+* @see routes/web/guest.php:7
 * @route '//bryson.test'
 */
 welcome.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -31,7 +31,7 @@ welcome.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/guest.php:5
+* @see routes/web/guest.php:7
 * @route '//bryson.test'
 */
 welcome.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -40,7 +40,7 @@ welcome.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:8
+* @see routes/web/guest.php:10
 * @route '//bryson.test/about'
 */
 export const about = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -54,7 +54,7 @@ about.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/guest.php:8
+* @see routes/web/guest.php:10
 * @route '//bryson.test/about'
 */
 about.url = (options?: RouteQueryOptions) => {
@@ -62,7 +62,7 @@ about.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/guest.php:8
+* @see routes/web/guest.php:10
 * @route '//bryson.test/about'
 */
 about.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -71,7 +71,7 @@ about.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/guest.php:8
+* @see routes/web/guest.php:10
 * @route '//bryson.test/about'
 */
 about.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -80,7 +80,7 @@ about.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:11
+* @see routes/web/guest.php:13
 * @route '//bryson.test/career'
 */
 export const career = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ career.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/guest.php:11
+* @see routes/web/guest.php:13
 * @route '//bryson.test/career'
 */
 career.url = (options?: RouteQueryOptions) => {
@@ -102,7 +102,7 @@ career.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/guest.php:11
+* @see routes/web/guest.php:13
 * @route '//bryson.test/career'
 */
 career.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -111,7 +111,7 @@ career.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/guest.php:11
+* @see routes/web/guest.php:13
 * @route '//bryson.test/career'
 */
 career.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -120,7 +120,7 @@ career.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:14
+* @see routes/web/guest.php:16
 * @route '//bryson.test/projects'
 */
 export const projects = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -134,7 +134,7 @@ projects.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/guest.php:14
+* @see routes/web/guest.php:16
 * @route '//bryson.test/projects'
 */
 projects.url = (options?: RouteQueryOptions) => {
@@ -142,7 +142,7 @@ projects.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/guest.php:14
+* @see routes/web/guest.php:16
 * @route '//bryson.test/projects'
 */
 projects.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -151,7 +151,7 @@ projects.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/guest.php:14
+* @see routes/web/guest.php:16
 * @route '//bryson.test/projects'
 */
 projects.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -160,7 +160,7 @@ projects.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:17
+* @see routes/web/guest.php:19
 * @route '//bryson.test/talks'
 */
 export const talks = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -174,7 +174,7 @@ talks.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/guest.php:17
+* @see routes/web/guest.php:19
 * @route '//bryson.test/talks'
 */
 talks.url = (options?: RouteQueryOptions) => {
@@ -182,7 +182,7 @@ talks.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/guest.php:17
+* @see routes/web/guest.php:19
 * @route '//bryson.test/talks'
 */
 talks.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -191,7 +191,7 @@ talks.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/guest.php:17
+* @see routes/web/guest.php:19
 * @route '//bryson.test/talks'
 */
 talks.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -200,7 +200,7 @@ talks.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:20
+* @see routes/web/guest.php:22
 * @route '//bryson.test/uses'
 */
 export const uses = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -214,7 +214,7 @@ uses.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/guest.php:20
+* @see routes/web/guest.php:22
 * @route '//bryson.test/uses'
 */
 uses.url = (options?: RouteQueryOptions) => {
@@ -222,7 +222,7 @@ uses.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/guest.php:20
+* @see routes/web/guest.php:22
 * @route '//bryson.test/uses'
 */
 uses.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -231,7 +231,7 @@ uses.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/guest.php:20
+* @see routes/web/guest.php:22
 * @route '//bryson.test/uses'
 */
 uses.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -240,7 +240,7 @@ uses.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see routes/web/guest.php:23
+* @see routes/web/guest.php:25
 * @route '//bryson.test/links'
 */
 export const links = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -254,7 +254,7 @@ links.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see routes/web/guest.php:23
+* @see routes/web/guest.php:25
 * @route '//bryson.test/links'
 */
 links.url = (options?: RouteQueryOptions) => {
@@ -262,7 +262,7 @@ links.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see routes/web/guest.php:23
+* @see routes/web/guest.php:25
 * @route '//bryson.test/links'
 */
 links.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -271,7 +271,7 @@ links.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see routes/web/guest.php:23
+* @see routes/web/guest.php:25
 * @route '//bryson.test/links'
 */
 links.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({

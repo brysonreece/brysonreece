@@ -20,4 +20,4 @@ export default function Welcome() {
     );
 }
 
-Welcome.layout = [(children: ReactNode | undefined) => <WelcomeLayout>{children}</WelcomeLayout>];
+Welcome.layout = (page: ReactNode) => <WelcomeLayout>{page}</WelcomeLayout>;
