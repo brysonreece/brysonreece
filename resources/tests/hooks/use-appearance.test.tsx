@@ -33,6 +33,11 @@ describe('useAppearance', () => {
 
         // Clear dark class
         document.documentElement.classList.remove('dark');
+
+        // Reset module-level currentAppearance to 'system' before each test.
+        // The hook reads from module state (not localStorage directly), so
+        // initializeTheme() must be called to sync the two.
+        initializeTheme();
     });
 
     afterEach(() => {
@@ -46,6 +51,9 @@ describe('useAppearance', () => {
 
     it('loads saved appearance from localStorage', () => {
         localStorage.setItem('appearance', 'dark');
+        // initializeTheme syncs module-level currentAppearance from localStorage;
+        // the hook reads that state, not localStorage directly.
+        initializeTheme();
 
         const { result } = renderHook(() => useAppearance());
         expect(result.current.appearance).toBe('dark');
@@ -117,12 +125,14 @@ describe('useAppearance', () => {
         expect(document.documentElement.classList.contains('dark')).toBe(false);
     });
 
-    it('cleans up event listener on unmount', () => {
+    it('does not remove the media query listener on unmount (listener is module-scoped)', () => {
         const { unmount } = renderHook(() => useAppearance());
 
         unmount();
 
-        expect(matchMediaMock.removeEventListener).toHaveBeenCalled();
+        // The media query listener is registered once by initializeTheme() and
+        // persists for the app lifetime — it is not per-hook-instance.
+        expect(matchMediaMock.removeEventListener).not.toHaveBeenCalled();
     });
 });
 
