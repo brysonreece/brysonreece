@@ -19,7 +19,7 @@
         "laravel/tinker": "^3.0",
         "laravel/wayfinder": "^0.1.12",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "resend/resend-php": "^0.15.1"
+        "resend/resend-php": "^1.5"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^2.0",

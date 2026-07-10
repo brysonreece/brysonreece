@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74715f656ffc2536d026adcb30fd094c",
+    "content-hash": "20e7c77f89cd7ce33dd2c8da5e689fd9",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4044,16 +4044,16 @@
         },
         {
             "name": "resend/resend-php",
-            "version": "v0.15.2",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/resend/resend-php.git",
-                "reference": "98356bf1d0631c511cb847cb6f1b55f32bc7d38d"
+                "reference": "303dd78648e36e7a5bfadb262e874898e279b66f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/resend/resend-php/zipball/98356bf1d0631c511cb847cb6f1b55f32bc7d38d",
-                "reference": "98356bf1d0631c511cb847cb6f1b55f32bc7d38d",
+                "url": "https://api.github.com/repos/resend/resend-php/zipball/303dd78648e36e7a5bfadb262e874898e279b66f",
+                "reference": "303dd78648e36e7a5bfadb262e874898e279b66f",
                 "shasum": ""
             },
             "require": {
@@ -4063,7 +4063,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.13",
                 "mockery/mockery": "^1.6",
-                "pestphp/pest": "^2.0"
+                "pestphp/pest": "^1.0|^2.0|^3.0|^4.0"
             },
             "type": "library",
             "autoload": {
@@ -4095,9 +4095,9 @@
             ],
             "support": {
                 "issues": "https://github.com/resend/resend-php/issues",
-                "source": "https://github.com/resend/resend-php/tree/v0.15.2"
+                "source": "https://github.com/resend/resend-php/tree/v1.5.1"
             },
-            "time": "2025-03-14T05:34:18+00:00"
+            "time": "2026-07-08T21:34:52+00:00"
         },
         {
             "name": "symfony/clock",
