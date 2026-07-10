@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefa
 /**
 * @see \App\Http\Controllers\Brando\GenerateLogoController::__invoke
 * @see app/Http/Controllers/Brando/GenerateLogoController.php:18
-* @route '//brando.bryson.test/logo/generations'
+* @route 'https://brando.bryson.test/logo/generations'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -11,13 +11,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '//brando.bryson.test/logo/generations',
+    url: 'https://brando.bryson.test/logo/generations',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Brando\GenerateLogoController::__invoke
 * @see app/Http/Controllers/Brando/GenerateLogoController.php:18
-* @route '//brando.bryson.test/logo/generations'
+* @route 'https://brando.bryson.test/logo/generations'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Brando\GenerateLogoController::__invoke
 * @see app/Http/Controllers/Brando/GenerateLogoController.php:18
-* @route '//brando.bryson.test/logo/generations'
+* @route 'https://brando.bryson.test/logo/generations'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -36,7 +36,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 /**
 * @see \App\Http\Controllers\Brando\GenerateLogoController::status
 * @see app/Http/Controllers/Brando/GenerateLogoController.php:35
-* @route '//brando.bryson.test/logo/generations/{batchId}'
+* @route 'https://brando.bryson.test/logo/generations/{batchId}'
 */
 export const status = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: status.url(args, options),
@@ -45,13 +45,13 @@ export const status = (args: { batchId: string | number } | [batchId: string | n
 
 status.definition = {
     methods: ["get","head"],
-    url: '//brando.bryson.test/logo/generations/{batchId}',
+    url: 'https://brando.bryson.test/logo/generations/{batchId}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Brando\GenerateLogoController::status
 * @see app/Http/Controllers/Brando/GenerateLogoController.php:35
-* @route '//brando.bryson.test/logo/generations/{batchId}'
+* @route 'https://brando.bryson.test/logo/generations/{batchId}'
 */
 status.url = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -78,7 +78,7 @@ status.url = (args: { batchId: string | number } | [batchId: string | number ] |
 /**
 * @see \App\Http\Controllers\Brando\GenerateLogoController::status
 * @see app/Http/Controllers/Brando/GenerateLogoController.php:35
-* @route '//brando.bryson.test/logo/generations/{batchId}'
+* @route 'https://brando.bryson.test/logo/generations/{batchId}'
 */
 status.get = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: status.url(args, options),
@@ -88,7 +88,7 @@ status.get = (args: { batchId: string | number } | [batchId: string | number ] |
 /**
 * @see \App\Http\Controllers\Brando\GenerateLogoController::status
 * @see app/Http/Controllers/Brando/GenerateLogoController.php:35
-* @route '//brando.bryson.test/logo/generations/{batchId}'
+* @route 'https://brando.bryson.test/logo/generations/{batchId}'
 */
 status.head = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: status.url(args, options),

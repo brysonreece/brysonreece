@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
-* @route '//bryson.test/login'
+* @route 'https://bryson.test/login'
 */
 export const login = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: login.url(options),
@@ -11,13 +11,13 @@ export const login = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 login.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/login',
+    url: 'https://bryson.test/login',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
-* @route '//bryson.test/login'
+* @route 'https://bryson.test/login'
 */
 login.url = (options?: RouteQueryOptions) => {
     return login.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ login.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
-* @route '//bryson.test/login'
+* @route 'https://bryson.test/login'
 */
 login.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: login.url(options),
@@ -36,7 +36,7 @@ login.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:20
-* @route '//bryson.test/login'
+* @route 'https://bryson.test/login'
 */
 login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: login.url(options),
@@ -46,7 +46,7 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:45
-* @route '//bryson.test/logout'
+* @route 'https://bryson.test/logout'
 */
 export const logout = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logout.url(options),
@@ -55,13 +55,13 @@ export const logout = (options?: RouteQueryOptions): RouteDefinition<'post'> => 
 
 logout.definition = {
     methods: ["post"],
-    url: '//bryson.test/logout',
+    url: 'https://bryson.test/logout',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:45
-* @route '//bryson.test/logout'
+* @route 'https://bryson.test/logout'
 */
 logout.url = (options?: RouteQueryOptions) => {
     return logout.definition.url + queryParams(options)
@@ -70,7 +70,7 @@ logout.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
 * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:45
-* @route '//bryson.test/logout'
+* @route 'https://bryson.test/logout'
 */
 logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logout.url(options),
@@ -79,7 +79,7 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see routes/web/app.php:11
-* @route '//bryson.test/dashboard'
+* @route 'https://bryson.test/dashboard'
 */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: dashboard.url(options),
@@ -88,12 +88,12 @@ export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> =
 
 dashboard.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/dashboard',
+    url: 'https://bryson.test/dashboard',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web/app.php:11
-* @route '//bryson.test/dashboard'
+* @route 'https://bryson.test/dashboard'
 */
 dashboard.url = (options?: RouteQueryOptions) => {
     return dashboard.definition.url + queryParams(options)
@@ -101,7 +101,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see routes/web/app.php:11
-* @route '//bryson.test/dashboard'
+* @route 'https://bryson.test/dashboard'
 */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: dashboard.url(options),
@@ -110,7 +110,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see routes/web/app.php:11
-* @route '//bryson.test/dashboard'
+* @route 'https://bryson.test/dashboard'
 */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: dashboard.url(options),
@@ -119,7 +119,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see routes/web/settings.php:20
-* @route '//bryson.test/settings/appearance'
+* @route 'https://bryson.test/settings/appearance'
 */
 export const appearance = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: appearance.url(options),
@@ -128,12 +128,12 @@ export const appearance = (options?: RouteQueryOptions): RouteDefinition<'get'> 
 
 appearance.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/settings/appearance',
+    url: 'https://bryson.test/settings/appearance',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web/settings.php:20
-* @route '//bryson.test/settings/appearance'
+* @route 'https://bryson.test/settings/appearance'
 */
 appearance.url = (options?: RouteQueryOptions) => {
     return appearance.definition.url + queryParams(options)
@@ -141,7 +141,7 @@ appearance.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see routes/web/settings.php:20
-* @route '//bryson.test/settings/appearance'
+* @route 'https://bryson.test/settings/appearance'
 */
 appearance.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: appearance.url(options),
@@ -150,7 +150,7 @@ appearance.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see routes/web/settings.php:20
-* @route '//bryson.test/settings/appearance'
+* @route 'https://bryson.test/settings/appearance'
 */
 appearance.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: appearance.url(options),

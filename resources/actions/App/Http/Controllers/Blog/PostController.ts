@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefa
 /**
 * @see \App\Http\Controllers\Blog\PostController::index
 * @see app/Http/Controllers/Blog/PostController.php:23
-* @route '//bryson.test/blog/posts'
+* @route 'https://bryson.test/blog/posts'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -11,13 +11,13 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/blog/posts',
+    url: 'https://bryson.test/blog/posts',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Blog\PostController::index
 * @see app/Http/Controllers/Blog/PostController.php:23
-* @route '//bryson.test/blog/posts'
+* @route 'https://bryson.test/blog/posts'
 */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Blog\PostController::index
 * @see app/Http/Controllers/Blog/PostController.php:23
-* @route '//bryson.test/blog/posts'
+* @route 'https://bryson.test/blog/posts'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\Blog\PostController::index
 * @see app/Http/Controllers/Blog/PostController.php:23
-* @route '//bryson.test/blog/posts'
+* @route 'https://bryson.test/blog/posts'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\Blog\PostController::store
 * @see app/Http/Controllers/Blog/PostController.php:44
-* @route '//bryson.test/blog/posts'
+* @route 'https://bryson.test/blog/posts'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -55,13 +55,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '//bryson.test/blog/posts',
+    url: 'https://bryson.test/blog/posts',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Blog\PostController::store
 * @see app/Http/Controllers/Blog/PostController.php:44
-* @route '//bryson.test/blog/posts'
+* @route 'https://bryson.test/blog/posts'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -70,7 +70,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Blog\PostController::store
 * @see app/Http/Controllers/Blog/PostController.php:44
-* @route '//bryson.test/blog/posts'
+* @route 'https://bryson.test/blog/posts'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -80,7 +80,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 /**
 * @see \App\Http\Controllers\Blog\PostController::update
 * @see app/Http/Controllers/Blog/PostController.php:56
-* @route '//bryson.test/blog/posts/{post}'
+* @route 'https://bryson.test/blog/posts/{post}'
 */
 export const update = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -89,13 +89,13 @@ export const update = (args: { post: string | number } | [post: string | number 
 
 update.definition = {
     methods: ["put"],
-    url: '//bryson.test/blog/posts/{post}',
+    url: 'https://bryson.test/blog/posts/{post}',
 } satisfies RouteDefinition<["put"]>
 
 /**
 * @see \App\Http\Controllers\Blog\PostController::update
 * @see app/Http/Controllers/Blog/PostController.php:56
-* @route '//bryson.test/blog/posts/{post}'
+* @route 'https://bryson.test/blog/posts/{post}'
 */
 update.url = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -122,7 +122,7 @@ update.url = (args: { post: string | number } | [post: string | number ] | strin
 /**
 * @see \App\Http\Controllers\Blog\PostController::update
 * @see app/Http/Controllers/Blog/PostController.php:56
-* @route '//bryson.test/blog/posts/{post}'
+* @route 'https://bryson.test/blog/posts/{post}'
 */
 update.put = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -132,7 +132,7 @@ update.put = (args: { post: string | number } | [post: string | number ] | strin
 /**
 * @see \App\Http\Controllers\Blog\PostController::destroy
 * @see app/Http/Controllers/Blog/PostController.php:70
-* @route '//bryson.test/blog/posts/{post}'
+* @route 'https://bryson.test/blog/posts/{post}'
 */
 export const destroy = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -141,13 +141,13 @@ export const destroy = (args: { post: string | number } | [post: string | number
 
 destroy.definition = {
     methods: ["delete"],
-    url: '//bryson.test/blog/posts/{post}',
+    url: 'https://bryson.test/blog/posts/{post}',
 } satisfies RouteDefinition<["delete"]>
 
 /**
 * @see \App\Http\Controllers\Blog\PostController::destroy
 * @see app/Http/Controllers/Blog/PostController.php:70
-* @route '//bryson.test/blog/posts/{post}'
+* @route 'https://bryson.test/blog/posts/{post}'
 */
 destroy.url = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -174,7 +174,7 @@ destroy.url = (args: { post: string | number } | [post: string | number ] | stri
 /**
 * @see \App\Http\Controllers\Blog\PostController::destroy
 * @see app/Http/Controllers/Blog/PostController.php:70
-* @route '//bryson.test/blog/posts/{post}'
+* @route 'https://bryson.test/blog/posts/{post}'
 */
 destroy.delete = (args: { post: string | number } | [post: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),

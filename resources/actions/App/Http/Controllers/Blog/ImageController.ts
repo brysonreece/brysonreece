@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \App\Http\Controllers\Blog\ImageController::store
 * @see app/Http/Controllers/Blog/ImageController.php:16
-* @route '//bryson.test/blog/images'
+* @route 'https://bryson.test/blog/images'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -11,13 +11,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '//bryson.test/blog/images',
+    url: 'https://bryson.test/blog/images',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Blog\ImageController::store
 * @see app/Http/Controllers/Blog/ImageController.php:16
-* @route '//bryson.test/blog/images'
+* @route 'https://bryson.test/blog/images'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Blog\ImageController::store
 * @see app/Http/Controllers/Blog/ImageController.php:16
-* @route '//bryson.test/blog/images'
+* @route 'https://bryson.test/blog/images'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),

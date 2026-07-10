@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefa
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::request
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 export const request = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: request.url(options),
@@ -11,13 +11,13 @@ export const request = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 
 request.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/forgot-password',
+    url: 'https://bryson.test/forgot-password',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::request
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 request.url = (options?: RouteQueryOptions) => {
     return request.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ request.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::request
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 request.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: request.url(options),
@@ -36,7 +36,7 @@ request.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::request
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 request.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: request.url(options),
@@ -46,7 +46,7 @@ request.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::email
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:29
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 export const email = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: email.url(options),
@@ -55,13 +55,13 @@ export const email = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 email.definition = {
     methods: ["post"],
-    url: '//bryson.test/forgot-password',
+    url: 'https://bryson.test/forgot-password',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::email
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:29
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 email.url = (options?: RouteQueryOptions) => {
     return email.definition.url + queryParams(options)
@@ -70,7 +70,7 @@ email.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::email
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:29
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 email.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: email.url(options),
@@ -80,7 +80,7 @@ email.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 /**
 * @see \App\Http\Controllers\Auth\NewPasswordController::reset
 * @see app/Http/Controllers/Auth/NewPasswordController.php:22
-* @route '//bryson.test/reset-password/{token}'
+* @route 'https://bryson.test/reset-password/{token}'
 */
 export const reset = (args: { token: string | number } | [token: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: reset.url(args, options),
@@ -89,13 +89,13 @@ export const reset = (args: { token: string | number } | [token: string | number
 
 reset.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/reset-password/{token}',
+    url: 'https://bryson.test/reset-password/{token}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Auth\NewPasswordController::reset
 * @see app/Http/Controllers/Auth/NewPasswordController.php:22
-* @route '//bryson.test/reset-password/{token}'
+* @route 'https://bryson.test/reset-password/{token}'
 */
 reset.url = (args: { token: string | number } | [token: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -122,7 +122,7 @@ reset.url = (args: { token: string | number } | [token: string | number ] | stri
 /**
 * @see \App\Http\Controllers\Auth\NewPasswordController::reset
 * @see app/Http/Controllers/Auth/NewPasswordController.php:22
-* @route '//bryson.test/reset-password/{token}'
+* @route 'https://bryson.test/reset-password/{token}'
 */
 reset.get = (args: { token: string | number } | [token: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: reset.url(args, options),
@@ -132,7 +132,7 @@ reset.get = (args: { token: string | number } | [token: string | number ] | stri
 /**
 * @see \App\Http\Controllers\Auth\NewPasswordController::reset
 * @see app/Http/Controllers/Auth/NewPasswordController.php:22
-* @route '//bryson.test/reset-password/{token}'
+* @route 'https://bryson.test/reset-password/{token}'
 */
 reset.head = (args: { token: string | number } | [token: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: reset.url(args, options),
@@ -142,7 +142,7 @@ reset.head = (args: { token: string | number } | [token: string | number ] | str
 /**
 * @see \App\Http\Controllers\Auth\NewPasswordController::store
 * @see app/Http/Controllers/Auth/NewPasswordController.php:35
-* @route '//bryson.test/reset-password'
+* @route 'https://bryson.test/reset-password'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -151,13 +151,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '//bryson.test/reset-password',
+    url: 'https://bryson.test/reset-password',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Auth\NewPasswordController::store
 * @see app/Http/Controllers/Auth/NewPasswordController.php:35
-* @route '//bryson.test/reset-password'
+* @route 'https://bryson.test/reset-password'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -166,7 +166,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\NewPasswordController::store
 * @see app/Http/Controllers/Auth/NewPasswordController.php:35
-* @route '//bryson.test/reset-password'
+* @route 'https://bryson.test/reset-password'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -176,7 +176,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 /**
 * @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
 * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
-* @route '//bryson.test/confirm-password'
+* @route 'https://bryson.test/confirm-password'
 */
 export const confirm = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirm.url(options),
@@ -185,13 +185,13 @@ export const confirm = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 
 confirm.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/confirm-password',
+    url: 'https://bryson.test/confirm-password',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
 * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
-* @route '//bryson.test/confirm-password'
+* @route 'https://bryson.test/confirm-password'
 */
 confirm.url = (options?: RouteQueryOptions) => {
     return confirm.definition.url + queryParams(options)
@@ -200,7 +200,7 @@ confirm.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
 * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
-* @route '//bryson.test/confirm-password'
+* @route 'https://bryson.test/confirm-password'
 */
 confirm.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirm.url(options),
@@ -210,7 +210,7 @@ confirm.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
 * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
-* @route '//bryson.test/confirm-password'
+* @route 'https://bryson.test/confirm-password'
 */
 confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirm.url(options),
@@ -220,7 +220,7 @@ confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::edit
 * @see app/Http/Controllers/Settings/PasswordController.php:19
-* @route '//bryson.test/settings/password'
+* @route 'https://bryson.test/settings/password'
 */
 export const edit = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(options),
@@ -229,13 +229,13 @@ export const edit = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 edit.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/settings/password',
+    url: 'https://bryson.test/settings/password',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::edit
 * @see app/Http/Controllers/Settings/PasswordController.php:19
-* @route '//bryson.test/settings/password'
+* @route 'https://bryson.test/settings/password'
 */
 edit.url = (options?: RouteQueryOptions) => {
     return edit.definition.url + queryParams(options)
@@ -244,7 +244,7 @@ edit.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::edit
 * @see app/Http/Controllers/Settings/PasswordController.php:19
-* @route '//bryson.test/settings/password'
+* @route 'https://bryson.test/settings/password'
 */
 edit.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(options),
@@ -254,7 +254,7 @@ edit.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::edit
 * @see app/Http/Controllers/Settings/PasswordController.php:19
-* @route '//bryson.test/settings/password'
+* @route 'https://bryson.test/settings/password'
 */
 edit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(options),
@@ -264,7 +264,7 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::update
 * @see app/Http/Controllers/Settings/PasswordController.php:30
-* @route '//bryson.test/settings/password'
+* @route 'https://bryson.test/settings/password'
 */
 export const update = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(options),
@@ -273,13 +273,13 @@ export const update = (options?: RouteQueryOptions): RouteDefinition<'put'> => (
 
 update.definition = {
     methods: ["put"],
-    url: '//bryson.test/settings/password',
+    url: 'https://bryson.test/settings/password',
 } satisfies RouteDefinition<["put"]>
 
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::update
 * @see app/Http/Controllers/Settings/PasswordController.php:30
-* @route '//bryson.test/settings/password'
+* @route 'https://bryson.test/settings/password'
 */
 update.url = (options?: RouteQueryOptions) => {
     return update.definition.url + queryParams(options)
@@ -288,7 +288,7 @@ update.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::update
 * @see app/Http/Controllers/Settings/PasswordController.php:30
-* @route '//bryson.test/settings/password'
+* @route 'https://bryson.test/settings/password'
 */
 update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(options),

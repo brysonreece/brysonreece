@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \App\Http\Controllers\Brando\GenerateBrandNamesController::__invoke
 * @see app/Http/Controllers/Brando/GenerateBrandNamesController.php:15
-* @route '//brando.bryson.test/generations'
+* @route 'https://brando.bryson.test/generations'
 */
 const GenerateBrandNamesController = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: GenerateBrandNamesController.url(options),
@@ -11,13 +11,13 @@ const GenerateBrandNamesController = (options?: RouteQueryOptions): RouteDefinit
 
 GenerateBrandNamesController.definition = {
     methods: ["post"],
-    url: '//brando.bryson.test/generations',
+    url: 'https://brando.bryson.test/generations',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Brando\GenerateBrandNamesController::__invoke
 * @see app/Http/Controllers/Brando/GenerateBrandNamesController.php:15
-* @route '//brando.bryson.test/generations'
+* @route 'https://brando.bryson.test/generations'
 */
 GenerateBrandNamesController.url = (options?: RouteQueryOptions) => {
     return GenerateBrandNamesController.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ GenerateBrandNamesController.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Brando\GenerateBrandNamesController::__invoke
 * @see app/Http/Controllers/Brando/GenerateBrandNamesController.php:15
-* @route '//brando.bryson.test/generations'
+* @route 'https://brando.bryson.test/generations'
 */
 GenerateBrandNamesController.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: GenerateBrandNamesController.url(options),

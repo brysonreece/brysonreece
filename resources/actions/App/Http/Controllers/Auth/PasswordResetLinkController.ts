@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::create
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
@@ -11,13 +11,13 @@ export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 create.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/forgot-password',
+    url: 'https://bryson.test/forgot-password',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::create
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 create.url = (options?: RouteQueryOptions) => {
     return create.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ create.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::create
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
@@ -36,7 +36,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::create
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:17
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
@@ -46,7 +46,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::store
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:29
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -55,13 +55,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '//bryson.test/forgot-password',
+    url: 'https://bryson.test/forgot-password',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::store
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:29
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -70,7 +70,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\PasswordResetLinkController::store
 * @see app/Http/Controllers/Auth/PasswordResetLinkController.php:29
-* @route '//bryson.test/forgot-password'
+* @route 'https://bryson.test/forgot-password'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),

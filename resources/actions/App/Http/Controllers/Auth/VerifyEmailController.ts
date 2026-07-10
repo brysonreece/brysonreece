@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefa
 /**
 * @see \App\Http\Controllers\Auth\VerifyEmailController::__invoke
 * @see app/Http/Controllers/Auth/VerifyEmailController.php:15
-* @route '//bryson.test/verify-email/{id}/{hash}'
+* @route 'https://bryson.test/verify-email/{id}/{hash}'
 */
 const VerifyEmailController = (args: { id: string | number, hash: string | number } | [id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: VerifyEmailController.url(args, options),
@@ -11,13 +11,13 @@ const VerifyEmailController = (args: { id: string | number, hash: string | numbe
 
 VerifyEmailController.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/verify-email/{id}/{hash}',
+    url: 'https://bryson.test/verify-email/{id}/{hash}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Auth\VerifyEmailController::__invoke
 * @see app/Http/Controllers/Auth/VerifyEmailController.php:15
-* @route '//bryson.test/verify-email/{id}/{hash}'
+* @route 'https://bryson.test/verify-email/{id}/{hash}'
 */
 VerifyEmailController.url = (args: { id: string | number, hash: string | number } | [id: string | number, hash: string | number ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
@@ -43,7 +43,7 @@ VerifyEmailController.url = (args: { id: string | number, hash: string | number 
 /**
 * @see \App\Http\Controllers\Auth\VerifyEmailController::__invoke
 * @see app/Http/Controllers/Auth/VerifyEmailController.php:15
-* @route '//bryson.test/verify-email/{id}/{hash}'
+* @route 'https://bryson.test/verify-email/{id}/{hash}'
 */
 VerifyEmailController.get = (args: { id: string | number, hash: string | number } | [id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: VerifyEmailController.url(args, options),
@@ -53,7 +53,7 @@ VerifyEmailController.get = (args: { id: string | number, hash: string | number 
 /**
 * @see \App\Http\Controllers\Auth\VerifyEmailController::__invoke
 * @see app/Http/Controllers/Auth/VerifyEmailController.php:15
-* @route '//bryson.test/verify-email/{id}/{hash}'
+* @route 'https://bryson.test/verify-email/{id}/{hash}'
 */
 VerifyEmailController.head = (args: { id: string | number, hash: string | number } | [id: string | number, hash: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: VerifyEmailController.url(args, options),

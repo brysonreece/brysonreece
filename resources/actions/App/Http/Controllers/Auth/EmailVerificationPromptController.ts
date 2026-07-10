@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \App\Http\Controllers\Auth\EmailVerificationPromptController::__invoke
 * @see app/Http/Controllers/Auth/EmailVerificationPromptController.php:16
-* @route '//bryson.test/verify-email'
+* @route 'https://bryson.test/verify-email'
 */
 const EmailVerificationPromptController = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: EmailVerificationPromptController.url(options),
@@ -11,13 +11,13 @@ const EmailVerificationPromptController = (options?: RouteQueryOptions): RouteDe
 
 EmailVerificationPromptController.definition = {
     methods: ["get","head"],
-    url: '//bryson.test/verify-email',
+    url: 'https://bryson.test/verify-email',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\Auth\EmailVerificationPromptController::__invoke
 * @see app/Http/Controllers/Auth/EmailVerificationPromptController.php:16
-* @route '//bryson.test/verify-email'
+* @route 'https://bryson.test/verify-email'
 */
 EmailVerificationPromptController.url = (options?: RouteQueryOptions) => {
     return EmailVerificationPromptController.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ EmailVerificationPromptController.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\EmailVerificationPromptController::__invoke
 * @see app/Http/Controllers/Auth/EmailVerificationPromptController.php:16
-* @route '//bryson.test/verify-email'
+* @route 'https://bryson.test/verify-email'
 */
 EmailVerificationPromptController.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: EmailVerificationPromptController.url(options),
@@ -36,7 +36,7 @@ EmailVerificationPromptController.get = (options?: RouteQueryOptions): RouteDefi
 /**
 * @see \App\Http\Controllers\Auth\EmailVerificationPromptController::__invoke
 * @see app/Http/Controllers/Auth/EmailVerificationPromptController.php:16
-* @route '//bryson.test/verify-email'
+* @route 'https://bryson.test/verify-email'
 */
 EmailVerificationPromptController.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: EmailVerificationPromptController.url(options),

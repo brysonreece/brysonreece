@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Inertia\Ssr\GuestHttpGateway;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Ssr\HttpGateway;
 
@@ -33,6 +34,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        URL::forceScheme(parse_url(config('app.url'), PHP_URL_SCHEME) ?: 'https');
     }
 }

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
 * @see routes/web.php:19
-* @route '//links.bryson.test'
+* @route 'https://links.bryson.test'
 */
 export const links = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: links.url(options),
@@ -10,12 +10,12 @@ export const links = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 links.definition = {
     methods: ["get","head"],
-    url: '//links.bryson.test',
+    url: 'https://links.bryson.test',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web.php:19
-* @route '//links.bryson.test'
+* @route 'https://links.bryson.test'
 */
 links.url = (options?: RouteQueryOptions) => {
     return links.definition.url + queryParams(options)
@@ -23,7 +23,7 @@ links.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see routes/web.php:19
-* @route '//links.bryson.test'
+* @route 'https://links.bryson.test'
 */
 links.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: links.url(options),
@@ -32,7 +32,7 @@ links.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see routes/web.php:19
-* @route '//links.bryson.test'
+* @route 'https://links.bryson.test'
 */
 links.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: links.url(options),
@@ -41,7 +41,7 @@ links.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see routes/web.php:23
-* @route '//recall.bryson.test'
+* @route 'https://recall.bryson.test'
 */
 export const recall = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: recall.url(options),
@@ -50,12 +50,12 @@ export const recall = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 recall.definition = {
     methods: ["get","head"],
-    url: '//recall.bryson.test',
+    url: 'https://recall.bryson.test',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web.php:23
-* @route '//recall.bryson.test'
+* @route 'https://recall.bryson.test'
 */
 recall.url = (options?: RouteQueryOptions) => {
     return recall.definition.url + queryParams(options)
@@ -63,7 +63,7 @@ recall.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see routes/web.php:23
-* @route '//recall.bryson.test'
+* @route 'https://recall.bryson.test'
 */
 recall.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: recall.url(options),
@@ -72,7 +72,7 @@ recall.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see routes/web.php:23
-* @route '//recall.bryson.test'
+* @route 'https://recall.bryson.test'
 */
 recall.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: recall.url(options),
@@ -81,7 +81,7 @@ recall.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see routes/web.php:27
-* @route '//pomelo.bryson.test'
+* @route 'https://pomelo.bryson.test'
 */
 export const pomelo = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: pomelo.url(options),
@@ -90,12 +90,12 @@ export const pomelo = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 pomelo.definition = {
     methods: ["get","head"],
-    url: '//pomelo.bryson.test',
+    url: 'https://pomelo.bryson.test',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web.php:27
-* @route '//pomelo.bryson.test'
+* @route 'https://pomelo.bryson.test'
 */
 pomelo.url = (options?: RouteQueryOptions) => {
     return pomelo.definition.url + queryParams(options)
@@ -103,7 +103,7 @@ pomelo.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see routes/web.php:27
-* @route '//pomelo.bryson.test'
+* @route 'https://pomelo.bryson.test'
 */
 pomelo.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: pomelo.url(options),
@@ -112,7 +112,7 @@ pomelo.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see routes/web.php:27
-* @route '//pomelo.bryson.test'
+* @route 'https://pomelo.bryson.test'
 */
 pomelo.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: pomelo.url(options),
@@ -121,7 +121,7 @@ pomelo.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see routes/web.php:33
-* @route '//brando.bryson.test'
+* @route 'https://brando.bryson.test'
 */
 export const brando = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: brando.url(options),
@@ -130,12 +130,12 @@ export const brando = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 brando.definition = {
     methods: ["get","head"],
-    url: '//brando.bryson.test',
+    url: 'https://brando.bryson.test',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web.php:33
-* @route '//brando.bryson.test'
+* @route 'https://brando.bryson.test'
 */
 brando.url = (options?: RouteQueryOptions) => {
     return brando.definition.url + queryParams(options)
@@ -143,7 +143,7 @@ brando.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see routes/web.php:33
-* @route '//brando.bryson.test'
+* @route 'https://brando.bryson.test'
 */
 brando.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: brando.url(options),
@@ -152,7 +152,7 @@ brando.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see routes/web.php:33
-* @route '//brando.bryson.test'
+* @route 'https://brando.bryson.test'
 */
 brando.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: brando.url(options),

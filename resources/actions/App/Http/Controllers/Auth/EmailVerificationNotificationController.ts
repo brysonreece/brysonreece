@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \App\Http\Controllers\Auth\EmailVerificationNotificationController::store
 * @see app/Http/Controllers/Auth/EmailVerificationNotificationController.php:14
-* @route '//bryson.test/email/verification-notification'
+* @route 'https://bryson.test/email/verification-notification'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -11,13 +11,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '//bryson.test/email/verification-notification',
+    url: 'https://bryson.test/email/verification-notification',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Auth\EmailVerificationNotificationController::store
 * @see app/Http/Controllers/Auth/EmailVerificationNotificationController.php:14
-* @route '//bryson.test/email/verification-notification'
+* @route 'https://bryson.test/email/verification-notification'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\Auth\EmailVerificationNotificationController::store
 * @see app/Http/Controllers/Auth/EmailVerificationNotificationController.php:14
-* @route '//bryson.test/email/verification-notification'
+* @route 'https://bryson.test/email/verification-notification'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),

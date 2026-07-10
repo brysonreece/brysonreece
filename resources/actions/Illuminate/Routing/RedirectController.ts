@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 const RedirectController = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: RedirectController.url(options),
@@ -11,13 +11,13 @@ const RedirectController = (options?: RouteQueryOptions): RouteDefinition<'get'>
 
 RedirectController.definition = {
     methods: ["get","head","post","put","patch","delete","options"],
-    url: '//bryson.test/settings',
+    url: 'https://bryson.test/settings',
 } satisfies RouteDefinition<["get","head","post","put","patch","delete","options"]>
 
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.url = (options?: RouteQueryOptions) => {
     return RedirectController.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ RedirectController.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: RedirectController.url(options),
@@ -36,7 +36,7 @@ RedirectController.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: RedirectController.url(options),
@@ -46,7 +46,7 @@ RedirectController.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: RedirectController.url(options),
@@ -56,7 +56,7 @@ RedirectController.post = (options?: RouteQueryOptions): RouteDefinition<'post'>
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: RedirectController.url(options),
@@ -66,7 +66,7 @@ RedirectController.put = (options?: RouteQueryOptions): RouteDefinition<'put'> =
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.patch = (options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: RedirectController.url(options),
@@ -76,7 +76,7 @@ RedirectController.patch = (options?: RouteQueryOptions): RouteDefinition<'patch
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: RedirectController.url(options),
@@ -86,7 +86,7 @@ RedirectController.delete = (options?: RouteQueryOptions): RouteDefinition<'dele
 /**
 * @see \Illuminate\Routing\RedirectController::__invoke
 * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
-* @route '//bryson.test/settings'
+* @route 'https://bryson.test/settings'
 */
 RedirectController.options = (options?: RouteQueryOptions): RouteDefinition<'options'> => ({
     url: RedirectController.url(options),
