@@ -1,9 +1,9 @@
 ---
 name: wayfinder-development
 description: >-
-  Activates whenever referencing backend routes in frontend components. Use when
-  importing from @/actions or @/routes, calling Laravel routes from TypeScript,
-  or working with Wayfinder route functions.
+    Activates whenever referencing backend routes in frontend components. Use when
+    importing from @/actions or @/routes, calling Laravel routes from TypeScript,
+    or working with Wayfinder route functions.
 ---
 
 # Wayfinder Development
@@ -11,6 +11,7 @@ description: >-
 ## When to Apply
 
 Activate whenever referencing backend routes in frontend components:
+
 - Importing from `@/actions/` or `@/routes/`
 - Calling Laravel routes from TypeScript/JavaScript
 - Creating links or navigation to backend endpoints

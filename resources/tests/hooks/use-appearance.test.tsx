@@ -1,6 +1,6 @@
+import { initializeTheme, useAppearance } from '@/hooks/use-appearance';
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { initializeTheme, useAppearance } from '@/hooks/use-appearance';
 
 describe('useAppearance', () => {
     let matchMediaMock: {
@@ -182,9 +182,6 @@ describe('initializeTheme', () => {
 
     it('registers system theme change listener', () => {
         initializeTheme();
-        expect(matchMediaMock.addEventListener).toHaveBeenCalledWith(
-            'change',
-            expect.any(Function),
-        );
+        expect(matchMediaMock.addEventListener).toHaveBeenCalledWith('change', expect.any(Function));
     });
 });

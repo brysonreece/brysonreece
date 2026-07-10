@@ -1,8 +1,8 @@
 import { CloudDownloadIcon } from 'lucide-react';
 
 import { GazeTracker } from '@/components/gaze-tracker';
-import { useCallback, useEffect, useRef, useState } from 'react';
 import { about } from '@/routes/guest';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type HeroProps = {
     enableMouseAnimation?: boolean;
@@ -53,16 +53,16 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
 
         const reset = () => {
             window.requestAnimationFrame(function () {
-                element.style.transform = "translate(0, 0) rotateX(0) rotateY(0)";
+                element.style.transform = 'translate(0, 0) rotateX(0) rotateY(0)';
             });
         };
 
-        app.addEventListener("mousemove", transform);
-        app.addEventListener("mouseleave", reset);
+        app.addEventListener('mousemove', transform);
+        app.addEventListener('mouseleave', reset);
 
         return () => {
-            app.removeEventListener("mousemove", transform);
-            app.removeEventListener("mouseleave", reset);
+            app.removeEventListener('mousemove', transform);
+            app.removeEventListener('mouseleave', reset);
         };
     }, [enableMouseAnimation]);
 
@@ -134,8 +134,8 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
         // Wait 300ms (full fade-out duration) before changing the text
         const timeout = setTimeout(() => {
             const targetSubtitle = isCosmoMode
-                ? "the goodest boy with a nose for opportunity and a habit of herding better team outcomes"
-                : "a passionate maker with a specialty in developing enterprise platforms that scale";
+                ? 'the goodest boy with a nose for opportunity and a habit of herding better team outcomes'
+                : 'a passionate maker with a specialty in developing enterprise platforms that scale';
             setDisplayedSubtitle(targetSubtitle);
         }, 300);
 
@@ -153,7 +153,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                 <div
                     onClick={toggleCosmoMode}
                     className={`absolute inset-0 size-64 cursor-pointer transition-opacity duration-250 ${
-                        isCosmoMode ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                        isCosmoMode ? 'opacity-100' : 'pointer-events-none opacity-0'
                     }`}
                 >
                     <GazeTracker
@@ -170,16 +170,11 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                 <div
                     id="avatar"
                     onClick={toggleCosmoMode}
-                    className={`absolute inset-0 size-64 overflow-hidden rounded-full border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800 transform-3d cursor-pointer transition-opacity duration-500 ${
-                        isCosmoMode ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                    className={`absolute inset-0 size-64 cursor-pointer overflow-hidden rounded-full border border-stone-300 bg-stone-100 transition-opacity duration-500 transform-3d dark:border-stone-700 dark:bg-stone-800 ${
+                        isCosmoMode ? 'pointer-events-none opacity-0' : 'opacity-100'
                     }`}
                 >
-                    <img
-                        className="h-full w-full object-cover"
-                        src="/storage/img/me.webp"
-                        alt="Bryson Reece"
-                        fetchPriority="high"
-                    />
+                    <img className="h-full w-full object-cover" src="/storage/img/me.webp" alt="Bryson Reece" fetchPriority="high" />
                 </div>
             </div>
 
@@ -189,7 +184,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                 <span className="relative whitespace-nowrap text-blue-600">
                     <svg
                         viewBox="0 0 418 42"
-                        className={`absolute top-2/3 left-0 right-0 sm:mt-1 h-[0.58em] w-0 min-w-full fill-stone-300/70 dark:fill-stone-700/70 transition-opacity duration-300 ${
+                        className={`absolute top-2/3 right-0 left-0 h-[0.58em] w-0 min-w-full fill-stone-300/70 transition-opacity duration-300 sm:mt-1 dark:fill-stone-700/70 ${
                             isTyping ? 'opacity-0' : 'opacity-100'
                         }`}
                         preserveAspectRatio="xMinYMid meet"
@@ -203,7 +198,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
             </h1>
 
             <p
-                className={`mx-auto mt-12 max-w-md text-lg font-medium tracking-tight text-stone-700 dark:text-stone-400 transition-opacity duration-300 ${
+                className={`mx-auto mt-12 max-w-md text-lg font-medium tracking-tight text-stone-700 transition-opacity duration-300 dark:text-stone-400 ${
                     isTyping ? 'opacity-0' : 'opacity-100 delay-300'
                 }`}
             >
@@ -216,7 +211,7 @@ export function Hero({ enableMouseAnimation = false, containerRef: externalConta
                 }`}
             >
                 <a
-                    href={isCosmoMode ? "/storage/cosmo-chezmoi-resume.pdf" : "/storage/bryson-reece-resume.pdf"}
+                    href={isCosmoMode ? '/storage/cosmo-chezmoi-resume.pdf' : '/storage/bryson-reece-resume.pdf'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center rounded-md border border-stone-700 px-2 py-1 text-sm font-medium text-stone-700 hover:border-blue-500 hover:bg-blue-500 hover:text-white dark:border-stone-500 dark:text-stone-400 dark:hover:border-blue-500 dark:hover:bg-transparent dark:hover:text-blue-500"

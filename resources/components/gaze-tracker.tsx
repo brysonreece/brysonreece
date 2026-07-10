@@ -1,5 +1,5 @@
-import { forwardRef, MouseEventHandler, RefObject, useRef, useState } from 'react';
 import useGazeTracking from '@/hooks/use-gaze-tracking';
+import { forwardRef, MouseEventHandler, RefObject, useRef, useState } from 'react';
 
 /**
  * This component includes portions of code adapted from https://github.com/kylan02/face_looker
@@ -19,59 +19,52 @@ type GazeTrackerProps = {
     enabled?: boolean;
 };
 
-export const GazeTracker = forwardRef<HTMLDivElement, GazeTrackerProps>(({
-  className,
-  basePath = '/faces/',
-  showDebug = false,
-  pMin,
-  pMax,
-  stepSize,
-  imgSize,
-  containerRef: externalRef,
-  enabled = true,
-}, forwardedRef) => {
-  const internalRef = useRef<HTMLDivElement>(null);
-  const trackerRef = (forwardedRef as RefObject<HTMLDivElement>) || internalRef;
-  const trackingContainerRef = externalRef || trackerRef;
-  const currentImage = useGazeTracking(trackingContainerRef, basePath, pMin, pMax, stepSize, imgSize, enabled);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+export const GazeTracker = forwardRef<HTMLDivElement, GazeTrackerProps>(
+    (
+        { className, basePath = '/faces/', showDebug = false, pMin, pMax, stepSize, imgSize, containerRef: externalRef, enabled = true },
+        forwardedRef,
+    ) => {
+        const internalRef = useRef<HTMLDivElement>(null);
+        const trackerRef = (forwardedRef as RefObject<HTMLDivElement>) || internalRef;
+        const trackingContainerRef = externalRef || trackerRef;
+        const currentImage = useGazeTracking(trackingContainerRef, basePath, pMin, pMax, stepSize, imgSize, enabled);
+        const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove: MouseEventHandler<HTMLDivElement> = (event) => {
-    if (!trackingContainerRef.current) return;
+        const handleMouseMove: MouseEventHandler<HTMLDivElement> = (event) => {
+            if (!trackingContainerRef.current) return;
 
-    const rect = trackingContainerRef.current.getBoundingClientRect();
-    setMousePos({
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top
-    });
-  };
+            const rect = trackingContainerRef.current.getBoundingClientRect();
+            setMousePos({
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top,
+            });
+        };
 
-  return (
-    <div
-      ref={trackerRef}
-      className={`gaze-tracker ${className}`}
-      onMouseMove={handleMouseMove}
-    >
-      {currentImage && (
-        <img
-          src={currentImage}
-          alt="Cosmo, our goldendoodle, tracking your input position"
-          className="face-image"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            transition: 'opacity 0.1s ease-out'
-          }}
-        />
-      )}
+        return (
+            <div ref={trackerRef} className={`gaze-tracker ${className}`} onMouseMove={handleMouseMove}>
+                {currentImage && (
+                    <img
+                        src={currentImage}
+                        alt="Cosmo, our goldendoodle, tracking your input position"
+                        className="face-image"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                            transition: 'opacity 0.1s ease-out',
+                        }}
+                    />
+                )}
 
-      {showDebug && (
-        <div className="face-debug">
-          <div>Mouse: ({Math.round(mousePos.x)}, {Math.round(mousePos.y)})</div>
-          <div>Image: {currentImage?.split('/').pop()}</div>
-        </div>
-      )}
-    </div>
-  );
-});
+                {showDebug && (
+                    <div className="face-debug">
+                        <div>
+                            Mouse: ({Math.round(mousePos.x)}, {Math.round(mousePos.y)})
+                        </div>
+                        <div>Image: {currentImage?.split('/').pop()}</div>
+                    </div>
+                )}
+            </div>
+        );
+    },
+);

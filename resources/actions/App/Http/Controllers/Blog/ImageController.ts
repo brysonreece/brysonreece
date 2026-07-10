@@ -1,38 +1,38 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
+import { queryParams, type RouteDefinition, type RouteQueryOptions } from './../../../../../wayfinder';
 /**
-* @see \App\Http\Controllers\Blog\ImageController::store
-* @see app/Http/Controllers/Blog/ImageController.php:16
-* @route 'https://bryson.test/blog/images'
-*/
+ * @see \App\Http\Controllers\Blog\ImageController::store
+ * @see app/Http/Controllers/Blog/ImageController.php:16
+ * @route 'https://bryson.test/blog/images'
+ */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
-})
+});
 
 store.definition = {
-    methods: ["post"],
+    methods: ['post'],
     url: 'https://bryson.test/blog/images',
-} satisfies RouteDefinition<["post"]>
+} satisfies RouteDefinition<['post']>;
 
 /**
-* @see \App\Http\Controllers\Blog\ImageController::store
-* @see app/Http/Controllers/Blog/ImageController.php:16
-* @route 'https://bryson.test/blog/images'
-*/
+ * @see \App\Http\Controllers\Blog\ImageController::store
+ * @see app/Http/Controllers/Blog/ImageController.php:16
+ * @route 'https://bryson.test/blog/images'
+ */
 store.url = (options?: RouteQueryOptions) => {
-    return store.definition.url + queryParams(options)
-}
+    return store.definition.url + queryParams(options);
+};
 
 /**
-* @see \App\Http\Controllers\Blog\ImageController::store
-* @see app/Http/Controllers/Blog/ImageController.php:16
-* @route 'https://bryson.test/blog/images'
-*/
+ * @see \App\Http\Controllers\Blog\ImageController::store
+ * @see app/Http/Controllers/Blog/ImageController.php:16
+ * @route 'https://bryson.test/blog/images'
+ */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
-})
+});
 
-const ImageController = { store }
+const ImageController = { store };
 
-export default ImageController
+export default ImageController;

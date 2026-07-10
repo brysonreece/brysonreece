@@ -78,12 +78,7 @@ export default function Links() {
             <div className="flex h-full min-h-screen min-w-sm flex-col">
                 <div className="mx-auto my-8 w-full max-w-xs px-4 sm:my-16">
                     <Avatar className="mx-auto size-36 border border-stone-300 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
-                        <AvatarImage
-                            className="h-full w-full rounded-full"
-                            src="/storage/img/me.webp"
-                            alt="Bryson Reece"
-                            fetchPriority="high"
-                        />
+                        <AvatarImage className="h-full w-full rounded-full" src="/storage/img/me.webp" alt="Bryson Reece" fetchPriority="high" />
                     </Avatar>
                     <div className="my-8">
                         <h1 className="mx-auto mb-4 w-fit font-mono text-2xl">Bryson Reece</h1>

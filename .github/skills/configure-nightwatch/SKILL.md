@@ -3,7 +3,7 @@ name: configure-nightwatch
 description: Configures Laravel Nightwatch data collection, sampling rates, filtering rules, and redaction policies. Use when setting up Nightwatch, managing data volume, protecting sensitive data (PII), or optimizing event collection for production workloads.
 license: MIT
 metadata:
-  author: laravel
+    author: laravel
 ---
 
 # Nightwatch Configuration Guide
@@ -16,15 +16,15 @@ The [Nightwatch Documentation](https://nightwatch.laravel.com/docs) is the defin
 
 - [Filtering and Configuration](https://nightwatch.laravel.com/docs/filtering) - Core concepts for sampling, filtering, and redaction
 - Individual event type pages with specific configuration options:
-  - [Requests](https://nightwatch.laravel.com/docs/requests) - Request sampling, header handling, payload capture
-  - [Commands](https://nightwatch.laravel.com/docs/commands) - Command sampling and redaction
-  - [Queries](https://nightwatch.laravel.com/docs/queries) - Query filtering and redaction
-  - [Cache](https://nightwatch.laravel.com/docs/cache) - Cache event filtering by key or pattern
-  - [Jobs](https://nightwatch.laravel.com/docs/jobs) - Job filtering and sampling decoupling
-  - [Mail](https://nightwatch.laravel.com/docs/mail) - Mail event filtering
-  - [Notifications](https://nightwatch.laravel.com/docs/notifications) - Notification filtering by channel
-  - [Exceptions](https://nightwatch.laravel.com/docs/exceptions) - Exception sampling and throttling
-  - [Outgoing Requests](https://nightwatch.laravel.com/docs/outgoing-requests) - HTTP request filtering
+    - [Requests](https://nightwatch.laravel.com/docs/requests) - Request sampling, header handling, payload capture
+    - [Commands](https://nightwatch.laravel.com/docs/commands) - Command sampling and redaction
+    - [Queries](https://nightwatch.laravel.com/docs/queries) - Query filtering and redaction
+    - [Cache](https://nightwatch.laravel.com/docs/cache) - Cache event filtering by key or pattern
+    - [Jobs](https://nightwatch.laravel.com/docs/jobs) - Job filtering and sampling decoupling
+    - [Mail](https://nightwatch.laravel.com/docs/mail) - Mail event filtering
+    - [Notifications](https://nightwatch.laravel.com/docs/notifications) - Notification filtering by channel
+    - [Exceptions](https://nightwatch.laravel.com/docs/exceptions) - Exception sampling and throttling
+    - [Outgoing Requests](https://nightwatch.laravel.com/docs/outgoing-requests) - HTTP request filtering
 - [reference.md](reference.md) - Quick lookup table by event type, production presets, and verification checklist
 
 ## Data Collection Flow

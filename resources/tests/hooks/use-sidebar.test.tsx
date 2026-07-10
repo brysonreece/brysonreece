@@ -1,7 +1,7 @@
-import { renderHook } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import type { ReactNode } from 'react';
 import { SidebarContext, useSidebar } from '@/hooks/use-sidebar';
+import { renderHook } from '@testing-library/react';
+import type { ReactNode } from 'react';
+import { describe, expect, it } from 'vitest';
 
 describe('useSidebar', () => {
     it('throws error when used outside SidebarProvider', () => {
@@ -21,9 +21,7 @@ describe('useSidebar', () => {
             toggleSidebar: () => {},
         };
 
-        const wrapper = ({ children }: { children: ReactNode }) => (
-            <SidebarContext.Provider value={mockContext}>{children}</SidebarContext.Provider>
-        );
+        const wrapper = ({ children }: { children: ReactNode }) => <SidebarContext.Provider value={mockContext}>{children}</SidebarContext.Provider>;
 
         const { result } = renderHook(() => useSidebar(), { wrapper });
 
@@ -41,9 +39,7 @@ describe('useSidebar', () => {
             toggleSidebar: () => {},
         };
 
-        const wrapper = ({ children }: { children: ReactNode }) => (
-            <SidebarContext.Provider value={mockContext}>{children}</SidebarContext.Provider>
-        );
+        const wrapper = ({ children }: { children: ReactNode }) => <SidebarContext.Provider value={mockContext}>{children}</SidebarContext.Provider>;
 
         const { result } = renderHook(() => useSidebar(), { wrapper });
 

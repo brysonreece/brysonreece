@@ -1,16 +1,9 @@
-import { FormEventHandler, useState } from 'react';
 import { router, useForm } from '@inertiajs/react';
+import { FormEventHandler, useState } from 'react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -83,34 +76,38 @@ export function PostCreateDialog({ open, onOpenChange, onSuccess }: PostCreateDi
         }
 
         // Use router.post with explicit data instead of form.post
-        router.post(storePost().url, {
-            ...form.data,
-            title,
-            slug,
-        }, {
-            preserveScroll: true,
-            onSuccess: (page) => {
-                toast.success('Post created successfully');
-                onOpenChange(false);
-                setTitle('');
-                setSlug('');
-                setAutoSlug(true);
-                form.reset();
+        router.post(
+            storePost().url,
+            {
+                ...form.data,
+                title,
+                slug,
+            },
+            {
+                preserveScroll: true,
+                onSuccess: (page) => {
+                    toast.success('Post created successfully');
+                    onOpenChange(false);
+                    setTitle('');
+                    setSlug('');
+                    setAutoSlug(true);
+                    form.reset();
 
-                if (onSuccess && page.props.post) {
-                    onSuccess(page.props.post);
-                }
+                    if (onSuccess && page.props.post) {
+                        onSuccess(page.props.post);
+                    }
+                },
+                onError: (errors) => {
+                    if (errors.slug) {
+                        toast.error(errors.slug);
+                    } else if (errors.title) {
+                        toast.error(errors.title);
+                    } else {
+                        toast.error('Failed to create post');
+                    }
+                },
             },
-            onError: (errors) => {
-                if (errors.slug) {
-                    toast.error(errors.slug);
-                } else if (errors.title) {
-                    toast.error(errors.title);
-                } else {
-                    toast.error('Failed to create post');
-                }
-            },
-        });
+        );
     };
 
     const handleCancel = () => {
@@ -127,9 +124,7 @@ export function PostCreateDialog({ open, onOpenChange, onSuccess }: PostCreateDi
                 <form onSubmit={handleSubmit}>
                     <DialogHeader>
                         <DialogTitle>Create New Post</DialogTitle>
-                        <DialogDescription>
-                            Enter a title and slug for your new blog post. The slug will be used in the URL.
-                        </DialogDescription>
+                        <DialogDescription>Enter a title and slug for your new blog post. The slug will be used in the URL.</DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                         <div className="grid gap-2">
@@ -152,18 +147,11 @@ export function PostCreateDialog({ open, onOpenChange, onSuccess }: PostCreateDi
                                 placeholder="my-awesome-post"
                                 disabled={form.processing}
                             />
-                            <p className="text-xs text-neutral-500">
-                                {autoSlug ? 'Auto-generated from title' : 'Custom slug'}
-                            </p>
+                            <p className="text-xs text-neutral-500">{autoSlug ? 'Auto-generated from title' : 'Custom slug'}</p>
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button
-                            type="button"
-                            variant="outline"
-                            onClick={handleCancel}
-                            disabled={form.processing}
-                        >
+                        <Button type="button" variant="outline" onClick={handleCancel} disabled={form.processing}>
                             Cancel
                         </Button>
                         <Button type="submit" disabled={form.processing}>

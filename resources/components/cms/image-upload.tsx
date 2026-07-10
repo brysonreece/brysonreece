@@ -1,5 +1,5 @@
-import { ChangeEvent, useRef, useState } from 'react';
 import { Image as ImageIcon, Loader2, X } from 'lucide-react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -99,33 +99,24 @@ export function ImageUpload({ value, onChange, label, className }: ImageUploadPr
 
     return (
         <div className={cn('space-y-2', className)}>
-            {label && (
-                <label className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
-                    {label}
-                </label>
-            )}
+            {label && <label className="text-sm font-medium text-neutral-900 dark:text-neutral-100">{label}</label>}
 
             <div className="relative">
                 {displayUrl ? (
-                    <div className="relative group">
+                    <div className="group relative">
                         <img
                             src={displayUrl}
                             alt="Preview"
-                            className="w-full h-48 object-cover rounded-lg border border-neutral-300 dark:border-neutral-700"
+                            className="h-48 w-full rounded-lg border border-neutral-300 object-cover dark:border-neutral-700"
                         />
                         {uploading && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg">
-                                <Loader2 className="size-8 text-white animate-spin" />
+                            <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/50">
+                                <Loader2 className="size-8 animate-spin text-white" />
                             </div>
                         )}
                         {!uploading && (
-                            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Button
-                                    type="button"
-                                    size="sm"
-                                    variant="destructive"
-                                    onClick={handleRemove}
-                                >
+                            <div className="absolute top-2 right-2 opacity-0 transition-opacity group-hover:opacity-100">
+                                <Button type="button" size="sm" variant="destructive" onClick={handleRemove}>
                                     <X className="size-4" />
                                 </Button>
                             </div>
@@ -136,32 +127,24 @@ export function ImageUpload({ value, onChange, label, className }: ImageUploadPr
                         type="button"
                         onClick={handleClick}
                         disabled={uploading}
-                        className="w-full h-48 flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex h-48 w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-neutral-300 transition-colors hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-700 dark:hover:border-neutral-600"
                     >
                         {uploading ? (
                             <>
-                                <Loader2 className="size-8 text-neutral-500 animate-spin" />
+                                <Loader2 className="size-8 animate-spin text-neutral-500" />
                                 <span className="text-sm text-neutral-600 dark:text-neutral-400">Uploading...</span>
                             </>
                         ) : (
                             <>
                                 <ImageIcon className="size-8 text-neutral-500" />
-                                <span className="text-sm text-neutral-600 dark:text-neutral-400">
-                                    Click to upload image
-                                </span>
+                                <span className="text-sm text-neutral-600 dark:text-neutral-400">Click to upload image</span>
                                 <span className="text-xs text-neutral-500">Max 2MB</span>
                             </>
                         )}
                     </button>
                 )}
 
-                <input
-                    ref={inputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileSelect}
-                    className="hidden"
-                />
+                <input ref={inputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
             </div>
         </div>
     );

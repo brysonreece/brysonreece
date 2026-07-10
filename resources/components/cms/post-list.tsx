@@ -32,7 +32,7 @@ export function PostList({
     onNewPost,
 }: PostListProps) {
     return (
-        <div className={cn('h-full flex flex-col divide-y divide-sidebar-border', collapsed ? 'w-8' : 'w-full')}>
+        <div className={cn('divide-sidebar-border flex h-full flex-col divide-y', collapsed ? 'w-8' : 'w-full')}>
             <PostListControls
                 orientation={collapsed ? 'vertical' : 'horizontal'}
                 searchQuery={searchQuery}
@@ -49,13 +49,13 @@ export function PostList({
                             key={post.id}
                             onClick={() => onSelectPost(post)}
                             className={cn(
-                                'text-left border-sidebar-border/70 w-full border-b transition-colors hover:bg-accent hover:text-accent-foreground',
+                                'border-sidebar-border/70 hover:bg-accent hover:text-accent-foreground w-full border-b text-left transition-colors',
                                 collapsed ? 'w-auto' : 'w-full p-4',
                                 selectedPost?.id === post.id && 'bg-neutral-100 dark:bg-neutral-800',
                             )}
                         >
                             {collapsed ? (
-                                <div className="flex flex-col items-center justify-center size-8">
+                                <div className="flex size-8 flex-col items-center justify-center">
                                     <StatusDot publishedAt={post.published_at} />
                                 </div>
                             ) : (
@@ -66,21 +66,21 @@ export function PostList({
                                             <StatusDot className="shrink-0" publishedAt={post.published_at} />
                                         </div>
                                         <p className="line-clamp-2 text-xs text-neutral-600 dark:text-neutral-400">{post.description}</p>
-                                        <div className="flex items-end justify-end gap-4 mt-4">
+                                        <div className="mt-4 flex items-end justify-end gap-4">
                                             {post.tags.length > 0 && (
-                                                <div className="flex-1 w-0 overflow-x-clip flex items-center gap-2 -mb-0.5">
+                                                <div className="-mb-0.5 flex w-0 flex-1 items-center gap-2 overflow-x-clip">
                                                     <Badge variant="secondary" className="text-[0.625rem] leading-tight">
                                                         {post.tags[0]}
                                                     </Badge>
 
                                                     {post.tags.length > 1 && (
-                                                        <span className="text-neutral-500  text-[0.625rem] leading-tight truncate">
+                                                        <span className="truncate text-[0.625rem] leading-tight text-neutral-500">
                                                             + {post.tags.length - 1} more
                                                         </span>
                                                     )}
                                                 </div>
                                             )}
-                                            <span className="shrink-0 text-neutral-500 text-[0.625rem] leading-tight">
+                                            <span className="shrink-0 text-[0.625rem] leading-tight text-neutral-500">
                                                 {formatDistanceToNow(new Date(post.published_at || post.created_at), { addSuffix: true })}
                                             </span>
                                         </div>
@@ -102,21 +102,14 @@ interface PostListControlsProps {
     onSearchExpand?: MouseEventHandler<HTMLButtonElement>;
     onCollapseToggle?: MouseEventHandler<HTMLButtonElement>;
     onNewPost?: () => void;
-};
+}
 
-function PostListControls({
-    orientation,
-    searchQuery,
-    onSearchChange,
-    onSearchExpand,
-    onCollapseToggle,
-    onNewPost,
-}: PostListControlsProps) {
+function PostListControls({ orientation, searchQuery, onSearchChange, onSearchExpand, onCollapseToggle, onNewPost }: PostListControlsProps) {
     return (
         <PanelControls
             orientation={orientation}
-            actions={(orientation) => (
-                (orientation === 'vertical') ? (
+            actions={(orientation) =>
+                orientation === 'vertical' ? (
                     <>
                         <PanelButton onClick={onNewPost}>
                             <Plus className="size-3 text-neutral-500" />
@@ -144,7 +137,7 @@ function PostListControls({
                                 placeholder="Search posts..."
                                 value={searchQuery}
                                 onChange={(e) => onSearchChange?.(e.target.value)}
-                                className="h-8 rounded-none! border-0 focus-visible:ring-0 text-xs!"
+                                className="h-8 rounded-none! border-0 text-xs! focus-visible:ring-0"
                             />
                         </div>
                         <SearchHelpPopover />
@@ -154,7 +147,7 @@ function PostListControls({
                         </PanelButton>
                     </>
                 )
-            )}
+            }
         />
     );
 }
@@ -165,16 +158,13 @@ function SearchHelpPopover() {
     return (
         <Popover open={showSearchHelp} onOpenChange={setShowSearchHelp}>
             <PopoverTrigger asChild>
-                <PanelButton
-                    onMouseEnter={() => setShowSearchHelp(true)}
-                    onMouseLeave={() => setShowSearchHelp(false)}
-                >
+                <PanelButton onMouseEnter={() => setShowSearchHelp(true)} onMouseLeave={() => setShowSearchHelp(false)}>
                     <HelpCircle className="size-3 text-neutral-500" />
                     <span className="sr-only">Search help</span>
                 </PanelButton>
             </PopoverTrigger>
             <PopoverContent
-                className="w-80 mt-4 text-xs"
+                className="mt-4 w-80 text-xs"
                 align="end"
                 side="right"
                 sideOffset={8}
@@ -187,9 +177,7 @@ function SearchHelpPopover() {
                         <div>
                             <p className="mb-1.5 font-semibold">Plain text</p>
                             <p className="text-neutral-600 dark:text-neutral-400">Search in title, excerpt, content, and tags</p>
-                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                Laravel
-                            </code>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">Laravel</code>
                         </div>
                         <div>
                             <p className="mb-1.5 font-semibold">Filter by status</p>
@@ -198,18 +186,14 @@ function SearchHelpPopover() {
                                 <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">scheduled</code>, or{' '}
                                 <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">draft</code>
                             </p>
-                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                f:published f:scheduled
-                            </code>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">f:published f:scheduled</code>
                         </div>
                         <div>
                             <p className="mb-1.5 font-semibold">Filter by tag</p>
                             <p className="text-neutral-600 dark:text-neutral-400">
                                 Use <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">TagName</code>
                             </p>
-                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                t:Laravel t:PHP
-                            </code>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">t:Laravel t:PHP</code>
                         </div>
                         <div>
                             <p className="mb-1.5 font-semibold">Sort results</p>
@@ -219,9 +203,7 @@ function SearchHelpPopover() {
                                 <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">published</code>, or{' '}
                                 <code className="rounded bg-neutral-100 px-1 py-0.5 dark:bg-neutral-800">title</code>
                             </p>
-                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">
-                                s:created
-                            </code>
+                            <code className="mt-1.5 block rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-800">s:created</code>
                         </div>
                         <div>
                             <p className="mb-2 font-semibold">Combine all</p>
@@ -252,12 +234,5 @@ function StatusDot({ publishedAt, className, ...props }: HTMLAttributes<HTMLDivE
         return { color: 'bg-green-500', label: 'Published' };
     }, [publishedAt]);
 
-    return (
-        <div
-            className={cn('h-2 w-2 rounded-full', status.color, className)}
-            title={status.label}
-            aria-label={status.label}
-            {...props}
-        />
-    );
+    return <div className={cn('h-2 w-2 rounded-full', status.color, className)} title={status.label} aria-label={status.label} {...props} />;
 }

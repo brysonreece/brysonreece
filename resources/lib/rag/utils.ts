@@ -72,7 +72,7 @@ function chunkByFixedSize(text: string, chunkSize: number, overlap: number): Chu
                 id: chunks.length,
                 text: chunk,
                 start,
-                end: start + chunk.length
+                end: start + chunk.length,
             });
         }
     }

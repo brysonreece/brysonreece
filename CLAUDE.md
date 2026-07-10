@@ -19,9 +19,9 @@ This is a full-stack web application built with:
 
 - **Version**: Laravel 13.x with PHP 8.5+
 - **Key Services**:
-  - Sanctum for API authentication
-  - Resend for email services (see `App\Mail\NewLoginDevice`)
-  - Custom `IpApiService` for IP geolocation
+    - Sanctum for API authentication
+    - Resend for email services (see `App\Mail\NewLoginDevice`)
+    - Custom `IpApiService` for IP geolocation
 - **Middleware**: Standard Laravel middleware + custom Inertia middleware
 - **Database**: Migrations in `database/migrations/`, models in `app/Models/`
 - **Helpers**: Custom helper functions in `app/helpers.php` (autoloaded in dev)
@@ -31,8 +31,8 @@ This is a full-stack web application built with:
 - **React Version**: 19.x (latest with new JSX transform)
 - **TypeScript**: Configured with `moduleResolution: "bundler"` and `target: ESNext`
 - **Entry Points**:
-  - Client: `resources/app.tsx`
-  - SSR: `resources/ssr.tsx`
+    - Client: `resources/app.tsx`
+    - SSR: `resources/ssr.tsx`
 
 ### Inertia.js Integration
 
@@ -48,19 +48,19 @@ This is a full-stack web application built with:
 - **Component Library**: shadcn/ui (New York style)
 - **Base Components**: Located in `resources/components/ui/`
 - **Feature Components**: Organized by domain in `resources/components/`
-  - `app/` - Application-specific components
-  - `guest/` - Unauthenticated user components
-  - `nav/` - Navigation components
-  - `appearance/` - Theme/appearance components
+    - `app/` - Application-specific components
+    - `guest/` - Unauthenticated user components
+    - `nav/` - Navigation components
+    - `appearance/` - Theme/appearance components
 - **Icons**: Lucide React (`lucide-react`)
 - **Styling Utilities**:
-  - `clsx` and `tailwind-merge` (via `cn()` utility)
-  - `class-variance-authority` for component variants
+    - `clsx` and `tailwind-merge` (via `cn()` utility)
+    - `class-variance-authority` for component variants
 - **Additional UI Libraries**:
-  - Radix UI primitives for accessible components
-  - Headless UI for unstyled accessible components
-  - Vaul for drawer/modal functionality
-  - Sonner for toast notifications
+    - Radix UI primitives for accessible components
+    - Headless UI for unstyled accessible components
+    - Vaul for drawer/modal functionality
+    - Sonner for toast notifications
 
 ### Path Aliases
 
@@ -92,23 +92,27 @@ This is a full-stack web application built with:
 
 1. **Page Components**: Full-page Inertia components in `resources/pages/`
 
-   - Named exports for sub-routes (e.g., `auth/login.tsx`)
-   - Receive props from Laravel controllers
+    - Named exports for sub-routes (e.g., `auth/login.tsx`)
+    - Receive props from Laravel controllers
+
 2. **Shared Components**: Reusable UI in `resources/components/`
 
-   - Domain-organized (app, guest, nav, etc.)
-   - UI primitives in `resources/components/ui/`
+    - Domain-organized (app, guest, nav, etc.)
+    - UI primitives in `resources/components/ui/`
+
 3. **Layouts**: Page layouts in `resources/layouts/`
 4. **Hooks**: Custom React hooks in `resources/hooks/`
 
-   - **Affordance Note**: Project includes custom `use-appearance` hook for theme management with `initializeTheme()` function
+    - **Affordance Note**: Project includes custom `use-appearance` hook for theme management with `initializeTheme()` function
+
 5. **Types**: TypeScript types in `resources/types/`
 
-   - Inertia page props types
-   - Shared type definitions
+    - Inertia page props types
+    - Shared type definitions
+
 6. **Constants**: App-wide constants in `resources/constants.ts`
 
-   - **Affordance Note**: `APP_NAME` is exported from constants and used throughout the app
+    - **Affordance Note**: `APP_NAME` is exported from constants and used throughout the app
 
 ### Inertia.js Patterns
 
@@ -126,27 +130,27 @@ This is a full-stack web application built with:
 - **Static Analysis**: PHPStan (via Rector configuration)
 - **Refactoring**: Rector with Laravel-specific rules
 - **Naming**:
-  - Controllers: `VerbNounController` (e.g., `StoreUserController`)
-  - Models: Singular (e.g., `User`)
-  - Tables: Plural snake_case (e.g., `users`)
-  - Routes: Kebab-case
+    - Controllers: `VerbNounController` (e.g., `StoreUserController`)
+    - Models: Singular (e.g., `User`)
+    - Tables: Plural snake_case (e.g., `users`)
+    - Routes: Kebab-case
 
 ### TypeScript/React
 
 - **Code Style**: ESLint with Prettier
 - **Linting**: ESLint 9.x with flat config
-  - React plugin + React Hooks plugin
-  - TypeScript ESLint
-  - Prettier integration
+    - React plugin + React Hooks plugin
+    - TypeScript ESLint
+    - Prettier integration
 - **Formatting**: Prettier with plugins:
-  - `prettier-plugin-organize-imports` (auto-sort imports)
-  - `prettier-plugin-tailwindcss` (sort Tailwind classes)
-  - `@shufo/prettier-plugin-blade` (format Blade templates)
+    - `prettier-plugin-organize-imports` (auto-sort imports)
+    - `prettier-plugin-tailwindcss` (sort Tailwind classes)
+    - `@shufo/prettier-plugin-blade` (format Blade templates)
 - **Naming**:
-  - Components: PascalCase (e.g., `UserProfile.tsx`)
-  - Files: kebab-case for non-components (e.g., `use-appearance.ts`)
-  - Hooks: `use` prefix (e.g., `useAppearance`)
-  - Types/Interfaces: PascalCase
+    - Components: PascalCase (e.g., `UserProfile.tsx`)
+    - Files: kebab-case for non-components (e.g., `use-appearance.ts`)
+    - Hooks: `use` prefix (e.g., `useAppearance`)
+    - Types/Interfaces: PascalCase
 
 ### Component Structure
 
@@ -158,26 +162,22 @@ import { Button } from '@/components/ui/button';
 
 // 2. Types/Interfaces
 interface MyComponentProps {
-  title: string;
-  // ...
+    title: string;
+    // ...
 }
 
 // 3. Component
 export function MyComponent({ title }: MyComponentProps) {
-  // Hooks first
-  const [state, setState] = useState();
+    // Hooks first
+    const [state, setState] = useState();
 
-  // Event handlers
-  const handleClick = () => {
-    // ...
-  };
+    // Event handlers
+    const handleClick = () => {
+        // ...
+    };
 
-  // Render
-  return (
-    <div>
-      {/* ... */}
-    </div>
-  );
+    // Render
+    return <div>{/* ... */}</div>;
 }
 ```
 
@@ -240,15 +240,15 @@ php artisan wayfinder:generate --path=resources
 ## Testing
 
 - **Backend**: PHPUnit 13.x in `tests/` directory
-  - Feature tests for HTTP/Inertia responses
-  - Unit tests for services and models
-  - Run with: `php artisan test`
+    - Feature tests for HTTP/Inertia responses
+    - Unit tests for services and models
+    - Run with: `php artisan test`
 - **Frontend**: Vitest 4.x with React Testing Library in `resources/tests/` directory
-  - Component tests for UI components
-  - Hook tests for custom React hooks
-  - Run with: `npm test`
-  - Run with UI: `npm run test:ui`
-  - Run with coverage: `npm run test:coverage`
+    - Component tests for UI components
+    - Hook tests for custom React hooks
+    - Run with: `npm test`
+    - Run with UI: `npm run test:ui`
+    - Run with coverage: `npm run test:coverage`
 
 ## Performance Considerations
 
@@ -336,16 +336,16 @@ php artisan wayfinder:generate --path=resources
 
 1. **Style**: Short, concise, single-line descriptions in imperative mood
 2. **Format**: Present tense verb + brief description (e.g., "Add feature", "Fix bug", "Update component"). Caveats:
-   - If the current changes solely encompass the installation & setup or removal of a dependency, use "Install"/"Remove" as the verb followed by the package name. (e.g., "Install Vitest" or "Remove Vitest")
-   - If the current changes solely encompass updating Composer dependencies, use "Update Composer dependencies" as the commit message.
-   - If the current changes solely encompass updating NPM dependencies, use "Update NPM dependencies" as the commit message.
-   - If the current changes solely encompass applying recommended fixes from an automated tool or process (e.g., ESLint, Prettier, Rector), use "Apply fixes from [Tool Name]" as the commit message.
+    - If the current changes solely encompass the installation & setup or removal of a dependency, use "Install"/"Remove" as the verb followed by the package name. (e.g., "Install Vitest" or "Remove Vitest")
+    - If the current changes solely encompass updating Composer dependencies, use "Update Composer dependencies" as the commit message.
+    - If the current changes solely encompass updating NPM dependencies, use "Update NPM dependencies" as the commit message.
+    - If the current changes solely encompass applying recommended fixes from an automated tool or process (e.g., ESLint, Prettier, Rector), use "Apply fixes from [Tool Name]" as the commit message.
 3. **Length**: Keep under 60 characters when possible
 4. **Examples**:
-   - "Apply fixes from ESLint"
-   - "Update prybar helper to avoid deprecated Reflection method call"
-   - "Remove Ziggy dependencies"
-   - "Migrate navigation components to Wayfinder"
+    - "Apply fixes from ESLint"
+    - "Update prybar helper to avoid deprecated Reflection method call"
+    - "Remove Ziggy dependencies"
+    - "Migrate navigation components to Wayfinder"
 5. **Avoid**: Long multi-paragraph descriptions, excessive detail, bullet points in commit message body
 
 ===
@@ -450,7 +450,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - Execute PHP in app context for debugging and testing code. Do not create models without user approval, prefer tests with factories instead. Prefer existing Artisan commands over custom tinker code.
 - Always use single quotes to prevent shell expansion: `php artisan tinker --execute 'Your::code();'`
-  - Double quotes for PHP strings inside: `php artisan tinker --execute 'User::where("active", true)->count();'`
+    - Double quotes for PHP strings inside: `php artisan tinker --execute 'User::where("active", true)->count();'`
 
 === php rules ===
 

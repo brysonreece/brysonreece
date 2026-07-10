@@ -1,13 +1,28 @@
 import { Head } from '@inertiajs/react';
 import axios from 'axios';
-import { ChevronLeft, ChevronRight, Egg, FlaskConical, ImageIcon, Loader2, SignalHigh, SignalLow, SignalMedium, Sparkles, Upload, X, Zap } from 'lucide-react';
+import {
+    ChevronLeft,
+    ChevronRight,
+    Egg,
+    FlaskConical,
+    ImageIcon,
+    Loader2,
+    SignalHigh,
+    SignalLow,
+    SignalMedium,
+    Sparkles,
+    Upload,
+    X,
+    Zap,
+} from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const IMAGE_POLLING_INTERVAL = 5000;
 
 const SAMPLE_IMAGE_PATH = '/storage/img/pomelo/sunscreen.jpg';
-const SAMPLE_PROMPT = 'Show the sunscreen bottle on a sunny beach with a towel and umbrella adorning the immediate vicinity. The ocean is situated far behind the product, with people splashing around enjoying the sun. Medium focus, soft bokeh.';
+const SAMPLE_PROMPT =
+    'Show the sunscreen bottle on a sunny beach with a towel and umbrella adorning the immediate vicinity. The ocean is situated far behind the product, with people splashing around enjoying the sun. Medium focus, soft bokeh.';
 
 const PAGE_STYLES = `
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap');
@@ -248,16 +263,12 @@ export default function Pomelo(): ReactNode {
                     <div className="flex items-center justify-between px-4 py-4 md:px-8 md:py-5">
                         <div className="flex items-center gap-3 md:gap-4">
                             <div className="grid place-items-center">
-                                <Egg size={32} strokeWidth={2.5} className="md:hidden rotate-24" />
-                                <Egg size={40} strokeWidth={2.5} className="hidden md:block rotate-24" />
+                                <Egg size={32} strokeWidth={2.5} className="rotate-24 md:hidden" />
+                                <Egg size={40} strokeWidth={2.5} className="hidden rotate-24 md:block" />
                             </div>
                             <div>
-                                <h1 className="pomelo-font-display text-sm leading-none font-bold tracking-widest md:text-lg">
-                                    POMELO
-                                </h1>
-                                <p className="text-muted-foreground mt-1 text-xs font-medium tracking-wider md:mt-1.5">
-                                    AI PRODUCT IMAGE GENERATOR
-                                </p>
+                                <h1 className="pomelo-font-display text-sm leading-none font-bold tracking-widest md:text-lg">POMELO</h1>
+                                <p className="text-muted-foreground mt-1 text-xs font-medium tracking-wider md:mt-1.5">AI PRODUCT IMAGE GENERATOR</p>
                             </div>
                         </div>
 
@@ -272,8 +283,7 @@ export default function Pomelo(): ReactNode {
                                             setOutputCount(n);
                                             setCarouselIndex(0);
                                         }}
-                                        className={`pomelo-font-mono h-8 w-8 cursor-pointer text-xs font-medium transition-all md:h-9 md:w-9 md:text-sm
-                                            ${outputCount === n ? 'bg-primary text-primary-foreground' : 'bg-background text-muted-foreground hover:bg-muted'}`}
+                                        className={`pomelo-font-mono h-8 w-8 cursor-pointer text-xs font-medium transition-all md:h-9 md:w-9 md:text-sm ${outputCount === n ? 'bg-primary text-primary-foreground' : 'bg-background text-muted-foreground hover:bg-muted'}`}
                                     >
                                         {n}
                                     </button>
@@ -286,23 +296,19 @@ export default function Pomelo(): ReactNode {
                 {/* ── Main ── */}
                 <main className="flex-1 overflow-hidden">
                     <div className="bg-border grid h-full grid-cols-1 gap-px overflow-hidden lg:grid-cols-[420px_1fr]">
-
                         {/* ── Left panel: Upload + Prompt ── */}
                         <div className="bg-background flex flex-col overflow-y-auto">
-
                             {/* Upload zone */}
                             <div className="border-border border-b-2 p-4 md:p-6">
                                 <div className="mb-3 flex items-center gap-2">
                                     <Upload size={11} strokeWidth={2.5} className="text-muted-foreground" />
-                                    <span className="text-muted-foreground text-xs font-medium tracking-wider">
-                                        PRODUCT IMAGE
-                                    </span>
+                                    <span className="text-muted-foreground text-xs font-medium tracking-wider">PRODUCT IMAGE</span>
                                     <button
                                         onClick={handleLoadExample}
                                         disabled={!!uploadedImage || isLoadingExample}
                                         className={`ml-auto flex items-center gap-1.5 px-2 py-1 text-xs font-bold tracking-wider transition-all ${
                                             !uploadedImage && !isLoadingExample
-                                                ? 'bg-primary text-primary-foreground hover:opacity-90 cursor-pointer'
+                                                ? 'bg-primary text-primary-foreground cursor-pointer hover:opacity-90'
                                                 : 'bg-background text-muted-foreground/30 cursor-not-allowed'
                                         }`}
                                     >
@@ -336,9 +342,7 @@ export default function Pomelo(): ReactNode {
                                         </div>
 
                                         <div className="border-border flex items-center justify-between border-2 border-t-0 px-3 py-2">
-                                            <span className="text-muted-foreground max-w-50 truncate text-xs tracking-wide">
-                                                {uploadedFileName}
-                                            </span>
+                                            <span className="text-muted-foreground max-w-50 truncate text-xs tracking-wide">{uploadedFileName}</span>
                                             <button
                                                 onClick={handleClearImage}
                                                 className="hover:bg-muted flex cursor-pointer items-center gap-1.5 px-2 py-1 text-xs transition-colors"
@@ -371,9 +375,7 @@ export default function Pomelo(): ReactNode {
                                             >
                                                 {isDragging ? 'DROP TO UPLOAD' : 'DROP IMAGE HERE'}
                                             </p>
-                                            <p className="text-muted-foreground/50 mt-1 text-xs tracking-wide">
-                                                OR CLICK TO BROWSE · PNG, JPG, WEBP
-                                            </p>
+                                            <p className="text-muted-foreground/50 mt-1 text-xs tracking-wide">OR CLICK TO BROWSE · PNG, JPG, WEBP</p>
                                         </div>
                                     </div>
                                 )}
@@ -391,22 +393,18 @@ export default function Pomelo(): ReactNode {
                             <div className="border-border border-b-2 p-4 md:p-6">
                                 <div className="mb-3 flex items-center gap-2">
                                     <Zap size={11} strokeWidth={2.5} className="text-muted-foreground" />
-                                    <span className="text-muted-foreground text-xs font-medium tracking-wider">
-                                        STYLE PROMPT
-                                    </span>
+                                    <span className="text-muted-foreground text-xs font-medium tracking-wider">STYLE PROMPT</span>
                                 </div>
-                                <div className="border-border border-2 focus-within:border-muted-foreground/40 transition-colors">
+                                <div className="border-border focus-within:border-muted-foreground/40 border-2 transition-colors">
                                     <textarea
                                         value={prompt}
                                         onChange={(e) => setPrompt(e.target.value)}
                                         placeholder="Describe the desired image style, lighting, environment, or mood..."
                                         rows={4}
-                                        className="pomelo-font-mono bg-background text-foreground placeholder:text-muted-foreground/30 w-full resize-none p-3 text-xs leading-relaxed tracking-wide outline-none md:text-sm focus:ring-0 border-0"
+                                        className="pomelo-font-mono bg-background text-foreground placeholder:text-muted-foreground/30 w-full resize-none border-0 p-3 text-xs leading-relaxed tracking-wide outline-none focus:ring-0 md:text-sm"
                                     />
                                     <div className="border-border border-t px-3 py-2">
-                                        <span className="text-muted-foreground/40 text-xs tabular-nums tracking-wide">
-                                            {prompt.length} CHARS
-                                        </span>
+                                        <span className="text-muted-foreground/40 text-xs tracking-wide tabular-nums">{prompt.length} CHARS</span>
                                     </div>
                                 </div>
                             </div>
@@ -419,11 +417,13 @@ export default function Pomelo(): ReactNode {
                                             <span className="text-muted-foreground text-xs font-medium tracking-wider">QUALITY</span>
                                         </div>
                                         <div className="border-border flex border-2">
-                                            {([
-                                                { value: 'low', Icon: SignalLow },
-                                                { value: 'medium', Icon: SignalMedium },
-                                                { value: 'high', Icon: SignalHigh },
-                                            ] as const).map(({ value, Icon }) => (
+                                            {(
+                                                [
+                                                    { value: 'low', Icon: SignalLow },
+                                                    { value: 'medium', Icon: SignalMedium },
+                                                    { value: 'high', Icon: SignalHigh },
+                                                ] as const
+                                            ).map(({ value, Icon }) => (
                                                 <button
                                                     key={value}
                                                     onClick={() => setQuality(value)}
@@ -437,9 +437,7 @@ export default function Pomelo(): ReactNode {
                                                 </button>
                                             ))}
                                         </div>
-                                        <p className="text-muted-foreground/40 mt-1.5 text-center text-xs tracking-wider">
-                                            {quality.toUpperCase()}
-                                        </p>
+                                        <p className="text-muted-foreground/40 mt-1.5 text-center text-xs tracking-wider">{quality.toUpperCase()}</p>
                                     </div>
                                 </div>
                             </div>
@@ -449,12 +447,11 @@ export default function Pomelo(): ReactNode {
                                 <button
                                     onClick={handleGenerate}
                                     disabled={!canGenerate}
-                                    className={`flex w-full cursor-pointer items-center justify-center gap-3 py-3.5 text-sm font-semibold tracking-widest transition-all md:py-4
-                                        ${
-                                            canGenerate
-                                                ? 'bg-primary text-primary-foreground hover:opacity-90 active:scale-[0.99]'
-                                                : 'bg-muted text-muted-foreground cursor-not-allowed opacity-50'
-                                        }`}
+                                    className={`flex w-full cursor-pointer items-center justify-center gap-3 py-3.5 text-sm font-semibold tracking-widest transition-all md:py-4 ${
+                                        canGenerate
+                                            ? 'bg-primary text-primary-foreground hover:opacity-90 active:scale-[0.99]'
+                                            : 'bg-muted text-muted-foreground cursor-not-allowed opacity-50'
+                                    }`}
                                 >
                                     {isGenerating ? (
                                         <>
@@ -470,22 +467,15 @@ export default function Pomelo(): ReactNode {
                                 </button>
 
                                 {!uploadedImage && (
-                                    <p className="text-muted-foreground/50 mt-3 text-center text-xs tracking-wide">
-                                        Upload a product image to begin
-                                    </p>
+                                    <p className="text-muted-foreground/50 mt-3 text-center text-xs tracking-wide">Upload a product image to begin</p>
                                 )}
 
-                                {error && (
-                                    <p className="text-destructive mt-3 text-center text-xs tracking-wide">
-                                        {error}
-                                    </p>
-                                )}
+                                {error && <p className="text-destructive mt-3 text-center text-xs tracking-wide">{error}</p>}
                             </div>
                         </div>
 
                         {/* ── Right panel: Output carousel ── */}
                         <div className="bg-background flex flex-col overflow-hidden">
-
                             {/* Panel label */}
                             <div className="border-border shrink-0 border-b-2 px-4 py-3 md:px-6 md:py-4">
                                 <div className="flex items-center justify-between">
@@ -496,7 +486,7 @@ export default function Pomelo(): ReactNode {
                                         </span>
                                     </div>
                                     {generatedImages.length > 0 && (
-                                        <span className="text-muted-foreground/60 text-xs tabular-nums tracking-wider">
+                                        <span className="text-muted-foreground/60 text-xs tracking-wider tabular-nums">
                                             {carouselIndex + 1} / {totalSlides}
                                         </span>
                                     )}
@@ -505,7 +495,6 @@ export default function Pomelo(): ReactNode {
 
                             {/* Carousel viewport */}
                             <div className="relative flex-1 overflow-hidden">
-
                                 {/* Empty / idle state */}
                                 {!isGenerating && generatedImages.length === 0 && (
                                     <div className="pomelo-grid-bg absolute inset-0 flex flex-col items-center justify-center gap-6">
@@ -513,9 +502,7 @@ export default function Pomelo(): ReactNode {
                                             <ImageIcon size={32} strokeWidth={1} />
                                         </div>
                                         <div className="text-center">
-                                            <p className="text-muted-foreground/40 text-sm font-medium tracking-widest">
-                                                AWAITING GENERATION
-                                            </p>
+                                            <p className="text-muted-foreground/40 text-sm font-medium tracking-widest">AWAITING GENERATION</p>
                                             <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">
                                                 {outputCount !== 1 ? `${outputCount} ` : ''}IMAGE{outputCount !== 1 ? 'S' : ''} WILL APPEAR HERE
                                             </p>
@@ -524,7 +511,7 @@ export default function Pomelo(): ReactNode {
                                         <div className="border-muted-foreground/10 absolute top-4 left-4 h-8 w-8 border-t-2 border-l-2" />
                                         <div className="border-muted-foreground/10 absolute top-4 right-4 h-8 w-8 border-t-2 border-r-2" />
                                         <div className="border-muted-foreground/10 absolute bottom-4 left-4 h-8 w-8 border-b-2 border-l-2" />
-                                        <div className="border-muted-foreground/10 absolute bottom-4 right-4 h-8 w-8 border-b-2 border-r-2" />
+                                        <div className="border-muted-foreground/10 absolute right-4 bottom-4 h-8 w-8 border-r-2 border-b-2" />
                                     </div>
                                 )}
 
@@ -575,11 +562,11 @@ export default function Pomelo(): ReactNode {
                                         {/* Main image */}
                                         <div className="relative flex-1 overflow-hidden p-4 md:p-8">
                                             <div className="output-slot fade-up relative h-full overflow-hidden" key={carouselIndex}>
-                                                    <img
-                                                        src={displayImages[carouselIndex]?.url}
-                                                        alt={displayImages[carouselIndex]?.label}
-                                                        className="h-full w-full object-contain"
-                                                    />
+                                                <img
+                                                    src={displayImages[carouselIndex]?.url}
+                                                    alt={displayImages[carouselIndex]?.label}
+                                                    className="h-full w-full object-contain"
+                                                />
                                                 {/* Label overlay */}
                                                 <div className="output-slot-overlay absolute right-2 bottom-2 opacity-0 transition-opacity duration-200">
                                                     <div className="bg-background/90 border-border border px-2 py-1 backdrop-blur-sm">
@@ -610,16 +597,11 @@ export default function Pomelo(): ReactNode {
                                                             <button
                                                                 key={img.id}
                                                                 onClick={() => setCarouselIndex(i)}
-                                                                className={`border-2 cursor-pointer overflow-hidden transition-all shrink-0
-                                                                    ${i === carouselIndex ? 'border-primary scale-105' : 'border-border hover:border-muted-foreground/50 opacity-60 hover:opacity-80'}`}
+                                                                className={`shrink-0 cursor-pointer overflow-hidden border-2 transition-all ${i === carouselIndex ? 'border-primary scale-105' : 'border-border hover:border-muted-foreground/50 opacity-60 hover:opacity-80'}`}
                                                                 style={{ width: 56, height: 56 }}
                                                                 title={img.label}
                                                             >
-                                                                <img
-                                                                    src={img.url}
-                                                                    alt={img.label}
-                                                                    className="h-full w-full object-cover"
-                                                                />
+                                                                <img src={img.url} alt={img.label} className="h-full w-full object-cover" />
                                                             </button>
                                                         ))}
                                                     </div>
@@ -645,10 +627,12 @@ export default function Pomelo(): ReactNode {
                 {/* ── Footer ── */}
                 <footer className="border-border border-t px-4 py-3 md:px-8 md:py-5">
                     <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-0">
-                        <span className="text-muted-foreground/40 text-xs font-medium tracking-wide">
-                            POMELO · PRODUCT IMAGE GENERATOR
-                        </span>
-                        <a href="https://bryson.cc" target="_blank" className="text-muted-foreground/40 hover:text-muted-foreground text-xs font-medium tracking-wide md:text-right">
+                        <span className="text-muted-foreground/40 text-xs font-medium tracking-wide">POMELO · PRODUCT IMAGE GENERATOR</span>
+                        <a
+                            href="https://bryson.cc"
+                            target="_blank"
+                            className="text-muted-foreground/40 hover:text-muted-foreground text-xs font-medium tracking-wide md:text-right"
+                        >
                             BRYSON.CC
                         </a>
                     </div>

@@ -34,11 +34,11 @@ export function DocumentPanel({ docText, chunks, isIndexed, onDocTextChange, onI
                 <FileText size={12} strokeWidth={2.5} className="text-muted-foreground md:hidden" />
                 <FileText size={14} strokeWidth={2.5} className="text-muted-foreground hidden md:block" />
                 <span className="text-muted-foreground font-mono text-xs font-bold tracking-wider md:text-sm">DOCUMENT</span>
-                <div className="ml-auto border-border bg-border grid shrink-0 grid-cols-[auto_1fr] gap-px border-l-2">
+                <div className="border-border bg-border ml-auto grid shrink-0 grid-cols-[auto_1fr] gap-px border-l-2">
                     <button
                         onClick={() => onDocTextChange(SAMPLE_DOC.trim())}
                         disabled={hasDocText}
-                        className={`flex items-center gap-2 px-4 py-3 font-mono text-xs font-bold tracking-wider transition-all md:gap-2.5 md:px-6 md:py-4 md:text-sm -mx-4 -my-3 md:-mx-6 md:-my-4 ${
+                        className={`-mx-4 -my-3 flex items-center gap-2 px-4 py-3 font-mono text-xs font-bold tracking-wider transition-all md:-mx-6 md:-my-4 md:gap-2.5 md:px-6 md:py-4 md:text-sm ${
                             !hasDocText
                                 ? 'bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer'
                                 : 'bg-background text-muted-foreground/30 cursor-not-allowed'
@@ -54,10 +54,10 @@ export function DocumentPanel({ docText, chunks, isIndexed, onDocTextChange, onI
                 value={docText}
                 onChange={(e) => onDocTextChange(e.target.value)}
                 placeholder="Paste your document text here..."
-                className="bg-background text-foreground/80 placeholder:text-muted-foreground/30 focus:border-muted-foreground focus:ring-0 flex-1 resize-none border-2 border-transparent p-4 font-mono text-xs leading-relaxed outline-none transition-colors md:p-6 md:text-sm"
+                className="bg-background text-foreground/80 placeholder:text-muted-foreground/30 focus:border-muted-foreground flex-1 resize-none border-2 border-transparent p-4 font-mono text-xs leading-relaxed transition-colors outline-none focus:ring-0 md:p-6 md:text-sm"
             />
 
-            <div className="border-border bg-background shrink-0 gap-2 border-t-2 flex justify-between items-center">
+            <div className="border-border bg-background flex shrink-0 items-center justify-between gap-2 border-t-2">
                 <div className="bg-background flex items-center px-4 py-3 md:px-6 md:py-4">
                     {isIndexed && (
                         <span className="fadein text-muted-foreground flex items-center gap-1.5 font-mono text-xs font-semibold tracking-wider md:gap-2 md:text-sm">

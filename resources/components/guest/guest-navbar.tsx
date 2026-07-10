@@ -1,9 +1,9 @@
+import { about, career, projects, talks, uses, welcome } from '@/routes/guest';
+import type { RouteDefinition } from '@/wayfinder';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Link, usePage } from '@inertiajs/react';
 import clsx from 'clsx';
 import { MenuIcon, XIcon } from 'lucide-react';
-import { about, career, projects, talks, uses, welcome } from '@/routes/guest';
-import type { RouteDefinition } from '@/wayfinder';
 
 const navigation = [
     { name: 'About', component: 'guest/about', action: about },

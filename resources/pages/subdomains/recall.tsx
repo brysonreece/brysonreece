@@ -151,7 +151,11 @@ export default function Recall(): ReactNode {
                         <span className="text-muted-foreground/40 text-xs font-medium tracking-wide md:text-xs">
                             CLIENT-SIDE · NO DATA LEAVES BROWSER
                         </span>
-                        <a href="https://bryson.cc" target="_blank" className="text-muted-foreground/40 hover:text-muted-foreground text-xs font-medium tracking-wide md:text-right">
+                        <a
+                            href="https://bryson.cc"
+                            target="_blank"
+                            className="text-muted-foreground/40 hover:text-muted-foreground text-xs font-medium tracking-wide md:text-right"
+                        >
                             BRYSON.CC
                         </a>
                     </div>

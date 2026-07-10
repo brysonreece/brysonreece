@@ -13,7 +13,7 @@ const TABS: { id: ResultTab; label: string }[] = [
 
 export function ResultTabs({ activeTab, onTabChange }: ResultTabsProps): React.ReactNode {
     return (
-        <div className="border-border grid grid-cols-3 gap-0.5 border-b-2 bg-border">
+        <div className="border-border bg-border grid grid-cols-3 gap-0.5 border-b-2">
             {TABS.map((tab) => (
                 <button
                     key={tab.id}

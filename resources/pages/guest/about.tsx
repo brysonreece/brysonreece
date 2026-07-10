@@ -3,10 +3,10 @@ import { FormEvent, ReactNode, useRef } from 'react';
 
 import { GuestLayout } from '@/layouts/guest-layout';
 
+import { GazeTracker } from '@/components/gaze-tracker';
 import { Container } from '@/components/ui/container';
 import { ExternalLink } from '@/components/ui/external-link';
 import { type Project, ProjectCard } from '@/components/ui/project-card';
-import { GazeTracker } from '@/components/gaze-tracker';
 
 const linkStyles =
     'underline underline-offset-2 decoration-muted-foreground \

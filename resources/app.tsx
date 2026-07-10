@@ -3,9 +3,9 @@ import { APP_NAME } from './constants';
 import './styles/app.css';
 
 import { createInertiaApp } from '@inertiajs/react';
-import { initializeTheme } from './hooks/use-appearance';
-import { TooltipProvider } from './components/ui/tooltip';
 import { Toaster } from './components/ui/sonner';
+import { TooltipProvider } from './components/ui/tooltip';
+import { initializeTheme } from './hooks/use-appearance';
 
 createInertiaApp({
     title: (title) => (title ? `${title} // ${APP_NAME}` : `// ${APP_NAME}`),

@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useRef, useState } from 'react';
+import { router, useForm } from '@inertiajs/react';
 import {
     ArrowLeft,
     Bold,
@@ -19,7 +19,7 @@ import {
     Table,
     User,
 } from 'lucide-react';
-import { router, useForm } from '@inertiajs/react';
+import { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 import { Badge } from '@/components/ui/badge';
@@ -27,10 +27,10 @@ import { Badge } from '@/components/ui/badge';
 import { ImageUpload } from './image-upload';
 import { PanelButton, PanelControls } from './panel-controls';
 
+import { update as updatePost } from '@/actions/App/Http/Controllers/Blog/PostController';
+import { cn } from '@/lib/utils';
 import { type Post } from '@/types/cms';
 import { Container } from '../ui/container';
-import { cn } from '@/lib/utils';
-import { update as updatePost } from '@/actions/App/Http/Controllers/Blog/PostController';
 
 interface PostEditorProps {
     post: Post | null;
@@ -127,7 +127,7 @@ export function PostEditor({ post, onBack }: PostEditorProps) {
 
     if (!post) {
         return (
-            <div className="relative flex w-full h-full items-center justify-center p-8">
+            <div className="relative flex h-full w-full items-center justify-center p-8">
                 <div className="text-center">
                     <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">No post selected</h3>
                     <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Select a post from the list to edit its content</p>
@@ -137,7 +137,7 @@ export function PostEditor({ post, onBack }: PostEditorProps) {
     }
 
     return (
-        <div className="h-full flex flex-col divide-y divide-sidebar-border">
+        <div className="divide-sidebar-border flex h-full flex-col divide-y">
             <div className="w-full">
                 <PostEditorControls
                     onBack={onBack}
@@ -155,7 +155,7 @@ export function PostEditor({ post, onBack }: PostEditorProps) {
 
             <div className="flex-1 overflow-hidden">
                 {isPreview ? (
-                    <Container className="p-4 sm:p-6 lg:p-8 max-w-3xl overflow-y-auto h-full">
+                    <Container className="h-full max-w-3xl overflow-y-auto p-4 sm:p-6 lg:p-8">
                         <div className="prose prose-neutral dark:prose-invert max-w-none">
                             {form.data.content.split('\n\n').map((paragraph: string, index: number) => {
                                 if (paragraph.startsWith('## ')) {
@@ -173,7 +173,7 @@ export function PostEditor({ post, onBack }: PostEditorProps) {
                                     );
                                 }
                                 return (
-                                    <p key={index} className="text-sm leading-6 my-2 first:mt-0">
+                                    <p key={index} className="my-2 text-sm leading-6 first:mt-0">
                                         {paragraph}
                                     </p>
                                 );
@@ -181,12 +181,12 @@ export function PostEditor({ post, onBack }: PostEditorProps) {
                         </div>
                     </Container>
                 ) : (
-                    <div className="w-full h-full flex flex-col overflow-hidden">
+                    <div className="flex h-full w-full flex-col overflow-hidden">
                         <MarkdownEditorControls textareaRef={textareaRef} onInsert={(md) => handleFormChange({ content: form.data.content + md })} />
-                        <Container className="p-4 sm:p-6 lg:p-8 max-w-3xl flex-1 overflow-hidden">
+                        <Container className="max-w-3xl flex-1 overflow-hidden p-4 sm:p-6 lg:p-8">
                             <textarea
                                 ref={textareaRef}
-                                className="w-full h-full resize-none bg-transparent text-sm font-mono text-neutral-900 dark:text-neutral-100 focus:outline-none"
+                                className="h-full w-full resize-none bg-transparent font-mono text-sm text-neutral-900 focus:outline-none dark:text-neutral-100"
                                 value={form.data.content}
                                 onChange={(e) => handleFormChange({ content: e.target.value })}
                                 placeholder="Write your post in Markdown…"
@@ -238,30 +238,30 @@ function PostEditorHeader({ post, formData, onChange }: PostEditorHeaderProps) {
     };
 
     return (
-        <Container className="p-4 sm:p-6 lg:p-8 max-w-3xl flex flex-col">
+        <Container className="flex max-w-3xl flex-col p-4 sm:p-6 lg:p-8">
             <input
                 type="text"
-                className="text-xl font-bold bg-transparent rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100"
+                className="rounded-lg border border-neutral-300 bg-transparent text-xl font-bold text-neutral-900 dark:border-neutral-700 dark:text-neutral-100"
                 value={formData.title}
                 onChange={(e) => onChange({ title: e.target.value })}
             />
 
-            <div className="mt-4 overflow-x-auto [scrollbar-width:none] flex items-center gap-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="mt-4 flex [scrollbar-width:none] items-center gap-4 overflow-x-auto text-sm text-neutral-600 dark:text-neutral-400">
                 <div className="flex items-center gap-1.5">
-                    <User className="shrink-0 size-3 mb-px text-neutral-500" />
+                    <User className="mb-px size-3 shrink-0 text-neutral-500" />
                     <input
                         type="text"
-                        className="flex-1 text-xs bg-transparent rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100"
+                        className="flex-1 rounded-lg border border-neutral-300 bg-transparent text-xs text-neutral-900 dark:border-neutral-700 dark:text-neutral-100"
                         value={formData.author}
                         onChange={(e) => onChange({ author: e.target.value })}
                     />
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                    <Calendar className="shrink-0 size-3 mb-px text-neutral-500" />
+                    <Calendar className="mb-px size-3 shrink-0 text-neutral-500" />
                     <input
                         type="datetime-local"
-                        className="flex-1 text-xs bg-transparent rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100"
+                        className="flex-1 rounded-lg border border-neutral-300 bg-transparent text-xs text-neutral-900 dark:border-neutral-700 dark:text-neutral-100"
                         value={formatDateTimeLocal(formData.published_at)}
                         onChange={(e) => handleDateChange(e.target.value)}
                     />
@@ -269,24 +269,18 @@ function PostEditorHeader({ post, formData, onChange }: PostEditorHeaderProps) {
             </div>
 
             {post.tags.length > 0 && (
-                <div className="mt-8 w-full overflow-x-auto [scrollbar-width:none] flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                    {post.tags.map(tag => (
-                        <Badge key={tag} className="text-[0.625rem]" variant="secondary">{tag}</Badge>
+                <div className="mt-8 flex w-full [scrollbar-width:none] items-center gap-2 overflow-x-auto text-sm text-neutral-600 dark:text-neutral-400">
+                    {post.tags.map((tag) => (
+                        <Badge key={tag} className="text-[0.625rem]" variant="secondary">
+                            {tag}
+                        </Badge>
                     ))}
                 </div>
             )}
 
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <ImageUpload
-                    label="Cover Image"
-                    value={formData.cover_image_url}
-                    onChange={(path) => onChange({ cover_image_url: path })}
-                />
-                <ImageUpload
-                    label="Preview Image"
-                    value={formData.preview_image_url}
-                    onChange={(path) => onChange({ preview_image_url: path })}
-                />
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <ImageUpload label="Cover Image" value={formData.cover_image_url} onChange={(path) => onChange({ cover_image_url: path })} />
+                <ImageUpload label="Preview Image" value={formData.preview_image_url} onChange={(path) => onChange({ preview_image_url: path })} />
             </div>
         </Container>
     );
@@ -305,26 +299,28 @@ function PostEditorControls({ onBack, onSave, onPreviewToggle, previewing, savin
     return (
         <PanelControls
             className="border-b-0"
-            orientation='horizontal'
+            orientation="horizontal"
             actions={() => (
                 <>
                     <PanelButton className="sm:hidden" onClick={onBack}>
                         <ArrowLeft className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <div className="flex-1 h-8 px-3 py-2 sm:p-0">
-                        <h2 className="sm:hidden text-xs font-medium text-neutral-500">Back to list</h2>
+                    <div className="h-8 flex-1 px-3 py-2 sm:p-0">
+                        <h2 className="text-xs font-medium text-neutral-500 sm:hidden">Back to list</h2>
                     </div>
                     <PanelButton onClick={onPreviewToggle}>
                         <EyeIcon className={cn('size-3 text-neutral-500', { 'text-neutral-300': previewing })} />
                     </PanelButton>
                     <PanelButton onClick={onSave} disabled={saving || !isDirty}>
                         {saving ? (
-                            <Loader2 className="size-3 text-neutral-500 animate-spin" />
+                            <Loader2 className="size-3 animate-spin text-neutral-500" />
                         ) : (
-                            <CheckIcon className={cn('size-3', {
-                                'text-neutral-500': isDirty,
-                                'text-neutral-300': !isDirty
-                            })} />
+                            <CheckIcon
+                                className={cn('size-3', {
+                                    'text-neutral-500': isDirty,
+                                    'text-neutral-300': !isDirty,
+                                })}
+                            />
                         )}
                     </PanelButton>
                 </>
@@ -341,7 +337,7 @@ interface MarkdownEditorControlsProps {
 function MarkdownEditorControls({ onInsert }: MarkdownEditorControlsProps) {
     return (
         <PanelControls
-            orientation='horizontal'
+            orientation="horizontal"
             actions={() => (
                 <>
                     <PanelButton onClick={() => onInsert('**bold**')} title="Bold">
@@ -374,7 +370,10 @@ function MarkdownEditorControls({ onInsert }: MarkdownEditorControlsProps) {
                     <PanelButton onClick={() => onInsert('![alt text](image-url)')} title="Insert Image">
                         <Image className="size-3 text-neutral-500" />
                     </PanelButton>
-                    <PanelButton onClick={() => onInsert('\n| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |\n')} title="Insert Table">
+                    <PanelButton
+                        onClick={() => onInsert('\n| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |\n')}
+                        title="Insert Table"
+                    >
                         <Table className="size-3 text-neutral-500" />
                     </PanelButton>
                     <PanelButton onClick={() => onInsert('\n---\n')} title="Horizontal Rule">

@@ -50,7 +50,7 @@ export function Header({
                             onChange={(e) => onApiKeyChange(e.target.value)}
                             placeholder="sk-ant-..."
                             spellCheck="false"
-                            className="border-border bg-background text-foreground placeholder:text-muted-foreground/30 focus:border-muted-foreground focus:ring-0 focus:border-2 focus:-my-px w-full px-8 py-2 pr-8 font-mono text-xs transition-colors outline-none md:w-64 md:px-10 md:py-2.5 md:pr-10 md:text-sm"
+                            className="border-border bg-background text-foreground placeholder:text-muted-foreground/30 focus:border-muted-foreground w-full px-8 py-2 pr-8 font-mono text-xs transition-colors outline-none focus:-my-px focus:border-2 focus:ring-0 md:w-64 md:px-10 md:py-2.5 md:pr-10 md:text-sm"
                         />
                         <button
                             onClick={onToggleShowKey}

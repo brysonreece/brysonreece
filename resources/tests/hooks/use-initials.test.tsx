@@ -1,6 +1,6 @@
+import { useInitials } from '@/hooks/use-initials';
 import { renderHook } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { useInitials } from '@/hooks/use-initials';
 
 describe('useInitials', () => {
     it('returns empty string for empty name', () => {

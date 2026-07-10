@@ -1,6 +1,6 @@
+import { useIsMobile } from '@/hooks/use-mobile';
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 describe('useIsMobile', () => {
     let matchMediaMock: {
@@ -90,16 +90,10 @@ describe('useIsMobile', () => {
     it('cleans up event listener on unmount', () => {
         const { unmount } = renderHook(() => useIsMobile());
 
-        expect(matchMediaMock.addEventListener).toHaveBeenCalledWith(
-            'change',
-            expect.any(Function),
-        );
+        expect(matchMediaMock.addEventListener).toHaveBeenCalledWith('change', expect.any(Function));
 
         unmount();
 
-        expect(matchMediaMock.removeEventListener).toHaveBeenCalledWith(
-            'change',
-            expect.any(Function),
-        );
+        expect(matchMediaMock.removeEventListener).toHaveBeenCalledWith('change', expect.any(Function));
     });
 });

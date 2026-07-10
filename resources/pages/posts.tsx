@@ -57,10 +57,7 @@ export default function Posts({ posts }: PostsProps) {
 
     const allPosts = posts.data;
 
-    const [optimisticPosts, addOptimisticPost] = useOptimistic(
-        allPosts,
-        (current, id: string) => current.filter((p) => p.id !== id),
-    );
+    const [optimisticPosts, addOptimisticPost] = useOptimistic(allPosts, (current, id: string) => current.filter((p) => p.id !== id));
 
     const filteredAndSortedPosts = useMemo(() => {
         const { searchText, filters, tags, sortBy } = parseSearchQuery(searchQuery);
@@ -71,9 +68,7 @@ export default function Posts({ posts }: PostsProps) {
             const matchesText = matchesSearchText(post, searchText);
 
             // If tags are specified, check if post has at least one of them
-            const matchesTags = tags.length === 0 || tags.some((tag) =>
-                post.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase())
-            );
+            const matchesTags = tags.length === 0 || tags.some((tag) => post.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase()));
 
             return matchesStatus && matchesText && matchesTags;
         });
@@ -141,7 +136,7 @@ export default function Posts({ posts }: PostsProps) {
     }, [allPosts]);
 
     useEffect(() => {
-        if (! listRef) return;
+        if (!listRef) return;
 
         if (initialListRender) {
             setInitialListRender(false);
@@ -159,11 +154,7 @@ export default function Posts({ posts }: PostsProps) {
         <AppLayout breadcrumbs={breadcrumbs} className="p-0">
             <Head title="Posts" />
 
-            <PostCreateDialog
-                open={showCreateDialog}
-                onOpenChange={setShowCreateDialog}
-                onSuccess={handleCreateSuccess}
-            />
+            <PostCreateDialog open={showCreateDialog} onOpenChange={setShowCreateDialog} onSuccess={handleCreateSuccess} />
 
             {/* Mobile view - show list or detail */}
             <div className={`w-full sm:hidden ${selectedPost ? 'hidden' : 'block'} ${isPending ? 'opacity-50' : ''} transition-opacity`}>
@@ -180,10 +171,7 @@ export default function Posts({ posts }: PostsProps) {
 
             <div className={`w-full sm:hidden ${selectedPost ? 'block' : 'hidden'}`}>
                 {editMode ? (
-                    <PostEditor
-                        post={selectedPost}
-                        onBack={() => setSelectedPost(null)}
-                    />
+                    <PostEditor post={selectedPost} onBack={() => setSelectedPost(null)} />
                 ) : (
                     <PostInspector
                         post={selectedPost}
@@ -195,18 +183,18 @@ export default function Posts({ posts }: PostsProps) {
             </div>
 
             {/* Desktop view - show both side by side with resizable panels */}
-            <div className='w-full hidden sm:flex'>
+            <div className="hidden w-full sm:flex">
                 <ResizablePanelGroup orientation="horizontal" className="w-full">
                     <ResizablePanel
                         panelRef={setListRef}
                         collapsible
-                        className={`border-r border-sidebar-border ${isPending ? 'opacity-50' : ''} transition-opacity`}
-                        collapsedSize='32px'
-                        defaultSize='300px'
-                        minSize='200px'
-                        maxSize='400px'
+                        className={`border-sidebar-border border-r ${isPending ? 'opacity-50' : ''} transition-opacity`}
+                        collapsedSize="32px"
+                        defaultSize="300px"
+                        minSize="200px"
+                        maxSize="400px"
                         onResize={() => {
-                            if (! listRef) return;
+                            if (!listRef) return;
 
                             const panelState = listRef.isCollapsed();
 
@@ -226,24 +214,25 @@ export default function Posts({ posts }: PostsProps) {
                             onNewPost={handleNewPost}
                         />
                     </ResizablePanel>
-                    <ResizableHandle withHandle className="bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0" onDoubleClick={() => {
-                        if (! listRef) return;
+                    <ResizableHandle
+                        withHandle
+                        className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+                        onDoubleClick={() => {
+                            if (!listRef) return;
 
-                        if (listRef.getSize().inPixels > 300) {
-                            listRef.resize(300);
-                        } else if (! collapsed) {
-                            setCollapsed(true);
-                        } else {
-                            setCollapsed(false);
-                            listRef.resize(300);
-                        }
-                    }} />
+                            if (listRef.getSize().inPixels > 300) {
+                                listRef.resize(300);
+                            } else if (!collapsed) {
+                                setCollapsed(true);
+                            } else {
+                                setCollapsed(false);
+                                listRef.resize(300);
+                            }
+                        }}
+                    />
                     <ResizablePanel>
                         {editMode ? (
-                            <PostEditor
-                                post={selectedPost}
-                                onBack={() => setSelectedPost(null)}
-                            />
+                            <PostEditor post={selectedPost} onBack={() => setSelectedPost(null)} />
                         ) : (
                             <PostInspector
                                 post={selectedPost}

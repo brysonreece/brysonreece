@@ -3,8 +3,8 @@ import { Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler } from 'react';
 
-import { store } from '@/actions/App/Http/Controllers/Auth/EmailVerificationNotificationController';
 import { destroy } from '@/actions/App/Http/Controllers/Auth/AuthenticatedSessionController';
+import { store } from '@/actions/App/Http/Controllers/Auth/EmailVerificationNotificationController';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import AuthLayout from '@/layouts/auth-layout';

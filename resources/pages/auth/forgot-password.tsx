@@ -3,8 +3,8 @@ import { Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler } from 'react';
 
-import { store } from '@/actions/App/Http/Controllers/Auth/PasswordResetLinkController';
 import { create as loginCreate } from '@/actions/App/Http/Controllers/Auth/AuthenticatedSessionController';
+import { store } from '@/actions/App/Http/Controllers/Auth/PasswordResetLinkController';
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';

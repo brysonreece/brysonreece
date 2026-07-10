@@ -68,7 +68,7 @@ export function QueryPanel({
                     onKeyDown={onQueryKeyDown}
                     placeholder={isIndexed ? 'Ask a question...' : 'Index a document first'}
                     disabled={!isIndexed}
-                    className="bg-background text-foreground placeholder:text-muted-foreground/30 focus:border-muted-foreground focus:ring-0 border-2 border-transparent px-4 py-3 font-mono text-xs outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-50 md:px-6 md:py-4 md:text-sm"
+                    className="bg-background text-foreground placeholder:text-muted-foreground/30 focus:border-muted-foreground border-2 border-transparent px-4 py-3 font-mono text-xs transition-colors outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-50 md:px-6 md:py-4 md:text-sm"
                 />
                 <button
                     onClick={onRunQuery}

@@ -11,13 +11,18 @@ export default function AppSidebarLayout({
     className,
     breadcrumbs = [],
     actions,
-}: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[]; actions?: ReactNode, className?: string }>) {
+}: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[]; actions?: ReactNode; className?: string }>) {
     return (
         <AppShell variant="sidebar">
             <AppSidebar />
             <AppContent variant="sidebar" className="max-w-full">
                 <AppSidebarHeader breadcrumbs={breadcrumbs} actions={actions} />
-                <div className={cn('flex p-4 h-full flex-1 overflow-hidden rounded-b-xl border-sidebar-border/70 dark:border-sidebar-border border border-t-0', className)}>
+                <div
+                    className={cn(
+                        'border-sidebar-border/70 dark:border-sidebar-border flex h-full flex-1 overflow-hidden rounded-b-xl border border-t-0 p-4',
+                        className,
+                    )}
+                >
                     {children}
                 </div>
             </AppContent>

@@ -20,7 +20,7 @@ export function SettingsPanel({ settings, onUpdateSetting }: SettingsPanelProps)
                         min={100}
                         max={2000}
                         step={50}
-                        className="border-border bg-background text-foreground focus:border-muted-foreground focus:ring-0 w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none md:px-3 md:py-2 md:text-sm"
+                        className="border-border bg-background text-foreground focus:border-muted-foreground w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none focus:ring-0 md:px-3 md:py-2 md:text-sm"
                     />
                 </div>
                 <div>
@@ -34,7 +34,7 @@ export function SettingsPanel({ settings, onUpdateSetting }: SettingsPanelProps)
                         min={0}
                         max={500}
                         step={10}
-                        className="border-border bg-background text-foreground focus:border-muted-foreground focus:ring-0 w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none md:px-3 md:py-2 md:text-sm"
+                        className="border-border bg-background text-foreground focus:border-muted-foreground w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none focus:ring-0 md:px-3 md:py-2 md:text-sm"
                     />
                 </div>
                 <div>
@@ -44,7 +44,7 @@ export function SettingsPanel({ settings, onUpdateSetting }: SettingsPanelProps)
                     <select
                         value={settings.chunkStrategy}
                         onChange={(e) => onUpdateSetting('chunkStrategy', e.target.value as 'fixed' | 'sentence')}
-                        className="border-border bg-background text-foreground focus:border-muted-foreground focus:ring-0 w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none md:px-3 md:py-2 md:text-sm"
+                        className="border-border bg-background text-foreground focus:border-muted-foreground w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none focus:ring-0 md:px-3 md:py-2 md:text-sm"
                     >
                         <option value="fixed">Fixed</option>
                         <option value="sentence">Sentence</option>
@@ -60,7 +60,7 @@ export function SettingsPanel({ settings, onUpdateSetting }: SettingsPanelProps)
                         onChange={(e) => onUpdateSetting('topK', +e.target.value)}
                         min={1}
                         max={10}
-                        className="border-border bg-background text-foreground focus:border-muted-foreground focus:ring-0 w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none md:px-3 md:py-2 md:text-sm"
+                        className="border-border bg-background text-foreground focus:border-muted-foreground w-full border-2 px-2.5 py-1.5 font-mono text-xs font-medium transition-colors outline-none focus:ring-0 md:px-3 md:py-2 md:text-sm"
                     />
                 </div>
                 <div className="col-span-2 md:col-span-1">

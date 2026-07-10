@@ -1,103 +1,110 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { applyUrlDefaults, queryParams, type RouteDefinition, type RouteQueryOptions } from './../../../wayfinder';
 /**
-* @see \App\Http\Controllers\Pomelo\ImageVariationController::store
-* @see app/Http/Controllers/Pomelo/ImageVariationController.php:18
-* @route 'https://pomelo.bryson.test/variations'
-*/
+ * @see \App\Http\Controllers\Pomelo\ImageVariationController::store
+ * @see app/Http/Controllers/Pomelo/ImageVariationController.php:18
+ * @route 'https://pomelo.bryson.test/variations'
+ */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
-})
+});
 
 store.definition = {
-    methods: ["post"],
+    methods: ['post'],
     url: 'https://pomelo.bryson.test/variations',
-} satisfies RouteDefinition<["post"]>
+} satisfies RouteDefinition<['post']>;
 
 /**
-* @see \App\Http\Controllers\Pomelo\ImageVariationController::store
-* @see app/Http/Controllers/Pomelo/ImageVariationController.php:18
-* @route 'https://pomelo.bryson.test/variations'
-*/
+ * @see \App\Http\Controllers\Pomelo\ImageVariationController::store
+ * @see app/Http/Controllers/Pomelo/ImageVariationController.php:18
+ * @route 'https://pomelo.bryson.test/variations'
+ */
 store.url = (options?: RouteQueryOptions) => {
-    return store.definition.url + queryParams(options)
-}
+    return store.definition.url + queryParams(options);
+};
 
 /**
-* @see \App\Http\Controllers\Pomelo\ImageVariationController::store
-* @see app/Http/Controllers/Pomelo/ImageVariationController.php:18
-* @route 'https://pomelo.bryson.test/variations'
-*/
+ * @see \App\Http\Controllers\Pomelo\ImageVariationController::store
+ * @see app/Http/Controllers/Pomelo/ImageVariationController.php:18
+ * @route 'https://pomelo.bryson.test/variations'
+ */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
-})
+});
 
 /**
-* @see \App\Http\Controllers\Pomelo\ImageVariationController::status
-* @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
-* @route 'https://pomelo.bryson.test/variations/{batchId}'
-*/
-export const status = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+ * @see \App\Http\Controllers\Pomelo\ImageVariationController::status
+ * @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
+ * @route 'https://pomelo.bryson.test/variations/{batchId}'
+ */
+export const status = (
+    args: { batchId: string | number } | [batchId: string | number] | string | number,
+    options?: RouteQueryOptions,
+): RouteDefinition<'get'> => ({
     url: status.url(args, options),
     method: 'get',
-})
+});
 
 status.definition = {
-    methods: ["get","head"],
+    methods: ['get', 'head'],
     url: 'https://pomelo.bryson.test/variations/{batchId}',
-} satisfies RouteDefinition<["get","head"]>
+} satisfies RouteDefinition<['get', 'head']>;
 
 /**
-* @see \App\Http\Controllers\Pomelo\ImageVariationController::status
-* @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
-* @route 'https://pomelo.bryson.test/variations/{batchId}'
-*/
-status.url = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions) => {
+ * @see \App\Http\Controllers\Pomelo\ImageVariationController::status
+ * @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
+ * @route 'https://pomelo.bryson.test/variations/{batchId}'
+ */
+status.url = (args: { batchId: string | number } | [batchId: string | number] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
-        args = { batchId: args }
+        args = { batchId: args };
     }
 
     if (Array.isArray(args)) {
         args = {
             batchId: args[0],
-        }
+        };
     }
 
-    args = applyUrlDefaults(args)
+    args = applyUrlDefaults(args);
 
     const parsedArgs = {
         batchId: args.batchId,
-    }
+    };
 
-    return status.definition.url
-            .replace('{batchId}', parsedArgs.batchId.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
+    return status.definition.url.replace('{batchId}', parsedArgs.batchId.toString()).replace(/\/+$/, '') + queryParams(options);
+};
 
 /**
-* @see \App\Http\Controllers\Pomelo\ImageVariationController::status
-* @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
-* @route 'https://pomelo.bryson.test/variations/{batchId}'
-*/
-status.get = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+ * @see \App\Http\Controllers\Pomelo\ImageVariationController::status
+ * @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
+ * @route 'https://pomelo.bryson.test/variations/{batchId}'
+ */
+status.get = (
+    args: { batchId: string | number } | [batchId: string | number] | string | number,
+    options?: RouteQueryOptions,
+): RouteDefinition<'get'> => ({
     url: status.url(args, options),
     method: 'get',
-})
+});
 
 /**
-* @see \App\Http\Controllers\Pomelo\ImageVariationController::status
-* @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
-* @route 'https://pomelo.bryson.test/variations/{batchId}'
-*/
-status.head = (args: { batchId: string | number } | [batchId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+ * @see \App\Http\Controllers\Pomelo\ImageVariationController::status
+ * @see app/Http/Controllers/Pomelo/ImageVariationController.php:33
+ * @route 'https://pomelo.bryson.test/variations/{batchId}'
+ */
+status.head = (
+    args: { batchId: string | number } | [batchId: string | number] | string | number,
+    options?: RouteQueryOptions,
+): RouteDefinition<'head'> => ({
     url: status.url(args, options),
     method: 'head',
-})
+});
 
 const variations = {
     store: Object.assign(store, store),
     status: Object.assign(status, status),
-}
+};
 
-export default variations
+export default variations;

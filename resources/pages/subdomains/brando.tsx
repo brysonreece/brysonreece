@@ -1,9 +1,9 @@
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Head } from '@inertiajs/react';
 import axios from 'axios';
-import { Asterisk, Bookmark, Clapperboard, ChevronLeft, ChevronRight, FlaskConical, ImageIcon, Loader2, Sparkles, Type, Wand2 } from 'lucide-react';
+import { Asterisk, Bookmark, ChevronLeft, ChevronRight, Clapperboard, FlaskConical, ImageIcon, Loader2, Sparkles, Type, Wand2 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const STORAGE_KEY = 'brando:favorites';
 
@@ -87,11 +87,7 @@ function useFavorites() {
     }, [favorites]);
 
     const toggle = (item: BrandName) => {
-        setFavorites((prev) =>
-            prev.some((f) => f.name === item.name)
-                ? prev.filter((f) => f.name !== item.name)
-                : [...prev, item],
-        );
+        setFavorites((prev) => (prev.some((f) => f.name === item.name) ? prev.filter((f) => f.name !== item.name) : [...prev, item]));
     };
 
     const isFavorited = (name: string) => favorites.some((f) => f.name === name);
@@ -151,13 +147,7 @@ function Slider({
     );
 }
 
-function StyleSelector({
-    selected,
-    onChange,
-}: {
-    selected: Set<string>;
-    onChange: (next: Set<string>) => void;
-}) {
+function StyleSelector({ selected, onChange }: { selected: Set<string>; onChange: (next: Set<string>) => void }) {
     return (
         <>
             <div className="border-border flex border-2">
@@ -166,9 +156,7 @@ function StyleSelector({
                         key={s}
                         onClick={() => onChange(toggleSetItem(selected, s))}
                         className={`brando-font-mono flex flex-1 cursor-pointer items-center justify-center py-2.5 text-xs font-medium tracking-wider transition-all ${
-                            selected.has(s)
-                                ? 'bg-primary text-primary-foreground'
-                                : 'bg-background text-muted-foreground hover:bg-muted'
+                            selected.has(s) ? 'bg-primary text-primary-foreground' : 'bg-background text-muted-foreground hover:bg-muted'
                         }`}
                     >
                         {s}
@@ -185,9 +173,7 @@ function StyleSelector({
 function EmptyState({ icon, title, subtitle, dimIcon }: { icon: ReactNode; title: string; subtitle: string; dimIcon?: boolean }) {
     return (
         <div className="brando-grid-bg absolute inset-0 flex flex-col items-center justify-center gap-6">
-            <div className={`border-border grid h-20 w-20 place-items-center border-2${dimIcon ? ' opacity-25' : ''}`}>
-                {icon}
-            </div>
+            <div className={`border-border grid h-20 w-20 place-items-center border-2${dimIcon ? 'opacity-25' : ''}`}>{icon}</div>
             <div className="text-center">
                 <p className="text-muted-foreground/40 text-sm font-medium tracking-widest">{title}</p>
                 <p className="text-muted-foreground/25 mt-1.5 text-xs tracking-wide">{subtitle}</p>
@@ -195,7 +181,7 @@ function EmptyState({ icon, title, subtitle, dimIcon }: { icon: ReactNode; title
             <div className="border-muted-foreground/10 absolute top-4 left-4 h-8 w-8 border-t-2 border-l-2" />
             <div className="border-muted-foreground/10 absolute top-4 right-4 h-8 w-8 border-t-2 border-r-2" />
             <div className="border-muted-foreground/10 absolute bottom-4 left-4 h-8 w-8 border-b-2 border-l-2" />
-            <div className="border-muted-foreground/10 absolute bottom-4 right-4 h-8 w-8 border-b-2 border-r-2" />
+            <div className="border-muted-foreground/10 absolute right-4 bottom-4 h-8 w-8 border-r-2 border-b-2" />
         </div>
     );
 }
@@ -217,17 +203,13 @@ function NameCard({
 }) {
     return (
         <div
-            className="fade-up border-border group border-2 p-5 transition-colors hover:border-muted-foreground/30"
+            className="fade-up border-border group hover:border-muted-foreground/30 border-2 p-5 transition-colors"
             style={animationDelay !== undefined ? { animationDelay: `${animationDelay}ms` } : undefined}
         >
             <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
-                    <h2 className="brando-font-display text-xl font-bold tracking-widest md:text-2xl">
-                        {brand.name}
-                    </h2>
-                    <p className="brando-font-mono text-muted-foreground mt-2 text-xs leading-relaxed tracking-wide">
-                        "{brand.tagline}"
-                    </p>
+                    <h2 className="brando-font-display text-xl font-bold tracking-widest md:text-2xl">{brand.name}</h2>
+                    <p className="brando-font-mono text-muted-foreground mt-2 text-xs leading-relaxed tracking-wide">"{brand.tagline}"</p>
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
                     {onLogoClick && (
@@ -251,16 +233,12 @@ function NameCard({
                                 aria-label={isFavorited ? `Remove ${brand.name} from Favorites` : `Save ${brand.name} to Favorites`}
                                 className={`fav-btn cursor-pointer ${isFavorited ? 'opacity-100' : 'opacity-0 group-hover:opacity-40'}`}
                             >
-                                <Bookmark
-                                    size={14}
-                                    strokeWidth={2}
-                                    className={isFavorited ? 'fill-primary text-primary' : 'text-muted-foreground'}
-                                />
+                                <Bookmark size={14} strokeWidth={2} className={isFavorited ? 'fill-primary text-primary' : 'text-muted-foreground'} />
                             </button>
                         </TooltipTrigger>
                         <TooltipContent>{isFavorited ? 'Remove from Favorites' : 'Save to Favorites'}</TooltipContent>
                     </Tooltip>
-                    <span className="brando-font-mono text-muted-foreground/25 text-xs tabular-nums tracking-wider">
+                    <span className="brando-font-mono text-muted-foreground/25 text-xs tracking-wider tabular-nums">
                         {String(index + 1).padStart(2, '0')}
                     </span>
                 </div>
@@ -379,10 +357,11 @@ export default function Brando(): ReactNode {
         setRightTab('results');
 
         try {
-            const { data } = await axios.post<{ names: BrandName[] }>(
-                '/generations',
-                { description: description.trim(), tones: [...nameStyles], count: nameCount },
-            );
+            const { data } = await axios.post<{ names: BrandName[] }>('/generations', {
+                description: description.trim(),
+                tones: [...nameStyles],
+                count: nameCount,
+            });
             setNameResults(data.names);
         } catch (err) {
             setNameError(extractErrorMessage(err, 'description'));
@@ -451,12 +430,8 @@ export default function Brando(): ReactNode {
                                 <Clapperboard size={40} strokeWidth={2} className="hidden md:block" />
                             </div>
                             <div>
-                                <h1 className="brando-font-display text-sm leading-none font-bold tracking-widest md:text-lg">
-                                    BRANDO
-                                </h1>
-                                <p className="text-muted-foreground mt-1 text-xs font-medium tracking-wider md:mt-1.5">
-                                    AI BRAND GENERATOR
-                                </p>
+                                <h1 className="brando-font-display text-sm leading-none font-bold tracking-widest md:text-lg">BRANDO</h1>
+                                <p className="text-muted-foreground mt-1 text-xs font-medium tracking-wider md:mt-1.5">AI BRAND GENERATOR</p>
                             </div>
                         </div>
                     </div>
@@ -465,10 +440,8 @@ export default function Brando(): ReactNode {
                 {/* ── Main ── */}
                 <main className="flex-1 overflow-hidden">
                     <div className="bg-border grid h-full grid-cols-1 gap-px overflow-hidden lg:grid-cols-[420px_1fr]">
-
                         {/* ── Left panel ── */}
                         <div className="bg-background flex flex-col overflow-hidden">
-
                             {/* Left tab bar */}
                             <div className="border-border shrink-0 border-b-2">
                                 <div className="flex">
@@ -484,7 +457,10 @@ export default function Brando(): ReactNode {
                                         NAMES
                                     </button>
                                     <button
-                                        onClick={() => { setLeftTab('logo'); setRightTab('results'); }}
+                                        onClick={() => {
+                                            setLeftTab('logo');
+                                            setRightTab('results');
+                                        }}
                                         className={`flex cursor-pointer items-center gap-2 px-4 py-3 text-xs font-medium tracking-wider transition-colors md:px-6 md:py-4 ${
                                             leftTab === 'logo'
                                                 ? 'bg-primary text-primary-foreground'
@@ -499,22 +475,19 @@ export default function Brando(): ReactNode {
 
                             {/* Left panel content */}
                             <div className="flex-1 overflow-y-auto">
-
                                 {/* ── Names inputs ── */}
                                 {leftTab === 'names' && (
                                     <>
                                         {/* Brand identity textarea */}
                                         <div className="border-border border-b-2 p-4 md:p-6">
                                             <div className="mb-3 flex items-center gap-2">
-                                                <span className="text-muted-foreground text-xs font-medium tracking-wider">
-                                                    BRAND IDENTITY
-                                                </span>
+                                                <span className="text-muted-foreground text-xs font-medium tracking-wider">BRAND IDENTITY</span>
                                                 <button
                                                     onClick={handleLoadNameExample}
                                                     disabled={isGeneratingNames}
                                                     className={`ml-auto flex items-center gap-1.5 px-2 py-1 text-xs font-bold tracking-wider transition-all ${
                                                         !isGeneratingNames
-                                                            ? 'bg-primary text-primary-foreground hover:opacity-90 cursor-pointer'
+                                                            ? 'bg-primary text-primary-foreground cursor-pointer hover:opacity-90'
                                                             : 'bg-background text-muted-foreground/30 cursor-not-allowed'
                                                     }`}
                                                 >
@@ -522,16 +495,16 @@ export default function Brando(): ReactNode {
                                                     LOAD EXAMPLE
                                                 </button>
                                             </div>
-                                            <div className="border-border border-2 transition-colors focus-within:border-muted-foreground/40">
+                                            <div className="border-border focus-within:border-muted-foreground/40 border-2 transition-colors">
                                                 <textarea
                                                     value={description}
                                                     onChange={(e) => setDescription(e.target.value)}
                                                     placeholder="Describe your brand — what it does, who it's for, the values it stands for, the tone you want to project..."
                                                     rows={6}
-                                                    className="brando-font-mono bg-background text-foreground placeholder:text-muted-foreground/30 w-full resize-none p-3 text-xs leading-relaxed tracking-wide outline-none focus:ring-0 border-0 md:text-sm"
+                                                    className="brando-font-mono bg-background text-foreground placeholder:text-muted-foreground/30 w-full resize-none border-0 p-3 text-xs leading-relaxed tracking-wide outline-none focus:ring-0 md:text-sm"
                                                 />
                                                 <div className="border-border border-t px-3 py-2">
-                                                    <span className="text-muted-foreground/40 text-xs tabular-nums tracking-wide">
+                                                    <span className="text-muted-foreground/40 text-xs tracking-wide tabular-nums">
                                                         {description.length} CHARS
                                                     </span>
                                                 </div>
@@ -550,12 +523,12 @@ export default function Brando(): ReactNode {
                                         <div className={`border-border border-b-2 p-4 md:p-6 ${isGeneratingNames ? 'opacity-40' : ''}`}>
                                             <div className="mb-3 flex items-center justify-between">
                                                 <span className="text-muted-foreground text-xs font-medium tracking-wider">RESULTS</span>
-                                                <span className="brando-font-mono text-foreground text-xs font-bold tabular-nums tracking-wider">
+                                                <span className="brando-font-mono text-foreground text-xs font-bold tracking-wider tabular-nums">
                                                     {nameCount}
                                                 </span>
                                             </div>
                                             <Slider value={nameCount} onChange={setNameCount} min={5} max={20} disabled={isGeneratingNames} />
-                                            <div className="text-muted-foreground/40 mt-1 flex justify-between text-xs tabular-nums tracking-wide">
+                                            <div className="text-muted-foreground/40 mt-1 flex justify-between text-xs tracking-wide tabular-nums">
                                                 <span>5</span>
                                                 <span>20</span>
                                             </div>
@@ -569,7 +542,7 @@ export default function Brando(): ReactNode {
                                                 className={`flex w-full cursor-pointer items-center justify-center gap-3 py-3.5 text-sm font-semibold tracking-widest transition-all md:py-4 ${
                                                     canGenerateNames
                                                         ? 'bg-primary text-primary-foreground hover:opacity-90 active:scale-[0.99]'
-                                                        : 'bg-primary opacity-20 dark:bg-muted dark:opacity-100 text-white dark:text-muted-foreground cursor-not-allowed'
+                                                        : 'bg-primary dark:bg-muted dark:text-muted-foreground cursor-not-allowed text-white opacity-20 dark:opacity-100'
                                                 }`}
                                             >
                                                 {isGeneratingNames ? (
@@ -591,11 +564,7 @@ export default function Brando(): ReactNode {
                                                 </p>
                                             )}
 
-                                            {nameError && (
-                                                <p className="text-destructive mt-3 text-center text-xs tracking-wide">
-                                                    {nameError}
-                                                </p>
-                                            )}
+                                            {nameError && <p className="text-destructive mt-3 text-center text-xs tracking-wide">{nameError}</p>}
                                         </div>
                                     </>
                                 )}
@@ -612,7 +581,7 @@ export default function Brando(): ReactNode {
                                                     disabled={isGeneratingLogos}
                                                     className={`ml-auto flex items-center gap-1.5 px-2 py-1 text-xs font-bold tracking-wider transition-all ${
                                                         !isGeneratingLogos
-                                                            ? 'bg-primary text-primary-foreground hover:opacity-90 cursor-pointer'
+                                                            ? 'bg-primary text-primary-foreground cursor-pointer hover:opacity-90'
                                                             : 'bg-background text-muted-foreground/30 cursor-not-allowed'
                                                     }`}
                                                 >
@@ -625,7 +594,7 @@ export default function Brando(): ReactNode {
                                                 value={logoName}
                                                 onChange={(e) => setLogoName(e.target.value)}
                                                 placeholder="e.g. Cozmic, Decisio, RelayFlow..."
-                                                className="brando-font-mono bg-background border-border border-2 text-foreground placeholder:text-muted-foreground/30 w-full p-3 text-xs tracking-wide outline-none md:text-sm focus:ring-0 focus:border-muted-foreground/40"
+                                                className="brando-font-mono bg-background border-border text-foreground placeholder:text-muted-foreground/30 focus:border-muted-foreground/40 w-full border-2 p-3 text-xs tracking-wide outline-none focus:ring-0 md:text-sm"
                                             />
 
                                             <div className="mt-6 mb-3 flex items-center gap-2">
@@ -637,7 +606,7 @@ export default function Brando(): ReactNode {
                                                 value={logoTagline}
                                                 onChange={(e) => setLogoTagline(e.target.value)}
                                                 placeholder="One-line brand tagline..."
-                                                className="brando-font-mono bg-background border-border border-2 text-foreground placeholder:text-muted-foreground/30 w-full p-3 text-xs tracking-wide outline-none md:text-sm focus:ring-0 focus:border-muted-foreground/40"
+                                                className="brando-font-mono bg-background border-border text-foreground placeholder:text-muted-foreground/30 focus:border-muted-foreground/40 w-full border-2 p-3 text-xs tracking-wide outline-none focus:ring-0 md:text-sm"
                                             />
                                         </div>
 
@@ -647,16 +616,16 @@ export default function Brando(): ReactNode {
                                                 <span className="text-muted-foreground text-xs font-medium tracking-wider">BRAND DESCRIPTION</span>
                                                 <span className="text-muted-foreground/40 text-xs tracking-wider">OPTIONAL</span>
                                             </div>
-                                            <div className="border-border border-2 transition-colors focus-within:border-muted-foreground/40">
+                                            <div className="border-border focus-within:border-muted-foreground/40 border-2 transition-colors">
                                                 <textarea
                                                     value={logoDescription}
                                                     onChange={(e) => setLogoDescription(e.target.value)}
                                                     placeholder="Describe your brand's identity, values, and audience..."
                                                     rows={4}
-                                                    className="brando-font-mono bg-background text-foreground placeholder:text-muted-foreground/30 w-full resize-none p-3 text-xs leading-relaxed tracking-wide outline-none focus:ring-0 border-0 md:text-sm"
+                                                    className="brando-font-mono bg-background text-foreground placeholder:text-muted-foreground/30 w-full resize-none border-0 p-3 text-xs leading-relaxed tracking-wide outline-none focus:ring-0 md:text-sm"
                                                 />
                                                 <div className="border-border border-t px-3 py-2">
-                                                    <span className="text-muted-foreground/40 text-xs tabular-nums tracking-wide">
+                                                    <span className="text-muted-foreground/40 text-xs tracking-wide tabular-nums">
                                                         {logoDescription.length} CHARS
                                                     </span>
                                                 </div>
@@ -676,12 +645,21 @@ export default function Brando(): ReactNode {
                                         <div className={`border-border border-b-2 p-4 md:p-6 ${isGeneratingLogos ? 'opacity-40' : ''}`}>
                                             <div className="mb-3 flex items-center justify-between">
                                                 <span className="text-muted-foreground text-xs font-medium tracking-wider">LOGOS</span>
-                                                <span className="brando-font-mono text-foreground text-xs font-bold tabular-nums tracking-wider">
+                                                <span className="brando-font-mono text-foreground text-xs font-bold tracking-wider tabular-nums">
                                                     {logoCount}
                                                 </span>
                                             </div>
-                                            <Slider value={logoCount} onChange={(v) => { setLogoCount(v); setCarouselIndex(0); }} min={1} max={5} disabled={isGeneratingLogos} />
-                                            <div className="text-muted-foreground/40 mt-1 flex justify-between text-xs tabular-nums tracking-wide">
+                                            <Slider
+                                                value={logoCount}
+                                                onChange={(v) => {
+                                                    setLogoCount(v);
+                                                    setCarouselIndex(0);
+                                                }}
+                                                min={1}
+                                                max={5}
+                                                disabled={isGeneratingLogos}
+                                            />
+                                            <div className="text-muted-foreground/40 mt-1 flex justify-between text-xs tracking-wide tabular-nums">
                                                 <span>1</span>
                                                 <span>5</span>
                                             </div>
@@ -695,7 +673,7 @@ export default function Brando(): ReactNode {
                                                 className={`flex w-full cursor-pointer items-center justify-center gap-3 py-3.5 text-sm font-semibold tracking-widest transition-all md:py-4 ${
                                                     canGenerateLogos
                                                         ? 'bg-primary text-primary-foreground hover:opacity-90 active:scale-[0.99]'
-                                                        : 'bg-primary opacity-20 dark:bg-muted dark:opacity-100 text-white dark:text-muted-foreground cursor-not-allowed'
+                                                        : 'bg-primary dark:bg-muted dark:text-muted-foreground cursor-not-allowed text-white opacity-20 dark:opacity-100'
                                                 }`}
                                             >
                                                 {isGeneratingLogos ? (
@@ -717,11 +695,7 @@ export default function Brando(): ReactNode {
                                                 </p>
                                             )}
 
-                                            {logoError && (
-                                                <p className="text-destructive mt-3 text-center text-xs tracking-wide">
-                                                    {logoError}
-                                                </p>
-                                            )}
+                                            {logoError && <p className="text-destructive mt-3 text-center text-xs tracking-wide">{logoError}</p>}
                                         </div>
                                     </>
                                 )}
@@ -730,7 +704,6 @@ export default function Brando(): ReactNode {
 
                         {/* ── Right panel ── */}
                         <div className="bg-background flex flex-col overflow-hidden">
-
                             {/* Right tab bar */}
                             <div className="border-border shrink-0 border-b-2">
                                 <div className="flex">
@@ -745,12 +718,16 @@ export default function Brando(): ReactNode {
                                         <Sparkles size={11} strokeWidth={2.5} />
                                         RESULTS
                                         {leftTab === 'names' && nameResults.length > 0 && (
-                                            <span className={`tabular-nums ${rightTab === 'results' ? 'text-primary-foreground/60' : 'text-muted-foreground/50'}`}>
+                                            <span
+                                                className={`tabular-nums ${rightTab === 'results' ? 'text-primary-foreground/60' : 'text-muted-foreground/50'}`}
+                                            >
                                                 {nameResults.length}
                                             </span>
                                         )}
                                         {leftTab === 'logo' && generatedLogos.length > 0 && (
-                                            <span className={`tabular-nums ${rightTab === 'results' ? 'text-primary-foreground/60' : 'text-muted-foreground/50'}`}>
+                                            <span
+                                                className={`tabular-nums ${rightTab === 'results' ? 'text-primary-foreground/60' : 'text-muted-foreground/50'}`}
+                                            >
                                                 {generatedLogos.length}
                                             </span>
                                         )}
@@ -767,7 +744,9 @@ export default function Brando(): ReactNode {
                                             <Bookmark size={11} strokeWidth={2.5} />
                                             FAVORITES
                                             {favorites.length > 0 && (
-                                                <span className={`tabular-nums ${rightTab === 'favorites' ? 'text-primary-foreground/60' : 'text-muted-foreground/50'}`}>
+                                                <span
+                                                    className={`tabular-nums ${rightTab === 'favorites' ? 'text-primary-foreground/60' : 'text-muted-foreground/50'}`}
+                                                >
                                                     {favorites.length}
                                                 </span>
                                             )}
@@ -778,7 +757,6 @@ export default function Brando(): ReactNode {
 
                             {/* Panel content */}
                             <div className="relative flex-1 overflow-y-auto">
-
                                 {/* ── Results tab ── */}
                                 {rightTab === 'results' && (
                                     <>
@@ -911,7 +889,7 @@ export default function Brando(): ReactNode {
                                                                             <button
                                                                                 key={logo.id}
                                                                                 onClick={() => setCarouselIndex(i)}
-                                                                                className={`cursor-pointer overflow-hidden border-2 transition-all shrink-0 ${
+                                                                                className={`shrink-0 cursor-pointer overflow-hidden border-2 transition-all ${
                                                                                     i === carouselIndex
                                                                                         ? 'border-primary scale-105'
                                                                                         : 'border-border hover:border-muted-foreground/50 opacity-60 hover:opacity-80'
@@ -979,9 +957,7 @@ export default function Brando(): ReactNode {
                 {/* ── Footer ── */}
                 <footer className="border-border border-t px-4 py-3 md:px-8 md:py-5">
                     <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-0">
-                        <span className="text-muted-foreground/40 text-xs font-medium tracking-wide">
-                            BRANDO · AI BRAND GENERATOR
-                        </span>
+                        <span className="text-muted-foreground/40 text-xs font-medium tracking-wide">BRANDO · AI BRAND GENERATOR</span>
                         <a
                             href="https://bryson.cc"
                             target="_blank"

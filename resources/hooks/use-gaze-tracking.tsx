@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef, RefObject } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * This component includes portions of code adapted from https://github.com/kylan02/face_looker
@@ -21,17 +21,17 @@ const DEFAULT_STEP_SIZE = 3;
  * @returns {number} Quantized grid coordinate
  */
 function quantize(val: number, pMin: number, pMax: number, stepSize: number) {
-  const raw = pMin + (val + 1) * (pMax - pMin) / 2; // [-1,1] -> [-15,15]
-  const snapped = Math.round(raw / stepSize) * stepSize;
-  return Math.max(pMin, Math.min(pMax, snapped));
+    const raw = pMin + ((val + 1) * (pMax - pMin)) / 2; // [-1,1] -> [-15,15]
+    const snapped = Math.round(raw / stepSize) * stepSize;
+    return Math.max(pMin, Math.min(pMax, snapped));
 }
 
 /**
  * Converts grid coordinates to filename format
  */
 function postionalFilename(posX: number, posY: number, imgSize: number) {
-  const sanitize = (val: number) => val.toFixed(1).toString().replace('-', 'm').replace('.', 'p');
-  return `gaze_px${sanitize(posX)}_py${sanitize(posY)}_${imgSize}.webp`;
+    const sanitize = (val: number) => val.toFixed(1).toString().replace('-', 'm').replace('.', 'p');
+    return `gaze_px${sanitize(posX)}_py${sanitize(posY)}_${imgSize}.webp`;
 }
 
 export default function useGazeTracking(
@@ -43,109 +43,118 @@ export default function useGazeTracking(
     imgSize: number = 256,
     enabled: boolean = true,
 ) {
-  const [currentImage, setCurrentImage] = useState('');
-  // Maps network URL -> blob URL for client-side image swapping
-  const blobCacheRef = useRef<Map<string, string>>(new Map());
+    const [currentImage, setCurrentImage] = useState('');
+    // Maps network URL -> blob URL for client-side image swapping
+    const blobCacheRef = useRef<Map<string, string>>(new Map());
 
-  // Fetch all grid images once on mount and store as in-memory blob URLs
-  useEffect(() => {
-    let cancelled = false;
-    const createdBlobUrls: string[] = [];
-    const blobCache = blobCacheRef.current;
+    // Fetch all grid images once on mount and store as in-memory blob URLs
+    useEffect(() => {
+        let cancelled = false;
+        const createdBlobUrls: string[] = [];
+        const blobCache = blobCacheRef.current;
 
-    for (let x = pMin; x <= pMax; x += stepSize) {
-      for (let y = pMin; y <= pMax; y += stepSize) {
-        const networkUrl = `${basePath}/${postionalFilename(x, y, imgSize)}`;
-        fetch(networkUrl)
-          .then((r) => r.blob())
-          .then((blob) => {
-            if (cancelled) return;
-            const blobUrl = URL.createObjectURL(blob);
-            blobCache.set(networkUrl, blobUrl);
-            createdBlobUrls.push(blobUrl);
-          })
-          .catch(() => {
-            // Fall back to network URL if fetch fails
-          });
-      }
-    }
+        for (let x = pMin; x <= pMax; x += stepSize) {
+            for (let y = pMin; y <= pMax; y += stepSize) {
+                const networkUrl = `${basePath}/${postionalFilename(x, y, imgSize)}`;
+                fetch(networkUrl)
+                    .then((r) => r.blob())
+                    .then((blob) => {
+                        if (cancelled) return;
+                        const blobUrl = URL.createObjectURL(blob);
+                        blobCache.set(networkUrl, blobUrl);
+                        createdBlobUrls.push(blobUrl);
+                    })
+                    .catch(() => {
+                        // Fall back to network URL if fetch fails
+                    });
+            }
+        }
 
-    return () => {
-      cancelled = true;
-      createdBlobUrls.forEach((url) => URL.revokeObjectURL(url));
-      blobCache.clear();
-    };
-  }, [basePath, pMin, pMax, stepSize, imgSize]);
+        return () => {
+            cancelled = true;
+            createdBlobUrls.forEach((url) => URL.revokeObjectURL(url));
+            blobCache.clear();
+        };
+    }, [basePath, pMin, pMax, stepSize, imgSize]);
 
-  const resolveBlobUrl = useCallback((networkUrl: string) => {
-    return blobCacheRef.current.get(networkUrl) ?? networkUrl;
-  }, []);
+    const resolveBlobUrl = useCallback((networkUrl: string) => {
+        return blobCacheRef.current.get(networkUrl) ?? networkUrl;
+    }, []);
 
-  const updateGaze = useCallback((clientX: number, clientY: number) => {
-    if (!containerRef.current) {
-        const centerX = quantize(0, pMin, pMax, stepSize);
-        const centerY = quantize(0, pMin, pMax, stepSize);
-        const centerFilename = postionalFilename(centerX, centerY, imgSize);
+    const updateGaze = useCallback(
+        (clientX: number, clientY: number) => {
+            if (!containerRef.current) {
+                const centerX = quantize(0, pMin, pMax, stepSize);
+                const centerY = quantize(0, pMin, pMax, stepSize);
+                const centerFilename = postionalFilename(centerX, centerY, imgSize);
 
-        setCurrentImage(resolveBlobUrl(`${basePath}/${centerFilename}`));
-        return;
-    }
+                setCurrentImage(resolveBlobUrl(`${basePath}/${centerFilename}`));
+                return;
+            }
 
-    const rect = containerRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
+            const rect = containerRef.current.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
 
-    // Convert to normalized coordinates [-1, 1]
-    const nx = (clientX - centerX) / (rect.width / 2);
-    const ny = (clientY - centerY) / (rect.height / 2);
+            // Convert to normalized coordinates [-1, 1]
+            const nx = (clientX - centerX) / (rect.width / 2);
+            const ny = (clientY - centerY) / (rect.height / 2);
 
-    // Clamp to [-1, 1] range
-    const clampedX = Math.max(-1, Math.min(1, nx));
-    const clampedY = Math.max(-1, Math.min(1, ny));
+            // Clamp to [-1, 1] range
+            const clampedX = Math.max(-1, Math.min(1, nx));
+            const clampedY = Math.max(-1, Math.min(1, ny));
 
-    // Convert to grid coordinates
-    const px = quantize(clampedX, pMin, pMax, stepSize);
-    const py = quantize(-clampedY, pMin, pMax, stepSize);
+            // Convert to grid coordinates
+            const px = quantize(clampedX, pMin, pMax, stepSize);
+            const py = quantize(-clampedY, pMin, pMax, stepSize);
 
-    // Set the current image based on quantized coordinates
-    const filename = postionalFilename(px, py, imgSize);
+            // Set the current image based on quantized coordinates
+            const filename = postionalFilename(px, py, imgSize);
 
-    setCurrentImage(resolveBlobUrl(`${basePath}/${filename}`));
-  }, [containerRef, basePath, pMax, pMin, stepSize, imgSize, resolveBlobUrl]);
+            setCurrentImage(resolveBlobUrl(`${basePath}/${filename}`));
+        },
+        [containerRef, basePath, pMax, pMin, stepSize, imgSize, resolveBlobUrl],
+    );
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    updateGaze(e.clientX, e.clientY);
-  }, [updateGaze]);
+    const handleMouseMove = useCallback(
+        (e: MouseEvent) => {
+            updateGaze(e.clientX, e.clientY);
+        },
+        [updateGaze],
+    );
 
-  const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (e.touches.length > 0) {
-      const touch = e.touches[0];
-      updateGaze(touch.clientX, touch.clientY);
-    }
-  }, [updateGaze]);
+    const handleTouchMove = useCallback(
+        (e: TouchEvent) => {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                updateGaze(touch.clientX, touch.clientY);
+            }
+        },
+        [updateGaze],
+    );
 
-  useEffect(() => {
-    if (!enabled) return;
+    useEffect(() => {
+        if (!enabled) return;
 
-    const container = containerRef.current;
+        const container = containerRef.current;
 
-    if (!container) return;
+        if (!container) return;
 
-    // Add event listeners
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+        // Add event listeners
+        container.addEventListener('mousemove', handleMouseMove);
+        container.addEventListener('touchmove', handleTouchMove, { passive: true });
 
-    // Set initial center gaze
-    const rect = container.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    updateGaze(centerX, centerY);
+        // Set initial center gaze
+        const rect = container.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        updateGaze(centerX, centerY);
 
-    return () => {
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('touchmove', handleTouchMove);
-    };
-  }, [enabled, containerRef, handleMouseMove, handleTouchMove, updateGaze]);
+        return () => {
+            container.removeEventListener('mousemove', handleMouseMove);
+            container.removeEventListener('touchmove', handleTouchMove);
+        };
+    }, [enabled, containerRef, handleMouseMove, handleTouchMove, updateGaze]);
 
-  return currentImage;
-};
+    return currentImage;
+}

@@ -170,22 +170,21 @@ export default function Uses() {
                             </a>
                             <span>
                                 : The LulzBot TAZ 6 was the most reliable, easiest to use desktop 3D printer of its day, featuring innovative
-                                self-leveling and self-cleaning, and a modular tool head design for flexible and multi-material prints. With
-                                one of the largest print volumes in its class, the LulzBot TAZ 6 is an absolute workhorse for FDM manufacturing.
+                                self-leveling and self-cleaning, and a modular tool head design for flexible and multi-material prints. With one of
+                                the largest print volumes in its class, the LulzBot TAZ 6 is an absolute workhorse for FDM manufacturing.
                             </span>
                         </li>
                     </ul>
                     <h2>Neat Collectibles</h2>
                     <p>
-                        I'm an avid collector of memorable pieces of technology that have shaped their own corners of the industry.{' '}
-                        Here are some of my favorites:
+                        I'm an avid collector of memorable pieces of technology that have shaped their own corners of the industry. Here are some of
+                        my favorites:
                     </p>
                     <ul>
                         <li>
                             <a href="https://en.wikipedia.org/wiki/Google_Search_Appliance" target="_blank" rel="noopener noreferrer">
                                 Google T4 G100 Search Appliance
-                            </a>
-                            {' '}
+                            </a>{' '}
                             (I own three!)
                         </li>
                         <li>
@@ -208,7 +207,11 @@ export default function Uses() {
                                 (Explorer Edition)
                             </a>
                             {' / '}
-                            <a href="https://blog.google/products-and-platforms/devices/glass-enterprise-edition-2/" target="_blank" rel="noopener noreferrer">
+                            <a
+                                href="https://blog.google/products-and-platforms/devices/glass-enterprise-edition-2/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 (Enterprise Edition 2)
                             </a>
                         </li>
@@ -219,8 +222,7 @@ export default function Uses() {
                             {' / '}
                             <a href="https://omi.me" target="_blank" rel="noopener noreferrer">
                                 Omi.me
-                            </a>
-                            {' '}
+                            </a>{' '}
                             Wearables
                         </li>
                     </ul>
